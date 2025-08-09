@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../features/welcome_screen/presentation/onboarding/onboarding.dart';
+import '../../features/welcome_screen/presentation/splahe/splahe_screen.dart';
+
+final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+
+class AppRoutes {
+  AppRoutes._internal();
+
+  static const String splashScreen = '/';
+
+  static const String onboardingScreen = '/onboardingScreen';
+}
+
+class AppRouter {
+  static final GoRouter router = GoRouter(
+    navigatorKey: rootNavigatorKey,
+    initialLocation: AppRoutes.splashScreen,
+    routes: [
+      GoRoute(
+        path: AppRoutes.splashScreen,
+        name: 'splash',
+        builder: (context, state) => const SplashScreen(),
+      ),
+
+      GoRoute(
+        path: AppRoutes.onboardingScreen,
+        name: 'onboarding',
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+    ],
+    errorBuilder: (context, state) =>
+        const Scaffold(body: Center(child: Text('Page not found'))),
+  );
+}
