@@ -27,7 +27,6 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     controller.initAnimations(this);
     controller.startSequence(() {
       context.go('/onboardingScreen');
-
     });
   }
 
@@ -36,6 +35,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(splashProvider);
@@ -81,5 +81,3 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     );
   }
 }
-
-
