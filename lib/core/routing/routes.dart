@@ -9,4 +9,7 @@ class AppRoutes {
 
   static const String splashScreen = '/';
   static const String onboardingScreen = '/onboardingScreen';
+
+//riverpod_exam_fiel
+  static const String examScreen = 'examScreen';
 }

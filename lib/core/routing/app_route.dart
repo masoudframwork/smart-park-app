@@ -1,3 +1,4 @@
+import 'package:aml_client/riverpod_exam/exam-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,6 +13,8 @@ class AppRoutes {
   static const String splashScreen = '/';
 
   static const String onboardingScreen = '/onboardingScreen';
+  static const String examScreen = '/examScreen';
+
 }
 
 class AppRouter {
@@ -30,6 +33,14 @@ class AppRouter {
         name: 'onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
+
+      GoRoute(
+        path: AppRoutes.examScreen,
+        name: 'examScreen',
+        builder: (context, state) => const ExamScreen(),
+      ),
+
+
     ],
     errorBuilder: (context, state) =>
         const Scaffold(body: Center(child: Text('Page not found'))),
