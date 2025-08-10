@@ -1,3 +1,4 @@
+import 'package:aml_client/core/image_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_color.dart';
@@ -46,13 +47,23 @@ class LogoWidget extends StatelessWidget {
                 ),
                 child: Center(
                   child: ClipOval(
-                    child: CustomImageWidget(
-                      imageUrl:
-                          'https://www.frameworktechs.com/assets/images/soiner.PNG',
+                    child: Image.asset(
+                       AImages.appLogo,
                       width: 70.w,
                       height: 70.w,
                       fit: BoxFit.cover,
                     ),
+
+
+                    // CustomImageWidget(
+                    //   imageUrl: 'https://www.frameworktechs.com/assets/images/soiner.PNG',
+                    //   width: 70.w,
+                    //   height: 70.w,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    //
+
+
                   ),
                 ),
               ),
