@@ -2,8 +2,9 @@ import 'package:aml_client/riverpod_exam/exam-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/welcome_screen/presentation/onboarding/onboarding.dart';
-import '../../features/welcome_screen/presentation/splahe/splahe_screen.dart';
+import '../../features/welcome_screen/presentation/onboarding/onboarding_screen.dart';
+import '../../features/welcome_screen/presentation/splash/splash_screen.dart';
+
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/theme/app_color.dart';
-
 class LoadingIndicatorWidget extends StatelessWidget {
   final String text;
 
@@ -14,6 +12,7 @@ class LoadingIndicatorWidget extends StatelessWidget {
       opacity: 1.0,
       duration: const Duration(milliseconds: 500),
       child: Container(
+
         padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 15.h),
         margin: EdgeInsets.symmetric(horizontal: 8.w),
         decoration: BoxDecoration(
@@ -24,8 +23,8 @@ class LoadingIndicatorWidget extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 40.w,
-              height: 40.w,
+               width: 40.w,
+               height: 40.w,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: AppColor.pureWhite.withOpacity(0.3)),

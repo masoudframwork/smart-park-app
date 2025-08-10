@@ -55,7 +55,7 @@ class FooterInfoWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 2.h),
+          //SizedBox(height: 2.h),
         ],
       ),
     );

@@ -1,30 +1,29 @@
-import 'package:aml_client/core/image_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
-import '../../../../../widget/custom_image_widget.dart';
 import 'app_title_widget.dart';
 
 class LogoWidget extends StatelessWidget {
-  final Animation<double> fadeAnimation;
-  final Animation<double> scaleAnimation;
-  final Animation<Offset> slideAnimation;
+  final double fadeValue;
+  final double scaleValue;
+  final double slideValue;
 
   const LogoWidget({
     super.key,
-    required this.fadeAnimation,
-    required this.scaleAnimation,
-    required this.slideAnimation,
+    required this.fadeValue,
+    required this.scaleValue,
+    required this.slideValue,
   });
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      opacity: fadeAnimation,
-      child: ScaleTransition(
-        scale: scaleAnimation,
-        child: SlideTransition(
-          position: slideAnimation,
+    return Opacity(
+      opacity: fadeValue,
+      child: Transform.scale(
+        scale: scaleValue,
+        child: Transform.translate(
+          offset: Offset(0, slideValue * 100),
           child: Column(
             children: [
               Container(
@@ -48,22 +47,11 @@ class LogoWidget extends StatelessWidget {
                 child: Center(
                   child: ClipOval(
                     child: Image.asset(
-                       AImages.appLogo,
+                      AImages.appLogo,
                       width: 70.w,
                       height: 70.w,
                       fit: BoxFit.cover,
                     ),
-
-
-                    // CustomImageWidget(
-                    //   imageUrl: 'https://www.frameworktechs.com/assets/images/soiner.PNG',
-                    //   width: 70.w,
-                    //   height: 70.w,
-                    //   fit: BoxFit.cover,
-                    // ),
-                    //
-
-
                   ),
                 ),
               ),
