@@ -33,7 +33,7 @@ dependencies:
   google_fonts: ^6.3.0
   cached_network_image: ^3.4.1
   flutter_screenutil: ^5.9.3
-  shared_preferences: ^2.5.3
+  shared_preferences: any
   hooks_riverpod: ^2.6.1
   flutter_hooks: ^0.21.2
   smooth_page_indicator: ^1.2.1
