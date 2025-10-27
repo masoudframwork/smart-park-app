@@ -1,4 +1,4 @@
-package com.example.aml_client
+package com.smartbark.app
 
 import io.flutter.embedding.android.FlutterActivity
 

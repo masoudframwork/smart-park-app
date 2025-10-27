@@ -1,7 +1,7 @@
-import 'package:aml_client/core/routing/app_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/routing/app_route.dart';
 
 void main() async {
   runApp(const ProviderScope(child: MyApp()));
@@ -18,7 +18,6 @@ class MyApp extends ConsumerWidget {
       builder: (context, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          title: '',
 
           routerConfig: AppRouter.router,
         );
