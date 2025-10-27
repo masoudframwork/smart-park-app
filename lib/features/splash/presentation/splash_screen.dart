@@ -9,6 +9,7 @@ import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_splash_background.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
+import '../../../generated/l10n.dart';
 import 'controller/splash_controller.dart';
 
 class SplashScreen extends ConsumerWidget {
@@ -52,7 +53,7 @@ class SplashScreen extends ConsumerWidget {
                     ),
                     SizedBox(height: 12.h),
                     AppText(
-                      text: 'SAMPLE LOGO',
+                      text: S.of(context).sampleLogo,
                       appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
                         color: AppColor.primaryColor,
                       ),

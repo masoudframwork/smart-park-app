@@ -8,6 +8,7 @@ import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/app_splash_background.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/app_texticon_button.dart';
+import '../../generated/l10n.dart';
 
 class OnBoardingScreen extends ConsumerWidget {
   const OnBoardingScreen({super.key});
@@ -42,7 +43,7 @@ class OnBoardingScreen extends ConsumerWidget {
               SizedBox(height: 24.h),
 
               AppTextIconButton(
-                text: "تخطي",
+                text: S.of(context).skip,
                 icon: Icons.arrow_back,
                 onPressed: () {},
               ),

@@ -26,7 +26,12 @@ class AppTextIconButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            //Icon(icon, size: 20.sp, color: AppColor.blackColor),
+            AppText(
+              text: text,
+              appTextTheme: AppTextTheme.titleLargeTextStyle(),
+            ),
+
+            SizedBox(width: 12.w),
             CustomImageWidget(
               isFlag: true,
               imageUrl: AImages.arrowIcon,
@@ -34,11 +39,6 @@ class AppTextIconButton extends StatelessWidget {
               height: 25.h,
             ),
 
-            SizedBox(width: 12.w),
-            AppText(
-              text: text,
-              appTextTheme: AppTextTheme.titleLargeTextStyle(),
-            ),
           ],
         ),
       ),
