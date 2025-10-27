@@ -21,5 +21,11 @@
   "unknonError": "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",
   "@unknonError": {},
   "sampleLogo": "SAMPLE LOGO",
-  "skip": "تخطي"
+  "skip": "تخطي",
+    "home": "الرئيسية",
+  "@home": {},
+  "wallet": "المحفظة",
+  "@wallet": {},
+  "bookings": "الحجوزات",
+  "@bookings": {}
 }

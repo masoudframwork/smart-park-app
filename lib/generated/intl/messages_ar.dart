@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "bookings": MessageLookupByLibrary.simpleMessage("الحجوزات"),
     "dio_generic_error": MessageLookupByLibrary.simpleMessage(
       "⚠️ خطأ: حدث خطأ أثناء جلب البيانات",
     ),
@@ -47,10 +48,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
       "❗ حدث خطأ غير متوقع.",
     ),
+    "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",
     ),
+    "wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
   };
 }

@@ -47,7 +47,7 @@ class SplashScreen extends ConsumerWidget {
                   children: [
                     CustomImageWidget(
                       isFlag: true,
-                      imageUrl: AImages.appLogo,
+                      imageUrl: AppImages.appLogo,
                       width: 300.w,
                       height: 100.h,
                     ),

@@ -23,5 +23,11 @@
   "sampleLogo": "SAMPLE LOGO",
   "@sampleLogo": {},
   "skip": "Skip",
-  "@skip": {}
+  "@skip": {},
+  "home":"Home",
+  "@home": {},
+  "wallet":"Wallet",
+  "@wallet": {},
+  "bookings":"Bookings",
+  "@bookings": {}
 }

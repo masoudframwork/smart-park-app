@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_park_app/core/routing/app_route.dart';
+import 'package:smart_park_app/core/routing/navigation_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_park_app/features/on_boarding/presentation/controller/on_boarding_controller.dart';
 import '../../../core/constants/image_string.dart';
@@ -15,7 +17,7 @@ class OnBoardingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = PageController();
-    final images = [AImages.intro1, AImages.intro2, AImages.intro3];
+    final images = [AppImages.intro1, AppImages.intro2, AppImages.intro3];
     return Scaffold(
       body: AppSplashBackground(
         child: SafeArea(
@@ -45,7 +47,9 @@ class OnBoardingScreen extends ConsumerWidget {
               AppTextIconButton(
                 text: S.of(context).skip,
                 icon: Icons.arrow_back,
-                onPressed: () {},
+                onPressed: () {
+                  NavigationService.replace(context, AppRoutes.bottomNavBar);
+                },
               ),
 
               SizedBox(height: 16.h),

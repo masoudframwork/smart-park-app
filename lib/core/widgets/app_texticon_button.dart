@@ -34,7 +34,7 @@ class AppTextIconButton extends StatelessWidget {
             SizedBox(width: 12.w),
             CustomImageWidget(
               isFlag: true,
-              imageUrl: AImages.arrowIcon,
+              imageUrl: AppImages.arrowIcon,
               width: 25.w,
               height: 25.h,
             ),
