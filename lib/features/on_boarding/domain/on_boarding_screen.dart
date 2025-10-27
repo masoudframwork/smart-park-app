@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:smart_park_app/features/on_boarding/presentation/controller/on_boarding_controller.dart';
-import '../../../core/image_string.dart';
-import '../../../core/theme/app_color.dart';
-import '../../../core/widgets/app_splash_background.dart';
-import '../../../core/widgets/custom_image_widget.dart';
-import '../../../core/widgets/app_texticon_button.dart';
-import '../../generated/l10n.dart';
+import '../../../core/constants/image_string.dart';
+import '../../../../core/theme/app_color.dart';
+import '../../../../core/widgets/app_splash_background.dart';
+import '../../../../core/widgets/custom_image_widget.dart';
+import '../../../../core/widgets/app_texticon_button.dart';
+import '../../../generated/l10n.dart';
 
 class OnBoardingScreen extends ConsumerWidget {
   const OnBoardingScreen({super.key});

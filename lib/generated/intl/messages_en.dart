@@ -22,7 +22,35 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "dio_generic_error": MessageLookupByLibrary.simpleMessage(
+      "⚠️ Error: An error occured while fetching data",
+    ),
+    "dio_no_connection": MessageLookupByLibrary.simpleMessage(
+      "📴 No internet connection.",
+    ),
+    "dio_not_found": MessageLookupByLibrary.simpleMessage("🔎 Not found."),
+    "dio_request_cancelled": MessageLookupByLibrary.simpleMessage(
+      "❌ Request was cancelled.",
+    ),
+    "dio_server_error": MessageLookupByLibrary.simpleMessage(
+      "🔥 Server error. Try again later.",
+    ),
+    "dio_ssl_error": MessageLookupByLibrary.simpleMessage(
+      "🔒 SSL certificate error.",
+    ),
+    "dio_timeout": MessageLookupByLibrary.simpleMessage(
+      "⏱️ Connection timed out.",
+    ),
+    "dio_unauthorized": MessageLookupByLibrary.simpleMessage(
+      "🔐 Unauthorized. Please log in again.",
+    ),
+    "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
+      "❗ Unexpected error occurred.",
+    ),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "unknonError": MessageLookupByLibrary.simpleMessage(
+      "Oops! Something went wrong. Please try again later.",
+    ),
   };
 }

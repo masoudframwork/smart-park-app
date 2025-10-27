@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../image_string.dart';
+import '../constants/image_string.dart';
 import '../theme/app_text_theme.dart';
 import 'app_text.dart';
 import 'custom_image_widget.dart';
@@ -38,7 +38,6 @@ class AppTextIconButton extends StatelessWidget {
               width: 25.w,
               height: 25.h,
             ),
-
           ],
         ),
       ),

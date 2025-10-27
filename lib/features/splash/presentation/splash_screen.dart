@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import '../../../core/image_string.dart';
+import 'package:smart_park_app/generated/l10n.dart';
+import '../../../core/constants/image_string.dart';
 import '../../../core/routing/app_route.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_splash_background.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
-import '../../../generated/l10n.dart';
 import 'controller/splash_controller.dart';
 
 class SplashScreen extends ConsumerWidget {

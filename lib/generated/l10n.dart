@@ -54,6 +54,106 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `⏱️ Connection timed out.`
+  String get dio_timeout {
+    return Intl.message(
+      '⏱️ Connection timed out.',
+      name: 'dio_timeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔒 SSL certificate error.`
+  String get dio_ssl_error {
+    return Intl.message(
+      '🔒 SSL certificate error.',
+      name: 'dio_ssl_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `❌ Request was cancelled.`
+  String get dio_request_cancelled {
+    return Intl.message(
+      '❌ Request was cancelled.',
+      name: 'dio_request_cancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔐 Unauthorized. Please log in again.`
+  String get dio_unauthorized {
+    return Intl.message(
+      '🔐 Unauthorized. Please log in again.',
+      name: 'dio_unauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔎 Not found.`
+  String get dio_not_found {
+    return Intl.message(
+      '🔎 Not found.',
+      name: 'dio_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🔥 Server error. Try again later.`
+  String get dio_server_error {
+    return Intl.message(
+      '🔥 Server error. Try again later.',
+      name: 'dio_server_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `⚠️ Error: An error occured while fetching data`
+  String get dio_generic_error {
+    return Intl.message(
+      '⚠️ Error: An error occured while fetching data',
+      name: 'dio_generic_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📴 No internet connection.`
+  String get dio_no_connection {
+    return Intl.message(
+      '📴 No internet connection.',
+      name: 'dio_no_connection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `❗ Unexpected error occurred.`
+  String get dio_unexpected_error {
+    return Intl.message(
+      '❗ Unexpected error occurred.',
+      name: 'dio_unexpected_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Oops! Something went wrong. Please try again later.`
+  String get unknonError {
+    return Intl.message(
+      'Oops! Something went wrong. Please try again later.',
+      name: 'unknonError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `SAMPLE LOGO`
   String get sampleLogo {
     return Intl.message('SAMPLE LOGO', name: 'sampleLogo', desc: '', args: []);
