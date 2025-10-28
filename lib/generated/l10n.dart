@@ -63,6 +63,16 @@ class S {
   String get skip {
     return Intl.message('Skip', name: 'skip', desc: '', args: []);
   }
+
+  /// `Do not display instructions again`
+  String get doNotDisplayInstructionsAgain {
+    return Intl.message(
+      'Do not display instructions again',
+      name: 'doNotDisplayInstructionsAgain',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

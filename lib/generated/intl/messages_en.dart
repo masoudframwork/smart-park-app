@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
+      "Do not display instructions again",
+    ),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
   };

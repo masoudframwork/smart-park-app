@@ -1,4 +1,5 @@
 {
   "sampleLogo": "SAMPLE LOGO",
-  "skip": "Skip"
+  "skip": "Skip",
+  "doNotDisplayInstructionsAgain": "Do not display instructions again"
 }

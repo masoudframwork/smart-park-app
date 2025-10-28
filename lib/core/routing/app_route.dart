@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:smart_park_app/core/routing/routes.dart';
 import '../../features/on_boarding/on_boarding_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
-class AppRoutes {
-  AppRoutes._internal();
-
-  static const String splashScreen = '/';
-  static const String onBoardingScreen = '/onBoardingScreen';
-}
-
 class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: AppRoutes.splashScreen,
+    initialLocation: RoutePaths.splashScreen,
     routes: [
       GoRoute(
-        path: AppRoutes.splashScreen,
+        path: RoutePaths.splashScreen,
         builder: (context, state) => SplashScreen(),
       ),
       GoRoute(
-        path: AppRoutes.onBoardingScreen,
+        path: RoutePaths.onBoardingScreen,
         builder: (context, state) => OnBoardingScreen(),
       ),
     ],

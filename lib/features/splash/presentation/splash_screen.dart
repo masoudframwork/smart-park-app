@@ -3,13 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/image_string.dart';
-import '../../../core/routing/app_route.dart';
-import '../../../core/theme/app_color.dart';
-import '../../../core/theme/app_text_theme.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_splash_background.dart';
-import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
-import '../../../generated/l10n.dart';
 import 'controller/splash_controller.dart';
 
 class SplashScreen extends ConsumerWidget {
@@ -21,7 +17,7 @@ class SplashScreen extends ConsumerWidget {
 
     ref.listen(splashControllerProvider, (_, next) {
       if (next.isFinished && context.mounted) {
-        context.go(AppRoutes.onBoardingScreen);
+        context.go(RoutePaths.onBoardingScreen);
       }
     });
 
@@ -48,15 +44,8 @@ class SplashScreen extends ConsumerWidget {
                     CustomImageWidget(
                       isFlag: true,
                       imageUrl: AImages.appLogo,
-                      width: 300.w,
-                      height: 100.h,
-                    ),
-                    SizedBox(height: 12.h),
-                    AppText(
-                      text: S.of(context).sampleLogo,
-                      appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-                        color: AppColor.primaryColor,
-                      ),
+                      width: 134.w,
+                      height: 93.08.h,
                     ),
                   ],
                 ),

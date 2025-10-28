@@ -21,26 +21,24 @@ class AppTextIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AppText(
-              text: text,
-              appTextTheme: AppTextTheme.titleLargeTextStyle(),
-            ),
+      child: Row(
 
-            SizedBox(width: 12.w),
-            CustomImageWidget(
-              isFlag: true,
-              imageUrl: AImages.arrowIcon,
-              width: 25.w,
-              height: 25.h,
-            ),
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AppText(
+            text: text,
+            appTextTheme: AppTextTheme.titleMediumTextStyle(),
+          ),
 
-          ],
-        ),
+          SizedBox(width: 8.w),
+          CustomImageWidget(
+            isFlag: true,
+            imageUrl: AImages.arrowIcon,
+            width: 20.w,
+            height: 20.h,
+          ),
+
+        ],
       ),
     );
   }
