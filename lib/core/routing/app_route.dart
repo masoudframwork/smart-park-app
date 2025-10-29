@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:smart_park_app/core/routing/navigation_service.dart';
 import 'package:smart_park_app/core/routing/routes.dart';
 import 'package:smart_park_app/features/bottom_nav_bar/presentation/bottom_nav_bar_page.dart';
 import '../../features/on_boarding/presentation/on_boarding_screen.dart';
@@ -36,4 +37,7 @@ class AppRouter {
     errorBuilder: (context, state) =>
         const Scaffold(body: Center(child: Text('Page not found'))),
   );
+  static void initialize() {
+    NavigationService.initialize(router);
+  }
 }

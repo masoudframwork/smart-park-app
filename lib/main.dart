@@ -15,6 +15,7 @@ void main() async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       await initServiceLocator();
+      AppRouter.initialize();
 
       FlutterError.onError = (FlutterErrorDetails details) {
         FlutterError.presentError(details);
@@ -27,16 +28,20 @@ void main() async {
     },
   );
 }
+
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ScreenUtilInit(
-      designSize: const Size(393, 852),
+      designSize: ((MediaQuery.of(context).size.width > 800))
+          ? (MediaQuery.of(context).orientation == Orientation.portrait
+              ? const Size(834, 1194)
+              : const Size(1194, 834))
+          : const Size(393, 852),
       minTextAdapt: true,
       splitScreenMode: true,
-
       builder: (context, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
@@ -59,7 +64,6 @@ class MyApp extends ConsumerWidget {
               child: child!,
             );
           },
-
           routerConfig: AppRouter.router,
         );
       },
