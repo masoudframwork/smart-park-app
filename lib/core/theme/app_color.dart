@@ -2,17 +2,27 @@ import 'dart:ui';
 
 class AppColor {
   AppColor._();
-  static const primaryColor = Color(0xFF3FA370);
-  static const primaryButtonColor = Color(0xFF3FA370);
-  static const secondaryColor = Color(0xFFABE7B2);
-  static const secondaryButtonColor = Color(0xFFABE7B2);
-  static const secondaryContainerColor = Color(0xFFED3500);
-  static const yellowContainerColor = Color(0xFFFFC400);
+  static const primaryColor = Color(0xFF1B8354);
+//7
+  static const primaryButtonColor = Color(0xFF1A8154);
+  //اختر المركبه contanear 9
+  static const secondaryColor = Color(0xFFABEFC6);
+  //contaner الحجز السريع 6
+  static const containerColor = Color(0xFFECFDF3);
 
-  static const blackColor = Color(0xFF000000);
+  //done design secondaryButtonColor
+  static const secondaryButtonColor = Color(0xFFECFDF3);
+
+  static const secondaryContainerColor = Color(0xFFD92D20);
+  static const yellowContainerColor = Color(0xFFFEC84B);
+  //6 design
+  static const blackNumberSmallColor = Color(0xFF384250);
+
+  static const blackColor = Color(0xFF0D121C);
+
 
   static const greyColor = Color(0xFF808080);
-  static const greyTextColor = Color(0xFF808080);
+  static const greyTextColor = Color(0xFF6C737F);
   static const greyContainerColor = Color(0xFFE0E0E0);
   static const selectedTabTextColor = Color(0xFF1A8154);
 

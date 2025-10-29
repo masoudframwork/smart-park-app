@@ -21,7 +21,7 @@ class AppSplashBackground extends StatelessWidget {
               width: 250.w,
               height: 250.h,
               decoration: BoxDecoration(
-                color: AppColor.secondaryButtonColor.withOpacity(0.2),
+                color: AppColor.secondaryButtonColor,
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(250.r),
                 ),
@@ -36,7 +36,7 @@ class AppSplashBackground extends StatelessWidget {
               width: 250.w,
               height: 250.h,
               decoration: BoxDecoration(
-                color: AppColor.secondaryButtonColor.withOpacity(0.2),
+                color: AppColor.secondaryButtonColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(250.r),
                 ),

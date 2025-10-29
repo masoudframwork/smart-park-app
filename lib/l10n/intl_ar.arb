@@ -27,5 +27,6 @@
   "wallet": "المحفظة",
   "@wallet": {},
   "bookings": "الحجوزات",
-  "@bookings": {}
+  "@bookings": {},
+  "doNotDisplayInstructionsAgain": "لا تعرض التعليمات مرة أخرى"
 }

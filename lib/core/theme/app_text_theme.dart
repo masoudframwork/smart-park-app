@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_color.dart';
 
 class AppTextTheme {
@@ -7,99 +6,112 @@ class AppTextTheme {
 
   // 🟢 الأزرار الرئيسية (الأخضر أو الأساسي)
   static TextStyle mainButtonTextStyle() => TextStyle(
-    fontSize: 14.sp,
-    color: AppColor.whiteColor,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 16,
+        color: AppColor.whiteColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 🔴 الأزرار الثانوية (مثل الأحمر أو التحذيري)
   static TextStyle secondaryButtonTextStyle() => TextStyle(
-    fontSize: 14.sp,
-    color: AppColor.whiteColor,
-    fontWeight: FontWeight.w500,
-  );
+        fontSize: 16,
+        color: AppColor.whiteColor,
+        fontWeight: FontWeight.w700,
+      );
 
   // 🏷️ العناوين الكبيرة
   static TextStyle titleLargeTextStyle() => TextStyle(
-    fontSize: 22.sp,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w700,
-  );
-
+        fontSize: 26,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
   // 🏷️ العناوين المتوسطة
   static TextStyle titleMediumTextStyle() => TextStyle(
-    fontSize: 18.sp,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w600,
-  );
+        fontSize: 16,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 🏷️ العناوين الصغيرة
   static TextStyle titleSmallTextStyle() => TextStyle(
-    fontSize: 14.sp,
-    color: AppColor.greyColor,
-    fontWeight: FontWeight.w500,
-  );
+        fontSize: 14,
+        color: AppColor.greyColor,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 💰 السعر / القيمة الرقمية
-  static TextStyle numberTextStyle() => TextStyle(
-    fontSize: 16.sp,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w600,
-  );
+  static TextStyle numberLargeTextStyle() => TextStyle(
+        fontSize: 25,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+  // ارقام صغيره
+  static TextStyle numberSmallTextStyle() => TextStyle(
+        fontSize: 14,
+        color: AppColor.blackNumberSmallColor,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 💬 النصوص الكبيرة داخل البطاقات
   static TextStyle bodyLargeTextStyle() => TextStyle(
-    fontSize: 16.sp,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w500,
-  );
+        fontSize: 26,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 💬 النصوص المتوسطة
   static TextStyle bodyMediumTextStyle() => TextStyle(
-    fontSize: 14.sp,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w400,
-  );
-
+        fontSize: 14,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+  ////////////////////////////////////////////////////////////////////////
   // 💬 النصوص الصغيرة
   static TextStyle bodySmallTextStyle() => TextStyle(
-    fontSize: 12.sp,
-    color: AppColor.greyColor,
-    fontWeight: FontWeight.w400,
-  );
-
-  // 💬 النصوص الأصغر جدًا
-  static TextStyle bodyXSmallTextStyle() => TextStyle(
-    fontSize: 10.sp,
-    color: AppColor.greyColor,
-    fontWeight: FontWeight.w400,
-  );
-
-  // ⚪ النصوص داخل الحقول أو التلميحات
-  static TextStyle hintTextStyle() => TextStyle(
-    fontSize: 14.sp,
-    color: AppColor.greyColor,
-    fontWeight: FontWeight.w400,
-  );
-
-  // 🧾 نصوص التنبيه أو الخطأ
-  static TextStyle errorTextStyle() => TextStyle(
-    fontSize: 12.sp,
-    color: AppColor.secondaryContainerColor,
-    fontWeight: FontWeight.w500,
-  );
-
-  // 🕓 نصوص الوقت / التاريخ
-  static TextStyle timeTextStyle() => TextStyle(
-    fontSize: 12.sp,
-    color: AppColor.greyTextColor,
-    fontWeight: FontWeight.w400,
-  );
-
-  // 🏷️ نصوص Tag أو Badge
-  static TextStyle tagTextStyle() => TextStyle(
-    fontSize: 10.sp,
-    color: AppColor.whiteColor,
-    fontWeight: FontWeight.w500,
-  );
+        fontSize: 12,
+        color: AppColor.greyColor,
+        fontWeight: FontWeight.w400,
+      );
+  //
+  // // 💬 النصوص الأصغر جدًا
+  // static TextStyle bodyXSmallTextStyle() => TextStyle(
+  //   fontSize: 10,
+  //   color: AppColor.greyColor,
+  //   fontWeight: FontWeight.w400,
+  // );
+  //
+  // // ⚪ النصوص داخل الحقول أو التلميحات
+  // static TextStyle hintTextStyle() => TextStyle(
+  //   fontSize: 14,
+  //   color: AppColor.greyColor,
+  //   fontWeight: FontWeight.w400,
+  // );
+  //
+  // // 🧾 نصوص التنبيه أو الخطأ
+  // static TextStyle errorTextStyle() => TextStyle(
+  //   fontSize: 12,
+  //   color: AppColor.secondaryContainerColor,
+  //   fontWeight: FontWeight.w500,
+  // );
+  //
+  // // 🕓 نصوص الوقت / التاريخ
+  // static TextStyle timeTextStyle() => TextStyle(
+  //   fontSize: 12,
+  //   color: AppColor.greyTextColor,
+  //   fontWeight: FontWeight.w400,
+  // );
+  //
+  // // 🏷️ نصوص Tag أو Badge
+  // static TextStyle tagTextStyle() => TextStyle(
+  //   fontSize: 10,
+  //   color: AppColor.whiteColor,
+  //   fontWeight: FontWeight.w500,
+  // );
 }

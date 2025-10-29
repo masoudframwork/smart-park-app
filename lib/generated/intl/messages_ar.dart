@@ -48,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
       "❗ حدث خطأ غير متوقع.",
     ),
+    "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
+      "لا تعرض التعليمات مرة أخرى",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),

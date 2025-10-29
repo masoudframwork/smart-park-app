@@ -48,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
       "❗ Unexpected error occurred.",
     ),
+    "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
+      "Do not display instructions again",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),

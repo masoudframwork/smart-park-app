@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:smart_park_app/generated/l10n.dart';
 import '../../../core/constants/image_string.dart';
-import '../../../core/routing/app_route.dart';
-import '../../../core/theme/app_color.dart';
-import '../../../core/theme/app_text_theme.dart';
+import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_splash_background.dart';
-import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import 'controller/splash_controller.dart';
 
@@ -21,7 +17,7 @@ class SplashScreen extends ConsumerWidget {
 
     ref.listen(splashControllerProvider, (_, next) {
       if (next.isFinished && context.mounted) {
-        context.go(AppRoutes.onBoardingScreen);
+        context.go(RoutePaths.onBoardingScreen);
       }
     });
 
@@ -38,9 +34,8 @@ class SplashScreen extends ConsumerWidget {
               curve: Curves.elasticOut,
               child: AnimatedSlide(
                 duration: const Duration(milliseconds: 1500),
-                offset: controller.isAnimated
-                    ? Offset.zero
-                    : const Offset(0, 1),
+                offset:
+                    controller.isAnimated ? Offset.zero : const Offset(0, 1),
                 curve: Curves.easeOutBack,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -48,15 +43,8 @@ class SplashScreen extends ConsumerWidget {
                     CustomImageWidget(
                       isFlag: true,
                       imageUrl: AppImages.appLogo,
-                      width: 300.w,
-                      height: 100.h,
-                    ),
-                    SizedBox(height: 12.h),
-                    AppText(
-                      text: S.of(context).sampleLogo,
-                      appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-                        color: AppColor.primaryColor,
-                      ),
+                      width: 134.w,
+                      height: 93.08.h,
                     ),
                   ],
                 ),

@@ -178,6 +178,16 @@ class S {
   String get bookings {
     return Intl.message('Bookings', name: 'bookings', desc: '', args: []);
   }
+
+  /// `Do not display instructions again`
+  String get doNotDisplayInstructionsAgain {
+    return Intl.message(
+      'Do not display instructions again',
+      name: 'doNotDisplayInstructionsAgain',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

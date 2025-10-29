@@ -32,39 +32,37 @@ class CustomButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle buttonTextStyle = switch (type) {
-      ButtonType.elevated => AppTextTheme.mainButtonTextStyle(),
-      ButtonType.outlined => AppTextTheme.secondaryButtonTextStyle(),
-    };
+    final TextStyle buttonTextStyle = type == ButtonType.elevated
+        ? AppTextTheme.mainButtonTextStyle()
+        : AppTextTheme.secondaryButtonTextStyle();
 
     return Padding(
       padding: customPadding ?? EdgeInsets.zero,
       child: SizedBox(
-        width: width.w,
-        child: switch (type) {
-          ButtonType.outlined => OutlinedButton(
-            onPressed: onPressed,
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(color: borderColor ?? AppColor.primaryColor),
-              padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
+        width: width == double.infinity ? width : width.w,
+        child: type == ButtonType.outlined
+            ? OutlinedButton(
+                onPressed: onPressed,
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(color: borderColor ?? AppColor.primaryColor),
+                  padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(borderRadius.r),
+                  ),
+                ),
+                child: AppText(text: text, appTextTheme: buttonTextStyle),
+              )
+            : ElevatedButton(
+                onPressed: onPressed,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: backgroundColor ?? AppColor.primaryColor,
+                  padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(borderRadius.r),
+                  ),
+                ),
+                child: AppText(text: text, appTextTheme: buttonTextStyle),
               ),
-            ),
-            child: AppText(text: text, appTextTheme: buttonTextStyle),
-          ),
-          ButtonType.elevated => ElevatedButton(
-            onPressed: onPressed,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: backgroundColor ?? AppColor.primaryColor,
-              padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius),
-              ),
-            ),
-            child: AppText(text: text, appTextTheme: buttonTextStyle),
-          ),
-        },
       ),
     );
   }

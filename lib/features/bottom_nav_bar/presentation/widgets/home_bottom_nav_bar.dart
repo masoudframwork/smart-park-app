@@ -45,8 +45,8 @@ class HomeBottomNavigationBar extends ConsumerWidget {
                 fit: BoxFit.cover,
                 color:
                     ref.watch(bottomNavBarController).currentIndex == item.index
-                    ? AppColor.selectedTabTextColor
-                    : AppColor.greyTextColor,
+                        ? AppColor.selectedTabTextColor
+                        : AppColor.greyTextColor,
               ),
               // SvgPicture.asset(
               //   item.icon,
@@ -63,8 +63,7 @@ class HomeBottomNavigationBar extends ConsumerWidget {
               AppText(
                 text: item.title,
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color:
-                      ref.watch(bottomNavBarController).currentIndex ==
+                  color: ref.watch(bottomNavBarController).currentIndex ==
                           item.index
                       ? AppColor.selectedTabTextColor
                       : AppColor.greyTextColor,

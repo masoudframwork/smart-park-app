@@ -29,5 +29,6 @@
   "wallet":"Wallet",
   "@wallet": {},
   "bookings":"Bookings",
-  "@bookings": {}
+  "@bookings": {},
+  "doNotDisplayInstructionsAgain": "Do not display instructions again"
 }
