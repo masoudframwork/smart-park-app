@@ -48,7 +48,9 @@ class OnBoardingScreen extends ConsumerWidget {
             AppTextIconButton(
               text: S.of(context).skip,
               icon: Icons.arrow_back,
-              onPressed: () {},
+              onPressed: () {
+                ref.read(onboardingProvider).onSkipPressed();
+              },
             ),
             SmoothPageIndicator(
               controller: pageController,
