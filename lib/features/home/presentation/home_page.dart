@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'controller/home_controller.dart';
 import 'widgets/marker_info_card.dart';
@@ -13,12 +14,11 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
-  GoogleMapController? _mapController;
+  final MapController _mapController = MapController();
 
   @override
   void initState() {
     super.initState();
-    // Initialize the map when the widget is created
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(homeControllerProvider.notifier).initializeMap();
     });
@@ -31,25 +31,53 @@ class _HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          // Google Map
           if (homeState.userLocation != null)
-            GoogleMap(
-              onMapCreated: (GoogleMapController controller) {
-                _mapController = controller;
-              },
-              initialCameraPosition: CameraPosition(
-                target: homeState.userLocation!,
-                zoom: 15.0,
+            FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: homeState.userLocation!,
+                initialZoom: 15.0,
+                onTap: (_, __) {
+                  ref.read(homeControllerProvider.notifier).clearSelection();
+                },
               ),
-              markers: homeState.markers,
-              myLocationEnabled: true,
-              myLocationButtonEnabled: true,
-              mapType: MapType.normal,
-              zoomControlsEnabled: true,
-              onTap: (LatLng position) {
-                // Clear selection when tapping on empty area
-                ref.read(homeControllerProvider.notifier).clearSelection();
-              },
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'com.smartpark.app',
+                ),
+                
+                MarkerLayer(
+                  markers: _buildMarkers(homeState),
+                ),
+                
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: homeState.userLocation!,
+                      width: 40.w,
+                      height: 40.h,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue.withOpacity(0.3),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.blue, width: 3),
+                        ),
+                        child: Center(
+                          child: Container(
+                            width: 12.w,
+                            height: 12.h,
+                            decoration: const BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             )
           else if (homeState.isLoading)
             const Center(
@@ -66,13 +94,16 @@ class _HomePageState extends ConsumerState<HomePage> {
                     color: Colors.red,
                   ),
                   SizedBox(height: 16.h),
-                  Text(
-                    'Error: ${homeState.error}',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: Colors.red,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 32.w),
+                    child: Text(
+                      'Error: ${homeState.error}',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: Colors.red,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.h),
                   ElevatedButton(
@@ -85,7 +116,6 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
 
-          // Selected marker info card
           if (homeState.selectedMarker != null)
             Positioned(
               bottom: 20.h,
@@ -96,13 +126,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                 onClose: () {
                   ref.read(homeControllerProvider.notifier).clearSelection();
                 },
-                onNavigate: () =>
-                    _handleMarkerAction(homeState.selectedMarker!),
+                onNavigate: () => _handleMarkerAction(homeState.selectedMarker!),
                 onDetails: () => _handleMarkerAction(homeState.selectedMarker!),
               ),
             ),
 
-          // Floating action button for custom actions
           Positioned(
             top: 50.h,
             right: 16.w,
@@ -118,8 +146,74 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
+  List<Marker> _buildMarkers(HomeState homeState) {
+    return homeState.locations.asMap().entries.map((entry) {
+      final index = entry.key;
+      final location = entry.value;
+      final isSelected = homeState.selectedMarkerIndex == index;
+
+      return Marker(
+        point: LatLng(location['lat'], location['lng']),
+        width: isSelected ? 50.w : 40.w,
+        height: isSelected ? 50.h : 40.h,
+        child: GestureDetector(
+          onTap: () {
+            ref.read(homeControllerProvider.notifier).selectMarker(location, index);
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: _getMarkerColor(location['type']),
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: isSelected ? Colors.white : Colors.transparent,
+                width: 3.w,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 4.r,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: Icon(
+              _getMarkerIcon(location['type']),
+              color: Colors.white,
+              size: isSelected ? 24.sp : 20.sp,
+            ),
+          ),
+        ),
+      );
+    }).toList();
+  }
+
+  IconData _getMarkerIcon(String type) {
+    switch (type) {
+      case 'parking':
+        return Icons.local_parking;
+      case 'charging':
+        return Icons.electric_car;
+      case 'service':
+        return Icons.build;
+      default:
+        return Icons.place;
+    }
+  }
+
+  Color _getMarkerColor(String type) {
+    switch (type) {
+      case 'parking':
+        return Colors.blue;
+      case 'charging':
+        return Colors.green;
+      case 'service':
+        return Colors.orange;
+      default:
+        return Colors.red;
+    }
+  }
+
   void _handleMarkerAction(Map<String, dynamic> marker) {
-    // Handle the action when user taps on marker buttons
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Action for ${marker['title']}'),
@@ -168,10 +262,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   void _goToUserLocation() {
     final homeState = ref.read(homeControllerProvider);
-    if (homeState.userLocation != null && _mapController != null) {
-      _mapController!.animateCamera(
-        CameraUpdate.newLatLng(homeState.userLocation!),
-      );
+    if (homeState.userLocation != null) {
+      _mapController.move(homeState.userLocation!, 15.0);
     }
   }
 }
