@@ -58,7 +58,6 @@ class DurationScreen extends ConsumerWidget {
                 onPlus: () => controller.incrementStart(15),
               ),
               SizedBox(height: 111.h),
-              //TotalBar(total: state.total),
 
               TotalBar(
                 total: state.total,
@@ -68,6 +67,7 @@ class DurationScreen extends ConsumerWidget {
               SizedBox(height: 12.h),
 
               PrimaryButton(
+                showDefaultIcon: true,
                 text: 'التالي',
                 onPressed: () {
                   NavigationService.push('/theVehicleScreen', context: context);

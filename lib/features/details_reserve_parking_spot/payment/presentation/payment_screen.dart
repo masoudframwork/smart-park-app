@@ -67,6 +67,7 @@ class PaymentScreen extends StatelessWidget {
                   TotalBar(total: total),
                   SizedBox(height: 12.h),
                   PrimaryButton(
+                    showDefaultIcon: true,
                     text: 'التالي',
                     onPressed: () {
                       NavigationService.push(
