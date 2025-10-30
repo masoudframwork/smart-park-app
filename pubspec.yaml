@@ -41,6 +41,7 @@ flutter:
   assets:
     - assets/images/  
     - assets/images/bottom-nav-bar/  
+    - assets/images/svgs/
   fonts:
     - family: IBM Plex Sans Arabic
       fonts:

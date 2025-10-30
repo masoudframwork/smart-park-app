@@ -30,4 +30,6 @@ class AppColor {
   static const whiteColor = Color(0xFFFFFFFF);
   static const whiteContainerColor = Color(0xFFF5F5F5);
   static const whiteTextColor = Color(0xFFF5F5F5);
+  static const buttonShadowColor = Color(0x00000042); 
+static const pinkWhiteColor = Color(0xFFFEFCFF); 
 }

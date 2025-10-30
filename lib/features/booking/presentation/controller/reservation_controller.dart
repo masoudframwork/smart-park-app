@@ -10,42 +10,46 @@ final reservationController =
 class ReservationController extends StateNotifier<BookingState> {
   ReservationController() : super(BookingState.initial()) {
     loadReservations();
-  }
-  Future<void> loadReservations() async {
-    state = state.copyWith(isLoading: true);
+  }Future<void> loadReservations() async {
+  state = state.copyWith(isLoading: true);
 
-    try {
-      await Future.delayed(const Duration(seconds: 1));
-      final mockReservations = [
-        BookingModel(
-          id: '1',
-          startTime: '8:00 ص',
-          endTime: '4:00 م',
-          date: 'نيسان بالعظيم، 2023 / أيمود',
-          duration: '05:06:30',
-          status: 'active',
-        ),
-        BookingModel(
-          id: '2',
-          startTime: '11:00 ص',
-          endTime: '1:00 م',
-          date: 'يونيو كانون، 2024 / أخضر',
-          duration: '02:00:00',
-          status: 'active',
-        ),
-      ];
-      state = state.copyWith(
-        reservations: mockReservations,
-        isLoading: false,
-      );
-    } catch (e) {
-      state = state.copyWith(
-        isLoading: false,
-        errorMessage: 'فشل في تحميل الحجوزات',
-      );
-    }
+  try {
+    await Future.delayed(const Duration(seconds: 1));
+    
+    final now = DateTime.now();
+    final mockReservations = [
+      BookingModel(
+        id: '1',
+        startTime: '8:00 ص',
+        endTime: '4:00 م',
+        date: 'نيسان بالعظيم، 2023 / أيمود',
+        duration: '05:06:30',
+        status: 'active',
+        startDateTime: now.subtract(const Duration(hours: 1)),
+        endDateTime: now.add(const Duration(hours: 4, minutes: 6, seconds: 30)),
+      ),
+      BookingModel(
+        id: '2',
+        startTime: '11:00 ص',
+        endTime: '1:00 م',
+        date: 'يونيو كانون، 2024 / أخضر',
+        duration: '02:00:00',
+        status: 'active',
+        startDateTime: now.add(const Duration(hours: 1)),
+        endDateTime: now.add(const Duration(hours: 3)),
+      ),
+    ];
+    state = state.copyWith(
+      reservations: mockReservations,
+      isLoading: false,
+    );
+  } catch (e) {
+    state = state.copyWith(
+      isLoading: false,
+      errorMessage: 'فشل في تحميل الحجوزات',
+    );
   }
-
+}
   void selectReservation(String reservationId) {
     state = state.copyWith(selectedReservationId: reservationId);
   }

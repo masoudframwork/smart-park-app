@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_park_app/core/constants/image_string.dart';
 import 'package:smart_park_app/features/booking/domain/models/booking_model.dart';
+import 'package:smart_park_app/features/booking/presentation/controller/timer_controller.dart' show timerControllerProvider, TimerController;
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../domain/models/timer_state.dart';
 
-class BookingCard extends StatelessWidget {
+
+class BookingCard extends ConsumerWidget {
   final BookingModel reservation;
   final VoidCallback onTap;
 
@@ -17,7 +21,10 @@ class BookingCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final timerState = ref.watch(timerControllerProvider(reservation.id));
+    final timerController = ref.read(timerControllerProvider(reservation.id).notifier);
+    
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -25,7 +32,7 @@ class BookingCard extends StatelessWidget {
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
           color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(4.0),
+          borderRadius: BorderRadius.circular(4.0),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
@@ -36,10 +43,10 @@ class BookingCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _buildTimerCircle(),
+            _buildTimerCircle(timerState, timerController),
             SizedBox(width: 30.w),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // Changed to start
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildTimeRow(),
                 SizedBox(height: 8.h),
@@ -52,7 +59,7 @@ class BookingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildTimerCircle() {
+  Widget _buildTimerCircle(TimerState timerState, TimerController timerController) {
     return SizedBox(
       width: 76.w,
       height: 76.w,
@@ -62,7 +69,7 @@ class BookingCard extends StatelessWidget {
             width: 76.w,
             height: 76.w,
             child: CircularProgressIndicator(
-              value: 0.7,
+              value: timerState.progress,
               strokeWidth: 6.w,
               backgroundColor: AppColor.greyContainerColor,
               valueColor: AlwaysStoppedAnimation(AppColor.yellowContainerColor),
@@ -70,7 +77,7 @@ class BookingCard extends StatelessWidget {
           ),
           Center(
             child: AppText(
-              text: reservation.duration,
+              text: timerController.getFormattedTime(),
               appTextTheme: AppTextTheme.numberSmallTextStyle().copyWith(
                 fontWeight: FontWeight.w600,
                 fontSize: 12
@@ -87,7 +94,7 @@ class BookingCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildTimeBlock(reservation.startTime),
-        SizedBox(width: 8.w), // Use SizedBox instead of spacing
+        SizedBox(width: 8.w),
         Image.asset(
           AppImages.arrowIcon,
           color: AppColor.primaryColor,

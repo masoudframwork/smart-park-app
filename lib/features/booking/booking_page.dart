@@ -8,6 +8,7 @@ import 'package:smart_park_app/features/booking/presentation/widgets/booking_lis
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/app_text.dart';
+import '../../core/constants/image_string.dart';
 import 'presentation/controller/reservation_controller.dart';
 
 class BookingPage extends ConsumerWidget {
@@ -54,14 +55,11 @@ class BookingPage extends ConsumerWidget {
       ),
       color: AppColor.lightBackgroundColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Add this
-
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Top row with menu and arrow buttons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Menu Button
               Container(
                 height: 48.h,
                 width: 48.w,
@@ -84,36 +82,36 @@ class BookingPage extends ConsumerWidget {
               ),
 
               // Arrow Button
-              Container(
-                height: 48.h,
-                width: 48.w,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColor.greyContainerColor,
-                    width: 1,
+              GestureDetector(
+                onTap: () {
+                  if (showBackButton) {
+                    ref.read(reservationController.notifier).clearSelection();
+                  } else {
+                    Navigator.of(context).pop();
+                  }
+                },
+                child: Container(
+                  height: 48.h,
+                  width: 48.w,
+                  padding: EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColor.greyContainerColor,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(10.r),
+                    color: AppColor.whiteColor,
                   ),
-                  borderRadius: BorderRadius.circular(10.r),
-                  color: AppColor.whiteColor,
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    Icons.arrow_forward,
-                    color: AppColor.blackColor,
-                    size: 20.sp,
+                  child: Image.asset(
+                    AppImages.arrowIcon,
+                    width: 8,
+                    height: 8,
+                    color: AppColor.primaryColor,
                   ),
-                  onPressed: () {
-                    if (showBackButton) {
-                      ref.read(reservationController.notifier).clearSelection();
-                    } else {
-                      Navigator.of(context).pop();
-                    }
-                  },
                 ),
               ),
             ],
           ),
-
-          // Title below (only show when not in detail view)
           if (!showBackButton) ...[
             SizedBox(height: 22.h),
             AppText(

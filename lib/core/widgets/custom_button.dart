@@ -14,6 +14,8 @@ class CustomButtonWidget extends StatelessWidget {
   final double verticalPadding;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Color? shadowColor;
+  final Offset ? offset;
   final double borderRadius;
   final EdgeInsetsGeometry? customPadding;
 
@@ -27,7 +29,7 @@ class CustomButtonWidget extends StatelessWidget {
     this.backgroundColor,
     this.borderColor,
     this.customPadding,
-    this.borderRadius = 5,
+    this.borderRadius = 5, this.shadowColor, this.offset,
   });
 
   @override
@@ -38,7 +40,14 @@ class CustomButtonWidget extends StatelessWidget {
 
     return Padding(
       padding: customPadding ?? EdgeInsets.zero,
-      child: SizedBox(
+      child:  Container(
+        decoration: BoxDecoration(
+          boxShadow: [BoxShadow(
+            color: shadowColor??AppColor.whiteColor,
+            offset: offset??Offset.zero,
+            blurRadius: 24
+          )]
+        ),
         width: width == double.infinity ? width : width.w,
         child: type == ButtonType.outlined
             ? OutlinedButton(

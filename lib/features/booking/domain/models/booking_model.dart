@@ -5,6 +5,8 @@ class BookingModel {
   final String date;
   final String duration;
   final String status;
+  final DateTime startDateTime;
+  final DateTime endDateTime;
 
   BookingModel({
     required this.id,
@@ -13,27 +15,29 @@ class BookingModel {
     required this.date,
     required this.duration,
     required this.status,
+    required this.startDateTime,
+    required this.endDateTime,
   });
 
-  factory BookingModel.fromJson(Map<String, dynamic> json) {
+  BookingModel copyWith({
+    String? id,
+    String? startTime,
+    String? endTime,
+    String? date,
+    String? duration,
+    String? status,
+    DateTime? startDateTime,
+    DateTime? endDateTime,
+  }) {
     return BookingModel(
-      id: json['id'] ?? '',
-      startTime: json['startTime'] ?? '',
-      endTime: json['endTime'] ?? '',
-      date: json['date'] ?? '',
-      duration: json['duration'] ?? '',
-      status: json['status'] ?? 'active',
+      id: id ?? this.id,
+      startTime: startTime ?? this.startTime,
+      endTime: endTime ?? this.endTime,
+      date: date ?? this.date,
+      duration: duration ?? this.duration,
+      status: status ?? this.status,
+      startDateTime: startDateTime ?? this.startDateTime,
+      endDateTime: endDateTime ?? this.endDateTime,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'startTime': startTime,
-      'endTime': endTime,
-      'date': date,
-      'duration': duration,
-      'status': status,
-    };
   }
 }
