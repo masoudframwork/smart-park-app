@@ -73,7 +73,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:smart_park_app/core/routing/app_route.dart';
 import 'package:smart_park_app/generated/l10n.dart';
-
 import 'core/dependency_injection/service_locator.dart';
 import 'core/helpers/platform_manager.dart';
 import 'core/models/my_logger.dart';
@@ -84,13 +83,10 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
 
       await PlatformManager.configureOrientationsAtLaunch();
-
       await initServiceLocator();
-
       FlutterError.onError = (FlutterErrorDetails details) {
         FlutterError.presentError(details);
       };
-
       runApp(ProviderScope(observers: [MyLogger()], child: const MyApp()));
     },
     (error, stack) {

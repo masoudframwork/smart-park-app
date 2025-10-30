@@ -16,4 +16,11 @@ class AppImages {
       'assets/images/bottom-nav-bar/booking-tab.svg';
   static const String homeTab = 'assets/images/bottom-nav-bar/home-tab.svg';
   static const String walletTab = 'assets/images/bottom-nav-bar/wallet-tab.svg';
+  //details screen duration
+  static const String car1 = 'assets/images/car1.jpeg';
+
+  static const String check = 'assets/images/check.png';
+  static const String pay = 'assets/images/pay.jpg';
+
+  static const String visa = 'assets/images/visa-1.png';
 }

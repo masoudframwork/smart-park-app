@@ -1,13 +1,81 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import '../theme/app_color.dart';
+// import '../theme/app_text_theme.dart';
+// import 'app_text.dart';
+//
+// enum ButtonType { elevated, outlined }
+//
+// class CustomButtonWidget extends StatelessWidget {
+//   final String text;
+//   final VoidCallback onPressed;
+//   final ButtonType type;
+//   final double width;
+//   final double verticalPadding;
+//   final Color? backgroundColor;
+//   final Color? borderColor;
+//   final double borderRadius;
+//   final EdgeInsetsGeometry? customPadding;
+//
+//   const CustomButtonWidget({
+//     super.key,
+//     required this.text,
+//     required this.onPressed,
+//     this.type = ButtonType.elevated,
+//     this.width = double.infinity,
+//     this.verticalPadding = 14,
+//     this.backgroundColor,
+//     this.borderColor,
+//     this.customPadding,
+//     this.borderRadius = 5,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final TextStyle buttonTextStyle = type == ButtonType.elevated
+//         ? AppTextTheme.mainButtonTextStyle()
+//         : AppTextTheme.secondaryButtonTextStyle();
+//
+//     return Padding(
+//       padding: customPadding ?? EdgeInsets.zero,
+//       child: SizedBox(
+//         width: width == double.infinity ? width : width.w,
+//         child: type == ButtonType.outlined
+//             ? OutlinedButton(
+//                 onPressed: onPressed,
+//                 style: OutlinedButton.styleFrom(
+//                   side: BorderSide(color: borderColor ?? AppColor.primaryColor),
+//                   padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(borderRadius.r),
+//                   ),
+//                 ),
+//                 child: AppText(text: text, appTextTheme: buttonTextStyle),
+//               )
+//             : ElevatedButton(
+//                 onPressed: onPressed,
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: backgroundColor ?? AppColor.primaryColor,
+//                   padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(borderRadius.r),
+//                   ),
+//                 ),
+//                 child: AppText(text: text, appTextTheme: buttonTextStyle),
+//               ),
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theme/app_color.dart';
 import '../theme/app_text_theme.dart';
-import 'app_text.dart';
 
 enum ButtonType { elevated, outlined }
 
 class CustomButtonWidget extends StatelessWidget {
-  final String text;
+  final Widget label;
   final VoidCallback onPressed;
   final ButtonType type;
   final double width;
@@ -16,10 +84,11 @@ class CustomButtonWidget extends StatelessWidget {
   final Color? borderColor;
   final double borderRadius;
   final EdgeInsetsGeometry? customPadding;
+  final Widget? icon;
 
   const CustomButtonWidget({
     super.key,
-    required this.text,
+    required this.label,
     required this.onPressed,
     this.type = ButtonType.elevated,
     this.width = double.infinity,
@@ -28,13 +97,45 @@ class CustomButtonWidget extends StatelessWidget {
     this.borderColor,
     this.customPadding,
     this.borderRadius = 5,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle buttonTextStyle = type == ButtonType.elevated
+    final TextStyle defaultTextStyle = type == ButtonType.elevated
         ? AppTextTheme.mainButtonTextStyle()
         : AppTextTheme.secondaryButtonTextStyle();
+
+    late final Widget content;
+    if (icon != null) {
+      content = Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+
+
+          Expanded(
+            child: Center(
+              child: DefaultTextStyle(
+                style: defaultTextStyle,
+                child: label,
+              ),
+            ),
+          ),
+
+          icon!,
+          SizedBox(width: 24.w),
+
+        ],
+      );
+    } else {
+      content = DefaultTextStyle(
+        style: defaultTextStyle,
+        child: label,
+      );
+    }
+
+    final borderRad = BorderRadius.circular(borderRadius.r);
 
     return Padding(
       padding: customPadding ?? EdgeInsets.zero,
@@ -42,27 +143,26 @@ class CustomButtonWidget extends StatelessWidget {
         width: width == double.infinity ? width : width.w,
         child: type == ButtonType.outlined
             ? OutlinedButton(
-                onPressed: onPressed,
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: borderColor ?? AppColor.primaryColor),
-                  padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadius.r),
-                  ),
-                ),
-                child: AppText(text: text, appTextTheme: buttonTextStyle),
-              )
+          onPressed: onPressed,
+          style: OutlinedButton.styleFrom(
+            side: BorderSide(color: borderColor ?? AppColor.primaryColor),
+            padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+            shape: RoundedRectangleBorder(borderRadius: borderRad),
+            alignment: Alignment.center,
+          ),
+          child: content,
+        )
             : ElevatedButton(
-                onPressed: onPressed,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: backgroundColor ?? AppColor.primaryColor,
-                  padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadius.r),
-                  ),
-                ),
-                child: AppText(text: text, appTextTheme: buttonTextStyle),
-              ),
+          onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor ?? AppColor.primaryColor,
+            padding: EdgeInsets.symmetric(vertical: verticalPadding.h),
+            shape: RoundedRectangleBorder(borderRadius: borderRad),
+            elevation: 0,
+            alignment: Alignment.center,
+          ),
+          child: content,
+        ),
       ),
     );
   }

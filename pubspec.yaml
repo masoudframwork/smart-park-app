@@ -41,7 +41,7 @@ flutter:
   generate: true
   assets:
     - assets/images/  
-    - assets/images/bottom-nav-bar/  
+    - assets/images/bottom-nav-bar/
   fonts:
     - family: IBM Plex Sans Arabic
       fonts:

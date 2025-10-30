@@ -17,6 +17,14 @@ class AppTextTheme {
         fontSize: 16,
         color: AppColor.whiteColor,
         fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+//الاجمالي
+  static TextStyle yellowTextStyle() => TextStyle(
+        fontSize: 18,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
       );
 
   // 🏷️ العناوين الكبيرة
@@ -57,6 +65,14 @@ class AppTextTheme {
         fontFamily: 'IBM Plex Sans Arabic',
       );
 
+  // 🕓الاشارات + -  نصوص الوقت / التاريخ
+  static TextStyle timeTextStyle() => TextStyle(
+        fontSize: 14,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w700,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+
   // 💬 النصوص الكبيرة داخل البطاقات
   static TextStyle bodyLargeTextStyle() => TextStyle(
         fontSize: 26,
@@ -78,14 +94,16 @@ class AppTextTheme {
         fontSize: 12,
         color: AppColor.greyColor,
         fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
       );
   //
-  // // 💬 النصوص الأصغر جدًا
-  // static TextStyle bodyXSmallTextStyle() => TextStyle(
-  //   fontSize: 10,
-  //   color: AppColor.greyColor,
-  //   fontWeight: FontWeight.w400,
-  // );
+  // 💬 النصوص الأصغر جدًا
+  static TextStyle bodyXSmallTextStyle() => TextStyle(
+        fontSize: 13,
+        color: AppColor.primaryTextSmallColor,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
   //
   // // ⚪ النصوص داخل الحقول أو التلميحات
   // static TextStyle hintTextStyle() => TextStyle(
