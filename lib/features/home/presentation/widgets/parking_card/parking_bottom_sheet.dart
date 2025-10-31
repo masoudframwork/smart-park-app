@@ -91,8 +91,7 @@ class ParkingBottomSheet extends ConsumerWidget {
                 child: LayoutBuilder(
                   builder: (context, constraints) {
                     final double sliderValue = 40;
-                    final double thumbPosition =
-                        (sliderValue / 60) * constraints.maxWidth;
+                  
 
                     return Stack(
                       clipBehavior: Clip.none,
@@ -156,7 +155,7 @@ class ParkingBottomSheet extends ConsumerWidget {
               ),
               SizedBox(height: 20.h),
               SizedBox(
-                height: 310.h, 
+                height: 330.h, 
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.symmetric(horizontal: 4.w),
