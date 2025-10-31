@@ -5,6 +5,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/widgets/svg_image_widget.dart';
+import 'package:smart/features/home/presentation/widgets/parking_card/parking_bottom_sheet.dart';
 import 'controller/home_controller.dart';
 import 'package:smart/features/home/data/models/home_model.dart';
 import 'package:smart/features/home/data/models/parking_location.dart';
@@ -55,6 +56,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 _userLocationMark(homeState),
               ],
             ),
+          const ParkingBottomSheet(),
           if (homeState.selectedMarker != null)
             Positioned(
               bottom: 0,
