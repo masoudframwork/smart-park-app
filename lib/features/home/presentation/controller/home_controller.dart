@@ -52,7 +52,6 @@ class HomeController extends ChangeNotifier {
       );
       notifyListeners();
     } catch (e) {
-      print('Error initializing map: $e');
       _state = _state.copyWith(
         error: 'Failed to initialize map: $e',
         isLoading: false,

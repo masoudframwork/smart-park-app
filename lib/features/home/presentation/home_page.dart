@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_park_app/core/constants/image_string.dart';
 import 'package:smart_park_app/core/widgets/svg_image_widget.dart';
 import 'controller/home_controller.dart';
+import 'widgets/parking_card/parking_bottom_sheet.dart';
 import 'widgets/parking_details/parking_details_sheet.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -55,6 +56,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 _userLocationMark(homeState),
               ],
             ),
+          const ParkingBottomSheet(),
           if (homeState.selectedMarker != null)
             Positioned(
               bottom: 0,
@@ -137,7 +139,6 @@ class _ParkingDetailsFloatingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Add mock data for spots if not present
     final enhancedData = Map<String, dynamic>.from(parkingData);
     enhancedData['availableSpots'] = parkingData['availableSpots'] ??
         (parkingData['isAvailable'] == true ? 13 : 0);
@@ -147,14 +148,8 @@ class _ParkingDetailsFloatingWidget extends StatelessWidget {
     return ParkingDetailsSheet(
       parkingData: enhancedData,
       onClose: onClose,
-      onBookNow: () {
-        // Handle booking action
-        print('Booking for: ${parkingData['title']}');
-      },
-      onDetails: () {
-        // Handle details action
-        print('Details for: ${parkingData['title']}');
-      },
+      onBookNow: () {},
+      onDetails: () {},
     );
   }
 }
