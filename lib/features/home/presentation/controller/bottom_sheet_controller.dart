@@ -7,18 +7,16 @@ import '../../domain/models/parking_area_model.dart';
 class BottomSheetController extends ChangeNotifier {
   // UI State
   bool _isVisible = true;
-  bool _isLoading = false;
+  final bool _isLoading = false;
   String? _errorMessage;
   
-  // Business State
   List<ParkingArea> _parkingAreas = [];
   ParkingArea? _selectedArea;
   ParkingSession? _activeSession;
   
-  // Filter State
-  bool _showOnlyAvailable = false;
-  double _maxWaitTime = 30.0;
-  double _maxDistance = 5.0;
+  final bool _showOnlyAvailable = false;
+  final double _maxWaitTime = 30.0;
+  final double _maxDistance = 5.0;
   
   // Getters for UI State
   bool get isVisible => _isVisible;
@@ -39,7 +37,6 @@ class BottomSheetController extends ChangeNotifier {
   // Constructor - Initialize with sample data
   BottomSheetController() {
     _initializeParkingAreas();
-    _checkForActiveSession();
   }
   
   // Initialize parking areas (would typically fetch from API)
@@ -75,8 +72,8 @@ class BottomSheetController extends ChangeNotifier {
         name: 'المنطقة',
         location: 'حي العليا، الرياض',
         waitTimeMinutes: 3,
-        availableSpots: 120,
-        totalSpots: 145,
+        availableSpots: 20,
+        totalSpots: 45,
         latitude: 24.6981,
         longitude: 46.6847,
         pricePerHour: 10.0,
@@ -99,7 +96,7 @@ class BottomSheetController extends ChangeNotifier {
         name: 'المنطقة',
         location: 'حي النخيل، الرياض',
         waitTimeMinutes: 15,
-        availableSpots: 0,
+        availableSpots: 9,
         totalSpots: 50,
         latitude: 24.7748,
         longitude: 46.7385,
@@ -108,13 +105,7 @@ class BottomSheetController extends ChangeNotifier {
     ];
   }
   
-  // Check for active parking session (would typically fetch from storage/API)
-  void _checkForActiveSession() {
-    // Simulate checking for active session
-    // In real app, this would check local storage or API
-  }
-  
-  // Get filtered parking areas based on current filters
+
   List<ParkingArea> _getFilteredAreas() {
     return _parkingAreas.where((area) {
       if (_showOnlyAvailable && area.isFull) return false;
@@ -138,177 +129,6 @@ class BottomSheetController extends ChangeNotifier {
   void toggle() {
     _isVisible = !_isVisible;
     notifyListeners();
-  }
-  
-  // Business Logic Methods
-  
-  // Refresh parking areas from API
-  Future<void> refreshParkingAreas() async {
-    _isLoading = true;
-    _errorMessage = null;
-    notifyListeners();
-    
-    try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 1));
-      
-      // Update with fresh data
-      _initializeParkingAreas();
-      
-      _isLoading = false;
-      notifyListeners();
-    } catch (e) {
-      _isLoading = false;
-      _errorMessage = 'فشل تحميل المواقف المتاحة';
-      notifyListeners();
-    }
-  }
-  
-  // Select a parking area
-  void selectParkingArea(ParkingArea area) {
-    _selectedArea = area;
-    notifyListeners();
-  }
-  
-  // Start booking process
-  Future<bool> startBooking(String parkingAreaId, int durationMinutes) async {
-    _isLoading = true;
-    _errorMessage = null;
-    notifyListeners();
-    
-    try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-      
-      final area = _parkingAreas.firstWhere((a) => a.id == parkingAreaId);
-      
-      // Check availability
-      if (area.isFull) {
-        _errorMessage = 'هذا الموقف ممتلئ حالياً';
-        _isLoading = false;
-        notifyListeners();
-        return false;
-      }
-      
-      // Create session
-      _activeSession = ParkingSession(
-        sessionId: DateTime.now().millisecondsSinceEpoch.toString(),
-        parkingAreaId: parkingAreaId,
-        startTime: DateTime.now(),
-        durationMinutes: durationMinutes,
-        totalCost: (durationMinutes / 60) * area.pricePerHour,
-      );
-      
-      // Update available spots
-      final index = _parkingAreas.indexWhere((a) => a.id == parkingAreaId);
-      _parkingAreas[index] = area.copyWith(
-        availableSpots: area.availableSpots - 1,
-      );
-      
-      _isLoading = false;
-      notifyListeners();
-      return true;
-    } catch (e) {
-      _isLoading = false;
-      _errorMessage = 'فشل الحجز. حاول مرة أخرى';
-      notifyListeners();
-      return false;
-    }
-  }
-  
-  // End active parking session
-  Future<bool> endParkingSession() async {
-    if (_activeSession == null) return false;
-    
-    _isLoading = true;
-    notifyListeners();
-    
-    try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 1));
-      
-      // Update available spots
-      final area = _parkingAreas.firstWhere(
-        (a) => a.id == _activeSession!.parkingAreaId,
-      );
-      final index = _parkingAreas.indexOf(area);
-      _parkingAreas[index] = area.copyWith(
-        availableSpots: area.availableSpots + 1,
-      );
-      
-      _activeSession = null;
-      _isLoading = false;
-      notifyListeners();
-      return true;
-    } catch (e) {
-      _isLoading = false;
-      _errorMessage = 'فشل إنهاء الجلسة';
-      notifyListeners();
-      return false;
-    }
-  }
-  
-  // Extend active session
-  Future<bool> extendSession(int additionalMinutes) async {
-    if (_activeSession == null) return false;
-    
-    _isLoading = true;
-    notifyListeners();
-    
-    try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 1));
-      
-      final area = _parkingAreas.firstWhere(
-        (a) => a.id == _activeSession!.parkingAreaId,
-      );
-      
-      _activeSession = ParkingSession(
-        sessionId: _activeSession!.sessionId,
-        parkingAreaId: _activeSession!.parkingAreaId,
-        startTime: _activeSession!.startTime,
-        durationMinutes: _activeSession!.durationMinutes + additionalMinutes,
-        totalCost: (((_activeSession!.durationMinutes + additionalMinutes) / 60) * 
-                    area.pricePerHour),
-      );
-      
-      _isLoading = false;
-      notifyListeners();
-      return true;
-    } catch (e) {
-      _isLoading = false;
-      _errorMessage = 'فشل تمديد الوقت';
-      notifyListeners();
-      return false;
-    }
-  }
-  
-  // Filter Methods
-  void setShowOnlyAvailable(bool value) {
-    _showOnlyAvailable = value;
-    notifyListeners();
-  }
-  
-  void setMaxWaitTime(double minutes) {
-    _maxWaitTime = minutes;
-    notifyListeners();
-  }
-  
-  void setMaxDistance(double kilometers) {
-    _maxDistance = kilometers;
-    notifyListeners();
-  }
-  
-  // Clear any errors
-  void clearError() {
-    _errorMessage = null;
-    notifyListeners();
-  }
-  
-  // Calculate estimated arrival time
-  DateTime getEstimatedArrivalTime(String parkingAreaId) {
-    final area = _parkingAreas.firstWhere((a) => a.id == parkingAreaId);
-    return DateTime.now().add(Duration(minutes: area.waitTimeMinutes));
   }
   
   // Get parking statistics

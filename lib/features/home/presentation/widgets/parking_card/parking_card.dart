@@ -1,9 +1,14 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_park_app/core/constants/image_string.dart';
 import 'package:smart_park_app/core/theme/app_color.dart';
 import 'package:smart_park_app/core/theme/app_text_theme.dart';
 import 'package:smart_park_app/core/widgets/app_text.dart';
+import 'package:smart_park_app/core/widgets/svg_image_widget.dart';
 
+import '../../../../../core/widgets/custom_button.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCard extends StatelessWidget {
@@ -19,9 +24,9 @@ class ParkingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280.w,
+      width: 310.w,
       margin: EdgeInsets.only(right: 12.w),
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
         borderRadius: BorderRadius.circular(16.r),
@@ -36,6 +41,7 @@ class ParkingCard extends StatelessWidget {
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildImageSection(),
           SizedBox(height: 16.h),
@@ -52,11 +58,7 @@ class ParkingCard extends StatelessWidget {
   }
 
   Border? _getBorderDecoration() {
-    if (parkingArea.isFull) {
-      return Border.all(color: AppColor.secondaryContainerColor.withOpacity(0.3), width: 1);
-    } else if (parkingArea.isAlmostFull) {
-      return Border.all(color: AppColor.secondaryContainerColor.withOpacity(0.3), width: 1);
-    }
+   
     return null;
   }
 
@@ -77,23 +79,17 @@ class ParkingCard extends StatelessWidget {
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: double.infinity,
-                errorBuilder: (context, error, stackTrace) => _buildPlaceholder(),
+                errorBuilder: (context, error, stackTrace) =>
+                    _buildPlaceholder(),
               )
             else
               _buildPlaceholder(),
-            
+
             // Availability Badge
             Positioned(
-              top: 8.h,
+              bottom: 8.h,
               right: 8.w,
               child: _buildAvailabilityBadge(),
-            ),
-            
-            // Price Badge
-            Positioned(
-              bottom: 8.h,
-              left: 8.w,
-              child: _buildPriceBadge(),
             ),
           ],
         ),
@@ -118,26 +114,18 @@ class ParkingCard extends StatelessWidget {
     Color bgColor;
     Color textColor;
     String text;
+
+   
+      bgColor = AppColor.secondaryButtonColor;
+      textColor = AppColor.primaryButtonColor;
+      text = 'متاح الأن';
     
-    if (parkingArea.isFull) {
-      bgColor = AppColor.secondaryContainerColor;
-      textColor = AppColor.whiteColor;
-      text = 'ممتلئ';
-    } else if (parkingArea.isAlmostFull) {
-      bgColor = AppColor.secondaryContainerColor;
-      textColor = AppColor.whiteColor;
-      text = 'شبه ممتلئ';
-    } else {
-      bgColor = AppColor.primaryColor;
-      textColor = AppColor.whiteColor;
-      text = 'متاح';
-    }
-    
+
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: AppText(
         text: text,
@@ -151,89 +139,62 @@ class ParkingCard extends StatelessWidget {
   }
 
   Widget _buildPriceBadge() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AppText(
-            text: '${parkingArea.pricePerHour.toStringAsFixed(0)} ر.س',
-            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-              color: AppColor.whiteColor,
-              fontSize: 10.sp,
-              fontWeight: FontWeight.w600,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        AppText(
+          text: parkingArea.pricePerHour.toStringAsFixed(0),
+          appTextTheme: AppTextTheme.bodyLargeTextStyle()
+              .copyWith(color: AppColor.blackNumberSmallColor),
+        ),
+        SizedBox(width: 6.w,),
+            SvgImageWidget(
+            AppImages.realSu,
+            width: 11.5.w,
+            height: 12.5.w,
           ),
-          AppText(
-            text: '/ساعة',
-            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-              color: AppColor.whiteColor.withOpacity(0.8),
-              fontSize: 9.sp,
-            ),
-          ),
-        ],
-      ),
+        AppText(
+          text: '/ساعة',
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(color: AppColor.blackNumberSmallColor),
+        ),
+      ],
     );
   }
 
   Widget _buildAreaInfo() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AppText(
-          text: parkingArea.name,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            color: AppColor.greyTextColor,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+            text: parkingArea.name,
+            appTextTheme: AppTextTheme.titleLargeTextStyle()),
         SizedBox(width: 8.w),
         AppText(
-          text: parkingArea.code,
-          appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-            fontWeight: FontWeight.w700,
-            fontSize: 18.sp,
-          ),
-        ),
+            text: parkingArea.code,
+            appTextTheme: AppTextTheme.titleLargeTextStyle()),
+                    SizedBox(width: 8.w),
+
+        Spacer(),
+        
+        _buildPriceBadge(),
       ],
     );
   }
 
   Widget _buildLocationInfo() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Flexible(
-          child: AppText(
-            text: parkingArea.location,
-            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-              color: AppColor.greyTextColor,
-              fontSize: 11.sp,
-            ),
-            textAlign: TextAlign.center,
-         
-          ),
-        ),
-        SizedBox(width: 4.w),
-        Icon(
-          Icons.location_on_outlined,
-          size: 14.w,
-          color: AppColor.greyTextColor,
-        ),
-      ],
+    return AppText(
+      text: parkingArea.location,
+      appTextTheme: AppTextTheme.bodySmallTextStyle(),
+      textAlign: TextAlign.start,
     );
   }
 
   Widget _buildStatsRow() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildStatChip(
-          icon: Icons.local_parking,
+          iconPath: AppImages.twoCars,
           value: parkingArea.formattedAvailability,
           bgColor: _getAvailabilityColor().withOpacity(0.1),
           textColor: _getAvailabilityColor(),
@@ -241,7 +202,7 @@ class ParkingCard extends StatelessWidget {
         ),
         SizedBox(width: 12.w),
         _buildStatChip(
-          icon: Icons.directions_car_outlined,
+          iconPath: AppImages.charging, // Replace with your actual SVG path
           value: '${parkingArea.waitTimeText} دقائق',
           bgColor: AppColor.greyContainerColor.withOpacity(0.5),
           textColor: AppColor.greyTextColor,
@@ -252,88 +213,66 @@ class ParkingCard extends StatelessWidget {
   }
 
   Color _getAvailabilityColor() {
-    if (parkingArea.isFull) return AppColor.secondaryContainerColor;
-    if (parkingArea.isAlmostFull) return AppColor.secondaryContainerColor;
+    
     return AppColor.primaryColor;
   }
 
   Widget _buildStatChip({
-    required IconData icon,
+    required String iconPath,
+    String? iconPath2,
     required String value,
     required Color bgColor,
     required Color textColor,
     required bool isHighlighted,
   }) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (isHighlighted) ...[
-            AppText(
-              text: value,
-              appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                color: textColor,
-                fontWeight: FontWeight.w600,
-                fontSize: 12.sp,
-              ),
-            ),
-            SizedBox(width: 6.w),
-          ],
-          Icon(
-            icon,
-            size: 16.w,
-            color: textColor,
+    return Row(
+      spacing: 10.w,
+      children: [
+        if (isHighlighted) ...[
+          SvgImageWidget(
+            iconPath,
+            width: 21.5.w,
+            height: 21.5.w,
           ),
-          if (!isHighlighted) ...[
-            SizedBox(width: 6.w),
-            AppText(
-              text: value,
-              appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                color: textColor,
-                fontSize: 11.sp,
-              ),
-            ),
-          ],
         ],
-      ),
+        if (isHighlighted) ...[
+          AppText(
+            text: value,
+            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+              color: textColor,
+              fontWeight: FontWeight.w600,
+              fontSize: 12.sp,
+            ),
+          ),
+        ],
+                  SizedBox(width: 50.w),
+
+        if (!isHighlighted) ...[
+          SvgImageWidget(
+            iconPath,
+            width: 30.w,
+            height: 30.w,
+          ),
+        ],
+        if (!isHighlighted) ...[
+          SvgImageWidget(
+            iconPath2 ?? AppImages.shower,
+            width: 30.w,
+            height: 30.w,
+          ),
+        ],
+      ],
     );
   }
 
   Widget _buildBookingButton() {
-    final isDisabled = parkingArea.isFull || !parkingArea.isActive;
-    
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: isDisabled ? null : onStartBooking,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: isDisabled 
-              ? AppColor.greyContainerColor 
-              : AppColor.primaryColor,
-          padding: EdgeInsets.symmetric(vertical: 12.h),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          elevation: 0,
-        ),
-        child: AppText(
-          text: isDisabled 
-              ? (parkingArea.isFull ? 'ممتلئ' : 'غير متاح')
-              : 'ابدأ الحجز',
-          appTextTheme: AppTextTheme.mainButtonTextStyle().copyWith(
-            color: isDisabled 
-                ? AppColor.greyTextColor 
-                : AppColor.whiteColor,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
+    return CustomButtonWidget(
+      text: 'ابدأ الحجز',
+      onPressed: onStartBooking ?? () {},
+      type: ButtonType.elevated,
+      backgroundColor: AppColor.primaryColor,
+      verticalPadding: 12,
+      borderRadius: 4,
     );
   }
 }

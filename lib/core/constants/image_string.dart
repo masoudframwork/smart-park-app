@@ -19,4 +19,10 @@ class AppImages {
 
   //home
   static const String parkingMarkers = "assets/images/home/marker.svg";
+  static const String realSu = "assets/images/home/realSu.svg";
+  static const String charging = "assets/images/home/cable.svg";
+  static const String shower = "assets/images/home/shower.svg";
+  static const String timeStop = "assets/images/home/timeStop.svg";
+  static const String twoCars = "assets/images/home/twoCars.svg";
+
 }

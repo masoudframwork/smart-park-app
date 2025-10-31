@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1526" data-name="Rectangle 1526" width="9.502" height="14.416" fill="#085d3a"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_1524" data-name="Rectangle 1524" width="9.502" height="9.502" fill="#085d3a"/>
+    </clipPath>
+  </defs>
+  <g id="Group_362" data-name="Group 362" transform="translate(-0.492 0.128)">
+    <circle id="Ellipse_135" data-name="Ellipse 135" cx="15" cy="15" r="15" transform="translate(0.492 -0.128)" fill="#abefc6"/>
+    <g id="Group_359" data-name="Group 359" transform="translate(10.451 7.571)">
+      <g id="Group_358" data-name="Group 358" transform="translate(0 0)">
+        <g id="Group_357" data-name="Group 357" clip-path="url(#clip-path)">
+          <g id="Group_356" data-name="Group 356">
+            <g id="Group_355" data-name="Group 355" clip-path="url(#clip-path)">
+              <g id="Group_354" data-name="Group 354" transform="translate(0 2.13)" opacity="0.4" style="mix-blend-mode: normal;isolation: isolate">
+                <g id="Group_353" data-name="Group 353">
+                  <g id="Group_352" data-name="Group 352" clip-path="url(#clip-path-3)">
+                    <path id="Path_3430" data-name="Path 3430" d="M6.3,3.25H3.2a12.765,12.765,0,0,0-1.657.062,1.768,1.768,0,0,0-1.17.569A1.805,1.805,0,0,0,0,5.131,13.345,13.345,0,0,0,.191,6.8L.54,9.1a4.447,4.447,0,0,0,1.233,2.752,4.251,4.251,0,0,0,2.977.9,4.251,4.251,0,0,0,2.977-.9A4.447,4.447,0,0,0,8.961,9.1L9.31,6.8A13.345,13.345,0,0,0,9.5,5.131a1.805,1.805,0,0,0-.375-1.25,1.768,1.768,0,0,0-1.17-.569A12.765,12.765,0,0,0,6.3,3.25" transform="translate(0 -3.25)" fill="#085d3a"/>
+                  </g>
+                </g>
+              </g>
+              <path id="Path_3431" data-name="Path 3431" d="M4.561.655a.655.655,0,0,0-1.311,0V2.143c.316-.013.674-.013,1.072-.013h.239Zm.655,13.106V11.606c.209.017.428.026.655.026s.446-.009.655-.026v2.155a.655.655,0,0,1-1.311,0M8.492.655V2.143C8.177,2.13,7.819,2.13,7.42,2.13H7.182V.655a.655.655,0,0,1,1.311,0M6.68,5.255a.492.492,0,0,0-.709-.682L4.6,6a.706.706,0,0,0-.135.8.812.812,0,0,0,.6.437l.82.139a.066.066,0,0,1,.031.115l-1.174.976a.492.492,0,0,0,.628.756l1.7-1.415A.711.711,0,0,0,7.3,6.992a.8.8,0,0,0-.624-.48l-.909-.155a.066.066,0,0,1-.037-.11Z" transform="translate(-1.12)" fill="#085d3a" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

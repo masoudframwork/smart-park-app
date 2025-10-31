@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart_park_app/core/theme/app_color.dart';
 import 'package:smart_park_app/core/theme/app_text_theme.dart';
 import 'package:smart_park_app/core/widgets/app_text.dart';
+import '../../../../../core/constants/image_string.dart';
+import '../../../../../core/widgets/svg_image_widget.dart';
 import '../../controller/bottom_sheet_controller.dart';
 import 'parking_card.dart';
 
@@ -27,6 +29,8 @@ class ParkingBottomSheet extends ConsumerWidget {
       );
     }
 
+    final parkingAreas = ref.read(bottomSheetProvider).parkingAreas;
+
     return Positioned(
       bottom: 0,
       left: 0,
@@ -38,6 +42,7 @@ class ParkingBottomSheet extends ConsumerWidget {
           }
         },
         child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 17.w),
           decoration: BoxDecoration(
             color: AppColor.lightPurpleColor,
             borderRadius: BorderRadius.only(
@@ -65,60 +70,103 @@ class ParkingBottomSheet extends ConsumerWidget {
                 ),
               ),
               SizedBox(height: 16.h),
-              AppText(
-                text: 'مدة الوقوف',
-                appTextTheme: AppTextTheme.titleMediumTextStyle(),
+              Row(
+                spacing: 13.w,
+                children: [
+                  SvgImageWidget(
+                    AppImages.timeStop,
+                    width: 28.1.w,
+                    height: 28.1.w,
+                  ),
+                  AppText(
+                    text: 'مدة الوقوف',
+                    appTextTheme: AppTextTheme.bodyLargeTextStyle()
+                        .copyWith(color: AppColor.blackNumberSmallColor),
+                  ),
+                ],
               ),
               SizedBox(height: 16.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final double sliderValue = 40;
+                    final double thumbPosition =
+                        (sliderValue / 60) * constraints.maxWidth;
+
+                    return Stack(
+                      clipBehavior: Clip.none,
                       children: [
-                        AppText(
-                          text: '5',
-                          appTextTheme: AppTextTheme.numberSmallTextStyle(),
-                        ),
-                        Row(
+                        Column(
                           children: [
-                            Container(
-                              width: 12.w,
-                              height: 12.h,
-                              decoration: const BoxDecoration(
-                                color: AppColor.primaryColor,
-                                shape: BoxShape.circle,
+                            SizedBox(height: 35.h), // Space for text above
+                            SliderTheme(
+                              data: SliderThemeData(
+                                trackHeight: 5.h,
+                                activeTrackColor: AppColor.primaryColor,
+                                inactiveTrackColor: AppColor.greyContainerColor,
+                                thumbColor: AppColor.primaryColor,
+                                thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 10.r,
+                                ),
+                                overlayShape: RoundSliderOverlayShape(
+                                  overlayRadius: 20.r,
+                                ),
+                                trackShape: RoundedRectSliderTrackShape(),
                               ),
-                            ),
-                            SizedBox(width: 8.w),
-                            AppText(
-                              text: 'دقيقة',
-                              appTextTheme: AppTextTheme.bodySmallTextStyle()
-                                  .copyWith(color: AppColor.greyColor),
+                              child: Slider(
+                                value: sliderValue,
+                                min: 0,
+                                max: 60,
+                                onChanged: (value) {},
+                              ),
                             ),
                           ],
                         ),
+                        Positioned(
+                          left: sliderValue + 58.w,
+                          top: 0,
+                          child: Column(
+                            children: [
+                              AppText(
+                                text: sliderValue.toInt().toString(),
+                                appTextTheme:
+                                    AppTextTheme.numberSmallTextStyle()
+                                        .copyWith(
+                                            fontSize: 16,
+                                            color: AppColor.blackColor,
+                                            fontWeight: FontWeight.w600),
+                              ),
+                              AppText(
+                                text: 'دقائق',
+                                appTextTheme:
+                                    AppTextTheme.bodySmallTextStyle().copyWith(
+                                  color: AppColor.greyColor,
+                                  fontSize: 10.sp,
+                                  fontFamily: 'IBM Plex Sans Arabic',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
-                    ),
-                    SizedBox(height: 8.h),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4.r),
-                      child: LinearProgressIndicator(
-                        value: 0.3,
-                        backgroundColor: AppColor.greyContainerColor,
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            AppColor.primaryColor),
-                        minHeight: 8.h,
-                      ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
               ),
               SizedBox(height: 20.h),
-              ParkingCard(
-                  parkingArea:
-                      ref.read(bottomSheetProvider).parkingAreas.first),
+              SizedBox(
+                height: 310.h, 
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
+                  itemCount: parkingAreas.length,
+                  separatorBuilder: (context, index) => SizedBox(width: 12.w),
+                  itemBuilder: (context, index) {
+                    return ParkingCard(parkingArea: parkingAreas[index]);
+                  },
+                ),
+              ),
               SizedBox(height: 24.h),
             ],
           ),
