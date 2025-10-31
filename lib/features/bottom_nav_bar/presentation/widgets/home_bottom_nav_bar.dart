@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:smart_park_app/core/theme/app_color.dart';
-import 'package:smart_park_app/core/theme/app_text_theme.dart';
-import 'package:smart_park_app/core/widgets/app_text.dart';
-import 'package:smart_park_app/core/widgets/svg_image_widget.dart';
-import 'package:smart_park_app/features/bottom_nav_bar/domain/models/bottom_nav_bar_item.dart';
-import 'package:smart_park_app/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
+import 'package:smart/core/theme/app_color.dart';
+import 'package:smart/core/theme/app_text_theme.dart';
+import 'package:smart/core/widgets/app_text.dart';
+import 'package:smart/core/widgets/svg_image_widget.dart';
+import 'package:smart/features/bottom_nav_bar/domain/models/bottom_nav_bar_item.dart';
+import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 
 // ignore: must_be_immutable
 class HomeBottomNavigationBar extends ConsumerWidget {

@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:smart_park_app/core/routing/app_route.dart';
+import 'package:smart/core/routing/app_route.dart';
 
 import '../network/dio_client.dart';
 

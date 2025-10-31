@@ -112,4 +112,3 @@ class HeaderSection extends StatelessWidget {
     );
   }
 }
-

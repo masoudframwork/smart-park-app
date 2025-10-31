@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart_park_app/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
+import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 
 import 'widgets/home_bottom_nav_bar.dart';
 
@@ -25,7 +25,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       body: Consumer(
         builder: (context, ref, child) {
           return AnimatedSwitcher(

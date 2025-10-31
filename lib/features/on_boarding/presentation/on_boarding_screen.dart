@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart_park_app/core/constants/image_string.dart';
+import 'package:smart/core/constants/image_string.dart';
 
-import 'package:smart_park_app/core/theme/app_text_theme.dart';
-import 'package:smart_park_app/generated/l10n.dart';
+import 'package:smart/core/theme/app_text_theme.dart';
+import 'package:smart/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:smart_park_app/features/on_boarding/presentation/controller/on_boarding_controller.dart';
+import 'package:smart/features/on_boarding/presentation/controller/on_boarding_controller.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';

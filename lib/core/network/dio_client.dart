@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:smart_park_app/generated/l10n.dart';
+import 'package:smart/generated/l10n.dart';
 
 import 'dart:async';
 import 'dart:io';
@@ -44,9 +44,8 @@ class DioClient implements client.HttpClient {
             options.headers['Authorization'] = "Bearer $_authToken";
           }
 
-          options.headers['X-Request-ID'] = DateTime.now()
-              .millisecondsSinceEpoch
-              .toString();
+          options.headers['X-Request-ID'] =
+              DateTime.now().millisecondsSinceEpoch.toString();
 
           if (kDebugMode) {
             debugPrint('➡️ [${options.method}] ${options.uri}');
@@ -133,8 +132,7 @@ class DioClient implements client.HttpClient {
     try {
       final responseData = e.response?.data;
       if (responseData is Map<String, dynamic>) {
-        serverMessage =
-            responseData['message'] ??
+        serverMessage = responseData['message'] ??
             responseData['error'] ??
             responseData['detail'] ??
             serverMessage;
@@ -393,9 +391,8 @@ class DioClient implements client.HttpClient {
   }
 
   ApiResponse<T> _handleFailure<T>(DioException e) {
-    final failure = e.error is CustomFailure
-        ? e.error as CustomFailure
-        : _handleError(e);
+    final failure =
+        e.error is CustomFailure ? e.error as CustomFailure : _handleError(e);
 
     return ApiResponse.failure(
       failure.message,

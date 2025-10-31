@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart_park_app/core/dependency_injection/service_locator.dart';
-import 'package:smart_park_app/core/models/my_logger.dart';
-import 'package:smart_park_app/core/routing/app_route.dart';
-import 'package:smart_park_app/generated/l10n.dart';
+import 'package:smart/core/dependency_injection/service_locator.dart';
+import 'package:smart/core/models/my_logger.dart';
+import 'package:smart/core/routing/app_route.dart';
+import 'package:smart/generated/l10n.dart';
 
 void main() async {
   runZonedGuarded(

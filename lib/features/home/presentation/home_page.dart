@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart_park_app/core/constants/image_string.dart';
-import 'package:smart_park_app/core/widgets/svg_image_widget.dart';
+import 'package:smart/core/constants/image_string.dart';
+import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'controller/home_controller.dart';
 import 'widgets/parking_details/parking_details_sheet.dart';
 

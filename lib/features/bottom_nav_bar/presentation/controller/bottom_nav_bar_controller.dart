@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart_park_app/core/constants/image_string.dart';
-import 'package:smart_park_app/features/bottom_nav_bar/domain/models/bottom_nav_bar_item.dart';
-import 'package:smart_park_app/features/home/presentation/home_page.dart';
-import 'package:smart_park_app/generated/l10n.dart';
+import 'package:smart/core/constants/image_string.dart';
+import 'package:smart/features/bottom_nav_bar/domain/models/bottom_nav_bar_item.dart';
+import 'package:smart/features/home/presentation/home_page.dart';
+import 'package:smart/generated/l10n.dart';
 
 final bottomNavBarController = ChangeNotifierProvider(
   (ref) => BottomNavBarController(),
