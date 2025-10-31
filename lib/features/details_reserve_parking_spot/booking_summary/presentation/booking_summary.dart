@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/routing/navigation_service.dart';
+import 'package:smart/core/routing/routes.dart';
+import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/car_small_preview.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/selection_tile.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/visa_small_logo.dart';
@@ -83,7 +86,10 @@ class BookingSummary extends ConsumerWidget {
               SizedBox(height: 12.h),
               PrimaryButton(
                 text: 'تأكيد الحجز',
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(bottomNavBarController).changeIndex(1);
+                  NavigationService.replace(RoutePaths.bottomNavBar);
+                },
               ),
               SizedBox(height: 24.h),
             ],

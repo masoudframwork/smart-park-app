@@ -15,7 +15,7 @@ Future<void> main() async {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-
+      AppRouter.initialize();
       await PlatformManager.configureOrientationsAtLaunch();
       await initServiceLocator();
       FlutterError.onError = (FlutterErrorDetails details) {

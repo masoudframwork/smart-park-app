@@ -49,7 +49,7 @@ flutter:
     - assets/images/
     - assets/images/bottom-nav-bar/
     - assets/images/home/
-
+    - assets/images/svgs/
   fonts:
     - family: IBM Plex Sans Arabic
       fonts:

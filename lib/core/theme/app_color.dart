@@ -28,6 +28,8 @@ class AppColor {
   static const blackColor = Color(0xFF0D121C);
 
   static const greyDividerColor = Color(0xFFD2D6DB);
+  static const lightBackgroundColor = Color(0xFFFEFCFF);
+
   static const greyColor = Color(0xFF808080);
   static const greyTextColor = Color(0xFF6C737F);
   static const greyContainerColor = Color(0xFFE0E0E0);
@@ -41,4 +43,6 @@ class AppColor {
   static const whiteColor = Color(0xFFFFFFFF);
   static const whiteContainerColor = Color(0xFFF5F5F5);
   static const whiteTextColor = Color(0xFFF5F5F5);
+  static const buttonShadowColor = Color(0x00000042);
+  static const pinkWhiteColor = Color(0xFFFEFCFF);
 }

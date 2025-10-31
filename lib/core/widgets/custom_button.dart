@@ -14,6 +14,8 @@ class CustomButtonWidget extends StatelessWidget {
   final double verticalPadding;
   final Color? backgroundColor;
   final Color? borderColor;
+  final Color? shadowColor;
+  final Offset? offset;
   final double borderRadius;
   final EdgeInsetsGeometry? customPadding;
 
@@ -28,6 +30,8 @@ class CustomButtonWidget extends StatelessWidget {
     this.borderColor,
     this.customPadding,
     this.borderRadius = 5,
+    this.shadowColor,
+    this.offset,
   });
 
   @override

@@ -7,8 +7,7 @@ import 'package:smart/features/on_boarding/presentation/controller/on_boarding_c
 import 'package:smart/generated/l10n.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../core/routing/navigation_service.dart' show NavigationService;
-import '../../../core/routing/routes.dart';
+
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
@@ -58,7 +57,7 @@ class OnBoardingScreen extends ConsumerWidget {
               text: S.of(context).skip,
               icon: Icons.arrow_back,
               onPressed: () {
-                NavigationService.go(RoutePaths.bottomNavBar, context: context);
+                ref.read(onboardingProvider).onSkipPressed();
               },
             ),
             SizedBox(height: 25.h),
