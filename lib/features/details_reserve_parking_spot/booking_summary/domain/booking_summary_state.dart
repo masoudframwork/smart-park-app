@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+class BookingSummaryState {
+  final int activeStep;
+  final int hours;
+  final TimeOfDay start;
+  final TimeOfDay end;
+  final double hourlyPrice;
+  final int capacityUsed;
+  final int capacityTotal;
+
+  const BookingSummaryState({
+    this.activeStep = 1,
+    this.hours = 6,
+    this.start = const TimeOfDay(hour: 15, minute: 0),
+    this.end = const TimeOfDay(hour: 21, minute: 0),
+    this.hourlyPrice = 5,
+    this.capacityUsed = 13,
+    this.capacityTotal = 70,
+  });
+
+  double get total => hours * hourlyPrice;
+
+  BookingSummaryState copyWith({
+    int? activeStep,
+    int? hours,
+    TimeOfDay? start,
+    TimeOfDay? end,
+    double? hourlyPrice,
+    int? capacityUsed,
+    int? capacityTotal,
+  }) =>
+      BookingSummaryState(
+        activeStep: activeStep ?? this.activeStep,
+        hours: hours ?? this.hours,
+        start: start ?? this.start,
+        end: end ?? this.end,
+        hourlyPrice: hourlyPrice ?? this.hourlyPrice,
+        capacityUsed: capacityUsed ?? this.capacityUsed,
+        capacityTotal: capacityTotal ?? this.capacityTotal,
+      );
+}

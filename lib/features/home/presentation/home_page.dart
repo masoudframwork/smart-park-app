@@ -144,11 +144,9 @@ class _ParkingDetailsFloatingWidget extends StatelessWidget {
       onClose: onClose,
       onBookNow: () {
         // Handle booking action
-        print('Booking for: ${parkingLocation.title}');
       },
       onDetails: () {
         // Handle details action
-        print('Details for: ${parkingLocation.title}');
       },
     );
   }

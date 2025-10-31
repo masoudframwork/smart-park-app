@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/image_string.dart';
 import '../../../core/routing/routes.dart';
@@ -43,8 +42,8 @@ class SplashScreen extends ConsumerWidget {
                     CustomImageWidget(
                       isFlag: true,
                       imageUrl: AppImages.appLogo,
-                      width: 134.w,
-                      height: 93.08.h,
+                      width: 134,
+                      height: 93.08,
                     ),
                   ],
                 ),

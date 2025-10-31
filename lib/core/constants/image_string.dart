@@ -25,4 +25,10 @@ class AppImages {
   static const String parkingDemo = "assets/images/home/parking-demo.jpeg";
   static const String time = "assets/images/home/time.svg";
   static const String visa = "assets/images/home/visa.svg";
+  //details screen duration
+  static const String car1 = 'assets/images/car1.jpeg';
+
+  static const String check = 'assets/images/check.png';
+  static const String pay = 'assets/images/pay.jpg';
+  static const String visaImage = 'assets/images/visa-1.png';
 }

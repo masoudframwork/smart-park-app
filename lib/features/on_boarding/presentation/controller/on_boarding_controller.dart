@@ -1,8 +1,21 @@
+// import 'package:flutter/material.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
+//
+// final onboardingProvider =
+//     ChangeNotifierProvider.autoDispose<OnboardingController>(
+//       (ref) => OnboardingController(),
+//     );
+//
+// class OnboardingController extends ChangeNotifier {
+//   int currentIndex = 0;
+//
+//   void nextPage(int index) {
+//     currentIndex = index;
+//     notifyListeners();
+//   }
+// }
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../../core/routing/app_route.dart';
-import '../../../../core/routing/navigation_service.dart';
 
 final onboardingProvider =
     ChangeNotifierProvider.autoDispose<OnboardingController>(
@@ -10,6 +23,7 @@ final onboardingProvider =
 );
 
 class OnboardingController extends ChangeNotifier {
+  final PageController pageController = PageController();
   int currentIndex = 0;
 
   void nextPage(int index) {
@@ -17,7 +31,9 @@ class OnboardingController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void onSkipPressed() {
-    NavigationService.go(AppRoutes.bottomNavBar);
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
   }
 }

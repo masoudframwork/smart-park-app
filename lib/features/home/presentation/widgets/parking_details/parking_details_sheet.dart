@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
+import 'package:smart/core/routing/navigation_service.dart';
+import 'package:smart/core/routing/routes.dart';
 import 'package:smart/core/widgets/custom_button.dart';
 import '../../../data/models/parking_location.dart';
 import 'header_section.dart';
@@ -81,7 +83,10 @@ class ParkingDetailsSheet extends StatelessWidget {
             height: 22.h,
           ),
           CustomButtonWidget(
-            onPressed: () {},
+            onPressed: () {
+              NavigationService.push(RoutePaths.durationScreen,
+                  context: context);
+            },
             text: "تفاصيل",
           )
         ],

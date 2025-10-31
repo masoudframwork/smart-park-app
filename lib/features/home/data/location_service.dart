@@ -5,28 +5,21 @@ class LocationService {
   static final LocationService _instance = LocationService._internal();
   factory LocationService() => _instance;
   LocationService._internal();
-  
+
   Future<Position?> getCurrentLocation() async {
     try {
-      print('Checking location services...');
-
       // Check if location services are enabled
       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      print('Location services enabled: $serviceEnabled');
 
       if (!serviceEnabled) {
         throw Exception('Location services are disabled.');
       }
 
       // Check location permission
-      print('Checking permission...');
       LocationPermission permission = await Geolocator.checkPermission();
-      print('Current permission: $permission');
 
       if (permission == LocationPermission.denied) {
-        print('Requesting permission...');
         permission = await Geolocator.requestPermission();
-        print('Permission after request: $permission');
 
         if (permission == LocationPermission.denied) {
           throw Exception('Location permissions are denied');
@@ -38,13 +31,11 @@ class LocationService {
       }
 
       // Get current position
-      print('Getting current position...');
       final position = await Geolocator.getCurrentPosition(
         locationSettings: const LocationSettings(
           accuracy: LocationAccuracy.high,
         ),
       );
-      print('Got position: ${position.latitude}, ${position.longitude}');
 
       return position;
     } catch (e) {
