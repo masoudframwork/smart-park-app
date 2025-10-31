@@ -16,4 +16,7 @@ class AppImages {
       'assets/images/bottom-nav-bar/booking-tab.svg';
   static const String homeTab = 'assets/images/bottom-nav-bar/home-tab.svg';
   static const String walletTab = 'assets/images/bottom-nav-bar/wallet-tab.svg';
+
+  //home
+  static const String parkingMarkers = "assets/images/home/marker.svg";
 }

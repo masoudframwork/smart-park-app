@@ -3,8 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart_park_app/core/constants/image_string.dart';
+import 'package:smart_park_app/core/widgets/svg_image_widget.dart';
 import 'controller/home_controller.dart';
-import 'widgets/marker_info_card.dart';
+import 'widgets/parking_details/parking_details_sheet.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -20,13 +22,14 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(homeControllerProvider.notifier).initializeMap();
+      ref.read(homeControllerProvider).initializeMap();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final homeState = ref.watch(homeControllerProvider);
+    final homeController = ref.watch(homeControllerProvider);
+    final homeState = homeController.state;
 
     return Scaffold(
       body: Stack(
@@ -38,7 +41,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 initialCenter: homeState.userLocation!,
                 initialZoom: 15.0,
                 onTap: (_, __) {
-                  ref.read(homeControllerProvider.notifier).clearSelection();
+                  ref.read(homeControllerProvider).clearSelection();
                 },
               ),
               children: [
@@ -46,103 +49,55 @@ class _HomePageState extends ConsumerState<HomePage> {
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.smartpark.app',
                 ),
-                
                 MarkerLayer(
                   markers: _buildMarkers(homeState),
                 ),
-                
-                MarkerLayer(
-                  markers: [
-                    Marker(
-                      point: homeState.userLocation!,
-                      width: 40.w,
-                      height: 40.h,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.blue.withOpacity(0.3),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.blue, width: 3),
-                        ),
-                        child: Center(
-                          child: Container(
-                            width: 12.w,
-                            height: 12.h,
-                            decoration: const BoxDecoration(
-                              color: Colors.blue,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                _userLocationMark(homeState),
               ],
-            )
-          else if (homeState.isLoading)
-            const Center(
-              child: CircularProgressIndicator(),
-            )
-          else if (homeState.error != null)
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.error_outline,
-                    size: 64.sp,
-                    color: Colors.red,
-                  ),
-                  SizedBox(height: 16.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 32.w),
-                    child: Text(
-                      'Error: ${homeState.error}',
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        color: Colors.red,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  SizedBox(height: 16.h),
-                  ElevatedButton(
-                    onPressed: () {
-                      ref.read(homeControllerProvider.notifier).initializeMap();
-                    },
-                    child: const Text('Retry'),
-                  ),
-                ],
-              ),
             ),
-
           if (homeState.selectedMarker != null)
             Positioned(
-              bottom: 20.h,
-              left: 16.w,
-              right: 16.w,
-              child: MarkerInfoCard(
-                marker: homeState.selectedMarker!,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: _ParkingDetailsFloatingWidget(
+                parkingData: homeState.selectedMarker!,
                 onClose: () {
-                  ref.read(homeControllerProvider.notifier).clearSelection();
+                  ref.read(homeControllerProvider).clearSelection();
                 },
-                onNavigate: () => _handleMarkerAction(homeState.selectedMarker!),
-                onDetails: () => _handleMarkerAction(homeState.selectedMarker!),
               ),
             ),
-
-          Positioned(
-            top: 50.h,
-            right: 16.w,
-            child: FloatingActionButton(
-              onPressed: () {
-                _showCustomActionsDialog(context);
-              },
-              child: const Icon(Icons.more_vert),
-            ),
-          ),
         ],
       ),
+    );
+  }
+
+  MarkerLayer _userLocationMark(HomeState homeState) {
+    return MarkerLayer(
+      markers: [
+        Marker(
+          point: homeState.userLocation!,
+          width: 40.w,
+          height: 40.h,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.blue.withOpacity(0.3),
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.blue, width: 3),
+            ),
+            child: Center(
+              child: Container(
+                width: 12.w,
+                height: 12.h,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -150,120 +105,56 @@ class _HomePageState extends ConsumerState<HomePage> {
     return homeState.locations.asMap().entries.map((entry) {
       final index = entry.key;
       final location = entry.value;
-      final isSelected = homeState.selectedMarkerIndex == index;
 
       return Marker(
         point: LatLng(location['lat'], location['lng']),
-        width: isSelected ? 50.w : 40.w,
-        height: isSelected ? 50.h : 40.h,
+        width: 60,
+        height: 60,
         child: GestureDetector(
           onTap: () {
-            ref.read(homeControllerProvider.notifier).selectMarker(location, index);
+            ref.read(homeControllerProvider).selectMarker(location, index);
           },
-          child: Container(
-            decoration: BoxDecoration(
-              color: _getMarkerColor(location['type']),
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: isSelected ? Colors.white : Colors.transparent,
-                width: 3.w,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 4.r,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Icon(
-              _getMarkerIcon(location['type']),
-              color: Colors.white,
-              size: isSelected ? 24.sp : 20.sp,
-            ),
+          child: SvgImageWidget(
+            AppImages.parkingMarkers,
+            height: 60,
+            width: 60,
+            fit: BoxFit.cover,
           ),
         ),
       );
     }).toList();
   }
+}
 
-  IconData _getMarkerIcon(String type) {
-    switch (type) {
-      case 'parking':
-        return Icons.local_parking;
-      case 'charging':
-        return Icons.electric_car;
-      case 'service':
-        return Icons.build;
-      default:
-        return Icons.place;
-    }
-  }
+class _ParkingDetailsFloatingWidget extends StatelessWidget {
+  final Map<String, dynamic> parkingData;
+  final VoidCallback onClose;
 
-  Color _getMarkerColor(String type) {
-    switch (type) {
-      case 'parking':
-        return Colors.blue;
-      case 'charging':
-        return Colors.green;
-      case 'service':
-        return Colors.orange;
-      default:
-        return Colors.red;
-    }
-  }
+  const _ParkingDetailsFloatingWidget({
+    required this.parkingData,
+    required this.onClose,
+  });
 
-  void _handleMarkerAction(Map<String, dynamic> marker) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Action for ${marker['title']}'),
-        duration: const Duration(seconds: 2),
-      ),
+  @override
+  Widget build(BuildContext context) {
+    // Add mock data for spots if not present
+    final enhancedData = Map<String, dynamic>.from(parkingData);
+    enhancedData['availableSpots'] = parkingData['availableSpots'] ??
+        (parkingData['isAvailable'] == true ? 13 : 0);
+    enhancedData['totalSpots'] = parkingData['totalSpots'] ?? 70;
+    enhancedData['imageUrl'] = parkingData['imageUrl'];
+
+    return ParkingDetailsSheet(
+      parkingData: enhancedData,
+      onClose: onClose,
+      onBookNow: () {
+        // Handle booking action
+        print('Booking for: ${parkingData['title']}');
+      },
+      onDetails: () {
+        // Handle details action
+        print('Details for: ${parkingData['title']}');
+      },
     );
-  }
-
-  void _showCustomActionsDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Map Actions'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ListTile(
-              leading: const Icon(Icons.my_location),
-              title: const Text('Go to My Location'),
-              onTap: () {
-                _goToUserLocation();
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.refresh),
-              title: const Text('Refresh Markers'),
-              onTap: () {
-                ref.read(homeControllerProvider.notifier).initializeMap();
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.clear),
-              title: const Text('Clear Selection'),
-              onTap: () {
-                ref.read(homeControllerProvider.notifier).clearSelection();
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _goToUserLocation() {
-    final homeState = ref.read(homeControllerProvider);
-    if (homeState.userLocation != null) {
-      _mapController.move(homeState.userLocation!, 15.0);
-    }
   }
 }

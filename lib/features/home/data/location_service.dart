@@ -4,51 +4,52 @@ class LocationService {
   static final LocationService _instance = LocationService._internal();
   factory LocationService() => _instance;
   LocationService._internal();
-Future<Position?> getCurrentLocation() async {
-  try {
-    print('Checking location services...');
-    
-    // Check if location services are enabled
-    bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    print('Location services enabled: $serviceEnabled');
-    
-    if (!serviceEnabled) {
-      throw Exception('Location services are disabled.');
-    }
+  Future<Position?> getCurrentLocation() async {
+    try {
+      print('Checking location services...');
 
-    // Check location permission
-    print('Checking permission...');
-    LocationPermission permission = await Geolocator.checkPermission();
-    print('Current permission: $permission');
-    
-    if (permission == LocationPermission.denied) {
-      print('Requesting permission...');
-      permission = await Geolocator.requestPermission();
-      print('Permission after request: $permission');
-      
-      if (permission == LocationPermission.denied) {
-        throw Exception('Location permissions are denied');
+      // Check if location services are enabled
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      print('Location services enabled: $serviceEnabled');
+
+      if (!serviceEnabled) {
+        throw Exception('Location services are disabled.');
       }
-    }
 
-    if (permission == LocationPermission.deniedForever) {
-      throw Exception('Location permissions are permanently denied');
-    }
+      // Check location permission
+      print('Checking permission...');
+      LocationPermission permission = await Geolocator.checkPermission();
+      print('Current permission: $permission');
 
-    // Get current position
-    print('Getting current position...');
-    final position = await Geolocator.getCurrentPosition(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.high,
-      ),
-    );
-    print('Got position: ${position.latitude}, ${position.longitude}');
-    
-    return position;
-  } catch (e) {
-    rethrow;
+      if (permission == LocationPermission.denied) {
+        print('Requesting permission...');
+        permission = await Geolocator.requestPermission();
+        print('Permission after request: $permission');
+
+        if (permission == LocationPermission.denied) {
+          throw Exception('Location permissions are denied');
+        }
+      }
+
+      if (permission == LocationPermission.deniedForever) {
+        throw Exception('Location permissions are permanently denied');
+      }
+
+      // Get current position
+      print('Getting current position...');
+      final position = await Geolocator.getCurrentPosition(
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.high,
+        ),
+      );
+      print('Got position: ${position.latitude}, ${position.longitude}');
+
+      return position;
+    } catch (e) {
+      rethrow;
+    }
   }
-}
+
   Future<List<Map<String, dynamic>>> getNearbyLocations(
     double latitude,
     double longitude,
@@ -80,53 +81,6 @@ Future<Position?> getCurrentLocation() async {
         'type': 'parking',
         'isAvailable': i % 3 != 0, // Some spots are occupied
         'price': '5.00',
-        'distance': _calculateDistance(
-          userLat,
-          userLng,
-          userLat + latOffset,
-          userLng + lngOffset,
-        ),
-      });
-    }
-
-    // Generate charging stations
-    for (int i = 0; i < 3; i++) {
-      final latOffset = (i - 1) * 0.002;
-      final lngOffset = (i % 2 == 0 ? 1 : -1) * 0.002;
-
-      locations.add({
-        'id': 'charging_$i',
-        'lat': userLat + latOffset,
-        'lng': userLng + lngOffset,
-        'title': 'EV Charging Station ${i + 1}',
-        'description': 'Electric vehicle charging point',
-        'type': 'charging',
-        'isAvailable': true,
-        'price': '2.50',
-        'power': '50kW',
-        'distance': _calculateDistance(
-          userLat,
-          userLng,
-          userLat + latOffset,
-          userLng + lngOffset,
-        ),
-      });
-    }
-
-    // Generate service centers
-    for (int i = 0; i < 2; i++) {
-      final latOffset = (i == 0 ? 0.003 : -0.003);
-      final lngOffset = (i == 0 ? 0.003 : -0.003);
-
-      locations.add({
-        'id': 'service_$i',
-        'lat': userLat + latOffset,
-        'lng': userLng + lngOffset,
-        'title': 'Service Center ${i + 1}',
-        'description': 'Vehicle service and maintenance',
-        'type': 'service',
-        'isAvailable': true,
-        'rating': 4.5,
         'distance': _calculateDistance(
           userLat,
           userLng,

@@ -1,13 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:latlong2/latlong.dart'; 
+import 'package:latlong2/latlong.dart';
 import '../../data/location_service.dart';
 
-class HomeController extends StateNotifier<HomeState> {
-  HomeController() : super(HomeState.initial());
+class HomeController extends ChangeNotifier {
+  HomeController() : _state = HomeState.initial();
+
+  HomeState _state;
+  HomeState get state => _state;
 
   Future<void> initializeMap() async {
-    state = state.copyWith(isLoading: true);
-    
+    _state = _state.copyWith(isLoading: true);
+    notifyListeners();
+
     try {
       final locationService = LocationService();
 
@@ -15,19 +20,22 @@ class HomeController extends StateNotifier<HomeState> {
 
       final isEnabled = await locationService.isLocationServiceEnabled();
       if (!isEnabled) {
-        state = state.copyWith(
-          error: 'Location services are disabled. Please enable them in settings.',
+        _state = _state.copyWith(
+          error:
+              'Location services are disabled. Please enable them in settings.',
           isLoading: false,
         );
+        notifyListeners();
         return;
       }
 
       final position = await locationService.getCurrentLocation();
       if (position == null) {
-        state = state.copyWith(
+        _state = _state.copyWith(
           error: 'Failed to get current location',
           isLoading: false,
         );
+        notifyListeners();
         return;
       }
 
@@ -37,44 +45,36 @@ class HomeController extends StateNotifier<HomeState> {
         1.0,
       );
 
-      state = state.copyWith(
+      _state = _state.copyWith(
         userLocation: LatLng(position.latitude, position.longitude),
         locations: nearbyLocations,
         isLoading: false,
       );
+      notifyListeners();
     } catch (e) {
       print('Error initializing map: $e');
-      state = state.copyWith(
+      _state = _state.copyWith(
         error: 'Failed to initialize map: $e',
         isLoading: false,
       );
+      notifyListeners();
     }
   }
 
   void selectMarker(Map<String, dynamic> location, int index) {
-    state = state.copyWith(
+    _state = _state.copyWith(
       selectedMarker: location,
       selectedMarkerIndex: index,
     );
-
-    switch (location['type']) {
-      case 'parking':
-        print('Parking action for: ${location['title']}');
-        break;
-      case 'charging':
-        print('Charging action for: ${location['title']}');
-        break;
-      case 'service':
-        print('Service action for: ${location['title']}');
-        break;
-    }
+    notifyListeners();
   }
 
   void clearSelection() {
-    state = state.copyWith(
+    _state = _state.copyWith(
       selectedMarker: null,
       selectedMarkerIndex: -1,
     );
+    notifyListeners();
   }
 }
 
@@ -121,6 +121,6 @@ class HomeState {
   }
 }
 
-final homeControllerProvider = StateNotifierProvider<HomeController, HomeState>(
+final homeControllerProvider = ChangeNotifierProvider(
   (ref) => HomeController(),
 );
