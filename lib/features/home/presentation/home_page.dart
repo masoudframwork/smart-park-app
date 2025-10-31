@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'controller/home_controller.dart';
+import 'package:smart/features/home/data/models/home_model.dart';
+import 'package:smart/features/home/data/models/parking_location.dart';
 import 'widgets/parking_details/parking_details_sheet.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -49,9 +51,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.smartpark.app',
                 ),
-                MarkerLayer(
-                  markers: _buildMarkers(homeState),
-                ),
+                MarkerLayer(markers: _buildMarkers(homeState)),
                 _userLocationMark(homeState),
               ],
             ),
@@ -61,7 +61,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               left: 0,
               right: 0,
               child: _ParkingDetailsFloatingWidget(
-                parkingData: homeState.selectedMarker!,
+                parkingLocation: homeState.selectedMarker!,
                 onClose: () {
                   ref.read(homeControllerProvider).clearSelection();
                 },
@@ -72,11 +72,11 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
-  MarkerLayer _userLocationMark(HomeState homeState) {
+  MarkerLayer _userLocationMark(HomeModel homeModel) {
     return MarkerLayer(
       markers: [
         Marker(
-          point: homeState.userLocation!,
+          point: homeModel.userLocation!,
           width: 40.w,
           height: 40.h,
           child: Container(
@@ -101,13 +101,13 @@ class _HomePageState extends ConsumerState<HomePage> {
     );
   }
 
-  List<Marker> _buildMarkers(HomeState homeState) {
-    return homeState.locations.asMap().entries.map((entry) {
+  List<Marker> _buildMarkers(HomeModel homeModel) {
+    return homeModel.locations.asMap().entries.map((entry) {
       final index = entry.key;
       final location = entry.value;
 
       return Marker(
-        point: LatLng(location['lat'], location['lng']),
+        point: LatLng(location.lat, location.lng),
         width: 60,
         height: 60,
         child: GestureDetector(
@@ -127,33 +127,28 @@ class _HomePageState extends ConsumerState<HomePage> {
 }
 
 class _ParkingDetailsFloatingWidget extends StatelessWidget {
-  final Map<String, dynamic> parkingData;
+  final ParkingLocation parkingLocation;
   final VoidCallback onClose;
 
   const _ParkingDetailsFloatingWidget({
-    required this.parkingData,
+    required this.parkingLocation,
     required this.onClose,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Add mock data for spots if not present
-    final enhancedData = Map<String, dynamic>.from(parkingData);
-    enhancedData['availableSpots'] = parkingData['availableSpots'] ??
-        (parkingData['isAvailable'] == true ? 13 : 0);
-    enhancedData['totalSpots'] = parkingData['totalSpots'] ?? 70;
-    enhancedData['imageUrl'] = parkingData['imageUrl'];
+    // Convert ParkingLocation to Map for ParkingDetailsSheet
 
     return ParkingDetailsSheet(
-      parkingData: enhancedData,
+      parkingData: parkingLocation,
       onClose: onClose,
       onBookNow: () {
         // Handle booking action
-        print('Booking for: ${parkingData['title']}');
+        print('Booking for: ${parkingLocation.title}');
       },
       onDetails: () {
         // Handle details action
-        print('Details for: ${parkingData['title']}');
+        print('Details for: ${parkingLocation.title}');
       },
     );
   }

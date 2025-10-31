@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
-import '../../data/location_service.dart';
+import 'package:smart/features/home/data/models/home_model.dart';
+import 'package:smart/features/home/data/models/parking_location.dart';
+import 'package:smart/features/home/data/location_service.dart';
 
 class HomeController extends ChangeNotifier {
-  HomeController() : _state = HomeState.initial();
+  final LocationService _locationService = LocationService();
 
-  HomeState _state;
-  HomeState get state => _state;
+  HomeController() : _model = HomeModel.initial();
+
+  HomeModel _model;
+  HomeModel get state => _model;
 
   Future<void> initializeMap() async {
-    _state = _state.copyWith(isLoading: true);
+    _model = _model.copyWith(isLoading: true);
     notifyListeners();
 
     try {
-      final locationService = LocationService();
+      // Request location permission
+      await _locationService.requestLocationPermission();
 
-      await locationService.requestLocationPermission();
-
-      final isEnabled = await locationService.isLocationServiceEnabled();
+      // Check if location services are enabled
+      final isEnabled = await _locationService.isLocationServiceEnabled();
       if (!isEnabled) {
-        _state = _state.copyWith(
+        _model = _model.copyWith(
           error:
               'Location services are disabled. Please enable them in settings.',
           isLoading: false,
@@ -29,9 +33,10 @@ class HomeController extends ChangeNotifier {
         return;
       }
 
-      final position = await locationService.getCurrentLocation();
+      // Get current user location
+      final position = await _locationService.getCurrentLocation();
       if (position == null) {
-        _state = _state.copyWith(
+        _model = _model.copyWith(
           error: 'Failed to get current location',
           isLoading: false,
         );
@@ -39,21 +44,29 @@ class HomeController extends ChangeNotifier {
         return;
       }
 
-      final nearbyLocations = await locationService.getNearbyLocations(
+      final userLocation = LatLng(position.latitude, position.longitude);
+
+      // Update model with user location
+      _model = _model.copyWith(userLocation: userLocation, isLoading: true);
+      notifyListeners();
+
+      // Get nearby locations based on user location
+      final nearbyLocations = await _locationService.getNearbyLocations(
         position.latitude,
         position.longitude,
-        1.0,
+        1.0, // 1 km radius
       );
 
-      _state = _state.copyWith(
-        userLocation: LatLng(position.latitude, position.longitude),
+      // Update model with locations
+      _model = _model.copyWith(
         locations: nearbyLocations,
         isLoading: false,
+        error: null,
       );
       notifyListeners();
     } catch (e) {
       print('Error initializing map: $e');
-      _state = _state.copyWith(
+      _model = _model.copyWith(
         error: 'Failed to initialize map: $e',
         isLoading: false,
       );
@@ -61,8 +74,8 @@ class HomeController extends ChangeNotifier {
     }
   }
 
-  void selectMarker(Map<String, dynamic> location, int index) {
-    _state = _state.copyWith(
+  void selectMarker(ParkingLocation location, int index) {
+    _model = _model.copyWith(
       selectedMarker: location,
       selectedMarkerIndex: index,
     );
@@ -70,54 +83,8 @@ class HomeController extends ChangeNotifier {
   }
 
   void clearSelection() {
-    _state = _state.copyWith(
-      selectedMarker: null,
-      selectedMarkerIndex: -1,
-    );
+    _model = _model.copyWith(selectedMarker: null, selectedMarkerIndex: -1);
     notifyListeners();
-  }
-}
-
-class HomeState {
-  final LatLng? userLocation;
-  final List<Map<String, dynamic>> locations;
-  final bool isLoading;
-  final String? error;
-  final Map<String, dynamic>? selectedMarker;
-  final int selectedMarkerIndex;
-
-  HomeState({
-    this.userLocation,
-    required this.locations,
-    required this.isLoading,
-    this.error,
-    this.selectedMarker,
-    this.selectedMarkerIndex = -1,
-  });
-
-  factory HomeState.initial() {
-    return HomeState(
-      locations: [],
-      isLoading: true,
-    );
-  }
-
-  HomeState copyWith({
-    LatLng? userLocation,
-    List<Map<String, dynamic>>? locations,
-    bool? isLoading,
-    String? error,
-    Map<String, dynamic>? selectedMarker,
-    int? selectedMarkerIndex,
-  }) {
-    return HomeState(
-      userLocation: userLocation ?? this.userLocation,
-      locations: locations ?? this.locations,
-      isLoading: isLoading ?? this.isLoading,
-      error: error,
-      selectedMarker: selectedMarker,
-      selectedMarkerIndex: selectedMarkerIndex ?? this.selectedMarkerIndex,
-    );
   }
 }
 

@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/theme/app_text_theme.dart';
+import 'package:smart/core/widgets/app_text.dart';
+import 'package:smart/core/widgets/svg_image_widget.dart';
 
 class InfoRow extends StatelessWidget {
-  final IconData icon;
+  final String image;
   final String text;
-  final Color color;
 
   const InfoRow({
     super.key,
-    required this.icon,
+    required this.image,
     required this.text,
-    required this.color,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: color, size: 20.sp),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: Colors.grey[700],
-            ),
-          ),
+        SvgImageWidget(image),
+        SizedBox(width: 13.5),
+        AppText(
+          text: text,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle(),
         ),
       ],
     );
   }
 }
-

@@ -8,7 +8,7 @@ class AppTextTheme {
   static TextStyle mainButtonTextStyle() => TextStyle(
         fontSize: 16,
         color: AppColor.whiteColor,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         fontFamily: 'IBM Plex Sans Arabic',
       );
 
@@ -16,14 +16,14 @@ class AppTextTheme {
   static TextStyle secondaryButtonTextStyle() => TextStyle(
         fontSize: 16,
         color: AppColor.whiteColor,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
       );
 
   // 🏷️ العناوين الكبيرة
   static TextStyle titleLargeTextStyle() => TextStyle(
         fontSize: 26,
         color: AppColor.blackColor,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         fontFamily: 'IBM Plex Sans Arabic',
       );
   // 🏷️ العناوين المتوسطة
@@ -70,6 +70,12 @@ class AppTextTheme {
         fontSize: 14,
         color: AppColor.blackColor,
         fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+  static TextStyle font18SimiBoldBlack() => TextStyle(
+        fontSize: 18,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w600,
         fontFamily: 'IBM Plex Sans Arabic',
       );
   ////////////////////////////////////////////////////////////////////////

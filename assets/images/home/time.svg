@@ -1,0 +1,24 @@
+<svg id="Group_556" data-name="Group 556" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.682" height="18.684" viewBox="0 0 18.682 18.684">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1515" data-name="Rectangle 1515" width="18.682" height="18.684" fill="#1b8354"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_1513" data-name="Rectangle 1513" width="11.948" height="13.687" fill="#1b8354"/>
+    </clipPath>
+  </defs>
+  <g id="Group_332" data-name="Group 332" clip-path="url(#clip-path)">
+    <g id="Group_331" data-name="Group 331" transform="translate(0 0)">
+      <g id="Group_330" data-name="Group 330" clip-path="url(#clip-path)">
+        <path id="Path_3423" data-name="Path 3423" d="M2.186,9.341A7.643,7.643,0,0,1,9.83,1.7,7.559,7.559,0,0,1,15.8,4.606c.192.246.288.368.279.529s-.129.279-.366.516l-.541.541a.849.849,0,0,0,.6,1.449H17.9a.85.85,0,0,0,.811-1.1A9.327,9.327,0,1,0,9.829,18.683a.849.849,0,1,0,0-1.7A7.643,7.643,0,0,1,2.186,9.341" transform="translate(-0.488 0)" fill="#1b8354"/>
+        <g id="Group_329" data-name="Group 329" transform="translate(6.734 4.997)" opacity="0.4" style="mix-blend-mode: normal;isolation: isolate">
+          <g id="Group_328" data-name="Group 328">
+            <g id="Group_327" data-name="Group 327" clip-path="url(#clip-path-3)">
+              <path id="Path_3424" data-name="Path 3424" d="M1.738,6.619a.869.869,0,0,1,1.738,0v3.476a.868.868,0,0,1-.255.614L1.483,12.447A.869.869,0,0,1,.254,11.218L1.738,9.734Zm8.512,3.476a.849.849,0,0,1,1.7,0c0,.312-.014.621-.042.925a.849.849,0,1,1-1.691-.152q.034-.382.034-.773m-.535,2.968a.849.849,0,0,1,1.589.6,9.969,9.969,0,0,1-.478,1.071.849.849,0,0,1-1.508-.783,8.058,8.058,0,0,0,.4-.887m-1.641,2.66a.849.849,0,1,1,1.244,1.156,9.552,9.552,0,0,1-.91.859.849.849,0,1,1-1.083-1.309,7.859,7.859,0,0,0,.748-.706M5.65,17.482a.849.849,0,1,1,.707,1.544,9,9,0,0,1-.938.368.849.849,0,0,1-.531-1.613,7.478,7.478,0,0,0,.761-.3" transform="translate(0 -5.75)" fill="#1b8354" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/constants/image_string.dart';
+import 'package:smart/core/widgets/custom_button.dart';
+import '../../../data/models/parking_location.dart';
 import 'header_section.dart';
 import 'parking_info_section.dart';
 import 'quick_booking_section.dart';
-import 'details_button.dart';
 
 class ParkingDetailsSheet extends StatelessWidget {
-  final Map<String, dynamic> parkingData;
+  final ParkingLocation parkingData;
   final VoidCallback onClose;
   final VoidCallback? onBookNow;
   final VoidCallback? onDetails;
@@ -21,8 +23,36 @@ class ParkingDetailsSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 13).copyWith(bottom: 17),
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.90,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(children: [
+          Positioned(bottom: 0, child: _body(context)),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.23,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width - 26,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(AppImages.parkingDemo),
+                  backgroundColor: Colors.grey,
+                  radius: 55,
+                ),
+              ),
+            ),
+          )
+        ]),
+      ),
+    );
+  }
+
+  Container _body(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 13).copyWith(bottom: 17),
+      height: MediaQuery.of(context).size.height * 0.60,
+      width: MediaQuery.of(context).size.width - 26,
+      padding: EdgeInsets.symmetric(horizontal: 13.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.r),
@@ -30,15 +60,30 @@ class ParkingDetailsSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          SizedBox(
+            height: 18.h,
+          ),
           HeaderSection(
-            imageUrl: parkingData['imageUrl'],
-            isAvailable: parkingData['isAvailable'] ?? true,
+            imageUrl: parkingData.imageUrl ?? "",
+            isAvailable: parkingData.isAvailable,
+          ),
+          SizedBox(
+            height: 12.h,
           ),
           ParkingInfoSection(parkingData: parkingData),
+          SizedBox(
+            height: 21.h,
+          ),
           QuickBookingSection(
             onBookNow: onBookNow,
           ),
-          if (onDetails != null) DetailsButton(onDetails: onDetails!),
+          SizedBox(
+            height: 22.h,
+          ),
+          CustomButtonWidget(
+            onPressed: () {},
+            text: "تفاصيل",
+          )
         ],
       ),
     );

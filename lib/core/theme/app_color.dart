@@ -9,6 +9,7 @@ class AppColor {
   static const secondaryColor = Color(0xFFABEFC6);
   //contaner الحجز السريع 6
   static const containerColor = Color(0xFFECFDF3);
+  static const greenTextColor = Color(0xFF085D3A);
 
   //done design secondaryButtonColor
   static const secondaryButtonColor = Color(0xFFECFDF3);
@@ -19,7 +20,6 @@ class AppColor {
   static const blackNumberSmallColor = Color(0xFF384250);
 
   static const blackColor = Color(0xFF0D121C);
-
 
   static const greyColor = Color(0xFF808080);
   static const greyTextColor = Color(0xFF6C737F);
