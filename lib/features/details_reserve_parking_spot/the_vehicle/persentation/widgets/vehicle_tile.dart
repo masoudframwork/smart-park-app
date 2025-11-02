@@ -5,15 +5,19 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 
-
 class VehicleTile extends StatelessWidget {
   final bool isSelected;
   final bool isAddNew;
+
   final Color bgColor;
   final Color borderColor;
+
   final Icon carIcon;
   final String title;
   final TextStyle? textStyle;
+
+  final double tileWidth;
+  final double tileHeight;
 
   const VehicleTile({
     super.key,
@@ -24,13 +28,15 @@ class VehicleTile extends StatelessWidget {
     this.textStyle,
     this.isSelected = false,
     this.isAddNew = false,
+    this.tileWidth = 360,
+    this.tileHeight = 66,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 360.w,
-      height: 66.h,
+      width: tileWidth.w,
+      height: tileHeight.h,
       decoration: BoxDecoration(
         color: bgColor,
         borderRadius: BorderRadius.circular(6.r),
@@ -74,6 +80,7 @@ class VehicleTile extends StatelessWidget {
         ),
       );
     }
+
     return Container(
       width: 77.w,
       height: 47.h,

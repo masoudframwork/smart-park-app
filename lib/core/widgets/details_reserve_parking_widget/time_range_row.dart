@@ -66,41 +66,36 @@ class TimeBox extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              // زر -
-              MintSquareBtn(
-                label: '−',
-                onTap: enabled ? onMinus : null,
-              ),
+          // زر -
+          MintSquareBtn(
+            label: '−',
+            onTap: enabled ? onMinus : null,
+          ),
 
-              SizedBox(width: 8.w),
+          SizedBox(width: 8.w),
 
-              // الوقت hh:mm
-              AppText(
-                text: parts.hhmm,
-                appTextTheme:
-                    AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-              ),
+          // hh:mm
+          AppText(
+            text: parts.hhmm,
+            appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          ),
 
-              SizedBox(width: 4.w),
+          SizedBox(width: 4.w),
 
-              // الفترة (ص/م)
-              AppText(
-                text: parts.period,
-                appTextTheme:
-                    AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-              ),
+          // ص / م
+          AppText(
+            text: parts.period,
+            appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          ),
 
-              SizedBox(width: 8.w),
+          SizedBox(width: 8.w),
 
-              MintSquareBtn(
-                label: '+',
-                onTap: enabled ? onPlus : null,
-              ),
-            ],
+          // زر +
+          MintSquareBtn(
+            label: '+',
+            onTap: enabled ? onPlus : null,
           ),
         ],
       ),
@@ -108,7 +103,7 @@ class TimeBox extends StatelessWidget {
   }
 
   _TimeParts _formatTimeParts(TimeOfDay t) {
-    // تحويل الوقت لصيغة 12 ساعة + ص/م
+    // صيغة 12 ساعة + ص/م
     final hour12 = t.hourOfPeriod == 0 ? 12 : t.hourOfPeriod;
     final hh = hour12.toString().padLeft(2, '0');
     final mm = t.minute.toString().padLeft(2, '0');
@@ -122,8 +117,8 @@ class TimeBox extends StatelessWidget {
 }
 
 class _TimeParts {
-  final String period; // "م" أو "ص"
-  final String hhmm; // "09:00"
+  final String period;
+  final String hhmm;
   _TimeParts({
     required this.period,
     required this.hhmm,
@@ -133,45 +128,59 @@ class _TimeParts {
 class TimeRangeRow extends StatelessWidget {
   final TimeOfDay start;
   final TimeOfDay end;
-  final VoidCallback onMinus;
-  final VoidCallback onPlus;
+
+  final VoidCallback onStartMinus;
+  final VoidCallback onStartPlus;
+
+  final VoidCallback onEndMinus;
+  final VoidCallback onEndPlus;
 
   const TimeRangeRow({
     super.key,
     required this.start,
     required this.end,
-    required this.onMinus,
-    required this.onPlus,
+    required this.onStartMinus,
+    required this.onStartPlus,
+    required this.onEndMinus,
+    required this.onEndPlus,
   });
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TimeBox(
-            time: start,
-            onPlus: onPlus,
-            onMinus: onMinus,
-            enabled: true,
-          ),
-          SizedBox(width: 20.w),
-          AppText(
-            text: 'إلى',
-            appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
-              color: AppColor.blackNumberSmallColor,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TimeBox(
+              time: start,
+              onPlus: onStartPlus,
+              onMinus: onStartMinus,
+              enabled: true,
             ),
-          ),
-          SizedBox(width: 20.w),
-          TimeBox(
-            time: end,
-            onPlus: () {},
-            onMinus: () {},
-            enabled: false,
-          ),
-        ],
+
+            SizedBox(width: 20.w),
+
+            AppText(
+              text: 'إلى',
+              appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
+                color: AppColor.blackNumberSmallColor,
+              ),
+            ),
+
+            SizedBox(width: 20.w),
+
+            // نهاية الحجز
+            TimeBox(
+              time: end,
+              onPlus: onEndPlus,
+              onMinus: onEndMinus,
+              enabled: true,
+            ),
+          ],
+        ),
       ),
     );
   }

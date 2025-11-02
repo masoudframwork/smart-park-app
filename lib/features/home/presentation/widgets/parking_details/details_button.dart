@@ -34,4 +34,3 @@ class DetailsButton extends StatelessWidget {
     );
   }
 }
-

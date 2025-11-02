@@ -54,7 +54,6 @@ class _ZoneImageCardState extends State<ZoneImageCard> {
                 );
               },
             ),
-
             Positioned(
               bottom: 8.h,
               child: SmoothPageIndicator(

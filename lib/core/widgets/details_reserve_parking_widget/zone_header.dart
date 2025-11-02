@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/constants/image_string.dart';
-import 'package:smart/core/theme/app_color.dart';
-import 'package:smart/core/theme/app_text_theme.dart';
-import 'package:smart/core/widgets/app_text.dart';
+
+import '../../constants/image_string.dart';
+import '../../theme/app_color.dart';
+import '../../theme/app_text_theme.dart';
+import '../app_text.dart';
 
 class ZoneHeader extends StatelessWidget {
   final String zoneName;

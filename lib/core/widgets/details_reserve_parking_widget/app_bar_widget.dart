@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/theme/app_color.dart';
+
+import '../../theme/app_color.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onBack;
@@ -26,8 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           _SmallIconButton(
             icon: Icons.arrow_back,
-            iconColor:
-                AppColor.primaryColor, // لو بدكها أسود خليه AppColor.blackColor
+            iconColor: AppColor.primaryColor,
             onPressed: onBack ?? () => Navigator.of(context).pop(),
           ),
           _SmallIconButton(

@@ -32,15 +32,15 @@ class ParkingArea {
   });
 
   double get availabilityPercentage => (availableSpots / totalSpots) * 100;
-  
+
   bool get isAlmostFull => availabilityPercentage < 20;
-  
+
   bool get isFull => availableSpots == 0;
-  
+
   String get formattedAvailability => '$availableSpots/$totalSpots';
-  
+
   String get waitTimeText => '$waitTimeMinutes';
-  
+
   // Copy with method for updates
   ParkingArea copyWith({
     String? id,
@@ -94,13 +94,15 @@ class ParkingSession {
   });
 
   int get elapsedMinutes => DateTime.now().difference(startTime).inMinutes;
-  
-  double get progressPercentage => 
-      durationMinutes > 0 ? (elapsedMinutes / durationMinutes).clamp(0.0, 1.0) : 0.0;
-  
-  int get remainingMinutes => (durationMinutes - elapsedMinutes).clamp(0, durationMinutes);
-  
+
+  double get progressPercentage => durationMinutes > 0
+      ? (elapsedMinutes / durationMinutes).clamp(0.0, 1.0)
+      : 0.0;
+
+  int get remainingMinutes =>
+      (durationMinutes - elapsedMinutes).clamp(0, durationMinutes);
+
   bool get isExpiringSoon => remainingMinutes <= 5 && remainingMinutes > 0;
-  
+
   bool get isExpired => remainingMinutes <= 0;
 }

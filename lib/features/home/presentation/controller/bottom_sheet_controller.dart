@@ -9,36 +9,37 @@ class BottomSheetController extends ChangeNotifier {
   bool _isVisible = true;
   final bool _isLoading = false;
   String? _errorMessage;
-  
+
   List<ParkingArea> _parkingAreas = [];
   ParkingArea? _selectedArea;
   ParkingSession? _activeSession;
-  
+
   final bool _showOnlyAvailable = false;
   final double _maxWaitTime = 30.0;
   final double _maxDistance = 5.0;
-  
+
   // Getters for UI State
   bool get isVisible => _isVisible;
   bool get isLoading => _isLoading;
   String? get errorMessage => _errorMessage;
-  
+
   // Getters for Business State
   List<ParkingArea> get parkingAreas => _getFilteredAreas();
   ParkingArea? get selectedArea => _selectedArea;
   ParkingSession? get activeSession => _activeSession;
-  bool get hasActiveSession => _activeSession != null && _activeSession!.isActive;
-  
+  bool get hasActiveSession =>
+      _activeSession != null && _activeSession!.isActive;
+
   // Getters for Filter State
   bool get showOnlyAvailable => _showOnlyAvailable;
   double get maxWaitTime => _maxWaitTime;
   double get maxDistance => _maxDistance;
-  
+
   // Constructor - Initialize with sample data
   BottomSheetController() {
     _initializeParkingAreas();
   }
-  
+
   // Initialize parking areas (would typically fetch from API)
   void _initializeParkingAreas() {
     _parkingAreas = [
@@ -104,7 +105,6 @@ class BottomSheetController extends ChangeNotifier {
       ),
     ];
   }
-  
 
   List<ParkingArea> _getFilteredAreas() {
     return _parkingAreas.where((area) {
@@ -114,46 +114,50 @@ class BottomSheetController extends ChangeNotifier {
       return true;
     }).toList();
   }
-  
+
   // UI Control Methods
   void show() {
     _isVisible = true;
     notifyListeners();
   }
-  
+
   void hide() {
     _isVisible = false;
     notifyListeners();
   }
-  
+
   void toggle() {
     _isVisible = !_isVisible;
     notifyListeners();
   }
-  
+
   // Get parking statistics
   Map<String, dynamic> getParkingStatistics() {
     final totalSpots = _parkingAreas.fold<int>(
-      0, (sum, area) => sum + area.totalSpots,
+      0,
+      (sum, area) => sum + area.totalSpots,
     );
     final availableSpots = _parkingAreas.fold<int>(
-      0, (sum, area) => sum + area.availableSpots,
+      0,
+      (sum, area) => sum + area.availableSpots,
     );
     final averageWaitTime = _parkingAreas.isNotEmpty
-        ? _parkingAreas.fold<int>(0, (sum, area) => sum + area.waitTimeMinutes) / 
-          _parkingAreas.length
+        ? _parkingAreas.fold<int>(
+                0, (sum, area) => sum + area.waitTimeMinutes) /
+            _parkingAreas.length
         : 0;
-    
+
     return {
       'totalAreas': _parkingAreas.length,
       'totalSpots': totalSpots,
       'availableSpots': availableSpots,
-      'occupancyRate': ((totalSpots - availableSpots) / totalSpots * 100).toStringAsFixed(1),
+      'occupancyRate':
+          ((totalSpots - availableSpots) / totalSpots * 100).toStringAsFixed(1),
       'averageWaitTime': averageWaitTime.toStringAsFixed(0),
       'fullAreas': _parkingAreas.where((a) => a.isFull).length,
     };
   }
-  
+
   @override
   void dispose() {
     // Clean up any resources
@@ -162,6 +166,7 @@ class BottomSheetController extends ChangeNotifier {
 }
 
 // Provider
-final bottomSheetProvider = ChangeNotifierProvider<BottomSheetController>((ref) {
+final bottomSheetProvider =
+    ChangeNotifierProvider<BottomSheetController>((ref) {
   return BottomSheetController();
 });

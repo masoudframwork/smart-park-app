@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/routing/navigation_service.dart';
-import 'package:smart/core/routing/routes.dart';
-import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/car_small_preview.dart';
+import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_payment_method_bottom_sheet.dart';
+import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_vehicle_dialog_widget.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/selection_tile.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/visa_small_logo.dart';
+
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/app_text.dart';
+import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
-import '../../../../core/widgets/details_reserve_parking_widget/button_primary_total_bar_widhet/primary_button.dart';
-import '../../../../core/widgets/details_reserve_parking_widget/button_primary_total_bar_widhet/total_bar.dart';
+import '../../../../core/widgets/details_reserve_parking_widget/container_total_bar/total_bar.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/time_range_row.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_header.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_image_card_widget.dart';
@@ -25,73 +25,97 @@ class BookingSummary extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingSummaryControllerProvider);
-
     final controller = ref.read(bookingSummaryControllerProvider.notifier);
 
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,
         appBar: const CustomAppBar(),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+        body: Padding(
+          padding: EdgeInsets.all(16.w),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              AppText(
-                text: 'ملخص الحجز',
-                appTextTheme: AppTextTheme.titleLargeTextStyle(),
-              ),
-              SizedBox(height: 20.h),
-              ZoneImageCard(),
-              SizedBox(height: 12.h),
-              ZoneHeader(
-                zoneName: ' المنطقة 013',
-                capacityText: '70/13',
-                showDurationSection: false,
-              ),
-              SizedBox(height: 20.h),
-              TimeRangeRow(
-                start: state.start,
-                end: state.end,
-                onMinus: () => controller.decrementStart(15),
-                onPlus: () => controller.incrementStart(15),
-              ),
-              SizedBox(height: 12.h),
-              GestureDetector(
-                onTap: () {
-                  showChangeVehicleBottomSheet(context);
-                },
-                child: const SelectionTile(
-                  leadingIcon: Icons.chevron_right_outlined,
-                  title: 'نيسان باتفايندر / 2023 / أسود',
-                  trailingImage: CarSmallPreview(),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText(
+                        text: 'ملخص الحجز',
+                        appTextTheme: AppTextTheme.titleLargeTextStyle(),
+                      ),
+                      SizedBox(height: 20.h),
+                      ZoneImageCard(),
+                      SizedBox(height: 12.h),
+                      ZoneHeader(
+                        zoneName: ' المنطقة 013',
+                        capacityText: '70/13',
+                        showDurationSection: false,
+                      ),
+                      SizedBox(height: 20.h),
+                      TimeRangeRow(
+                        start: state.start,
+                        end: state.end,
+                        onStartMinus: () => controller.decrementStart(15),
+                        onStartPlus: () => controller.incrementStart(15),
+                        onEndMinus: () => controller.decrementEnd(15),
+                        onEndPlus: () => controller.incrementEnd(15),
+                      ),
+                      SizedBox(height: 12.h),
+                      GestureDetector(
+                        onTap: () {
+                          showBlurBottomSheet(
+                            context: context,
+                            child: const ChangeVehicleBottomSheet(),
+                          );
+                        },
+                        child: SelectionTile(
+                          leadingIcon: Icons.chevron_right_outlined,
+                          title: 'نيسان باتفايندر / 2023 / أسود',
+                          trailingImage: CarSmallPreview(),
+                        ),
+                      ),
+                      SizedBox(height: 12.h),
+                      GestureDetector(
+                        onTap: () {
+                          showBlurBottomSheet(
+                            context: context,
+                            child: const ChangePaymentMethodBottomSheet(),
+                          );
+                        },
+                        child: const SelectionTile(
+                          leadingIcon: Icons.chevron_right_outlined,
+                          title: 'البطاقة المنتهية بـ 0000',
+                          trailingImage: VisaSmallLogo(),
+                        ),
+                      ),
+                      SizedBox(height: 24.h),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 12.h),
-              GestureDetector(
-                onTap: () {
-                  showChangePaymentMethodBottomSheet(context);
-                },
-                child: const SelectionTile(
-                  leadingIcon: Icons.chevron_right_outlined,
-                  title: 'البطاقة المنتهية بـ 0000',
-                  trailingImage: VisaSmallLogo(),
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TotalBar(
+                    total: state.total,
+                    label: 'الإجمالي',
+                  ),
+                  SizedBox(height: 12.h),
+                  CustomButtonWidget(
+                    text: 'تأكيد الحجز',
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      size: 21.w,
+                      color: AppColor.whiteColor,
+                    ),
+                    iconLayout: ButtonIconLayout.inline,
+                    iconOnRight: true,
+                  ),
+                ],
               ),
-              SizedBox(height: 50.h),
-              TotalBar(
-                total: state.total,
-                label: 'الإجمالي',
-              ),
-              SizedBox(height: 12.h),
-              PrimaryButton(
-                text: 'تأكيد الحجز',
-                onPressed: () {
-                  ref.read(bottomNavBarController).changeIndex(1);
-                  NavigationService.replace(RoutePaths.bottomNavBar);
-                },
-              ),
-              SizedBox(height: 24.h),
             ],
           ),
         ),

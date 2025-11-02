@@ -28,7 +28,6 @@ class AppSplashBackground extends StatelessWidget {
               ),
             ),
           ),
-
           Positioned(
             bottom: -50.h,
             right: -50.w,
@@ -43,7 +42,6 @@ class AppSplashBackground extends StatelessWidget {
               ),
             ),
           ),
-
           Center(child: child),
         ],
       ),

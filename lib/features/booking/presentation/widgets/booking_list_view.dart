@@ -32,7 +32,8 @@ class BookingListView extends ConsumerWidget {
             const SizedBox(height: 16),
             CustomButtonWidget(
               text: 'إعادة المحاولة',
-              onPressed: () => ref.read(reservationController.notifier).refresh(),
+              onPressed: () =>
+                  ref.read(reservationController.notifier).refresh(),
               width: 200,
             ),
           ],

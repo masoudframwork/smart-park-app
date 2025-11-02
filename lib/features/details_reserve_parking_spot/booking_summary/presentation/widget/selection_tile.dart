@@ -41,18 +41,21 @@ class SelectionTile extends StatelessWidget {
           horizontal: 12.w,
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              width: 5.w,
+            ),
             trailingImage,
-            SizedBox(width: 8.w),
-            Expanded(
-              child: AppText(
-                text: title,
-                appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                ),
+            SizedBox(
+              width: 12.w,
+            ),
+            AppText(
+              text: title,
+              appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
+                color: AppColor.blackNumberSmallColor,
               ),
             ),
+            Spacer(),
             Icon(
               leadingIcon,
               color: AppColor.primaryColor,

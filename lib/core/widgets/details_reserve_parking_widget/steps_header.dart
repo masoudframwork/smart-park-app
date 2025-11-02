@@ -47,15 +47,18 @@ class StepsHeader extends StatelessWidget {
             children: [
               _StepLabel(
                 text: labels[0],
-                isActive: active == 1,
+                stepNumber: 1,
+                activeStep: active,
               ),
               _StepLabel(
                 text: labels[1],
-                isActive: active == 2,
+                stepNumber: 2,
+                activeStep: active,
               ),
               _StepLabel(
                 text: labels[2],
-                isActive: active == 3,
+                stepNumber: 3,
+                activeStep: active,
               ),
             ],
           ),
@@ -106,7 +109,7 @@ class _StepCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isDone = state == _StepCircleState.done;
     final bool isActive = state == _StepCircleState.active;
-    //final bool isUpcoming = state == _StepCircleState.upcoming;
+    final bool isUpcoming = state == _StepCircleState.upcoming;
 
     final Color borderColor =
         isDone || isActive ? AppColor.primaryColor : AppColor.greyDividerColor;
@@ -141,19 +144,25 @@ class _StepCircle extends StatelessWidget {
 
 class _StepLabel extends StatelessWidget {
   final String text;
-  final bool isActive;
+  final int stepNumber;
+  final int activeStep;
 
   const _StepLabel({
     required this.text,
-    required this.isActive,
+    required this.stepNumber,
+    required this.activeStep,
   });
 
   @override
   Widget build(BuildContext context) {
+    final bool isPassedOrActive = activeStep >= stepNumber;
+
     return AppText(
       text: text,
       appTextTheme: AppTextTheme.numberSmallTextStyle().copyWith(
-        color: isActive ? AppColor.primaryColor : AppColor.greyDividerColor,
+        color: isPassedOrActive
+            ? AppColor.primaryColor
+            : AppColor.greyDividerColor,
       ),
     );
   }

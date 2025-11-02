@@ -1,10 +1,10 @@
 class ApiResponse<T> {
-   T? data;
+  T? data;
   final bool success;
   final String? message;
   final int? statusCode;
 
-   ApiResponse({
+  ApiResponse({
     this.data,
     required this.success,
     this.message,

@@ -5,7 +5,6 @@ import '../../../theme/app_color.dart';
 import '../../../theme/app_text_theme.dart';
 import '../../app_text.dart';
 
-
 class TotalBar extends StatelessWidget {
   final double total;
   final String? label;

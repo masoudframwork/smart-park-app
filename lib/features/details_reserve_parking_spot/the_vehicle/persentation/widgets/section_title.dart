@@ -9,7 +9,6 @@ class SectionTitle extends StatelessWidget {
   final IconData icon;
   final String title;
   const SectionTitle({
-    super.key,
     required this.icon,
     required this.title,
   });
