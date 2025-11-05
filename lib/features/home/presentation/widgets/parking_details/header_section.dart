@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
@@ -27,19 +29,11 @@ class HeaderSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            _buildIconButton(Icons.shower, AppColor.greenTextColor),
-            SizedBox(width: 8.w),
-            _buildIconButton(
-                Icons.electric_meter_outlined, AppColor.greenTextColor),
-          ],
-        ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
           decoration: BoxDecoration(
             color: AppColor.containerColor,
-            borderRadius: BorderRadius.circular(20.r),
+            borderRadius: BorderRadius.circular(14.r),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -57,6 +51,13 @@ class HeaderSection extends StatelessWidget {
               ),
             ],
           ),
+        ),
+        Row(
+          children: [
+            _buildIconsButton(AppImages.shower),
+            SizedBox(width: 12.w),
+            _buildIconsButton(AppImages.charging),
+          ],
         ),
       ],
     );
@@ -77,6 +78,28 @@ class HeaderSection extends StatelessWidget {
         ],
       ),
       child: Icon(icon, color: color, size: 18.sp),
+    );
+  }
+
+  Widget _buildIconsButton(
+    widget,
+  ) {
+    return Container(
+      padding: EdgeInsets.all(2.h),
+      decoration: BoxDecoration(
+        color: AppColor.secondaryColor,
+        shape: BoxShape.circle,
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black.withOpacity(0.1),
+        //     blurRadius: 4,
+        //     offset: const Offset(0, 2),
+        //   ),
+        // ],
+      ),
+      child: SvgPicture.asset(
+        widget,
+      ),
     );
   }
 }

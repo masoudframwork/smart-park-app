@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/home/data/models/parking_location.dart';
+import '../../../../../core/theme/app_color.dart';
 import 'info_row.dart';
 
 class ParkingInfoSection extends StatelessWidget {
@@ -23,12 +25,21 @@ class ParkingInfoSection extends StatelessWidget {
           children: [
             AppText(
               text: "${parkingData.price} ",
-              appTextTheme: AppTextTheme.titleLargeTextStyle(),
+              appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
+                color: AppColor.blackTextColor,
+              ),
+            ),
+            SvgPicture.asset(
+              AppImages.realSu,
             ),
             AppText(
-              text: "ريال/ساعه",
+              text: "/ساعه",
               appTextTheme: AppTextTheme.bodySmallTextStyle()
-                  .copyWith(color: Colors.black),
+                  .copyWith(
+               color:  AppColor.blackNumberSmallColor,
+                fontSize: 12,
+    )
+
             ),
           ],
         ),

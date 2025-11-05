@@ -24,7 +24,7 @@ class ParkingBottomSheet extends ConsumerWidget {
           onPressed: () => ref.read(bottomSheetProvider).show(),
           backgroundColor: AppColor.primaryColor,
           child:
-              Icon(Icons.info_outline, color: AppColor.whiteColor, size: 28.w),
+          Icon(Icons.info_outline, color: AppColor.whiteColor, size: 28.w),
         ),
       );
     }
@@ -85,7 +85,6 @@ class ParkingBottomSheet extends ConsumerWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: LayoutBuilder(
@@ -96,21 +95,22 @@ class ParkingBottomSheet extends ConsumerWidget {
                       clipBehavior: Clip.none,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+
                           children: [
-                            SizedBox(height: 35.h), // Space for text above
+                            SizedBox(height: 35.h),
                             SliderTheme(
                               data: SliderThemeData(
-                                trackHeight: 5.h,
-                                activeTrackColor: AppColor.primaryColor,
-                                inactiveTrackColor: AppColor.greyContainerColor,
-                                thumbColor: AppColor.primaryColor,
-                                thumbShape: RoundSliderThumbShape(
-                                  enabledThumbRadius: 10.r,
-                                ),
+                            activeTrackColor: AppColor.primaryColor,
+                            inactiveTrackColor: AppColor.sliderInactiveColor,
+                            thumbColor: AppColor.primaryColor,
+                            trackHeight: 7.0,
+                            trackShape: const RectangularSliderTrackShape(),
+                            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
+
                                 overlayShape: RoundSliderOverlayShape(
                                   overlayRadius: 20.r,
                                 ),
-                                trackShape: RoundedRectSliderTrackShape(),
                               ),
                               child: Slider(
                                 value: sliderValue,
@@ -119,6 +119,30 @@ class ParkingBottomSheet extends ConsumerWidget {
                                 onChanged: (value) {},
                               ),
                             ),
+                            // SliderTheme(
+                            //   data: SliderTheme.of(context).copyWith(
+                            //     activeTrackColor: AppColor.primaryColor,
+                            //     inactiveTrackColor: AppColor.sliderInactiveColor,
+                            //     thumbColor: AppColor.primaryColor,
+                            //     trackHeight: 7.0,
+                            //     trackShape: const RectangularSliderTrackShape(),
+                            //     thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
+                            //   ),
+                            //   child: Expanded(
+                            //     child: Slider(
+                            //       padding: EdgeInsets.symmetric(horizontal: 1.w),
+                            //       //value: hours.toDouble(),
+                            //       value: sliderValue,
+                            //       min: 1,
+                            //       max: 24,
+                            //       onChanged: (onChange){},
+                            //     ),
+                            //   ),
+                            // ),
+
+
+
+
                           ],
                         ),
                         Positioned(
@@ -129,16 +153,16 @@ class ParkingBottomSheet extends ConsumerWidget {
                               AppText(
                                 text: sliderValue.toInt().toString(),
                                 appTextTheme:
-                                    AppTextTheme.numberSmallTextStyle()
-                                        .copyWith(
-                                            fontSize: 16,
-                                            color: AppColor.blackColor,
-                                            fontWeight: FontWeight.w600),
+                                AppTextTheme.numberSmallTextStyle()
+                                    .copyWith(
+                                    fontSize: 16,
+                                    color: AppColor.blackColor,
+                                    fontWeight: FontWeight.w600),
                               ),
                               AppText(
                                 text: 'دقائق',
                                 appTextTheme:
-                                    AppTextTheme.bodySmallTextStyle().copyWith(
+                                AppTextTheme.bodySmallTextStyle().copyWith(
                                   color: AppColor.greyColor,
                                   fontSize: 10.sp,
                                   fontFamily: 'IBM Plex Sans Arabic',
@@ -173,3 +197,4 @@ class ParkingBottomSheet extends ConsumerWidget {
     );
   }
 }
+

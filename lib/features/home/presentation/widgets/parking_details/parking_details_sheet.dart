@@ -123,19 +123,36 @@ class ParkingDetailsSheet extends StatelessWidget {
               bottom: 0,
               child: _body(context, size),
             ),
-            Positioned(
-              top: size.height * 0.23,
-              child: SizedBox(
-                width: size.width - 26,
-                child: Center(
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage(AppImages.parkingDemo),
-                    backgroundColor: Colors.grey,
-                    radius: 55,
-                  ),
+
+        Positioned(
+          top: size.height * 0.23,
+          child: SizedBox(
+            width: size.width - 26,
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.08),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: const CircleAvatar(
+                  radius: 55,
+                  backgroundImage: AssetImage(AppImages.parkingDemo),
+                  backgroundColor: Colors.grey,
                 ),
               ),
             ),
+          ),
+        ),
+
           ],
         ),
       ),
@@ -165,12 +182,15 @@ class ParkingDetailsSheet extends StatelessWidget {
               ),
               SizedBox(height: 12.h),
               ParkingInfoSection(parkingData: parkingData),
+
               SizedBox(height: 21.h),
               QuickBookingSection(
                 onBookNow: onBookNow,
               ),
-              SizedBox(height: 22.h),
+              SizedBox(height: 40.h),
               CustomButtonWidget(
+                width:345.w ,
+                height:40.h ,
                 onPressed: () {
                   NavigationService.push(
                     RoutePaths.durationScreen,

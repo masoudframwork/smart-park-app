@@ -52,4 +52,9 @@ class AppImages {
   static const String carVehicleCar1 = "assets/images/svgs/Car1.svg";
   static const String carVehicleCar2 = "assets/images/svgs/Car2.svg";
 
+
+
+
+
+
 }

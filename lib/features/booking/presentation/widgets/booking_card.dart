@@ -101,7 +101,7 @@ class BookingCard extends ConsumerWidget {
           width: 12.w,
           height: 12.h,
         ),
-        SizedBox(width: 8.w),
+        SizedBox(width: 21.w),
         _buildTimeBlock(reservation.endTime),
       ],
     );

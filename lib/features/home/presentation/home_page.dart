@@ -243,7 +243,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                 onSuffixTap: null,
                 onSearchTap: () {
                   FocusScope.of(context).unfocus();
-                  // ref.read(homeControllerProvider).openSearch();
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return VoiceToTextScreen();
                   }));
@@ -251,7 +250,10 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
-          const ParkingBottomSheet(),
+          if (homeState.selectedMarker == null)
+            const ParkingBottomSheet(),
+
+
           if (homeState.selectedMarker != null)
             Positioned(
               bottom: 0,
@@ -264,6 +266,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                 },
               ),
             ),
+
+
         ],
       ),
     );

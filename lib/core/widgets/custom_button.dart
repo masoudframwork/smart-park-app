@@ -77,7 +77,6 @@ import '../theme/app_text_theme.dart';
 import 'app_text.dart';
 
 enum ButtonType { elevated, outlined }
-
 enum ButtonIconLayout { separate, inline }
 
 class CustomButtonWidget extends StatelessWidget {
@@ -97,10 +96,12 @@ class CustomButtonWidget extends StatelessWidget {
   final EdgeInsetsGeometry? outerPadding;
 
   final Widget? icon;
-
   final bool iconOnRight;
-
   final ButtonIconLayout iconLayout;
+
+  final TextStyle? textStyle;
+
+  final double? fontSize;
 
   const CustomButtonWidget({
     super.key,
@@ -119,13 +120,20 @@ class CustomButtonWidget extends StatelessWidget {
     this.icon,
     this.iconOnRight = true,
     this.iconLayout = ButtonIconLayout.separate,
+    this.textStyle,
+    this.fontSize,
   });
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle buttonTextStyle = type == ButtonType.elevated
+    final TextStyle baseStyle = type == ButtonType.elevated
         ? AppTextTheme.mainButtonTextStyle()
         : AppTextTheme.secondaryButtonTextStyle();
+
+
+    final TextStyle effectiveTextStyle = (textStyle ?? baseStyle).copyWith(
+      fontSize: fontSize != null ? fontSize!.sp : null,
+    );
 
     final BorderRadiusGeometry radius = BorderRadius.circular(borderRadius.r);
 
@@ -134,7 +142,7 @@ class CustomButtonWidget extends StatelessWidget {
         return Center(
           child: AppText(
             text: text,
-            appTextTheme: buttonTextStyle,
+            appTextTheme: effectiveTextStyle,
           ),
         );
       }
@@ -151,7 +159,7 @@ class CustomButtonWidget extends StatelessWidget {
           ),
         AppText(
           text: text,
-          appTextTheme: buttonTextStyle,
+          appTextTheme: effectiveTextStyle,
         ),
         if (iconOnRight)
           Padding(
@@ -180,7 +188,7 @@ class CustomButtonWidget extends StatelessWidget {
           Center(
             child: AppText(
               text: text,
-              appTextTheme: buttonTextStyle,
+              appTextTheme: effectiveTextStyle,
             ),
           ),
           if (icon != null)
@@ -207,23 +215,23 @@ class CustomButtonWidget extends StatelessWidget {
 
     final ButtonStyle style = type == ButtonType.outlined
         ? OutlinedButton.styleFrom(
-            side: BorderSide(
-              color: borderColor ?? AppColor.primaryColor,
-              width: 1,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: radius,
-            ),
-            padding: EdgeInsets.zero,
-          )
+      side: BorderSide(
+        color: borderColor ?? AppColor.primaryColor,
+        width: 1,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: radius,
+      ),
+      padding: EdgeInsets.zero,
+    )
         : ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor ?? AppColor.primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: radius,
-            ),
-            padding: EdgeInsets.zero,
-            elevation: 0,
-          );
+      backgroundColor: backgroundColor ?? AppColor.primaryColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: radius,
+      ),
+      padding: EdgeInsets.zero,
+      elevation: 0,
+    );
 
     return Padding(
       padding: outerPadding ?? EdgeInsets.zero,
@@ -232,15 +240,15 @@ class CustomButtonWidget extends StatelessWidget {
         height: height.h,
         child: type == ButtonType.outlined
             ? OutlinedButton(
-                onPressed: onPressed,
-                style: style,
-                child: child,
-              )
+          onPressed: onPressed,
+          style: style,
+          child: child,
+        )
             : ElevatedButton(
-                onPressed: onPressed,
-                style: style,
-                child: child,
-              ),
+          onPressed: onPressed,
+          style: style,
+          child: child,
+        ),
       ),
     );
   }

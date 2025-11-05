@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -14,8 +15,8 @@ class HomeBottomNavigationBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white),
-      height: 80,
+
+      // height: 70.h,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: ref
@@ -28,51 +29,100 @@ class HomeBottomNavigationBar extends ConsumerWidget {
   }
 
   Widget navBarItem(BottomNavBarItem item, {required WidgetRef ref}) {
-    return GestureDetector(
-      onTap: () {
-        ref.read(bottomNavBarController).changeIndex(item.index);
-      },
-      child: SizedBox(
-        height: 64,
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgImageWidget(
-                item.icon,
-                height: 21,
-                width: 21,
-                fit: BoxFit.cover,
-                color:
-                    ref.watch(bottomNavBarController).currentIndex == item.index
-                        ? AppColor.selectedTabTextColor
-                        : AppColor.greyTextColor,
-              ),
-              // SvgPicture.asset(
-              //   item.icon,
-              //   height: 21,
-              //   width: 21,
-              //   fit: BoxFit.cover,
+    final isSelected =
+        ref.watch(bottomNavBarController).currentIndex == item.index;
 
-              //   color:
-              //       ref.watch(bottomNavBarController).currentIndex == item.index
-              //       ? AppColor.selectedTabTextColor
-              //       : AppColor.greyTextColor,
-              // ),
-              const SizedBox(height: 5),
-              AppText(
-                text: item.title,
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: ref.watch(bottomNavBarController).currentIndex ==
-                          item.index
-                      ? AppColor.selectedTabTextColor
-                      : AppColor.greyTextColor,
-                ),
-              ),
-            ],
+    return GestureDetector(
+      onTap: () => ref.read(bottomNavBarController).changeIndex(item.index),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedContainer(
+            duration: Duration(milliseconds: 220),
+            curve: Curves.easeOut,
+            height: 2,
+            width: 70.w,
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? AppColor.selectedTabTextColor
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
-        ),
+          const SizedBox(height: 8),
+
+          SvgImageWidget(
+            item.icon,
+            height: 21,
+            width: 21,
+            fit: BoxFit.cover,
+            color: isSelected
+                ? AppColor.selectedTabTextColor
+                : AppColor.greyTextColor,
+          ),
+
+          const SizedBox(height: 5),
+
+          // النص
+          AppText(
+            text: item.title,
+            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+              color: isSelected
+                  ? AppColor.selectedTabTextColor
+                  : AppColor.greyTextColor,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
+
+// Widget navBarItem(BottomNavBarItem item, {required WidgetRef ref}) {
+//   return GestureDetector(
+//     onTap: () {
+//       ref.read(bottomNavBarController).changeIndex(item.index);
+//     },
+//     child: SizedBox(
+//       height: 64,
+//       child: Center(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             SvgImageWidget(
+//               item.icon,
+//               height: 21,
+//               width: 21,
+//               fit: BoxFit.cover,
+//               color:
+//                   ref.watch(bottomNavBarController).currentIndex == item.index
+//                       ? AppColor.selectedTabTextColor
+//                       : AppColor.greyTextColor,
+//             ),
+//             // SvgPicture.asset(
+//             //   item.icon,
+//             //   height: 21,
+//             //   width: 21,
+//             //   fit: BoxFit.cover,
+//
+//             //   color:
+//             //       ref.watch(bottomNavBarController).currentIndex == item.index
+//             //       ? AppColor.selectedTabTextColor
+//             //       : AppColor.greyTextColor,
+//             // ),
+//             const SizedBox(height: 5),
+//             AppText(
+//               text: item.title,
+//               appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+//                 color: ref.watch(bottomNavBarController).currentIndex ==
+//                         item.index
+//                     ? AppColor.selectedTabTextColor
+//                     : AppColor.greyTextColor,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
