@@ -10,25 +10,12 @@ const Size kTabletLandscapeDesignSize = Size(1194, 834);
 
 class PlatformManager {
   PlatformManager._();
-  static Future<void> configureOrientationsAtLaunch() async {
-    final logicalSize = _currentLogicalSize();
-    final width = logicalSize.width;
-    final bool isTablet = width > kTabletWidthThreshold;
 
-    if (isTablet) {
-      await SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-      ]);
-    } else {
-      // الموبايل: السماح بالاتجاهين
-      await SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown,
-        DeviceOrientation.landscapeLeft,
-        DeviceOrientation.landscapeRight,
-      ]);
-    }
+  static Future<void> configureOrientationsAtLaunch() async {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   static Size designSizeForSizingInfo(SizingInformation info) {
@@ -39,6 +26,7 @@ class PlatformManager {
       return kTabletPortraitDesignSize;
     }
 
+    // otherwise موبايل
     return kMobileDesignSize;
   }
 

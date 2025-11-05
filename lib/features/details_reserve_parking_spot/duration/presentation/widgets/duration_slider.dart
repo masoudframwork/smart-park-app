@@ -21,18 +21,21 @@ class DurationRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 24.w,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(
-          child: SliderTheme(
-            data: SliderTheme.of(context).copyWith(
-              activeTrackColor: AppColor.primaryColor,
-              inactiveTrackColor: AppColor.sliderInactiveColor,
-              thumbColor: AppColor.primaryColor,
-              trackHeight: 7.0,
-              thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
-            ),
+        SliderTheme(
+          data: SliderTheme.of(context).copyWith(
+            activeTrackColor: AppColor.primaryColor,
+            inactiveTrackColor: AppColor.sliderInactiveColor,
+            thumbColor: AppColor.primaryColor,
+            trackHeight: 7.0,
+            trackShape: const RectangularSliderTrackShape(),
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
+          ),
+          child: Expanded(
             child: Slider(
+              padding: EdgeInsets.symmetric(horizontal: 1.w),
               value: hours.toDouble(),
               min: 1,
               max: 24,
@@ -40,7 +43,6 @@ class DurationRow extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 12),
         Container(
           width: 63.w,
           height: 40.h,
@@ -49,7 +51,7 @@ class DurationRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(6.r),
             border: Border.all(
               color: AppColor.greyBorderColor,
-              width: 2.w,
+              width: 1.w,
             ),
           ),
           child: FittedBox(

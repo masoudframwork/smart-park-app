@@ -1,29 +1,34 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart/core/routing/navigation_service.dart';
-import 'package:smart/core/routing/routes.dart';
 
-final onboardingProvider =
-    ChangeNotifierProvider.autoDispose<OnboardingController>(
-  (ref) => OnboardingController(),
+import '../../../../core/routing/navigation_service.dart';
+import '../../../../core/routing/routes.dart';
+import '../../domain/models/onboarding_state.dart';
+
+final onboardingControllerProvider =
+    AutoDisposeNotifierProvider<OnboardingController, OnboardingState>(
+  OnboardingController.new,
 );
 
-class OnboardingController extends ChangeNotifier {
-  final PageController pageController = PageController();
-  int currentIndex = 0;
+class OnboardingController extends AutoDisposeNotifier<OnboardingState> {
+  late final PageController pageController;
 
-  void nextPage(int index) {
-    currentIndex = index;
-    notifyListeners();
+  @override
+  OnboardingState build() {
+    pageController = PageController();
+
+    ref.onDispose(() {
+      pageController.dispose();
+    });
+
+    return OnboardingState(currentIndex: 0);
+  }
+
+  void onPageChanged(int index) {
+    state = state.copyWith(currentIndex: index);
   }
 
   void onSkipPressed() {
     NavigationService.go(RoutePaths.bottomNavBar);
-  }
-
-  @override
-  void dispose() {
-    pageController.dispose();
-    super.dispose();
   }
 }

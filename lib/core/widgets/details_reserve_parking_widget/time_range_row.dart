@@ -59,14 +59,16 @@ class TimeBox extends StatelessWidget {
       height: 50.h,
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(6.r),
+        borderRadius: BorderRadius.circular(4.r),
         border: Border.all(
           color: AppColor.greyBorderColor,
-          width: 2,
+          width: 1,
         ),
       ),
+      padding: EdgeInsets.symmetric(horizontal: 8.w),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 4.w,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // زر -
           MintSquareBtn(
@@ -74,23 +76,26 @@ class TimeBox extends StatelessWidget {
             onTap: enabled ? onMinus : null,
           ),
 
-          SizedBox(width: 8.w),
-
-          // hh:mm
-          AppText(
-            text: parts.hhmm,
-            appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          SizedBox(
+            width: 70.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                AppText(
+                  text: parts.hhmm,
+                  appTextTheme:
+                      AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+                ),
+                SizedBox(width: 4.w),
+                AppText(
+                  text: parts.period,
+                  appTextTheme:
+                      AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+                ),
+              ],
+            ),
           ),
-
-          SizedBox(width: 4.w),
-
-          // ص / م
-          AppText(
-            text: parts.period,
-            appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-          ),
-
-          SizedBox(width: 8.w),
 
           // زر +
           MintSquareBtn(
@@ -103,7 +108,6 @@ class TimeBox extends StatelessWidget {
   }
 
   _TimeParts _formatTimeParts(TimeOfDay t) {
-    // صيغة 12 ساعة + ص/م
     final hour12 = t.hourOfPeriod == 0 ? 12 : t.hourOfPeriod;
     final hh = hour12.toString().padLeft(2, '0');
     final mm = t.minute.toString().padLeft(2, '0');
@@ -119,6 +123,7 @@ class TimeBox extends StatelessWidget {
 class _TimeParts {
   final String period;
   final String hhmm;
+
   _TimeParts({
     required this.period,
     required this.hhmm,
@@ -147,40 +152,37 @@ class TimeRangeRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TimeBox(
-              time: start,
-              onPlus: onStartPlus,
-              onMinus: onStartMinus,
-              enabled: true,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TimeBox(
+            time: start,
+            onPlus: onStartPlus,
+            onMinus: onStartMinus,
+            enabled: true,
+          ),
+
+          SizedBox(width: 20.w),
+
+          AppText(
+            text: 'إلى',
+            appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
+              color: AppColor.blackNumberSmallColor,
             ),
+          ),
 
-            SizedBox(width: 20.w),
+          SizedBox(width: 20.w),
 
-            AppText(
-              text: 'إلى',
-              appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
-                color: AppColor.blackNumberSmallColor,
-              ),
-            ),
-
-            SizedBox(width: 20.w),
-
-            // نهاية الحجز
-            TimeBox(
-              time: end,
-              onPlus: onEndPlus,
-              onMinus: onEndMinus,
-              enabled: true,
-            ),
-          ],
-        ),
+          // نهاية الحجز
+          TimeBox(
+            time: end,
+            onPlus: onEndPlus,
+            onMinus: onEndMinus,
+            enabled: true,
+          ),
+        ],
       ),
     );
   }

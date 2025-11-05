@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../constants/image_string.dart';
 import '../../../theme/app_color.dart';
 import '../../../theme/app_text_theme.dart';
 import '../../app_text.dart';
@@ -33,9 +35,21 @@ class TotalBar extends StatelessWidget {
             appTextTheme: AppTextTheme.yellowTextStyle(),
           ),
           SizedBox(width: 12.w),
-          AppText(
-            text: '${total.toStringAsFixed(0)} د.ا',
-            appTextTheme: AppTextTheme.numberLargeTextStyle(),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppText(
+                text: total.toStringAsFixed(0),
+                appTextTheme: AppTextTheme.numberLargeTextStyle(),
+              ),
+              SizedBox(width: 4.w),
+              SvgPicture.asset(
+                AppImages.realSu,
+                width: 15.w,
+                height: 16.w,
+              ),
+            ],
           ),
         ],
       ),

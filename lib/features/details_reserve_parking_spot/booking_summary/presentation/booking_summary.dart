@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/car_small_preview.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_payment_method_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_vehicle_dialog_widget.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/selection_tile.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/visa_small_logo.dart';
-
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
@@ -18,10 +18,8 @@ import '../../../../core/widgets/details_reserve_parking_widget/time_range_row.d
 import '../../../../core/widgets/details_reserve_parking_widget/zone_header.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_image_card_widget.dart';
 import 'controller/booking_summary.dart';
-
 class BookingSummary extends ConsumerWidget {
   const BookingSummary({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingSummaryControllerProvider);
@@ -39,21 +37,20 @@ class BookingSummary extends ConsumerWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
+                    spacing: 15.h,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppText(
                         text: 'ملخص الحجز',
-                        appTextTheme: AppTextTheme.titleLargeTextStyle(),
+                        appTextTheme: AppTextTheme.titleLargeTextStyle()
+                            .copyWith(color: AppColor.blackNumberSmallColor),
                       ),
-                      SizedBox(height: 20.h),
                       ZoneImageCard(),
-                      SizedBox(height: 12.h),
                       ZoneHeader(
                         zoneName: ' المنطقة 013',
                         capacityText: '70/13',
                         showDurationSection: false,
                       ),
-                      SizedBox(height: 20.h),
                       TimeRangeRow(
                         start: state.start,
                         end: state.end,
@@ -62,12 +59,11 @@ class BookingSummary extends ConsumerWidget {
                         onEndMinus: () => controller.decrementEnd(15),
                         onEndPlus: () => controller.incrementEnd(15),
                       ),
-                      SizedBox(height: 12.h),
                       GestureDetector(
                         onTap: () {
                           showBlurBottomSheet(
                             context: context,
-                            child: const ChangeVehicleBottomSheet(),
+                            child: ChangeVehicleBottomSheet(),
                           );
                         },
                         child: SelectionTile(
@@ -76,12 +72,11 @@ class BookingSummary extends ConsumerWidget {
                           trailingImage: CarSmallPreview(),
                         ),
                       ),
-                      SizedBox(height: 12.h),
                       GestureDetector(
                         onTap: () {
                           showBlurBottomSheet(
                             context: context,
-                            child: const ChangePaymentMethodBottomSheet(),
+                            child: ChangePaymentMethodBottomSheet(),
                           );
                         },
                         child: const SelectionTile(
@@ -90,31 +85,28 @@ class BookingSummary extends ConsumerWidget {
                           trailingImage: VisaSmallLogo(),
                         ),
                       ),
-                      SizedBox(height: 24.h),
+
                     ],
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TotalBar(
-                    total: state.total,
-                    label: 'الإجمالي',
-                  ),
-                  SizedBox(height: 12.h),
-                  CustomButtonWidget(
-                    text: 'تأكيد الحجز',
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      size: 21.w,
-                      color: AppColor.whiteColor,
-                    ),
-                    iconLayout: ButtonIconLayout.inline,
-                    iconOnRight: true,
-                  ),
-                ],
+              TotalBar(
+                total: state.total,
+                label: 'الإجمالي',
+              ),
+              SizedBox(height: 12.h),
+              CustomButtonWidget(
+                text: 'تأكيد الحجز',
+                onPressed: () {},
+                icon: Image.asset(
+                  AppImages.arrowIcon,
+                  width: 21.w,
+                  height: 21.w,
+                  color: AppColor.whiteColor,
+                ),
+                iconLayout: ButtonIconLayout.inline,
+                iconOnRight: true,
+                verticalPadding: 15,
               ),
             ],
           ),

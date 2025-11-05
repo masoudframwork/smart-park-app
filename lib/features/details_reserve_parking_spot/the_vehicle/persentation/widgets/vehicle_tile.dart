@@ -12,7 +12,7 @@ class VehicleTile extends StatelessWidget {
   final Color bgColor;
   final Color borderColor;
 
-  final Icon carIcon;
+  final Widget carIcon;
   final String title;
   final TextStyle? textStyle;
 

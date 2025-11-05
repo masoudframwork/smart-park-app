@@ -1,117 +1,10 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:smart/core/constants/image_string.dart';
-// import 'package:smart/core/theme/app_text_theme.dart';
-// import 'package:smart/features/on_boarding/presentation/controller/on_boarding_controller.dart';
-// import 'package:smart/generated/l10n.dart';
-//
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-//
-// import '../../../core/theme/app_color.dart';
-// import '../../../core/widgets/app_text.dart';
-// import '../../../core/widgets/custom_image_widget.dart';
-// import '../../../core/widgets/app_texticon_button.dart';
-//
-// class OnBoardingScreen extends ConsumerWidget {
-//   const OnBoardingScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final controller = ref.watch(onboardingProvider);
-//     final images = [AppImages.intro1, AppImages.intro2, AppImages.intro3];
-//
-//     return Scaffold(
-//       backgroundColor: AppColor.whiteColor,
-//       body: SafeArea(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             SizedBox(
-//               width: 393.w,
-//               height: 580.h,
-//
-//               // width: 393.w,
-//               //  height: 502.h,
-//
-//               child: PageView.builder(
-//                 controller: controller.pageController,
-//                 itemCount: images.length,
-//                 onPageChanged: controller.nextPage,
-//                 itemBuilder: (_, index) => Center(
-//                   child: CustomImageWidget(
-//                     isFlag: true,
-//                     imageUrl: images[index],
-//                     width: 393.w,
-//                     height: 580.h,
-//
-//                     //width: 393.w,
-//                     //  height: 502.h,
-//                     fit: BoxFit.contain,
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             SizedBox(height: 10.h),
-//             AppTextIconButton(
-//               text: S.of(context).skip,
-//               icon: Icons.arrow_back,
-//               onPressed: () {
-//                 ref.read(onboardingProvider).onSkipPressed();
-//               },
-//             ),
-//             SizedBox(height: 25.h),
-//             SmoothPageIndicator(
-//               controller: controller.pageController,
-//               count: images.length,
-//               effect: ExpandingDotsEffect(
-//                 expansionFactor: 2,
-//                 spacing: 6.w,
-//                 radius: 11.r,
-//                 dotHeight: 10.h,
-//                 dotWidth: 18.w,
-//                 activeDotColor: AppColor.yellowContainerColor,
-//                 dotColor: AppColor.yellowContainerColor,
-//               ),
-//             ),
-//             SizedBox(height: 25.h),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Switch(
-//                   value: false,
-//                   onChanged: null,
-//                   inactiveThumbColor: AppColor.whiteColor,
-//                   inactiveTrackColor: AppColor.greyContainerColor,
-//                   trackOutlineColor:
-//                   WidgetStateProperty.all(Colors.transparent),
-//                   trackOutlineWidth: WidgetStateProperty.all(0),
-//                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-//                 ),
-//                 SizedBox(width: 12.w),
-//                 AppText(
-//                   text: S.of(context).doNotDisplayInstructionsAgain,
-//                   appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-//                     fontSize: 14,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/features/on_boarding/presentation/widget/hide_tips_switch.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../../generated/l10n.dart';
 import '../../../../core/theme/app_color.dart';
-import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../core/constants/image_string.dart';
 import '../../../core/widgets/app_texticon_button.dart';
@@ -119,98 +12,78 @@ import 'controller/on_boarding_controller.dart';
 
 class OnBoardingScreen extends ConsumerWidget {
   const OnBoardingScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(onboardingProvider);
-    final images = [AppImages.intro1, AppImages.intro2, AppImages.intro3];
-
+    final state = ref.watch(onboardingControllerProvider);
+    final notifier = ref.read(onboardingControllerProvider.notifier);
+    final images = [
+      AppImages.intro1,
+      AppImages.intro2,
+      AppImages.intro3,
+    ];
     final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: AppColor.whiteColor,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            /// SECTION: الصور (PageView)
-            SizedBox(
-              width: screenWidth,
-              height: 580.h,
-              child: PageView.builder(
-                controller: controller.pageController,
-                itemCount: images.length,
-                onPageChanged: controller.nextPage,
-                itemBuilder: (_, index) => SizedBox(
-                  width: screenWidth,
-                  height: 580.h,
-                  child: CustomImageWidget(
-                    isFlag: true,
-                    imageUrl: images[index],
-                    width: screenWidth,
-                    height: 580.h,
-                    fit: BoxFit.cover, // يغطي يمين/يسار كامل
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 40.h,
+              ),
+              SizedBox(
+                width: screenWidth,
+                height: 580.h,
+                child: PageView.builder(
+                  controller: notifier.pageController,
+                  itemCount: images.length,
+                  onPageChanged: notifier.onPageChanged,
+                  physics: const ClampingScrollPhysics(),
+                  itemBuilder: (_, index) {
+                    return CustomImageWidget(
+                      isFlag: true,
+                      imageUrl: images[index],
+                      width: screenWidth,
+                      height: 580.h,
+                      fit: BoxFit.cover,
+                    );
+                  },
                 ),
               ),
-            ),
 
-            SizedBox(height: 10.h),
-
-            /// SECTION: زر "تخطي"
-            AppTextIconButton(
-              text: S.of(context).skip,
-              icon: Icons.arrow_back,
-              onPressed: () {
-                ref.read(onboardingProvider).onSkipPressed();
-              },
-            ),
-
-            SizedBox(height: 25.h),
-
-            /// SECTION: المؤشر (dots)
-            SmoothPageIndicator(
-              controller: controller.pageController,
-              count: images.length,
-              effect: ExpandingDotsEffect(
-                expansionFactor: 2,
-                spacing: 6.w,
-                radius: 11.r,
-                dotHeight: 10.h,
-                dotWidth: 18.w,
-                activeDotColor: AppColor.yellowContainerColor,
-                dotColor: AppColor.yellowContainerColor,
+              AppTextIconButton(
+                text: state.currentIndex == images.length - 1
+                    ? S.of(context).skip
+                    : S.of(context).skip,
+                icon: Icons.arrow_back,
+                onPressed: notifier.onSkipPressed,
               ),
-            ),
-
-            SizedBox(height: 25.h),
-
-            /// SECTION: السويتش + النص
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Switch(
-                  value: false,
-                  onChanged: null, // لسه مش مفعّل
-                  inactiveThumbColor: AppColor.whiteColor,
-                  inactiveTrackColor: AppColor.greyContainerColor,
-                  trackOutlineColor:
-                      WidgetStateProperty.all(Colors.transparent),
-                  trackOutlineWidth: WidgetStateProperty.all(0),
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              SizedBox(
+                height: 20.h,
+              ),
+              SmoothPageIndicator(
+                controller: notifier.pageController,
+                count: images.length,
+                effect: ExpandingDotsEffect(
+                  expansionFactor: 2,
+                  spacing: 6.w,
+                  radius: 11.r,
+                  dotHeight: 10.h,
+                  dotWidth: 18.w,
+                  activeDotColor: AppColor.yellowContainerColor,
+                  dotColor: AppColor.yellowContainerColor,
                 ),
-                SizedBox(width: 12.w),
-                AppText(
-                  text: S.of(context).doNotDisplayInstructionsAgain,
-                  appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              HideTipsSwitch(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
+

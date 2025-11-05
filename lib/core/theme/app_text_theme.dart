@@ -22,7 +22,7 @@ class AppTextTheme {
 //الاجمالي
   static TextStyle yellowTextStyle() => TextStyle(
         fontSize: 18,
-        color: AppColor.blackColor,
+        color: AppColor.blackTextColor,
         fontWeight: FontWeight.w700,
         fontFamily: 'IBM Plex Sans Arabic',
       );
@@ -31,7 +31,7 @@ class AppTextTheme {
   static TextStyle titleLargeTextStyle() => TextStyle(
         fontSize: 26,
         color: AppColor.blackColor,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
         fontFamily: 'IBM Plex Sans Arabic',
       );
   // 🏷️ العناوين المتوسطة
@@ -53,7 +53,7 @@ class AppTextTheme {
   // 💰 السعر / القيمة الرقمية
   static TextStyle numberLargeTextStyle() => TextStyle(
         fontSize: 25,
-        color: AppColor.blackColor,
+        color: AppColor.blackNumberSmallColor,
         fontWeight: FontWeight.w700,
         fontFamily: 'IBM Plex Sans Arabic',
       );

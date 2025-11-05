@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_bottom_sheet.dart';
@@ -25,10 +27,8 @@ class ChangeVehicleBottomSheet extends StatelessWidget {
             title: 'نيسان باتفايندر 2023 / أسود',
             tileWidth: 318,
             tileHeight: 66,
-            carIcon: Icon(
-              Icons.directions_car,
-              color: AppColor.blackColor,
-              size: 24,
+            carIcon: SvgPicture.asset(
+              AppImages.carVehicleCar2,
             ),
             textStyle: AppTextTheme.titleSmallTextStyle().copyWith(
               color: AppColor.blackColor,
@@ -42,10 +42,8 @@ class ChangeVehicleBottomSheet extends StatelessWidget {
             title: 'تويوتا كورولا 2024 / أحمر',
             tileWidth: 318,
             tileHeight: 66,
-            carIcon: const Icon(
-              Icons.directions_car,
-              color: AppColor.secondaryContainerColor,
-              size: 24,
+            carIcon: SvgPicture.asset(
+              AppImages.carVehicleCar1,
             ),
             textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
               decoration: TextDecoration.none,
@@ -84,20 +82,12 @@ class _AddNewVehicleTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.w),
       alignment: Alignment.centerRight,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        spacing: 12.w,
         children: [
-          AppText(
-            text: 'مركبة أخرى',
-            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-              decoration: TextDecoration.none,
-              color: AppColor.blackNumberSmallColor,
-            ),
-          ),
           Container(
             width: 28.w,
             height: 28.w,
             decoration: BoxDecoration(
-              color: AppColor.whiteColor,
               shape: BoxShape.circle,
               border: Border.all(
                 color: AppColor.primaryColor,
@@ -109,6 +99,13 @@ class _AddNewVehicleTile extends StatelessWidget {
               Icons.add,
               size: 18.w,
               color: AppColor.primaryColor,
+            ),
+          ),
+          AppText(
+            text: 'مركبة أخرى',
+            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+              decoration: TextDecoration.none,
+              color: AppColor.blackNumberSmallColor,
             ),
           ),
         ],

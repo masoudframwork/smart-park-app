@@ -85,6 +85,18 @@ class HomeController extends ChangeNotifier {
     _model = _model.copyWith(selectedMarker: null, selectedMarkerIndex: -1);
     notifyListeners();
   }
+
+  void openSearch() {
+    _model = _model.copyWith(isSearchOpen: true);
+    notifyListeners();
+  }
+
+  void closeSearch() {
+    _model = _model.copyWith(isSearchOpen: false);
+    notifyListeners();
+  }
+
+
 }
 
 final homeControllerProvider = ChangeNotifierProvider(

@@ -35,8 +35,12 @@ class PaymentScreen extends StatelessWidget {
                     children: [
                       const StepsHeader(active: 3),
                       SizedBox(height: 24.h),
-                      const SectionTitle(
-                        icon: Icons.payment_outlined,
+                      SectionTitle(
+                        leading: Image.asset(
+                          AppImages.card,
+                          width: 26.w,
+                          height: 21.h,
+                        ),
                         title: 'اختر طريقة الدفع',
                       ),
                       SizedBox(height: 16.h),

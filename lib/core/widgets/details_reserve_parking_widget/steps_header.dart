@@ -160,10 +160,10 @@ class _StepLabel extends StatelessWidget {
     return AppText(
       text: text,
       appTextTheme: AppTextTheme.numberSmallTextStyle().copyWith(
-        color: isPassedOrActive
-            ? AppColor.primaryColor
-            : AppColor.greyDividerColor,
-      ),
+          color: isPassedOrActive
+              ? AppColor.primaryColor
+              : AppColor.greyDividerColor,
+          fontSize: 10),
     );
   }
 }

@@ -5,6 +5,7 @@ import '../../../core/constants/image_string.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/widgets/app_splash_background.dart';
 import '../../../core/widgets/custom_image_widget.dart';
+import '../../on_boarding/presentation/controller/onboarding_prefs_providers.dart';
 import 'controller/splash_controller.dart';
 
 class SplashScreen extends ConsumerWidget {
@@ -13,10 +14,23 @@ class SplashScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(splashControllerProvider);
+    final onboardingHiddenAsync = ref.watch(isOnboardingHiddenProvider);
 
     ref.listen(splashControllerProvider, (_, next) {
       if (next.isFinished && context.mounted) {
-        context.go(RoutePaths.onBoardingScreen);
+        onboardingHiddenAsync.when(
+          data: (hidden) {
+            if (hidden) {
+              context.go(RoutePaths.bottomNavBar);
+            } else {
+              context.go(RoutePaths.onBoardingScreen);
+            }
+          },
+          loading: () {},
+          error: (_, __) {
+            context.go(RoutePaths.onBoardingScreen);
+          },
+        );
       }
     });
 

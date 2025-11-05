@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/details_reserve_parking_spot/the_vehicle/persentation/widgets/section_title.dart';
 import 'package:smart/features/details_reserve_parking_spot/the_vehicle/persentation/widgets/vehicle_tile.dart';
 
@@ -34,9 +36,11 @@ class TheVehicleScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       const StepsHeader(active: 2),
-                      SizedBox(height: 16.h),
-                      const SectionTitle(
-                        icon: Icons.local_shipping,
+                      SizedBox(height: 20.h),
+                      SectionTitle(
+                        leading: SvgPicture.asset(
+                          AppImages.car,
+                        ),
                         title: 'اختر المركبة',
                       ),
                       SizedBox(height: 12.h),
@@ -51,10 +55,8 @@ class TheVehicleScreen extends StatelessWidget {
                           bgColor: AppColor.secondaryColor,
                           borderColor: AppColor.secondaryColor,
                           title: 'نيسان باتفايندر 2023 / أسود',
-                          carIcon: Icon(
-                            Icons.directions_car,
-                            color: AppColor.blackColor,
-                            size: 24.w,
+                          carIcon: SvgPicture.asset(
+                            AppImages.carVehicleCar2,
                           ),
                           textStyle:
                               AppTextTheme.titleSmallTextStyle().copyWith(
@@ -68,10 +70,9 @@ class TheVehicleScreen extends StatelessWidget {
                         bgColor: AppColor.greysCardColor,
                         borderColor: AppColor.contanearGreyColor,
                         title: 'تويوتا كورولا 2024 / أحمر',
-                        carIcon: Icon(
-                          Icons.directions_car,
-                          color: AppColor.secondaryContainerColor,
-                          size: 24.w,
+
+                        carIcon: SvgPicture.asset(
+                          AppImages.carVehicleCar1,
                         ),
                         textStyle: AppTextTheme.titleMediumTextStyle(),
                         isSelected: false,

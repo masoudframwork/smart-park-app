@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class CacheKeys {
   CacheKeys._internal();
 
@@ -7,4 +9,14 @@ class CacheKeys {
 
   final String locale = 'locale';
   final String theme = 'theme';
+//
+  final String onboardingHidden = 'onboarding_hidden';
+
+
+  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> homeNavKey   = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> bookingNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> walletNavKey  = GlobalKey<NavigatorState>();
+
+
 }

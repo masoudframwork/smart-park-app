@@ -8,4 +8,6 @@ class RoutePaths {
   static const String theVehicleScreen = '/theVehicleScreen';
   static const String paymentScreen = '/paymentScreen';
   static const String bookingSummary = '/bookingSummary';
+  static const String voiceToTextScreen = '/voiceToTextScreen';
+
 }

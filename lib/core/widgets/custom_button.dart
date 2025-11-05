@@ -142,7 +142,7 @@ class CustomButtonWidget extends StatelessWidget {
       final children = <Widget>[
         if (!iconOnRight)
           Padding(
-            padding: EdgeInsetsDirectional.only(end: 8.w),
+            padding: EdgeInsetsDirectional.only(end: verticalPadding.w),
             child: SizedBox(
               height: 24.w,
               width: 24.w,
@@ -155,7 +155,7 @@ class CustomButtonWidget extends StatelessWidget {
         ),
         if (iconOnRight)
           Padding(
-            padding: EdgeInsetsDirectional.only(start: 8.w),
+            padding: EdgeInsetsDirectional.only(start: verticalPadding.w),
             child: SizedBox(
               height: 24.w,
               width: 24.w,
@@ -185,8 +185,8 @@ class CustomButtonWidget extends StatelessWidget {
           ),
           if (icon != null)
             Positioned(
-              right: iconOnRight ? 16.w : null,
-              left: iconOnRight ? null : 16.w,
+              right: iconOnRight ? verticalPadding.w : null,
+              left: iconOnRight ? null : verticalPadding.w,
               child: SizedBox(
                 height: 24.w,
                 width: 24.w,

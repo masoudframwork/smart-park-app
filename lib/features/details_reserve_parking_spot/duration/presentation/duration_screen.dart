@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/details_reserve_parking_spot/duration/presentation/widgets/duration_slider.dart';
-
+import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
-
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
@@ -18,7 +18,6 @@ import 'controller/duration_controller.dart';
 
 class DurationScreen extends ConsumerWidget {
   const DurationScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(durationControllerProvider);
@@ -29,14 +28,15 @@ class DurationScreen extends ConsumerWidget {
         backgroundColor: AppColor.whiteColor,
         appBar: const CustomAppBar(),
         body: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(16.h),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       // الخطوات Stepper
                       const StepsHeader(active: 1),
@@ -58,6 +58,7 @@ class DurationScreen extends ConsumerWidget {
                         onPlus: () => controller.setHours(state.hours + 1),
                         onChanged: (v) => controller.setHours(v.round()),
                       ),
+
                       SizedBox(height: 16.h),
                       TimeRangeRow(
                         start: state.start,
@@ -89,10 +90,8 @@ class DurationScreen extends ConsumerWidget {
                         context: context,
                       );
                     },
-                    icon: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 16.w,
-                      color: AppColor.whiteColor,
+                    icon: SvgPicture.asset(
+                      AppImages.arrawButton,
                     ),
                     iconOnRight: false,
                   ),

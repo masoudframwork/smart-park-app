@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 
 class CarSmallPreview extends StatelessWidget {
@@ -8,14 +10,8 @@ class CarSmallPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 60.w,
-      height: 28.h,
-      child: Icon(
-        Icons.directions_car,
-        size: 28.w,
-        color: AppColor.primaryColor,
-      ),
+    return SvgPicture.asset(
+      AppImages.carVehicleCar2,
     );
   }
 }

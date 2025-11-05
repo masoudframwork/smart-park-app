@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../../../features/details_reserve_parking_spot/duration/presentation/widgets/duration_slider.dart';
 import '../../constants/image_string.dart';
 import '../../theme/app_color.dart';
 import '../../theme/app_text_theme.dart';
@@ -38,7 +40,7 @@ class ZoneHeader extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: AppColor.secondaryButtonColor,
-                borderRadius: BorderRadius.circular(6.r),
+                borderRadius: BorderRadius.circular(14.r),
               ),
               child: Row(
                 children: [
@@ -61,10 +63,10 @@ class ZoneHeader extends StatelessWidget {
         SizedBox(height: 6.h),
         Row(
           children: [
-            Icon(
-              Icons.directions_car,
-              size: 18.w,
-              color: AppColor.primaryButtonColor,
+            SvgPicture.asset(
+              AppImages.avParkings,
+              width: 19.w,
+              height: 14.w,
             ),
             SizedBox(width: 6.w),
             AppText(
@@ -78,10 +80,10 @@ class ZoneHeader extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                Icons.access_time,
-                color: AppColor.primaryColor,
-                size: 28.w,
+              SvgPicture.asset(
+                AppImages.time,
+                width: 28.w,
+                height: 28.w,
               ),
               SizedBox(width: 8.w),
               AppText(

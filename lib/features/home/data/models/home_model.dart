@@ -8,6 +8,7 @@ class HomeModel {
   final String? error;
   final ParkingLocation? selectedMarker;
   final int selectedMarkerIndex;
+  final bool isSearchOpen;
 
   HomeModel({
     this.userLocation,
@@ -16,6 +17,8 @@ class HomeModel {
     this.error,
     this.selectedMarker,
     this.selectedMarkerIndex = -1,
+    this.isSearchOpen = false,
+
   });
 
   // Initial empty state
@@ -27,6 +30,8 @@ class HomeModel {
       error: null,
       selectedMarker: null,
       selectedMarkerIndex: -1,
+      isSearchOpen: false,
+
     );
   }
 
@@ -39,6 +44,7 @@ class HomeModel {
       error: null,
       selectedMarker: null,
       selectedMarkerIndex: -1,
+      isSearchOpen: false,
     );
   }
 
@@ -164,6 +170,7 @@ class HomeModel {
     String? error,
     ParkingLocation? selectedMarker,
     int? selectedMarkerIndex,
+    bool? isSearchOpen,
   }) {
     return HomeModel(
       userLocation: userLocation ?? this.userLocation,
@@ -172,6 +179,8 @@ class HomeModel {
       error: error,
       selectedMarker: selectedMarker,
       selectedMarkerIndex: selectedMarkerIndex ?? this.selectedMarkerIndex,
+
+      isSearchOpen: isSearchOpen ?? this.isSearchOpen,
     );
   }
 }

@@ -19,7 +19,7 @@ class AppColor {
   static const lightBackgroundColor = Color(0xFFFEFCFF);
   static const greenTextColor = Color(0xFF085D3A);
   static const lightPurpleColor = Color(0xFFF9F5FA);
-
+  static const blackSubColor = Color(0xFF161616);
   static const secondaryContainerColor = Color(0xFFD92D20);
   static const yellowContainerColor = Color(0xFFFEC84B);
   //6 design
@@ -27,6 +27,8 @@ class AppColor {
   static const sliderInactiveColor = Color(0xFFF2E9F5);
   static const shadowOpticalColor = Color(0xFF000000);
   static const blackColor = Color(0xFF0D121C);
+  static const blackTextColor = Color(0xFF384250);
+
   static const greyDividerColor = Color(0xFFD2D6DB);
   static const greyColor = Color(0xFF808080);
   static const greyTextColor = Color(0xFF6C737F);
@@ -38,8 +40,12 @@ class AppColor {
   static const contanearGreyColor = Color(0xFFE5E7EB);
   static const greysCardColor = Color(0xFFF9F5FA);
   static const greysCloseColor = Color(0xFFF3F4F6);
-
+  static const shadowTextFieldColor = Color(0x1018282E);
   static const whiteColor = Color(0xFFFFFFFF);
   static const whiteContainerColor = Color(0xFFF5F5F5);
   static const whiteTextColor = Color(0xFFF5F5F5);
+
+
+
+
 }

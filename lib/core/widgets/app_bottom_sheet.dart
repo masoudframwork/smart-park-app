@@ -109,7 +109,7 @@ class _SheetHeader extends StatelessWidget {
                 text: title,
                 appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                   fontWeight: FontWeight.w600,
-                  color: AppColor.blackColor,
+                  color: AppColor.blackNumberSmallColor,
                   decoration: TextDecoration.none,
                 ),
               ),
@@ -130,9 +130,10 @@ class _SheetHeader extends StatelessWidget {
             AppText(
               text: title,
               appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.blackColor,
+                fontWeight: FontWeight.w700,
+                color: AppColor.blackNumberSmallColor,
                 decoration: TextDecoration.none,
+                fontSize: 18,
               ),
             ),
             _CloseButtonCircle(
@@ -159,22 +160,11 @@ class _CloseButtonCircle extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.greysCloseColor,
           shape: BoxShape.circle,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.08),
-              blurRadius: 6,
-              offset: const Offset(0, 2),
-            ),
-          ],
-          border: Border.all(
-            color: AppColor.contanearGreyColor,
-            width: 0.8,
-          ),
         ),
         alignment: Alignment.center,
         child: Icon(
           Icons.close,
-          size: 15.w,
+          size: 16.w,
         ),
       ),
     );

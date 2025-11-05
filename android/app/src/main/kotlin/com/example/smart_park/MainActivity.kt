@@ -1,4 +1,4 @@
-package com.smartbark.app
+package com.smartparking.app
 
 import io.flutter.embedding.android.FlutterActivity
 
