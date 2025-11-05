@@ -34,45 +34,55 @@ class HomeBottomNavigationBar extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () => ref.read(bottomNavBarController).changeIndex(item.index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            duration: Duration(milliseconds: 220),
-            curve: Curves.easeOut,
-            height: 2,
-            width: 70.w,
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? AppColor.selectedTabTextColor
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(8),
+      child: Container(
+        decoration: BoxDecoration(
+          // color: isSelected
+          //     ? AppColor.selectedTabTextColor
+          //     : Colors.transparent,
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedContainer(
+              duration: Duration(milliseconds: 220),
+              curve: Curves.easeOut,
+              height: 2,
+              width: 70.w,
+              decoration: BoxDecoration(
+
+                color: isSelected
+                    ? AppColor.selectedTabTextColor
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
+            const SizedBox(height: 8),
 
-          SvgImageWidget(
-            item.icon,
-            height: 21,
-            width: 21,
-            fit: BoxFit.cover,
-            color: isSelected
-                ? AppColor.selectedTabTextColor
-                : AppColor.greyTextColor,
-          ),
-
-          const SizedBox(height: 5),
-
-          // النص
-          AppText(
-            text: item.title,
-            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            SvgImageWidget(
+              item.icon,
+              height: 21,
+              width: 21,
+              fit: BoxFit.cover,
               color: isSelected
                   ? AppColor.selectedTabTextColor
                   : AppColor.greyTextColor,
             ),
-          ),
-        ],
+
+            const SizedBox(height: 5),
+
+            // النص
+            AppText(
+              text: item.title,
+              appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                color: isSelected
+                    ? AppColor.selectedTabTextColor
+                    : AppColor.greyTextColor,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
