@@ -75,27 +75,47 @@ class TimeBox extends StatelessWidget {
             label: '−',
             onTap: enabled ? onMinus : null,
           ),
+          // SizedBox(
+          //   width: 70.w,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       AppText(
+          //         text: parts.hhmm,
+          //         appTextTheme:
+          //         AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          //       ),
+          //       SizedBox(width: 4.w),
+          //       AppText(
+          //         text: parts.period,
+          //         appTextTheme:
+          //         AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          //       ),
+          //     ],
+          //   ),
+          // ),
 
-          SizedBox(
-            width: 70.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                AppText(
-                  text: parts.hhmm,
-                  appTextTheme:
-                      AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-                ),
-                SizedBox(width: 4.w),
-                AppText(
-                  text: parts.period,
-                  appTextTheme:
-                      AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-                ),
-              ],
-            ),
+      SizedBox(
+        width: 70.w,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AppText(
+                text: parts.hhmm,
+                appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+              ),
+              SizedBox(width: 4.w),
+              AppText(
+                text: parts.period,
+                appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+              ),
+            ],
           ),
+        ),
+      ),
 
           // زر +
           MintSquareBtn(

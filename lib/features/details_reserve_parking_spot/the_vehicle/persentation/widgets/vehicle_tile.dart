@@ -66,7 +66,6 @@ class VehicleTile extends StatelessWidget {
         height: 24.w,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: AppColor.whiteColor,
           border: Border.all(
             color: AppColor.primaryColor,
             width: 2,
