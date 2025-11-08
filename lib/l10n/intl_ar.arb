@@ -1,0 +1,32 @@
+{
+  "@@locale": "ar",
+  "dio_timeout": "⏱️ انتهت مهلة الاتصال.",
+  "@dio_timeout": {},
+  "dio_ssl_error": "🔒 خطأ في شهادة SSL.",
+  "@dio_ssl_error": {},
+  "dio_request_cancelled": "❌ تم إلغاء الطلب.",
+  "@dio_request_cancelled": {},
+  "dio_unauthorized": "🔐 غير مصرح. يرجى تسجيل الدخول مرة أخرى.",
+  "@dio_unauthorized": {},
+  "dio_not_found": "🔎 غير موجود.",
+  "@dio_not_found": {},
+  "dio_server_error": "🔥 خطأ في الخادم. حاول لاحقًا.",
+  "@dio_server_error": {},
+  "dio_generic_error": "⚠️ خطأ: حدث خطأ أثناء جلب البيانات",
+  "@dio_generic_error": {},
+  "dio_no_connection": "📴 لا يوجد اتصال بالإنترنت.",
+  "@dio_no_connection": {},
+  "dio_unexpected_error": "❗ حدث خطأ غير متوقع.",
+  "@dio_unexpected_error": {},
+  "unknonError": "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",
+  "@unknonError": {},
+  "sampleLogo": "SAMPLE LOGO",
+  "skip": "تخطي",
+    "home": "الرئيسية",
+  "@home": {},
+  "wallet": "المحفظة",
+  "@wallet": {},
+  "bookings": "الحجوزات",
+  "@bookings": {},
+  "doNotDisplayInstructionsAgain": "لا تعرض التعليمات مرة أخرى"
+}

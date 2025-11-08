@@ -1,15 +1,12 @@
-class AppRoutes {
-  AppRoutes._internal();
-
-  static final AppRoutes _instance = AppRoutes._internal();
-
-  factory AppRoutes() => _instance;
-
-  static AppRoutes get instance => _instance;
+class RoutePaths {
+  RoutePaths._internal();
 
   static const String splashScreen = '/';
-  static const String onboardingScreen = '/onboardingScreen';
-
-//riverpod_exam_fiel
-  static const String examScreen = 'examScreen';
+  static const String onBoardingScreen = '/onBoardingScreen';
+  static const String bottomNavBar = '/bottomNavBar';
+  static const String durationScreen = '/durationScreen';
+  static const String theVehicleScreen = '/theVehicleScreen';
+  static const String paymentScreen = '/paymentScreen';
+  static const String bookingSummary = '/bookingSummary';
+  static const String voiceToTextScreen = '/voiceToTextScreen';
 }
