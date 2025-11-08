@@ -1,11 +1,11 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 
+import '../../../../../core/constants/image_string.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCardImage extends StatelessWidget {
@@ -70,13 +70,21 @@ class ParkingCardImage extends StatelessWidget {
         color: AppColor.secondaryButtonColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
-      child: AppText(
-        text: 'متاح الأن',
-        appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-          color: AppColor.primaryButtonColor,
-          fontSize: 10.sp,
-          fontWeight: FontWeight.w600,
-        ),
+      child: Row(
+        spacing: 5.w,
+        children: [
+          SvgPicture.asset(
+            AppImages.available,
+          ),
+          AppText(
+            text: 'متاح الأن',
+            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+              color: AppColor.primaryButtonColor,
+              fontSize: 10.sp,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../features/details_reserve_parking_spot/duration/presentation/widgets/duration_slider.dart';
 import '../../constants/image_string.dart';
 import '../../theme/app_color.dart';
 import '../../theme/app_text_theme.dart';

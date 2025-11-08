@@ -74,7 +74,9 @@ class ParkingCardInfo extends StatelessWidget {
   Widget _buildLocationInfo() {
     return AppText(
       text: parkingArea.location,
-      appTextTheme: AppTextTheme.bodySmallTextStyle(),
+      appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+        color: AppColor.blackNumberSmallColor,
+      ),
       textAlign: TextAlign.start,
     );
   }

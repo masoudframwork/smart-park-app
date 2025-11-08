@@ -12,11 +12,9 @@ class CacheKeys {
 //
   final String onboardingHidden = 'onboarding_hidden';
 
-
-  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> homeNavKey   = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> rootNavigatorKey =
+      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> homeNavKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> bookingNavKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> walletNavKey  = GlobalKey<NavigatorState>();
-
-
+  final GlobalKey<NavigatorState> walletNavKey = GlobalKey<NavigatorState>();
 }

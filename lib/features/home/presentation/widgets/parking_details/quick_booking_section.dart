@@ -7,7 +7,6 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details/info_row.dart';
 
-
 class QuickBookingSection extends StatelessWidget {
   final VoidCallback? onBookNow;
 

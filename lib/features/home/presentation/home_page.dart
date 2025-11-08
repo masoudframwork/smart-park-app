@@ -1,4 +1,3 @@
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -209,30 +208,32 @@ class _TopControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Container(
-          width: 34.w,
-          height: 34.w,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: AppColor.whiteColor,
-            borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(
-              color: AppColor.contanearGreyColor,
-              width: 1,
-            ),
-          ),
-          child: Material(
-            color: Colors.transparent,
-            child: InkWell(
+        Align(
+          alignment: Alignment.topLeft,
+          child: Container(
+            width: 34.w,
+            height: 34.w,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: AppColor.whiteColor,
               borderRadius: BorderRadius.circular(10.r),
-              onTap: onMenuTap,
-              child: Center(
-                child: Icon(
-                  Icons.menu,
-                  size: 22.w,
-                  color: AppColor.blackColor,
+              border: Border.all(
+                color: AppColor.contanearGreyColor,
+                width: 1,
+              ),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(10.r),
+                onTap: onMenuTap,
+                child: Center(
+                  child: Icon(
+                    Icons.menu,
+                    size: 22.w,
+                    color: AppColor.blackColor,
+                  ),
                 ),
               ),
             ),

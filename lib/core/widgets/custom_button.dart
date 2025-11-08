@@ -77,6 +77,7 @@ import '../theme/app_text_theme.dart';
 import 'app_text.dart';
 
 enum ButtonType { elevated, outlined }
+
 enum ButtonIconLayout { separate, inline }
 
 class CustomButtonWidget extends StatelessWidget {
@@ -129,7 +130,6 @@ class CustomButtonWidget extends StatelessWidget {
     final TextStyle baseStyle = type == ButtonType.elevated
         ? AppTextTheme.mainButtonTextStyle()
         : AppTextTheme.secondaryButtonTextStyle();
-
 
     final TextStyle effectiveTextStyle = (textStyle ?? baseStyle).copyWith(
       fontSize: fontSize != null ? fontSize!.sp : null,
@@ -215,23 +215,23 @@ class CustomButtonWidget extends StatelessWidget {
 
     final ButtonStyle style = type == ButtonType.outlined
         ? OutlinedButton.styleFrom(
-      side: BorderSide(
-        color: borderColor ?? AppColor.primaryColor,
-        width: 1,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: radius,
-      ),
-      padding: EdgeInsets.zero,
-    )
+            side: BorderSide(
+              color: borderColor ?? AppColor.primaryColor,
+              width: 1,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: radius,
+            ),
+            padding: EdgeInsets.zero,
+          )
         : ElevatedButton.styleFrom(
-      backgroundColor: backgroundColor ?? AppColor.primaryColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: radius,
-      ),
-      padding: EdgeInsets.zero,
-      elevation: 0,
-    );
+            backgroundColor: backgroundColor ?? AppColor.primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: radius,
+            ),
+            padding: EdgeInsets.zero,
+            elevation: 0,
+          );
 
     return Padding(
       padding: outerPadding ?? EdgeInsets.zero,
@@ -240,15 +240,15 @@ class CustomButtonWidget extends StatelessWidget {
         height: height.h,
         child: type == ButtonType.outlined
             ? OutlinedButton(
-          onPressed: onPressed,
-          style: style,
-          child: child,
-        )
+                onPressed: onPressed,
+                style: style,
+                child: child,
+              )
             : ElevatedButton(
-          onPressed: onPressed,
-          style: style,
-          child: child,
-        ),
+                onPressed: onPressed,
+                style: style,
+                child: child,
+              ),
       ),
     );
   }

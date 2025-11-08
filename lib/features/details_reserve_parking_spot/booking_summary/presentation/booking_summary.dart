@@ -18,6 +18,7 @@ import '../../../../core/widgets/details_reserve_parking_widget/time_range_row.d
 import '../../../../core/widgets/details_reserve_parking_widget/zone_header.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_image_card_widget.dart';
 import 'controller/booking_summary.dart';
+
 class BookingSummary extends ConsumerWidget {
   const BookingSummary({super.key});
   @override
@@ -85,7 +86,6 @@ class BookingSummary extends ConsumerWidget {
                           trailingImage: VisaSmallLogo(),
                         ),
                       ),
-
                     ],
                   ),
                 ),

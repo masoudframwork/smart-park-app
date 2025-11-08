@@ -240,7 +240,6 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputAction,
     this.onFieldSubmitted,
     this.obscuringCharacter,
-
     this.enableShadow = false,
     this.shadowTextFieldColor,
     this.shadowBlur = 100,
@@ -253,7 +252,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final double r = (borderRadius ?? 2).r;
     final Color effectiveShadowColor =
-    (shadowTextFieldColor ?? const Color(0xFF101828)).withOpacity(1.0);
+        (shadowTextFieldColor ?? const Color(0xFF101828)).withOpacity(1.0);
 
     final input = TextFormField(
       obscuringCharacter: obscuringCharacter ?? "*",
@@ -311,7 +310,8 @@ class CustomTextFormField extends StatelessWidget {
             color: borderSideColor ?? AppColor.greyBorderColor,
           ),
         ),
-        hintStyle: hintStyle ?? TextStyle(color: AppColor.blackNumberSmallColor),
+        hintStyle:
+            hintStyle ?? TextStyle(color: AppColor.blackNumberSmallColor),
         hintText: hintText,
         suffixIconColor: suffixIconColor,
         fillColor: backgroundColor ?? Colors.white,

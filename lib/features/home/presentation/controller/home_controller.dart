@@ -95,8 +95,6 @@ class HomeController extends ChangeNotifier {
     _model = _model.copyWith(isSearchOpen: false);
     notifyListeners();
   }
-
-
 }
 
 final homeControllerProvider = ChangeNotifierProvider(

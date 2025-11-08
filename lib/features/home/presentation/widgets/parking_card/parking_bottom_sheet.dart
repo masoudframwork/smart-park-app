@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import '../../../../../core/constants/image_string.dart';
-import '../../../../../core/widgets/svg_image_widget.dart';
 import '../../controller/bottom_sheet_controller.dart';
 import 'parking_card.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ParkingBottomSheet extends ConsumerWidget {
   const ParkingBottomSheet({super.key});
@@ -24,173 +25,110 @@ class ParkingBottomSheet extends ConsumerWidget {
           onPressed: () => ref.read(bottomSheetProvider).show(),
           backgroundColor: AppColor.primaryColor,
           child:
-          Icon(Icons.info_outline, color: AppColor.whiteColor, size: 28.w),
+              Icon(Icons.info_outline, color: AppColor.whiteColor, size: 28.w),
         ),
       );
     }
 
     final parkingAreas = ref.read(bottomSheetProvider).parkingAreas;
 
-    return Positioned(
-      bottom: 0,
-      left: 0,
-      right: 0,
+    final hours = ref.watch(parkingDurationProvider);
+
+    return Positioned.fill(
       child: GestureDetector(
-        onVerticalDragUpdate: (details) {
-          if (details.primaryDelta! > 10) {
-            ref.read(bottomSheetProvider).hide();
-          }
-        },
+        onTap: () => ref.read(bottomSheetProvider).hide(),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 17.w),
-          decoration: BoxDecoration(
-            color: AppColor.lightPurpleColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24.r),
-              topRight: Radius.circular(24.r),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-                offset: const Offset(0, -2),
-              ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 12.h),
-                width: 40.w,
-                height: 4.h,
+          color: Colors.black.withOpacity(0.4),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: GestureDetector(
+              onVerticalDragEnd: (details) {
+                if (details.primaryVelocity != null &&
+                    details.primaryVelocity! > 200) {
+                  ref.read(bottomSheetProvider).hide();
+                }
+              },
+              child: Container(
+                height: 454.h,
                 decoration: BoxDecoration(
-                  color: AppColor.greyContainerColor,
-                  borderRadius: BorderRadius.circular(2.r),
+                  color: AppColor.lightPurpleColor,
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColor.blackColor.withOpacity(0.30),
+                      blurRadius: 10,
+                      offset: const Offset(0, -2),
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(height: 16.h),
-              Row(
-                spacing: 13.w,
-                children: [
-                  SvgImageWidget(
-                    AppImages.timeStop,
-                    width: 28.1.w,
-                    height: 28.1.w,
-                  ),
-                  AppText(
-                    text: 'مدة الوقوف',
-                    appTextTheme: AppTextTheme.bodyLargeTextStyle()
-                        .copyWith(color: AppColor.blackNumberSmallColor),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    final double sliderValue = 40;
-
-                    return Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-
-                          children: [
-                            SizedBox(height: 35.h),
-                            SliderTheme(
-                              data: SliderThemeData(
-                            activeTrackColor: AppColor.primaryColor,
-                            inactiveTrackColor: AppColor.sliderInactiveColor,
-                            thumbColor: AppColor.primaryColor,
-                            trackHeight: 7.0,
-                            trackShape: const RectangularSliderTrackShape(),
-                            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
-
-                                overlayShape: RoundSliderOverlayShape(
-                                  overlayRadius: 20.r,
-                                ),
-                              ),
-                              child: Slider(
-                                value: sliderValue,
-                                min: 0,
-                                max: 60,
-                                onChanged: (value) {},
-                              ),
-                            ),
-                            // SliderTheme(
-                            //   data: SliderTheme.of(context).copyWith(
-                            //     activeTrackColor: AppColor.primaryColor,
-                            //     inactiveTrackColor: AppColor.sliderInactiveColor,
-                            //     thumbColor: AppColor.primaryColor,
-                            //     trackHeight: 7.0,
-                            //     trackShape: const RectangularSliderTrackShape(),
-                            //     thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12),
-                            //   ),
-                            //   child: Expanded(
-                            //     child: Slider(
-                            //       padding: EdgeInsets.symmetric(horizontal: 1.w),
-                            //       //value: hours.toDouble(),
-                            //       value: sliderValue,
-                            //       min: 1,
-                            //       max: 24,
-                            //       onChanged: (onChange){},
-                            //     ),
-                            //   ),
-                            // ),
-
-
-
-
-                          ],
-                        ),
-                        Positioned(
-                          left: sliderValue + 58.w,
-                          top: 0,
-                          child: Column(
-                            children: [
-                              AppText(
-                                text: sliderValue.toInt().toString(),
-                                appTextTheme:
-                                AppTextTheme.numberSmallTextStyle()
-                                    .copyWith(
-                                    fontSize: 16,
-                                    color: AppColor.blackColor,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              AppText(
-                                text: 'دقائق',
-                                appTextTheme:
-                                AppTextTheme.bodySmallTextStyle().copyWith(
-                                  color: AppColor.greyColor,
-                                  fontSize: 10.sp,
-                                  fontFamily: 'IBM Plex Sans Arabic',
-                                ),
-                              ),
-                            ],
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 12.h),
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: 172.w,
+                          height: 5.h,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF000000),
+                            borderRadius: BorderRadius.circular(3.r),
                           ),
                         ),
-                      ],
-                    );
-                  },
+                      ),
+                      SizedBox(height: 14.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SvgPicture.asset(
+                            AppImages.time,
+                            width: 28.1.w,
+                            height: 28.1.w,
+                          ),
+                          SizedBox(width: 10.w),
+                          AppText(
+                            text: 'مدة الوقوف',
+                            appTextTheme:
+                                AppTextTheme.bodyLargeTextStyle().copyWith(
+                              color: AppColor.blackNumberSmallColor,
+                            ),
+                          ),
+                          SizedBox(height: 2.h),
+                        ],
+                      ),
+                      SizedBox(height: 32.h),
+                      _HoursSliderSynced(
+                        value: hours,
+                        min: 1,
+                        max: 12,
+                        divisions: 11,
+                        unitTextBuilder: _arabicHoursUnit,
+                        onChanged: (v) =>
+                            ref.read(parkingDurationProvider.notifier).set(v),
+                      ),
+                      SizedBox(height: 20.h),
+                      Expanded(
+                        child: ListView.separated(
+                          clipBehavior: Clip.none,
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.symmetric(horizontal: 2.w),
+                          itemCount: parkingAreas.length,
+                          separatorBuilder: (_, __) => SizedBox(width: 20.w),
+                          itemBuilder: (context, i) =>
+                              ParkingCard(parkingArea: parkingAreas[i]),
+                        ),
+                      ),
+                      SizedBox(height: 10.h),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 20.h),
-              SizedBox(
-                height: 330.h,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.symmetric(horizontal: 4.w),
-                  itemCount: parkingAreas.length,
-                  separatorBuilder: (context, index) => SizedBox(width: 12.w),
-                  itemBuilder: (context, index) {
-                    return ParkingCard(parkingArea: parkingAreas[index]);
-                  },
-                ),
-              ),
-              SizedBox(height: 24.h),
-            ],
+            ),
           ),
         ),
       ),
@@ -198,3 +136,119 @@ class ParkingBottomSheet extends ConsumerWidget {
   }
 }
 
+class _HoursSliderSynced extends StatelessWidget {
+  const _HoursSliderSynced({
+    required this.value,
+    required this.min,
+    required this.max,
+    required this.onChanged,
+    this.divisions,
+    this.unitTextBuilder,
+  });
+
+  final double value;
+  final double min;
+  final double max;
+  final ValueChanged<double> onChanged;
+  final int? divisions;
+  final String Function(int hours)? unitTextBuilder;
+
+  @override
+  Widget build(BuildContext context) {
+    const double thumbRadius = 12.0;
+    const double thumbDiameter = thumbRadius * 2;
+
+    final double labelWidth = 33.w;
+    final double labelTop = -40.h;
+
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
+    final valueInt = value.toInt();
+    final bool isSix = valueInt == 6;
+    final double raiseForSix = 5;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final trackWidth = constraints.maxWidth;
+
+        double t = ((value - min) / (max - min)).clamp(0.0, 1.0);
+        final effectiveT = isRTL ? (1.0 - t) : t;
+
+        final available = trackWidth - thumbDiameter;
+        final thumbCenterX = effectiveT * available + (thumbDiameter / 2);
+
+        final left = (thumbCenterX - (labelWidth / 2))
+            .clamp(0.0, trackWidth - labelWidth);
+
+        return Stack(
+          clipBehavior: Clip.none,
+          children: [
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 50),
+              curve: Curves.linear,
+              left: left,
+              top: isSix ? (labelTop - raiseForSix) : labelTop,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  AppText(
+                    text: value.toInt().toString(),
+                    appTextTheme: AppTextTheme.numberSmallTextStyle().copyWith(
+                      fontSize: 16,
+                      color: AppColor.blackColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  AppText(
+                    text: (unitTextBuilder ?? _arabicHoursUnit)(value.toInt()),
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.greyColor,
+                      fontSize: 10,
+                      fontFamily: 'IBM Plex Sans Arabic',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SliderTheme(
+              data: SliderThemeData(
+                activeTrackColor: AppColor.primaryColor,
+                inactiveTrackColor: AppColor.whiteColor,
+                thumbColor: AppColor.primaryColor,
+                trackHeight: 7.0,
+                trackShape: RectangularSliderTrackShape(),
+                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
+                tickMarkShape: SliderTickMarkShape.noTickMark,
+                padding: EdgeInsets.zero,
+              ),
+              child: Slider(
+                value: value,
+                min: min,
+                max: max,
+                divisions: divisions,
+                onChanged: (v) => onChanged(v.roundToDouble()),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+String _arabicHoursUnit(int h) {
+  if (h == 1) return 'ساعة';
+  if (h == 2) return 'ساعتان';
+  if (h >= 3 && h <= 10) return 'ساعات';
+  return 'ساعة';
+}
+
+final parkingDurationProvider =
+    StateNotifierProvider<ParkingDurationController, double>(
+  (ref) => ParkingDurationController(),
+);
+
+class ParkingDurationController extends StateNotifier<double> {
+  ParkingDurationController() : super(6);
+  void set(double v) => state = v;
+}

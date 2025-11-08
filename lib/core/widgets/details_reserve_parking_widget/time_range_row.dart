@@ -96,26 +96,28 @@ class TimeBox extends StatelessWidget {
           //   ),
           // ),
 
-      SizedBox(
-        width: 70.w,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppText(
-                text: parts.hhmm,
-                appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+          SizedBox(
+            width: 70.w,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppText(
+                    text: parts.hhmm,
+                    appTextTheme:
+                        AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+                  ),
+                  SizedBox(width: 4.w),
+                  AppText(
+                    text: parts.period,
+                    appTextTheme:
+                        AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
+                  ),
+                ],
               ),
-              SizedBox(width: 4.w),
-              AppText(
-                text: parts.period,
-                appTextTheme: AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
 
           // زر +
           MintSquareBtn(

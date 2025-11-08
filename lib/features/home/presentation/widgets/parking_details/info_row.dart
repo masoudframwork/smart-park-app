@@ -21,11 +21,10 @@ class InfoRow extends StatelessWidget {
         SvgImageWidget(image),
         SizedBox(width: 13.5),
         AppText(
-          text: text,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            color: AppColor.blackNumberSmallColor,
-          )
-        ),
+            text: text,
+            appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+              color: AppColor.blackNumberSmallColor,
+            )),
       ],
     );
   }
@@ -113,14 +112,12 @@ class InfoRowTheme extends StatelessWidget {
           ],
         ),
       );
-    }
-    else if (suptitel != null) {
+    } else if (suptitel != null) {
       rightSide = DefaultTextStyle.merge(
         style: baseStyle,
         child: suptitel!,
       );
-    }
-    else {
+    } else {
       rightSide = AppText(
         text: text,
         appTextTheme: baseStyle,

@@ -70,7 +70,6 @@ class TheVehicleScreen extends StatelessWidget {
                         bgColor: AppColor.greysCardColor,
                         borderColor: AppColor.contanearGreyColor,
                         title: 'تويوتا كورولا 2024 / أحمر',
-
                         carIcon: SvgPicture.asset(
                           AppImages.carVehicleCar1,
                         ),

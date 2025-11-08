@@ -109,9 +109,8 @@ class OnBoardingScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 20.h,
+                  height: 30.h,
                 ),
-
                 SizedBox(
                   width: screenWidth,
                   height: 580.h,
@@ -133,7 +132,6 @@ class OnBoardingScreen extends ConsumerWidget {
                     },
                   ),
                 ),
-
                 AppTextIconButton(
                   text: state.currentIndex == images.length - 1
                       ? S.of(context).skip
@@ -142,7 +140,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   onPressed: notifier.onSkipPressed,
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 50.h,
                 ),
                 SmoothPageIndicator(
                   controller: notifier.pageController,
@@ -158,7 +156,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 20.h,
+                  height: 10.h,
                 ),
                 HideTipsSwitch(),
               ],

@@ -31,7 +31,7 @@ class AppImages {
   static const String time = "assets/images/home/time.svg";
   static const String visa = "assets/images/home/visa.svg";
   static const String mice = "assets/images/home/mice.svg";
-
+  static const String available = "assets/images/home/available.svg";
 
   //details screen duration
   static const String car1 = 'assets/images/car1.jpeg';
@@ -51,10 +51,4 @@ class AppImages {
   //the vehicle
   static const String carVehicleCar1 = "assets/images/svgs/Car1.svg";
   static const String carVehicleCar2 = "assets/images/svgs/Car2.svg";
-
-
-
-
-
-
 }

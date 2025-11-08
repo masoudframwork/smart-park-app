@@ -196,9 +196,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           leading ?? SizedBox(width: 34.w, height: 34.w),
-
           const SizedBox(width: 8),
-
           _SquareButton(
             onTap: onMenu ?? () {},
             icon: Icon(

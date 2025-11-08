@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,12 +28,12 @@ class VoiceToTextScreen extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,
-        appBar:  CustomAppBar(leadingType: AppBarLeading.close,
+        appBar: CustomAppBar(
+          leadingType: AppBarLeading.close,
           onClose: () {
             controller.cancelVoice();
             Navigator.of(context).pop();
           },
-
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -33,14 +33,11 @@ class ParkingInfoSection extends StatelessWidget {
               AppImages.realSu,
             ),
             AppText(
-              text: "/ساعه",
-              appTextTheme: AppTextTheme.bodySmallTextStyle()
-                  .copyWith(
-               color:  AppColor.blackNumberSmallColor,
-                fontSize: 12,
-    )
-
-            ),
+                text: "/ساعه",
+                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                  color: AppColor.blackNumberSmallColor,
+                  fontSize: 12,
+                )),
           ],
         ),
         const SizedBox(height: 6),

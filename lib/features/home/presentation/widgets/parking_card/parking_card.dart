@@ -21,43 +21,60 @@ class ParkingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 310.w,
-      margin: EdgeInsets.only(right: 12.w),
-      padding: EdgeInsets.all(12.w),
+      //margin: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
       decoration: BoxDecoration(
-        color: AppColor.whiteColor,
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+            color: AppColor.shadowCardColor.withOpacity(0.40),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+          BoxShadow(
+            color: AppColor.shadowCardColor.withOpacity(0.05),
+            blurRadius: 14,
+            offset: const Offset(6, 4),
+          ),
+          BoxShadow(
+            color: AppColor.shadowCardColor.withOpacity(0.20),
+            blurRadius: 14,
+            offset: const Offset(-6, 4),
           ),
         ],
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ParkingCardImage(parkingArea: parkingArea),
-          SizedBox(height: 16.h),
-          ParkingCardInfo(parkingArea: parkingArea),
-          SizedBox(height: 16.h),
-          ParkingCardStats(parkingArea: parkingArea),
-          SizedBox(height: 16.h),
-          _buildBookingButton(),
-        ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.r),
+        child: Container(
+          padding: EdgeInsets.all(12.w),
+          color: AppColor.whiteColor,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ParkingCardImage(parkingArea: parkingArea),
+              SizedBox(height: 5.h),
+              ParkingCardInfo(parkingArea: parkingArea),
+              SizedBox(height: 5.h),
+              ParkingCardStats(parkingArea: parkingArea),
+              SizedBox(height: 16.h),
+              _buildBookingButton(),
+            ],
+          ),
+        ),
       ),
     );
   }
 
   Widget _buildBookingButton() {
     return CustomButtonWidget(
+      width: 288,
+      height: 40,
       text: 'ابدأ الحجز',
       onPressed: onStartBooking ?? () {},
       type: ButtonType.elevated,
       backgroundColor: AppColor.primaryColor,
       verticalPadding: 12,
-      borderRadius: 4,
+      borderRadius: 4.r,
     );
   }
 }

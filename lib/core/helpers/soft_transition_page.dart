@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 //animation app
 CustomTransitionPage<T> softTransitionPage<T>({
   required Widget child,

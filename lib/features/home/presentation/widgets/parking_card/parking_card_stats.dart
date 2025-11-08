@@ -19,7 +19,7 @@ class ParkingCardStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _buildStatChip(
           iconPath: AppImages.twoCars,
@@ -46,36 +46,34 @@ class ParkingCardStats extends StatelessWidget {
     required bool isHighlighted,
   }) {
     return Row(
-      spacing: 10.w,
       children: [
         if (isHighlighted) ...[
           SvgImageWidget(
             iconPath,
-            width: 21.5.w,
-            height: 21.5.w,
           ),
+          SizedBox(width: 5.w),
           AppText(
             text: value,
             appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-              color: textColor,
-              fontWeight: FontWeight.w600,
-              fontSize: 12.sp,
+              color: AppColor.blackNumberSmallColor,
             ),
           ),
         ],
-        SizedBox(width: 50.w),
-        if (!isHighlighted) ...[
-          SvgImageWidget(
-            iconPath,
-            width: 30.w,
-            height: 30.w,
-          ),
-          SvgImageWidget(
-            iconPath2 ?? AppImages.shower,
-            width: 30.w,
-            height: 30.w,
-          ),
-        ],
+        Row(
+          children: [
+            if (!isHighlighted) ...[
+              SvgImageWidget(
+                iconPath,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              SvgImageWidget(
+                iconPath2 ?? AppImages.shower,
+              ),
+            ],
+          ],
+        )
       ],
     );
   }

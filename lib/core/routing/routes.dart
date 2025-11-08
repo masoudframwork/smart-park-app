@@ -9,5 +9,4 @@ class RoutePaths {
   static const String paymentScreen = '/paymentScreen';
   static const String bookingSummary = '/bookingSummary';
   static const String voiceToTextScreen = '/voiceToTextScreen';
-
 }

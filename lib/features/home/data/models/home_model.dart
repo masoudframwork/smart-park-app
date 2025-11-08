@@ -18,7 +18,6 @@ class HomeModel {
     this.selectedMarker,
     this.selectedMarkerIndex = -1,
     this.isSearchOpen = false,
-
   });
 
   // Initial empty state
@@ -31,7 +30,6 @@ class HomeModel {
       selectedMarker: null,
       selectedMarkerIndex: -1,
       isSearchOpen: false,
-
     );
   }
 
@@ -179,7 +177,6 @@ class HomeModel {
       error: error,
       selectedMarker: selectedMarker,
       selectedMarkerIndex: selectedMarkerIndex ?? this.selectedMarkerIndex,
-
       isSearchOpen: isSearchOpen ?? this.isSearchOpen,
     );
   }

@@ -123,36 +123,26 @@ class ParkingDetailsSheet extends StatelessWidget {
               bottom: 0,
               child: _body(context, size),
             ),
-
-        Positioned(
-          top: size.height * 0.23,
-          child: SizedBox(
-            width: size.width - 26,
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
-                      blurRadius: 8,
-                      offset: const Offset(0, 4),
+            Positioned(
+              top: size.height * 0.22,
+              child: SizedBox(
+                width: size.width - 26,
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
                     ),
-                  ],
-                ),
-                child: const CircleAvatar(
-                  radius: 55,
-                  backgroundImage: AssetImage(AppImages.parkingDemo),
-                  backgroundColor: Colors.grey,
+                    child: const CircleAvatar(
+                      radius: 55,
+                      backgroundImage: AssetImage(AppImages.parkingDemo),
+                      backgroundColor: Colors.grey,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-
           ],
         ),
       ),
@@ -161,6 +151,7 @@ class ParkingDetailsSheet extends StatelessWidget {
 
   Widget _body(BuildContext context, Size size) {
     return Container(
+      //0.60
       height: size.height * 0.60,
       width: size.width - 26,
       padding: EdgeInsets.symmetric(horizontal: 13.w),
@@ -170,38 +161,33 @@ class ParkingDetailsSheet extends StatelessWidget {
       ),
       child: SafeArea(
         top: false,
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 18.h),
-              HeaderSection(
-                imageUrl: parkingData.imageUrl ?? "",
-                isAvailable: parkingData.isAvailable,
-              ),
-              SizedBox(height: 12.h),
-              ParkingInfoSection(parkingData: parkingData),
-
-              SizedBox(height: 21.h),
-              QuickBookingSection(
-                onBookNow: onBookNow,
-              ),
-              SizedBox(height: 40.h),
-              CustomButtonWidget(
-                width:345.w ,
-                height:40.h ,
-                onPressed: () {
-                  NavigationService.push(
-                    RoutePaths.durationScreen,
-                    context: context,
-                  );
-                },
-                text: "تفاصيل",
-              ),
-              SizedBox(height: 16.h),
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(height: 10.h),
+            HeaderSection(
+              imageUrl: parkingData.imageUrl ?? "",
+              isAvailable: parkingData.isAvailable,
+            ),
+            SizedBox(height: 10.h),
+            ParkingInfoSection(parkingData: parkingData),
+            SizedBox(height: 8.h),
+            QuickBookingSection(
+              onBookNow: onBookNow,
+            ),
+            SizedBox(height: 25.h),
+            CustomButtonWidget(
+              // width: 345,
+              height: 40,
+              onPressed: () {
+                NavigationService.push(
+                  RoutePaths.durationScreen,
+                  context: context,
+                );
+              },
+              text: "تفاصيل",
+            ),
+          ],
         ),
       ),
     );

@@ -113,11 +113,17 @@ class BookingDetailView extends ConsumerWidget {
           '',
           AppImages.location,
         ),
-        _buildInfoCard(Icons.directions_car, 'رسائل بالتفاصيل', 'أ س و / 2023'),
+        _buildInfoCard(
+          Icons.directions_car,
+          'رسائل بالتفاصيل',
+          'أ س و / 2023',
+          AppImages.car,
+        ),
         _buildInfoCard(
           Icons.credit_card,
           'البطاقة المنتهية',
           'ب 000',
+          AppImages.visa,
         ),
       ],
     );
