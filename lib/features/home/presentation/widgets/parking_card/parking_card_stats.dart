@@ -69,7 +69,7 @@ class ParkingCardStats extends StatelessWidget {
                 width: 10,
               ),
               SvgImageWidget(
-                iconPath2 ?? AppImages.shower,
+                iconPath2 ?? AppImages.shipping,
               ),
             ],
           ],

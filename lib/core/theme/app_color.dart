@@ -35,6 +35,7 @@ class AppColor {
   static const greyContainerColor = Color(0xFFE0E0E0);
   static const greyBorderColor = Color(0xFF9DA4AE);
   static const selectedTabTextColor = Color(0xFF1A8154);
+  static const introTextColor = Color(0xFF17E387);
 
   static const greyTextVerySmallColor = Color(0xFFB0B9C6);
   static const contanearGreyColor = Color(0xFFE5E7EB);

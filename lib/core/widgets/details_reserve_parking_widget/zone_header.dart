@@ -75,24 +75,6 @@ class ZoneHeader extends StatelessWidget {
           ],
         ),
         if (showDurationSection) SizedBox(height: 20.h),
-        if (showDurationSection)
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                AppImages.time,
-                width: 28.w,
-                height: 28.w,
-              ),
-              SizedBox(width: 8.w),
-              AppText(
-                text: 'حدد مدة الوقوف',
-                appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                ),
-              ),
-            ],
-          ),
       ],
     );
   }

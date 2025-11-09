@@ -48,19 +48,20 @@ class ChangePaymentMethodBottomSheet extends StatelessWidget {
               Expanded(
                 child: PaymentMethodCard(
                   line1: 'الرصيد 2,785 د.ا',
-                  isBalance: true,
+                  //isBalance: true,
                   icon: Icons.account_balance_wallet_outlined,
                 ),
               ),
             ],
           ),
+          SizedBox(height: 30.h),
+          CustomButtonWidget(
+            text: 'تحديث',
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ],
-      ),
-      bottomAction: CustomButtonWidget(
-        text: 'تحديث',
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
       ),
     );
   }

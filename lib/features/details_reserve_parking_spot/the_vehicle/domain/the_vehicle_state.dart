@@ -5,7 +5,7 @@ class VehicleScreenState {
   final String? selectedId;
   final double total;
 
-  VehicleScreenState({
+  const VehicleScreenState({
     required this.vehicles,
     required this.selectedId,
     required this.total,

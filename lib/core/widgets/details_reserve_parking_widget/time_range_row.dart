@@ -16,20 +16,26 @@ class MintSquareBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(4.r),
-      child: Container(
+    final radius = BorderRadius.circular(4.r);
+
+    return Material(
+      color: Colors.transparent,
+      child: Ink(
         width: 28.w,
         height: 28.h,
         decoration: BoxDecoration(
           color: AppColor.containerSecondaryColor,
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: radius,
         ),
-        alignment: Alignment.center,
-        child: AppText(
-          text: label,
-          appTextTheme: AppTextTheme.timeTextStyle(),
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: radius,
+          child: Center(
+            child: AppText(
+              text: label,
+              appTextTheme: AppTextTheme.timeTextStyle(),
+            ),
+          ),
         ),
       ),
     );
@@ -55,7 +61,7 @@ class TimeBox extends StatelessWidget {
     final parts = _formatTimeParts(time);
 
     return Container(
-      width: 154.w,
+      width: 134.w,
       height: 50.h,
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
@@ -75,29 +81,9 @@ class TimeBox extends StatelessWidget {
             label: '−',
             onTap: enabled ? onMinus : null,
           ),
-          // SizedBox(
-          //   width: 70.w,
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     children: [
-          //       AppText(
-          //         text: parts.hhmm,
-          //         appTextTheme:
-          //         AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-          //       ),
-          //       SizedBox(width: 4.w),
-          //       AppText(
-          //         text: parts.period,
-          //         appTextTheme:
-          //         AppTextTheme.timeTextStyle().copyWith(fontSize: 16),
-          //       ),
-          //     ],
-          //   ),
-          // ),
 
           SizedBox(
-            width: 70.w,
+            width: 50.w,
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: Row(
@@ -152,6 +138,8 @@ class _TimeParts {
   });
 }
 
+
+
 class TimeRangeRow extends StatelessWidget {
   final TimeOfDay start;
   final TimeOfDay end;
@@ -197,7 +185,6 @@ class TimeRangeRow extends StatelessWidget {
 
           SizedBox(width: 20.w),
 
-          // نهاية الحجز
           TimeBox(
             time: end,
             onPlus: onEndPlus,

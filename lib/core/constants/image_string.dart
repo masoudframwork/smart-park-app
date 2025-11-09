@@ -10,6 +10,12 @@ class AppImages {
   static const String intro1 = 'assets/images/intro1.jpg';
   static const String intro2 = 'assets/images/intro2.jpg';
   static const String intro3 = 'assets/images/intro3.jpg';
+  static const String iconIntro1 = 'assets/images/svgs/icon_intro1.svg';
+  static const String iconIntro2 = 'assets/images/svgs/intro2_icon.svg';
+  static const String iconIntro3 = 'assets/images/svgs/icon_intro3.svg';
+
+  static const String iconArrawIntro1 = 'assets/images/svgs/int.svg';
+  static const String iconArrawBackIntro1 = 'assets/images/svgs/back.svg';
 
   // arraw icons
   static const String arrowIcon = 'assets/images/left-arrow (1).png';
@@ -32,6 +38,7 @@ class AppImages {
   static const String visa = "assets/images/home/visa.svg";
   static const String mice = "assets/images/home/mice.svg";
   static const String available = "assets/images/home/available.svg";
+  static const String shipping = "assets/images/home/shipping.svg";
 
   //details screen duration
   static const String car1 = 'assets/images/car1.jpeg';
@@ -47,6 +54,7 @@ class AppImages {
   static const String arrawButton = "assets/images/svgs/arraw.svg";
   static const String account = "assets/images/account.png";
   static const String location2 = "assets/images/svgs/location2.svg";
+  static const String add = "assets/images/addd.png";
 
   //the vehicle
   static const String carVehicleCar1 = "assets/images/svgs/Car1.svg";

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/theme/app_color.dart';
 import '../constants/image_string.dart';
 import '../theme/app_text_theme.dart';
 import 'app_text.dart';
@@ -26,7 +27,10 @@ class AppTextIconButton extends StatelessWidget {
         children: [
           AppText(
             text: text,
-            appTextTheme: AppTextTheme.titleMediumTextStyle(),
+            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+              color: AppColor.whiteColor,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           SizedBox(width: 8.w),
           CustomImageWidget(
@@ -34,6 +38,7 @@ class AppTextIconButton extends StatelessWidget {
             imageUrl: AppImages.arrowIcon,
             width: 20.w,
             height: 20.h,
+            color: AppColor.whiteColor,
           ),
         ],
       ),

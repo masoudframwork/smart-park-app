@@ -65,14 +65,14 @@ class HomeBottomNavigationBar extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: isSelected
                     ? [
-                        BoxShadow(
-                          color:
-                              AppColor.selectedTabTextColor.withOpacity(0.25),
-                          blurRadius: 8,
-                          spreadRadius: 0.8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ]
+                  BoxShadow(
+                    color:
+                    AppColor.selectedTabTextColor.withOpacity(0.25),
+                    blurRadius: 8,
+                    spreadRadius: 0.8,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
                     : null,
               ),
             ),

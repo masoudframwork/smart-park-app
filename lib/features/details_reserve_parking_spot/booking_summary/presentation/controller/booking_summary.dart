@@ -104,4 +104,19 @@ class BookingSummaryController extends StateNotifier<BookingSummaryState> {
 
     return hoursInt.clamp(1, 24);
   }
+
+  void setCustomRange(TimeOfDay start, TimeOfDay end) {
+    final roundedStart = roundTo15(start);
+    final roundedEnd   = roundTo15(end);
+    final newHours     = _calcHoursBetween(roundedStart, roundedEnd);
+
+    state = state.copyWith(
+      start: roundedStart,
+      end:   roundedEnd,
+      hours: newHours,
+    );
+  }
+
+
+
 }

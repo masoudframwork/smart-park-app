@@ -34,6 +34,9 @@ class AppTextTheme {
         fontWeight: FontWeight.w700,
         fontFamily: 'IBM Plex Sans Arabic',
       );
+
+
+
   // 🏷️ العناوين المتوسطة
   static TextStyle titleMediumTextStyle() => TextStyle(
         fontSize: 16,
@@ -47,6 +50,13 @@ class AppTextTheme {
         fontSize: 14,
         color: AppColor.greyColor,
         fontWeight: FontWeight.w400,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
+  // onboarding screen
+  static TextStyle introTitleTextStyle() => TextStyle(
+        fontSize: 50,
+        color: AppColor.introTextColor,
+        fontWeight: FontWeight.w700,
         fontFamily: 'IBM Plex Sans Arabic',
       );
 

@@ -1,98 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/routing/navigation_service.dart';
 import 'package:smart/core/routing/routes.dart';
+import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/widgets/custom_button.dart';
+
 import '../../../data/models/parking_location.dart';
 import 'header_section.dart';
 import 'parking_info_section.dart';
 import 'quick_booking_section.dart';
-// class ParkingDetailsSheet extends StatelessWidget {
-//   final ParkingLocation parkingData;
-//   final VoidCallback onClose;
-//   final VoidCallback? onBookNow;
-//   final VoidCallback? onDetails;
-//
-//   const ParkingDetailsSheet({
-//     super.key,
-//     required this.parkingData,
-//     required this.onClose,
-//     this.onBookNow,
-//     this.onDetails,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.symmetric(horizontal: 13).copyWith(bottom: 17),
-//       child: SizedBox(
-//         height: MediaQuery.of(context).size.height * 0.90,
-//         width: MediaQuery.of(context).size.width,
-//         child: Stack(children: [
-//           Positioned(bottom: 0, child: _body(context)),
-//           Positioned(
-//             top: MediaQuery.of(context).size.height * 0.23,
-//             child: SizedBox(
-//               width: MediaQuery.of(context).size.width - 26,
-//               child: Center(
-//                 child: CircleAvatar(
-//                   backgroundImage: AssetImage(AppImages.parkingDemo),
-//                   backgroundColor: Colors.grey,
-//                   radius: 55,
-//                 ),
-//               ),
-//             ),
-//           )
-//         ]),
-//       ),
-//     );
-//   }
-//
-//   Container _body(BuildContext context) {
-//     return Container(
-//       height: MediaQuery.of(context).size.height * 0.60,
-//       width: MediaQuery.of(context).size.width - 26,
-//       padding: EdgeInsets.symmetric(horizontal: 13.w),
-//       decoration: BoxDecoration(
-//         color: Colors.white,
-//         borderRadius: BorderRadius.circular(20.r),
-//       ),
-//       child:Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: [
-//           SizedBox(
-//             height: 18.h,
-//           ),
-//           HeaderSection(
-//             imageUrl: parkingData.imageUrl ?? "",
-//             isAvailable: parkingData.isAvailable,
-//           ),
-//           SizedBox(
-//             height: 12.h,
-//           ),
-//           ParkingInfoSection(parkingData: parkingData),
-//           SizedBox(
-//             height: 21.h,
-//           ),
-//           QuickBookingSection(
-//             onBookNow: onBookNow,
-//           ),
-//           SizedBox(
-//             height: 22.h,
-//           ),
-//           CustomButtonWidget(
-//             onPressed: () {
-//               NavigationService.push(RoutePaths.durationScreen,
-//                   context: context);
-//             },
-//             text: "تفاصيل",
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class ParkingDetailsSheet extends StatelessWidget {
   final ParkingLocation parkingData;
@@ -121,26 +37,20 @@ class ParkingDetailsSheet extends StatelessWidget {
           children: [
             Positioned(
               bottom: 0,
-              child: _body(context, size),
-            ),
-            Positioned(
-              top: size.height * 0.22,
-              child: SizedBox(
-                width: size.width - 26,
-                child: Center(
-                  child: Container(
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const CircleAvatar(
-                      radius: 55,
-                      backgroundImage: AssetImage(AppImages.parkingDemo),
-                      backgroundColor: Colors.grey,
-                    ),
-                  ),
-                ),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onVerticalDragUpdate: (details) {
+                  if (details.delta.dy > 16) {
+                    onClose();
+                  }
+                },
+                onVerticalDragEnd: (details) {
+                  final vy = details.primaryVelocity ?? 0;
+                  if (vy > 400) {
+                    onClose();
+                  }
+                },
+                child: _body(context, size),
               ),
             ),
           ],
@@ -151,10 +61,9 @@ class ParkingDetailsSheet extends StatelessWidget {
 
   Widget _body(BuildContext context, Size size) {
     return Container(
-      //0.60
-      height: size.height * 0.60,
+      height: size.height * 0.63,
       width: size.width - 26,
-      padding: EdgeInsets.symmetric(horizontal: 13.w),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.r),
@@ -162,9 +71,26 @@ class ParkingDetailsSheet extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 10.h),
+            SizedBox(height: 6.h),
+            Container(
+              width: 172.w,
+              height: 5.h,
+              decoration: BoxDecoration(
+                color: AppColor.blackColor,
+                borderRadius: BorderRadius.circular(14.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColor.selectedTabTextColor.withOpacity(0.25),
+                    blurRadius: 8,
+                    spreadRadius: 0.8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 12.h),
             HeaderSection(
               imageUrl: parkingData.imageUrl ?? "",
               isAvailable: parkingData.isAvailable,
@@ -175,9 +101,8 @@ class ParkingDetailsSheet extends StatelessWidget {
             QuickBookingSection(
               onBookNow: onBookNow,
             ),
-            SizedBox(height: 25.h),
+            SizedBox(height: 20.h),
             CustomButtonWidget(
-              // width: 345,
               height: 40,
               onPressed: () {
                 NavigationService.push(
@@ -185,8 +110,9 @@ class ParkingDetailsSheet extends StatelessWidget {
                   context: context,
                 );
               },
-              text: "تفاصيل",
+              text: "ابدأ الحجز",
             ),
+            SizedBox(height: 10.h),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,6 +19,7 @@ class VehicleTile extends StatelessWidget {
 
   final double tileWidth;
   final double tileHeight;
+  final VoidCallback? onTap;
 
   const VehicleTile({
     super.key,
@@ -30,31 +32,48 @@ class VehicleTile extends StatelessWidget {
     this.isAddNew = false,
     this.tileWidth = 360,
     this.tileHeight = 66,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: tileWidth.w,
-      height: tileHeight.h,
-      decoration: BoxDecoration(
-        color: bgColor,
+    final Color selectedBg     = AppColor.secondaryColor;
+    final Color selectedBorder = AppColor.secondaryColor;
+    final Color selectedText   = AppColor.blackColor;
+
+    final Color effectiveBg     = isSelected ? selectedBg     : bgColor;
+    final Color effectiveBorder = isSelected ? selectedBorder : borderColor;
+    final Color effectiveText   = isSelected ? selectedText   : (textStyle?.color ?? AppColor.blackColor);
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
         borderRadius: BorderRadius.circular(6.r),
-        border: Border.all(
-          color: borderColor,
-          width: 1,
-        ),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      child: Row(
-        children: [
-          _buildLeadingBox(),
-          SizedBox(width: 12.w),
-          AppText(
-            text: title,
-            appTextTheme: (textStyle ?? AppTextTheme.bodyMediumTextStyle()),
+        child: Container(
+          width: tileWidth.w,
+          height: tileHeight.h,
+          decoration: BoxDecoration(
+            color: effectiveBg,
+            borderRadius: BorderRadius.circular(6.r),
+            border: Border.all(
+              color: effectiveBorder,
+              width: 1,
+            ),
           ),
-        ],
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: Row(
+            children: [
+              _buildLeadingBox(),
+              SizedBox(width: 12.w),
+              AppText(
+                text: title,
+                appTextTheme: (textStyle ?? AppTextTheme.bodyMediumTextStyle())
+                    .copyWith(color: effectiveText),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -17,10 +18,19 @@ class ParkingInfoSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText(
-          text: parkingData.title,
-          appTextTheme: AppTextTheme.titleLargeTextStyle(),
+        Row(
+          children: [
+            AppText(
+              text: parkingData.title,
+              appTextTheme: AppTextTheme.titleLargeTextStyle(),
+            ),
+            const Spacer(),
+            _buildIconsButton(AppImages.shipping),
+            const SizedBox(width: 10),
+            _buildIconsButton(AppImages.charging),
+            ]
         ),
+
         Row(
           children: [
             AppText(
@@ -54,4 +64,33 @@ class ParkingInfoSection extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget _buildIconButton(IconData icon, Color color) {
+  return Container(
+    padding: EdgeInsets.all(8.w),
+    decoration: BoxDecoration(
+      color: AppColor.secondaryColor,
+      shape: BoxShape.circle,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.1),
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    ),
+    child: Icon(icon, color: color, size: 18.sp),
+  );
+}
+
+Widget _buildIconsButton(String assetPath) {
+  return Container(
+    padding: EdgeInsets.all(2.h),
+    decoration: const BoxDecoration(
+      color: AppColor.secondaryColor,
+      shape: BoxShape.circle,
+    ),
+    child: SvgPicture.asset(assetPath),
+  );
 }

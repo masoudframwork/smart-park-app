@@ -29,11 +29,15 @@ class VoiceToTextScreen extends ConsumerWidget {
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,
         appBar: CustomAppBar(
-          leadingType: AppBarLeading.close,
-          onClose: () {
-            controller.cancelVoice();
-            Navigator.of(context).pop();
-          },
+          leading: SquareButton(
+            onTap: () => Navigator.pop(context),
+            icon: Icon(
+              Icons.menu,
+              size: 24.w,
+              color: AppColor.blackColor,
+            ),
+          ),
+          trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

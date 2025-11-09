@@ -8,7 +8,6 @@ import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'package:smart/features/home/presentation/widgets/parking_card/parking_bottom_sheet.dart';
 import 'package:smart/features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
-
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custome_text_field_widget.dart';
 import 'controller/home_controller.dart';
@@ -208,16 +207,18 @@ class _TopControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Align(
-          alignment: Alignment.topLeft,
+          alignment: Alignment.topRight,
           child: Container(
             width: 34.w,
             height: 34.w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColor.whiteColor,
-              borderRadius: BorderRadius.circular(10.r),
+              borderRadius: BorderRadius.circular(4.r),
               border: Border.all(
                 color: AppColor.contanearGreyColor,
                 width: 1,
@@ -306,6 +307,7 @@ class _SearchBarState extends State<_SearchBar> {
       child: IgnorePointer(
         ignoring: true,
         child: CustomTextFormField(
+          width: 360.w,
           controller: widget.controller,
           borderRadius: 2.r,
           focusNode: widget.focusNode,
