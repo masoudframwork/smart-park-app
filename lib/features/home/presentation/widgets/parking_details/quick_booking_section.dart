@@ -7,6 +7,7 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details/info_row.dart';
 
+
 class QuickBookingSection extends StatelessWidget {
   final VoidCallback? onBookNow;
 
@@ -15,14 +16,15 @@ class QuickBookingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.symmetric(horizontal: 14).copyWith(top: 11, bottom: 22),
+    //  padding: EdgeInsets.symmetric(horizontal: 14).copyWith(top: 11, bottom: 22),
+
+      padding: EdgeInsets.symmetric(horizontal: 8).copyWith(top: 8, bottom: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
         color: AppColor.containerColor,
       ),
       child: Column(
-        spacing: 12.h,
+        spacing: 10.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppText(
@@ -68,24 +70,9 @@ class QuickBookingSection extends StatelessWidget {
             ),
           ),
           InfoRowTheme(
-            image: AppImages.visa,
+            image: AppImages.visaImage,
             text: 'البطاقة المنتهية ب 000',
           ),
-          // CustomButtonWidget(
-          //   onPressed: () {},
-          //   text: "احجز الآن 40 ",
-          //   fontSize: 20,
-          //
-          //   icon: SvgPicture.asset(
-          //     AppImages.realSu,
-          //     color: AppColor.whiteColor,
-          //   ),
-          //   iconOnRight: true,
-          //   verticalPadding: 0,
-          //   iconLayout: ButtonIconLayout.inline,
-          //
-          // )
-
           ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -117,6 +104,7 @@ class QuickBookingSection extends StatelessWidget {
                   ),
                 ],
               )),
+
         ],
       ),
     );

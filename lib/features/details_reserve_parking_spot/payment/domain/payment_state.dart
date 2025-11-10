@@ -1,4 +1,5 @@
-import 'package:smart/features/details_reserve_parking_spot/payment/domain/payment_model.dart';
+
+import 'payment_model.dart';
 
 class PaymentMethodsState {
   final List<PaymentMethodModel> methods;

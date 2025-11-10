@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -158,7 +157,7 @@ class HeaderSection extends StatelessWidget {
         children: [
           Positioned.fill(
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
+              borderRadius: BorderRadius.circular(14.r),
               child: imageUrl?.isNotEmpty == true
                   ? Image.network(imageUrl!, fit: BoxFit.cover)
                   : Image.asset(AppImages.parkingDemo, fit: BoxFit.cover),
@@ -174,7 +173,7 @@ class HeaderSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14.r),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.08),
+                    color: AppColor.blackColor.withOpacity(0.08),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -199,34 +198,5 @@ class HeaderSection extends StatelessWidget {
     );
   }
 
-  // أيقونة دائرية لماتيريال آيكون
-  Widget _buildIconButton(IconData icon, Color color) {
-    return Container(
-      padding: EdgeInsets.all(8.w),
-      decoration: BoxDecoration(
-        color: AppColor.secondaryColor,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Icon(icon, color: color, size: 18.sp),
-    );
-  }
 
-  // أيقونة دائرية لـ SVG
-  Widget _buildIconsButton(String assetPath) {
-    return Container(
-      padding: EdgeInsets.all(2.h),
-      decoration: const BoxDecoration(
-        color: AppColor.secondaryColor,
-        shape: BoxShape.circle,
-      ),
-      child: SvgPicture.asset(assetPath),
-    );
-  }
 }

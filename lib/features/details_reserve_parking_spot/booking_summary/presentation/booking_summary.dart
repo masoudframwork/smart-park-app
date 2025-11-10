@@ -7,7 +7,6 @@ import 'package:smart/features/details_reserve_parking_spot/booking_summary/pres
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_payment_method_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_vehicle_dialog_widget.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/selection_tile.dart';
-import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/visa_small_logo.dart';
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
@@ -16,6 +15,7 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_header.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_image_card_widget.dart';
+import '../domain/payment_provider.dart';
 import '../domain/vehicle_option.dart';
 import 'widget/booking_custom_time_bottom_sheet.dart';
 import 'controller/booking_summary.dart';
@@ -25,10 +25,11 @@ class BookingSummary extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingSummaryControllerProvider);
-    final controller = ref.read(bookingSummaryControllerProvider.notifier);
-    final vehicles      = ref.watch(vehicleOptionsProvider);
+    final vehicles = ref.watch(vehicleOptionsProvider);
     final selectedIndex = ref.watch(selectedVehicleIndexProvider);
-    final selected      = vehicles[selectedIndex];
+    final selected = vehicles[selectedIndex];
+    final selectedPayment = ref.watch(selectedPaymentMethodProvider);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,
@@ -77,7 +78,8 @@ class BookingSummary extends ConsumerWidget {
                           );
                         },
                       ),
-///change car bottomSheet
+
+                      ///change car bottomSheet
                       GestureDetector(
                         onTap: () {
                           showBlurBottomSheet(
@@ -87,12 +89,12 @@ class BookingSummary extends ConsumerWidget {
                         },
                         child: SelectionTile(
                           title: selected.title,
-                          trailingImage: CarSmallPreview(assetSvg: selected.assetSvg),
+                          trailingImage:
+                              CarSmallPreview(assetSvg: selected.assetSvg),
                         ),
                       ),
 
-
-
+                      ///change Payment bottomSheet
 
                       GestureDetector(
                         onTap: () {
@@ -101,10 +103,29 @@ class BookingSummary extends ConsumerWidget {
                             child: ChangePaymentMethodBottomSheet(),
                           );
                         },
-                        child: const SelectionTile(
-
-                          title: 'البطاقة المنتهية بـ 0000',
-                          trailingImage: VisaSmallLogo(),
+                        child: SelectionTile(
+                          title: selectedPayment?.line1 ?? 'البطاقة المنتهية ب 0000',
+                          trailingImage: Container(
+                            width: 44.w,
+                            height: 28.h,
+                            decoration: BoxDecoration(
+                              color: AppColor.whiteColor,
+                              borderRadius: BorderRadius.circular(4.r),
+                              // border: Border.all(
+                              //   color: AppColor.contanearGreyColor,
+                              //   width: 0,
+                              // ),
+                            ),
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              selectedPayment?.assetImage ??
+                                  AppImages.visaImage,
+                              width: 49.w,
+                              height: 35.h,
+                              fit: BoxFit.contain,
+                              color: selectedPayment?.assetColor,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -131,7 +152,6 @@ class BookingSummary extends ConsumerWidget {
                 riyalIcon: SvgPicture.asset(
                   AppImages.realSu,
                   color: AppColor.whiteColor,
-
                 ),
               )
             ],

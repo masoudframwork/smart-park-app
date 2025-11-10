@@ -40,11 +40,13 @@ class AppImages {
   static const String available = "assets/images/home/available.svg";
   static const String shipping = "assets/images/home/shipping.svg";
 
+
+
   //details screen duration
   static const String car1 = 'assets/images/car1.jpeg';
   static const String check = 'assets/images/check.png';
-  static const String pay = 'assets/images/pay2.png';
-  static const String visaImage = 'assets/images/visa-1.png';
+  static const String pay = 'assets/images/pay.png';
+  static const String visaImage = 'assets/images/visa2.png';
   static const String realSu = "assets/images/home/realSu.svg";
   static const String charging = "assets/images/home/cable.svg";
   static const String shower = "assets/images/home/shower.svg";
@@ -55,6 +57,8 @@ class AppImages {
   static const String account = "assets/images/account.png";
   static const String location2 = "assets/images/svgs/location2.svg";
   static const String add = "assets/images/addd.png";
+
+
 
   //the vehicle
   static const String carVehicleCar1 = "assets/images/svgs/Car1.svg";

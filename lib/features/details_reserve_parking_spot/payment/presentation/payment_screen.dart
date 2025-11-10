@@ -12,110 +12,8 @@ import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.d
 import '../../../../core/widgets/details_reserve_parking_widget/container_total_bar/total_bar.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/steps_header.dart';
 import '../../the_vehicle/persentation/widgets/section_title.dart';
+import '../domain/payment_model.dart';
 import 'controller/payment_controller.dart';
-
-// class PaymentScreen extends StatelessWidget {
-//   const PaymentScreen({super.key});
-//
-//   final double total = 30;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         backgroundColor: AppColor.whiteColor,
-//         appBar: const CustomAppBar(),
-//         body: Padding(
-//           padding: EdgeInsets.all(16.w),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.stretch,
-//             children: [
-//               Expanded(
-//                 child: SingleChildScrollView(
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.stretch,
-//                     children: [
-//                       const StepsHeader(active: 3),
-//                       SizedBox(height: 24.h),
-//                       SectionTitle(
-//                         leading: Image.asset(
-//                           AppImages.card,
-//                           width: 26.w,
-//                           height: 21.h,
-//                         ),
-//                         title: 'اختر طريقة الدفع',
-//                       ),
-//                       SizedBox(height: 16.h),
-//                       Wrap(
-//                         spacing: 12.w,
-//                         runSpacing: 12.h,
-//                         children: [
-//                           GestureDetector(
-//                             onTap: () {
-//                               NavigationService.push(
-//                                 '/bookingSummary',
-//                                 context: context,
-//                               );
-//                             },
-//                             child: PaymentMethodCard(
-//                               line1: 'البطاقة المنتهية بـ 0000',
-//                               assetImage: AppImages.visaImage,
-//                               isSelected: true,
-//                             ),
-//                           ),
-//                           PaymentMethodCard(
-//                             line1: 'البطاقة المنتهية بـ 0000',
-//                             line2: null,
-//                             assetImage: AppImages.pay,
-//                             isSelected: false,
-//                           ),
-//                           PaymentMethodCard(
-//                             line1: 'الرصيد 2,785 د.ا',
-//                             isBalance: true,
-//                             icon: Icons.account_balance_wallet_outlined,
-//                           ),
-//                           PaymentMethodCard(
-//                             line1: 'بطاقة جديدة',
-//                             isAddNew: true,
-//                           ),
-//                         ],
-//                       ),
-//                       SizedBox(height: 24.h),
-//                     ],
-//                   ),
-//                 ),
-//               ),
-//               Column(
-//                 crossAxisAlignment: CrossAxisAlignment.stretch,
-//                 children: [
-//                   TotalBar(total: total),
-//                   SizedBox(height: 12.h),
-//                   CustomButtonWidget(
-//                     text: 'التالي',
-//                     onPressed: () {
-//                       NavigationService.push(
-//                         '/bookingSummary',
-//                         context: context,
-//                       );
-//                     },
-//                     icon: Icon(
-//                       Icons.arrow_forward_ios_outlined,
-//                       size: 16.w,
-//                       color: AppColor.whiteColor,
-//                     ),
-//                     iconOnRight: false,
-//                   ),
-//                 ],
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
 
 class PaymentScreen extends ConsumerWidget {
   const PaymentScreen({super.key});
@@ -126,6 +24,20 @@ class PaymentScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(paymentMethodsProvider);
     final controller = ref.read(paymentMethodsProvider.notifier);
+
+    void goToBookingSummary() {
+      final PaymentMethodModel? selected = controller.selectedMethod;
+      if (selected == null) return;
+
+      NavigationService.push(
+        '/bookingSummary',
+        context: context,
+        extra: {
+          'paymentMethodId': selected.id,
+          'paymentMethod': selected,
+        },
+      );
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -140,89 +52,54 @@ class PaymentScreen extends ConsumerWidget {
               color: AppColor.primaryColor,
             ),
           ),
-          trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
+          trailing: CloseButtonCircle(
+            onTap: () => Navigator.pop(context),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(16.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const StepsHeader(active: 3),
-                      SizedBox(height: 24.h),
-                      SectionTitle(
-                        leading: Image.asset(
-                          AppImages.card,
-                          width: 26.w,
-                          height: 21.h,
-                        ),
-                        title: 'اختر طريقة الدفع',
-                      ),
-                      SizedBox(height: 16.h),
-
-                      Wrap(
-                        spacing: 12.w,
-                        runSpacing: 12.h,
-                        children: state.methods.map((m) {
-                          final selected = state.selectedId == m.id;
-
-                          return PaymentMethodCard(
-                            line1: m.line1,
-                            line2: m.line2,
-                            assetImage: m.assetImage,
-                            icon: m.icon,
-                            isAddNew: m.isAddNew,
-                            isSelected: selected,
-                            logoMaxW: m.logoContentMaxWidth,
-                            logoMaxH: m.logoContentMaxHeight,
-                            assetColor: m.assetColor,
-                            onTap: () {
-                              // 1) نخزّن الاختيار
-                              controller.select(m.id);
-
-                              // 2) ننتقل فورًا لصفحة الحجز/الملخّص
-                              NavigationService.push(
-                                '/bookingSummary',
-                                context: context,
-                              );
-                            },
-                          );
-                        }).toList(),
-                      ),
-
-                      SizedBox(height: 24.h),
-                    ],
-                  ),
+              const StepsHeader(active: 3),
+              SizedBox(height: 24.h),
+              SectionTitle(
+                leading: Image.asset(
+                  AppImages.card,
+                  width: 26.w,
+                  height: 21.h,
                 ),
+                title: 'اختر طريقة الدفع',
               ),
+              SizedBox(height: 16.h),
+              Wrap(
+                spacing: 12.w,
+                runSpacing: 12.h,
+                children: state.methods.map((m) {
+                  final selected = state.selectedId == m.id;
 
-              // شريط الإجمالي + زر التالي (اختياري تخلّيه مثل ما هو)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  TotalBar(total: total),
-                  SizedBox(height: 12.h),
-                  CustomButtonWidget(
-                    text: 'التالي',
-                    onPressed: () {
-                      // في حال المستخدم ضغط "التالي" بدل الكارد
-                      NavigationService.push(
-                        '/bookingSummary',
-                        context: context,
-                      );
+                  return PaymentMethodCard(
+                    method: m,
+                    isSelected: selected,
+                    onTap: () {
+                      controller.select(m.id);
+                      goToBookingSummary();
                     },
-                    iconOnRight: false,
-                    icon: Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 16.w,
-                      color: AppColor.whiteColor,
-                    ),
-                  ),
-                ],
+                  );
+                }).toList(),
+              ),
+              const Spacer(),
+              TotalBar(total: total),
+              SizedBox(height: 12.h),
+              CustomButtonWidget(
+                text: 'التالي',
+                onPressed: goToBookingSummary,
+                iconOnRight: false,
+                icon: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: 16.w,
+                  color: AppColor.whiteColor,
+                ),
               ),
             ],
           ),

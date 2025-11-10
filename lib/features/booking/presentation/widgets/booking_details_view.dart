@@ -123,7 +123,7 @@ class BookingDetailView extends ConsumerWidget {
           Icons.credit_card,
           'البطاقة المنتهية',
           'ب 000',
-          AppImages.visa,
+          AppImages.visaImage,
         ),
       ],
     );

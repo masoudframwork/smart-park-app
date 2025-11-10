@@ -1,17 +1,7 @@
 import 'package:flutter/material.dart';
 
-enum PaymentMethodType {
-  card,
-  wallet,
-  addNewCard,
-}
-
 class PaymentMethodModel {
   final String id;
-
-  final PaymentMethodType type;
-
-  // السطر الأساسي (مثلاً "البطاقة المنتهية بـ 0000")
   final String line1;
   final String? line2;
 
@@ -19,24 +9,25 @@ class PaymentMethodModel {
 
   final IconData? icon;
 
-  // تحكمات بالحجم (عشان حالة الرصيد كانت مختلفة)
-  final double logoContentMaxWidth;
-  final double logoContentMaxHeight;
-
   final Color? assetColor;
+
+  final double logoMaxW;
+  final double logoMaxH;
 
   const PaymentMethodModel({
     required this.id,
-    required this.type,
     required this.line1,
     this.line2,
     this.assetImage,
     this.icon,
-    this.logoContentMaxWidth = 70,
-    this.logoContentMaxHeight = 48,
     this.assetColor,
+    this.logoMaxW = 61,
+    this.logoMaxH = 43,
   });
 
-  bool get isAddNew => type == PaymentMethodType.addNewCard;
-  bool get isWallet => type == PaymentMethodType.wallet;
+  bool get _isVisa => (assetImage ?? '').toLowerCase().contains('visa');
+
+  bool get _isPay => (assetImage ?? '').toLowerCase().contains('pay');
+
+  bool get hasLogoBorder => _isVisa || _isPay;
 }

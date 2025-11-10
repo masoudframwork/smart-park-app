@@ -99,7 +99,7 @@ class TheVehicleScreen extends ConsumerWidget {
                             ),
                             isSelected: selected && !v.isAddNew,
                             isAddNew: v.isAddNew,
-                            onTap: () => onVehicleTap(v), // <<<<< تمّ التفعيل
+                            onTap: () => onVehicleTap(v),
                           ),
                         );
                       }).toList(),

@@ -24,7 +24,6 @@ class DurationScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(durationControllerProvider);
-    //final controller = ref.read(durationControllerProvider.notifier);
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteColor,

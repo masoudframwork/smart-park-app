@@ -170,6 +170,7 @@ class BookingPage extends ConsumerWidget {
               },
               onMenu: () {},
             ),
+
             Expanded(
               child: inDetailsView
                   ? BookingDetailView(reservation: selectedReservation!)
