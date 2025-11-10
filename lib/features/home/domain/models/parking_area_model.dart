@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// Model for Parking Area
 class ParkingArea {
   final String id;
   final String code;

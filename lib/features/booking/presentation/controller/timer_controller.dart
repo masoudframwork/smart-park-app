@@ -2,7 +2,7 @@ import 'dart:async' show Timer;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/booking/domain/models/timer_state.dart';
-import 'package:smart/features/booking/presentation/controller/reservation_controller.dart'
+import 'package:smart/features/booking/presentation/controller/booking_controller.dart'
     show reservationController;
 
 class TimerController extends StateNotifier<TimerState> {

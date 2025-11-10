@@ -26,6 +26,8 @@ class AppColor {
   static const blackNumberSmallColor = Color(0xFF384250);
   static const sliderInactiveColor = Color(0xFFF2E9F5);
   static const shadowOpticalColor = Color(0xFF000000);
+  static const shadowDragColor = Color(0x29000000)
+;
   static const blackColor = Color(0xFF0D121C);
   static const blackTextColor = Color(0xFF384250);
 
