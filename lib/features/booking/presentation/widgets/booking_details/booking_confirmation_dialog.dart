@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart/core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
@@ -62,7 +64,7 @@ class BookingConfirmationDialog extends StatelessWidget {
             child: Container(
               width: 8.w,
               decoration: BoxDecoration(
-                color: AppColor.yellowContainerColor,
+                color: AppColor.darkOrange,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(0),
                   bottomRight: Radius.circular(0),
@@ -77,22 +79,19 @@ class BookingConfirmationDialog extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        if (showWarningIcon) ...[
-          SizedBox(width: 8.w),
-          Icon(
-            Icons.warning_amber_rounded,
-            color: AppColor.yellowContainerColor,
-            size: 20.w,
-          ),
-        ],
-        SizedBox(width: 16.w),
-
+        SizedBox(width: 4.w),
+        SvgPicture.asset(
+          AppImages.warningSign,
+          width: 32.w,
+          height: 32.w,
+        ),
+        SizedBox(width: 8.w),
         Expanded(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              // Title
               AppText(
                 text: title,
                 appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
@@ -101,12 +100,14 @@ class BookingConfirmationDialog extends StatelessWidget {
                   color: AppColor.blackColor,
                 ),
               ),
-              // Warning icon on the right of title
               Spacer(),
 
               InkWell(
                 onTap: () => Navigator.pop(context),
                 child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColor.greyContainerColor,
+                      shape: BoxShape.circle),
                   padding: EdgeInsets.all(4.w),
                   child: Icon(
                     Icons.close,
@@ -118,22 +119,18 @@ class BookingConfirmationDialog extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: 28.w), // Balance the close button
+        SizedBox(width: 8.w),
       ],
     );
   }
 
   Widget _buildMessage() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      padding: EdgeInsets.only(left: 10.w,right: 40.w),
       child: AppText(
         text: message,
-        appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-          fontSize: 13.sp,
-          color: AppColor.greyTextColor,
-          height: 1.5,
-        ),
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.start,
+        appTextTheme: AppTextTheme.bodySmallTextStyle(),
       ),
     );
   }

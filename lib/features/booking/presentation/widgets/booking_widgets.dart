@@ -25,11 +25,9 @@ class BookingWidgets {
           isFlag: true,
         ),
         SizedBox(width: 8.w),
-        Expanded(
-          child: AppText(
-            text: text,
-            appTextTheme: AppTextTheme.bodyMediumTextStyle(),
-          ),
+        AppText(
+          text: text,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle(),
         ),
       ],
     );

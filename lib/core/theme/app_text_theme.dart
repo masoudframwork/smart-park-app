@@ -109,6 +109,7 @@ class AppTextTheme {
   static TextStyle bodySmallTextStyle() => TextStyle(
         fontSize: 12,
         color: AppColor.greyColor,
+        
         fontWeight: FontWeight.w400,
         fontFamily: 'IBM Plex Sans Arabic',
       );

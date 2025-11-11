@@ -22,6 +22,8 @@ class AppColor {
   static const blackSubColor = Color(0xFF161616);
   static const secondaryContainerColor = Color(0xFFD92D20);
   static const yellowContainerColor = Color(0xFFFEC84B);
+  static const darkOrange = Color(0xFFE5A165);
+
   //6 design
   static const blackNumberSmallColor = Color(0xFF384250);
   static const sliderInactiveColor = Color(0xFFF2E9F5);
