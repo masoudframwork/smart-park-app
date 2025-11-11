@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smart/features/booking/presentation/widgets/booking_card.dart'
+    show CurrentBookingCard;
+import 'package:smart/features/booking/presentation/widgets/booking_details/booking_details_view.dart' show BookingDetailView;
+import 'package:smart/features/booking/presentation/widgets/booking_tap.dart'
+    show BookingTabBar;
 import '../../../../core/theme/app_color.dart';
-import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/custom_button.dart';
-import '../controller/reservation_controller.dart';
-import 'booking_card.dart';
+import '../controller/booking_controller.dart';
+import 'booking_empty_state.dart';
+import 'previous_booking_card.dart';
 
 class BookingListView extends ConsumerWidget {
   const BookingListView({super.key});
@@ -21,58 +24,79 @@ class BookingListView extends ConsumerWidget {
     }
 
     if (reservationState.errorMessage != null) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppText(
-              text: reservationState.errorMessage!,
-              appTextTheme: AppTextTheme.bodyMediumTextStyle(),
-            ),
-            const SizedBox(height: 16),
-            CustomButtonWidget(
-              text: 'إعادة المحاولة',
-              onPressed: () =>
-                  ref.read(reservationController.notifier).refresh(),
-              width: 200,
-            ),
-          ],
-        ),
+      return BookingErrorState(
+        errorMessage: reservationState.errorMessage!,
+        onRetry: () => ref.read(reservationController.notifier).refresh(),
       );
     }
 
-    if (reservationState.reservations.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.event_busy, size: 80, color: AppColor.greyColor),
-            const SizedBox(height: 16),
-            AppText(
-              text: 'لا توجد حجوزات',
-              appTextTheme: AppTextTheme.titleMediumTextStyle(),
-            ),
-          ],
+    final displayedBookings = reservationState.displayedBookings;
+
+    return Column(
+      children: [
+        BookingTabBar(
+          selectedIndex: reservationState.selectedTabIndex,
+          onTabChanged: (index) {
+            ref.read(reservationController.notifier).changeTab(index);
+          },
         ),
+        Expanded(
+          child: displayedBookings.isEmpty
+              ? BookingEmptyState(
+                  selectedTabIndex: reservationState.selectedTabIndex,
+                )
+              : RefreshIndicator(
+                  color: AppColor.primaryColor,
+                  onRefresh: () async =>
+                      ref.read(reservationController.notifier).refresh(),
+                  child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    itemCount: displayedBookings.length,
+                    itemBuilder: (context, index) {
+                      final reservation = displayedBookings[index];
+                      return _buildBookingCard(
+                        context,
+                        ref,
+                        reservation,
+                      );
+                    },
+                  ),
+                ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBookingCard(
+    BuildContext context,
+    WidgetRef ref,
+    reservation,
+  ) {
+    if (reservation.isActive) {
+      return CurrentBookingCard(
+        reservation: reservation,
+        onTap: () => _navigateToDetail(context, reservation),
+        onCancel: () => _navigateToDetail(context, reservation),
+        onExtend: () => _navigateToDetail(context, reservation),
+      );
+    } else {
+      return PreviousBookingCard(
+        reservation: reservation,
+        onTap: () => _navigateToDetail(context, reservation),
+        onBookAgain: () => ref
+            .read(reservationController.notifier)
+            .bookAgain(reservation.id),
       );
     }
+  }
 
-    return RefreshIndicator(
-      color: AppColor.primaryColor,
-      onRefresh: () async => ref.read(reservationController.notifier).refresh(),
-      child: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: reservationState.reservations.length,
-        itemBuilder: (context, index) {
-          final reservation = reservationState.reservations[index];
-
-          return BookingCard(
-            reservation: reservation,
-            onTap: () => ref
-                .read(reservationController.notifier)
-                .selectReservation(reservation.id),
-          );
-        },
+  void _navigateToDetail(BuildContext context, reservation) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BookingDetailView(
+          reservation: reservation,
+        ),
       ),
     );
   }
