@@ -7,6 +7,7 @@ import 'package:smart/features/details_reserve_parking_spot/the_vehicle/persenta
 import 'package:smart/features/details_reserve_parking_spot/the_vehicle/persentation/widgets/vehicle_tile.dart';
 
 import '../../../../core/routing/navigation_service.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
 
@@ -17,7 +18,6 @@ import '../../../../core/widgets/details_reserve_parking_widget/steps_header.dar
 import '../domain/the_vehicle_model.dart';
 import 'controller/the_vehicle_controller.dart';
 
-
 class TheVehicleScreen extends ConsumerWidget {
   const TheVehicleScreen({super.key});
 
@@ -25,10 +25,6 @@ class TheVehicleScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(vehicleScreenProvider);
     final controller = ref.read(vehicleScreenProvider.notifier);
-
-    const Color normalBg     = AppColor.greysCardColor;
-    const Color normalBorder = AppColor.contanearGreyColor;
-
     Widget buildIconFor(VehicleItem v) {
       switch (v.id) {
         case '1':
@@ -36,19 +32,27 @@ class TheVehicleScreen extends ConsumerWidget {
         case '2':
           return SvgPicture.asset(AppImages.carVehicleCar1);
         default:
-          return Icon(Icons.directions_car, size: 24.w, color: AppColor.blackColor);
+          return Icon(
+            Icons.directions_car,
+            size: 24.w,
+            color: AppColor.blackColor,
+          );
       }
     }
+
 
     void onVehicleTap(VehicleItem v) {
-      if (v.isAddNew) {
-        NavigationService.push('/addVehicle', context: context);
-        return;
-      }
       controller.selectVehicle(v.id);
-      NavigationService.push('/paymentScreen', context: context);
     }
 
+    void onNextPressed() {
+      final selectedId = state.selectedId;
+      if (selectedId == 'add_new') {
+        NavigationService.push('/paymentScreen', context: context);
+      } else {
+        NavigationService.push('/paymentScreen', context: context);
+      }
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -63,7 +67,9 @@ class TheVehicleScreen extends ConsumerWidget {
               color: AppColor.primaryColor,
             ),
           ),
-          trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
+          trailing: CloseButtonCircle(
+            onTap: () => NavigationService.go(RoutePaths.bottomNavBar),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(16.w),
@@ -82,34 +88,37 @@ class TheVehicleScreen extends ConsumerWidget {
                         title: 'اختر المركبة',
                       ),
                       SizedBox(height: 12.h),
-
                       ...state.vehicles.map((v) {
                         final bool selected = state.selectedId == v.id;
+
                         return Padding(
                           padding: EdgeInsets.only(bottom: 10.h),
                           child: VehicleTile(
-                            bgColor: normalBg,
-                            borderColor: normalBorder,
+                            bgColor: AppColor.greysCardColor,
+                            borderColor: AppColor.contanearGreyColor,
                             title: v.title,
                             carIcon: v.isAddNew
-                                ? Icon(Icons.add, size: 24.w, color: AppColor.blackColor)
+                                ? Icon(
+                                    Icons.add,
+                                    size: 24.w,
+                                    color: AppColor.blackColor,
+                                  )
                                 : buildIconFor(v),
-                            textStyle: AppTextTheme.titleSmallTextStyle().copyWith(
+                            textStyle:
+                                AppTextTheme.titleSmallTextStyle().copyWith(
                               color: AppColor.blackColor,
                             ),
-                            isSelected: selected && !v.isAddNew,
+                            isSelected: selected,
                             isAddNew: v.isAddNew,
                             onTap: () => onVehicleTap(v),
                           ),
                         );
                       }).toList(),
-
                       SizedBox(height: 24.h),
                     ],
                   ),
                 ),
               ),
-
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -117,13 +126,12 @@ class TheVehicleScreen extends ConsumerWidget {
                   SizedBox(height: 12.h),
                   CustomButtonWidget(
                     text: 'التالي',
-                    onPressed: () {
-                      if (state.selectedId != null && state.selectedId != 'add_new') {
-                        NavigationService.push('/paymentScreen', context: context);
-                      }
-                    },
-                    icon: Icon(Icons.arrow_forward_ios_outlined,
-                        size: 16.w, color: AppColor.whiteColor),
+                    onPressed: onNextPressed,
+                    icon: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      size: 16.w,
+                      color: AppColor.whiteColor,
+                    ),
                     iconOnRight: false,
                   ),
                 ],

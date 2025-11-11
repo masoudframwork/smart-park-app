@@ -1,3 +1,5 @@
+
+// Model for Parking Area
 class ParkingArea {
   final String id;
   final String code;

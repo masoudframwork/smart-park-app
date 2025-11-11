@@ -8,6 +8,8 @@ import 'package:smart/features/details_reserve_parking_spot/booking_summary/pres
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/change_vehicle_dialog_widget.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/widget/selection_tile.dart';
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
+import '../../../../core/routing/navigation_service.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/app_text.dart';
@@ -15,6 +17,8 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_header.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/zone_image_card_widget.dart';
+import '../../../booking/booking_page.dart';
+import '../../../bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../domain/payment_provider.dart';
 import '../domain/vehicle_option.dart';
 import 'widget/booking_custom_time_bottom_sheet.dart';
@@ -43,7 +47,8 @@ class BookingSummary extends ConsumerWidget {
               color: AppColor.primaryColor,
             ),
           ),
-          trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
+          trailing: CloseButtonCircle(
+              onTap: () => NavigationService.go(RoutePaths.bottomNavBar)),
         ),
         body: Padding(
           padding: EdgeInsets.all(16.w),
@@ -104,7 +109,8 @@ class BookingSummary extends ConsumerWidget {
                           );
                         },
                         child: SelectionTile(
-                          title: selectedPayment?.line1 ?? 'البطاقة المنتهية ب 0000',
+                          title: selectedPayment?.line1 ??
+                              'البطاقة المنتهية ب 0000',
                           trailingImage: Container(
                             width: 44.w,
                             height: 28.h,
@@ -135,7 +141,11 @@ class BookingSummary extends ConsumerWidget {
               SizedBox(height: 12.h),
               CustomButtonWidget(
                 text: 'تأكيد الحجز',
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(bottomNavBarController).changeIndex(1);
+
+                  NavigationService.go(RoutePaths.bottomNavBar);
+                },
                 iconLayout: ButtonIconLayout.inlineWithNumber,
                 iconOnRight: false,
                 centerGap: 8,

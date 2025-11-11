@@ -5,6 +5,7 @@ import 'package:smart/features/details_reserve_parking_spot/payment/presentation
 
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 
 import '../../../../core/widgets/custom_button.dart';
@@ -53,8 +54,7 @@ class PaymentScreen extends ConsumerWidget {
             ),
           ),
           trailing: CloseButtonCircle(
-            onTap: () => Navigator.pop(context),
-          ),
+              onTap: () => NavigationService.go(RoutePaths.bottomNavBar)),
         ),
         body: Padding(
           padding: EdgeInsets.all(16.w),
@@ -83,7 +83,6 @@ class PaymentScreen extends ConsumerWidget {
                     isSelected: selected,
                     onTap: () {
                       controller.select(m.id);
-                      goToBookingSummary();
                     },
                   );
                 }).toList(),
