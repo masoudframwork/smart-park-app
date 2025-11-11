@@ -130,15 +130,13 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/features/booking/presentation/controller/reservation_controller.dart';
-import 'package:smart/features/booking/presentation/widgets/booking_details_view.dart';
+import 'package:smart/features/booking/presentation/controller/booking_controller.dart';
+import 'package:smart/features/booking/presentation/widgets/booking_details/booking_details_view.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_list_view.dart';
 
-import '../../../../core/constants/image_string.dart';
 import '../../../../core/theme/app_color.dart';
-import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/app_text.dart';
+
+import 'presentation/widgets/booking_components.dart';
 
 class BookingPage extends ConsumerWidget {
   const BookingPage({super.key});
@@ -163,7 +161,7 @@ class BookingPage extends ConsumerWidget {
         backgroundColor: AppColor.lightBackgroundColor,
         body: Column(
           children: [
-            _BookingCustomAppBar(
+            BookingCustomAppBar(
               inDetailsView: inDetailsView,
               onBackToList: () {
                 ref.read(reservationController.notifier).clearSelection();
@@ -173,117 +171,11 @@ class BookingPage extends ConsumerWidget {
 
             Expanded(
               child: inDetailsView
-                  ? BookingDetailView(reservation: selectedReservation!)
+                  ? BookingDetailView(reservation: selectedReservation)
                   : const BookingListView(),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-/// AppBar
-class _BookingCustomAppBar extends StatelessWidget {
-  final bool inDetailsView;
-  final VoidCallback onBackToList;
-  final VoidCallback onMenu;
-
-  const _BookingCustomAppBar({
-    required this.inDetailsView,
-    required this.onBackToList,
-    required this.onMenu,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: AppColor.lightBackgroundColor,
-      padding: EdgeInsets.only(
-        top: MediaQuery.of(context).padding.top + 16.h,
-        right: 16.w,
-        left: 16.w,
-        bottom: 16.h,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              if (inDetailsView)
-                _SquareButton(
-                  onTap: onBackToList,
-                  icon: Image.asset(
-                    AppImages.arrowRightIcon,
-                    width: 20.w,
-                    height: 20.w,
-                    color: AppColor.primaryColor,
-                  ),
-                )
-              else
-                _SquareButton(
-                  onTap: onBackToList,
-                  icon: Image.asset(
-                    AppImages.arrowRightIcon,
-                    width: 20.w,
-                    height: 20.w,
-                    color: AppColor.primaryColor,
-                  ),
-                ),
-              _SquareButton(
-                onTap: onMenu,
-                icon: Icon(
-                  Icons.menu,
-                  size: 20.w,
-                  color: AppColor.blackColor,
-                ),
-              ),
-            ],
-          ),
-          if (!inDetailsView) ...[
-            SizedBox(height: 22.h),
-            AppText(
-              text: 'الحجوزات',
-              appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-                fontWeight: FontWeight.w600,
-                color: AppColor.blackNumberSmallColor,
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-}
-
-class _SquareButton extends StatelessWidget {
-  final VoidCallback onTap;
-  final Widget icon;
-
-  const _SquareButton({
-    required this.onTap,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(10.r),
-      child: Container(
-        width: 34.w,
-        height: 34.w,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: AppColor.contanearGreyColor,
-            width: 1,
-          ),
-        ),
-        child: icon,
       ),
     );
   }

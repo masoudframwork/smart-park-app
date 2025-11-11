@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 
 // Model for Parking Area
+=======
+>>>>>>> 66b075966e981403c52b9518789e93f3c8aff293
 class ParkingArea {
   final String id;
   final String code;

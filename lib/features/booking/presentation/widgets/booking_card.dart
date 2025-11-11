@@ -3,21 +3,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
-import 'package:smart/features/booking/presentation/controller/timer_controller.dart'
-    show timerControllerProvider, TimerController;
+import 'package:smart/features/booking/presentation/controller/timer_controller.dart';
+import 'package:smart/features/booking/presentation/widgets/time_circle_widget.dart' show TimerCircleWidget;
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
-import '../../domain/models/timer_state.dart';
+import 'booking_widgets.dart';
 
-class BookingCard extends ConsumerWidget {
+class CurrentBookingCard extends ConsumerWidget {
   final BookingModel reservation;
   final VoidCallback onTap;
+  final VoidCallback onCancel;
+  final VoidCallback onExtend;
 
-  const BookingCard({
+  const CurrentBookingCard({
     super.key,
     required this.reservation,
     required this.onTap,
+    required this.onCancel,
+    required this.onExtend,
   });
 
   @override
@@ -29,96 +33,153 @@ class BookingCard extends ConsumerWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 8.h),
+        margin: EdgeInsets.only(bottom: 16.h),
         padding: EdgeInsets.all(16.w),
-        decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(4.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 24,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
+        decoration: BookingWidgets.cardDecoration(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildTimerCircle(timerState, timerController),
-            SizedBox(width: 30.w),
-            Column(
+            Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildTimeRow(),
-                SizedBox(height: 8.h),
-                _buildDateRow(),
+                Expanded(child: _buildBookingInfo()),
+                SizedBox(width: 16.w),
+                TimerCircleWidget(
+                  timerState: timerState,
+                  timerController: timerController,
+                ),
               ],
             ),
+            SizedBox(height: 16.h),
+            _buildActionButtons(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTimerCircle(
-      TimerState timerState, TimerController timerController) {
-    return SizedBox(
-      width: 76.w,
-      height: 76.w,
-      child: Stack(
-        children: [
-          SizedBox(
-            width: 76.w,
-            height: 76.w,
-            child: CircularProgressIndicator(
-              value: timerState.progress,
-              strokeWidth: 6.w,
-              backgroundColor: AppColor.greyContainerColor,
-              valueColor: AlwaysStoppedAnimation(AppColor.yellowContainerColor),
-            ),
+  Widget _buildBookingInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildLocationSection(),
+        SizedBox(height: 8.h),
+        _buildTimeRow(),
+        SizedBox(height: 8.h),
+        _buildDateRow(),
+      ],
+    );
+  }
+
+  Widget _buildLocationSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText(
+          text: reservation.locationName,
+          appTextTheme: AppTextTheme.bodyLargeTextStyle().copyWith(
+            fontWeight: FontWeight.w700,
+            fontSize: 16.sp,
           ),
-          Center(
-            child: AppText(
-              text: timerController.getFormattedTime(),
-              appTextTheme: AppTextTheme.numberSmallTextStyle()
-                  .copyWith(fontWeight: FontWeight.w600, fontSize: 12),
+        ),
+        SizedBox(height: 4.h),
+        Row(
+          children: [
+            Icon(
+              Icons.location_on,
+              size: 14.w,
+              color: AppColor.primaryColor,
             ),
-          ),
-        ],
-      ),
+            SizedBox(width: 4.w),
+            Expanded(
+              child: AppText(
+                text: reservation.address,
+                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                  fontSize: 12.sp,
+                  color: AppColor.greyColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
   Widget _buildTimeRow() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        _buildTimeBlock(reservation.startTime),
+        Icon(
+          Icons.access_time,
+          size: 14.w,
+          color: AppColor.primaryColor,
+        ),
+        SizedBox(width: 4.w),
+        AppText(
+          text: reservation.startTime,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: 13.sp,
+          ),
+        ),
         SizedBox(width: 8.w),
         Image.asset(
           AppImages.arrowIcon,
           color: AppColor.primaryColor,
           width: 12.w,
-          height: 12.h,
+          height: 12.w,
         ),
-        SizedBox(width: 21.w),
-        _buildTimeBlock(reservation.endTime),
+        SizedBox(width: 8.w),
+        AppText(
+          text: reservation.endTime,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: 13.sp,
+          ),
+        ),
       ],
     );
   }
 
-  Widget _buildTimeBlock(String time) {
-    return AppText(
-        text: time,
-        appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-          fontWeight: FontWeight.w600,
-        ));
+  Widget _buildDateRow() {
+    return Row(
+      children: [
+        Icon(
+          Icons.calendar_today,
+          size: 14.w,
+          color: AppColor.primaryColor,
+        ),
+        SizedBox(width: 4.w),
+        AppText(
+          text: reservation.date,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontSize: 13.sp,
+            color: AppColor.greyColor,
+          ),
+        ),
+      ],
+    );
   }
 
-  Widget _buildDateRow() {
-    return AppText(
-        text: reservation.date,
-        appTextTheme:
-            AppTextTheme.titleMediumTextStyle().copyWith(fontSize: 14));
+  Widget _buildActionButtons() {
+    return Row(
+      children: [
+        Expanded(
+          child: BookingWidgets.buildActionButton(
+            text: 'تمديد الحجز',
+            onTap: onExtend,
+            backgroundColor: AppColor.primaryColor,
+          ),
+        ),
+        SizedBox(width: 12.w),
+        Expanded(
+          child: BookingWidgets.buildActionButton(
+            text: 'إنهاء الحجز',
+            onTap: onCancel,
+            backgroundColor: AppColor.secondaryContainerColor,
+          ),
+        ),
+      ],
+    );
   }
 }
