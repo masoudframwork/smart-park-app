@@ -21,7 +21,7 @@ class BookingDetailActions extends StatelessWidget {
       children: [
         Expanded(
           child: _buildActionButton(
-            text: 'إلغاء الحجز',
+            text: 'إنهاء الحجز',
             backgroundColor: AppColor.secondaryContainerColor,
             onTap: () => _showCancelDialog(context),
           ),

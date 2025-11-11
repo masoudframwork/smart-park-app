@@ -58,6 +58,7 @@ class AppImages {
   static const String location2 = "assets/images/svgs/location2.svg";
   static const String add = "assets/images/addd.png";
   static const String location3 = "assets/images/location.svg";
+  static const String warningSign = "assets/images/warning_sign.svg";
 
 
 

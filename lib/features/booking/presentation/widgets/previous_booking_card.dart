@@ -24,7 +24,7 @@ class PreviousBookingCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(bottom: 16.h),
+        margin: EdgeInsets.only(top: 22.h,bottom: 16.h),
         decoration: BookingWidgets.cardDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
