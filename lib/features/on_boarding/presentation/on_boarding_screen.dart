@@ -118,8 +118,8 @@ class OnBoardingScreen extends ConsumerWidget {
     radius: 4,
     dotHeight: 8,
     dotWidth: 13,
-    dotColor: AppColor.yellowContainerColor,
-    activeDotColor: AppColor.yellowContainerColor,
+    dotColor: AppColor.whiteColor,
+    activeDotColor: AppColor.whiteColor,
   );
 }
 

@@ -3,7 +3,7 @@
 // import 'package:flutter/services.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 //
-// /// A resilient SVG widget that accepts either:
+// /// A resilient SVG widgets that accepts either:
 // ///  - Network URL (http/https)
 // ///  - Asset path (e.g., assets/icons/foo.svg)
 // /// Optional: a fallback asset if network load fails.

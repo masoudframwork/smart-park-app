@@ -7,7 +7,7 @@ class CustomImageWidget extends StatelessWidget {
   final String? imageUrl;
   final double width;
   final double height;
-  final Color color;
+  final Color? color;
   final BoxFit fit;
   final Widget? errorWidget;
   final bool isFlag;
@@ -17,7 +17,7 @@ class CustomImageWidget extends StatelessWidget {
     required this.imageUrl,
     this.width = 60,
     this.height = 60,
-    this.color = AppColor.blackColor,
+    this.color,
     this.fit = BoxFit.cover,
     this.errorWidget,
     this.isFlag = false,
@@ -34,7 +34,7 @@ class CustomImageWidget extends StatelessWidget {
           width: width,
           height: height,
           fit: fit,
-          colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
           placeholderBuilder: (_) => _placeholder(),
         );
       } else {
@@ -63,7 +63,7 @@ class CustomImageWidget extends StatelessWidget {
           width: width,
           height: height,
           fit: fit,
-          colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
           placeholderBuilder: (_) => _placeholder(),
         );
       } else {

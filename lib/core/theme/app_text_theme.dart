@@ -20,7 +20,7 @@ class AppTextTheme {
         fontFamily: 'IBM Plex Sans Arabic',
       );
 //الاجمالي
-  static TextStyle yellowTextStyle() => TextStyle(
+  static TextStyle descriptionTextStyle() => TextStyle(
         fontSize: 18,
         color: AppColor.blackTextColor,
         fontWeight: FontWeight.w700,

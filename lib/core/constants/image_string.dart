@@ -5,17 +5,17 @@ class AppImages {
 
   factory AppImages() => _instance;
   //logo
-  static const String appLogo = 'assets/images/Group 568@3x.png';
+  static const String appLogo = 'assets/images/logo22.jpg';
   //intro screen
   static const String intro1 = 'assets/images/intro1.jpg';
   static const String intro2 = 'assets/images/intro2.jpg';
   static const String intro3 = 'assets/images/intro3.jpg';
   static const String iconIntro1 = 'assets/images/svgs/icon_intro1.svg';
-  static const String iconIntro2 = 'assets/images/svgs/intro2_icon.svg';
-  static const String iconIntro3 = 'assets/images/svgs/icon_intro3.svg';
+  static const String iconIntro2 = 'assets/images/svgs/icon_intro2.svg';
+  static const String iconIntro3 = 'assets/images/svgs/intro3.svg';
 
-  static const String iconArrawIntro1 = 'assets/images/svgs/int.svg';
-  static const String iconArrawBackIntro1 = 'assets/images/svgs/back.svg';
+  static const String iconArrawIntro1 = 'assets/images/svgs/iconArrawIntro1.svg';
+  static const String iconArrawBackIntro1 = 'assets/images/svgs/iconArrawBackIntro1.svg';
 
   // arraw icons
   static const String arrowIcon = 'assets/images/left-arrow (1).png';

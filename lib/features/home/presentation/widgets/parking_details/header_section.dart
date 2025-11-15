@@ -93,7 +93,7 @@ import 'package:smart/core/widgets/app_text.dart';
 //   }
 //
 //   Widget _buildIconsButton(
-//     widget,
+//     widgets,
 //   ) {
 //     return Container(
 //       padding: EdgeInsets.all(2.h),
@@ -109,7 +109,7 @@ import 'package:smart/core/widgets/app_text.dart';
 //         // ],
 //       ),
 //       child: SvgPicture.asset(
-//         widget,
+//         widgets,
 //       ),
 //     );
 //   }

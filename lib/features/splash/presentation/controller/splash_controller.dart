@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 
 final splashControllerProvider = ChangeNotifierProvider.autoDispose(
-  (ref) => SplashController(),
+      (ref) => SplashController(),
 );
 
 class SplashController extends ChangeNotifier {

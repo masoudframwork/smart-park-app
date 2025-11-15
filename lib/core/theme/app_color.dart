@@ -2,7 +2,10 @@ import 'dart:ui';
 
 class AppColor {
   AppColor._();
-  static const primaryColor = Color(0xFF1B8354);
+  static const primaryColor = Color(0xFF86B925);
+  static const primaryBackgroundColor = Color(0xFF033838);
+
+  static const primaryTextColor = Color(0xFF93D11C);
 //7
   static const primaryButtonColor = Color(0xFF1A8154);
 
@@ -28,8 +31,7 @@ class AppColor {
   static const blackNumberSmallColor = Color(0xFF384250);
   static const sliderInactiveColor = Color(0xFFF2E9F5);
   static const shadowOpticalColor = Color(0xFF000000);
-  static const shadowDragColor = Color(0x29000000)
-;
+  static const shadowDragColor = Color(0x29000000);
   static const blackColor = Color(0xFF0D121C);
   static const blackTextColor = Color(0xFF384250);
 

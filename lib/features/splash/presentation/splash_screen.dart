@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart/core/theme/app_color.dart';
 import '../../../core/constants/image_string.dart';
 import '../../../core/routing/routes.dart';
-import '../../../core/widgets/app_splash_background.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import '../../on_boarding/presentation/controller/onboarding_prefs_providers.dart';
 import 'controller/splash_controller.dart';
+
+const double _logoEndAlignmentY = -0.08;
+const double _logoStartAlignmentY = -0.25;
 
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
@@ -36,33 +39,88 @@ class SplashScreen extends ConsumerWidget {
     });
 
     return Scaffold(
-      body: AppSplashBackground(
-        child: Center(
-          child: AnimatedOpacity(
-            duration: const Duration(seconds: 2),
-            opacity: controller.isAnimated ? 1 : 0,
-            curve: Curves.easeInOut,
-            child: AnimatedScale(
-              duration: const Duration(seconds: 2),
-              scale: controller.isAnimated ? 1.0 : 0.6,
-              curve: Curves.elasticOut,
-              child: AnimatedSlide(
-                duration: const Duration(milliseconds: 1500),
-                offset:
-                    controller.isAnimated ? Offset.zero : const Offset(0, 1),
-                curve: Curves.easeOutBack,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomImageWidget(
-                      isFlag: true,
-                      imageUrl: AppImages.appLogo,
-                      color: AppColor.primaryColor,
-                      width: 134,
-                      height: 93.08,
-                    ),
-                  ],
+      backgroundColor: Colors.white,
+      body: Center(
+        child: _SplashCardShape(
+          isAnimated: controller.isAnimated,
+        ),
+      ),
+    );
+  }
+}
+
+class _SplashCardShape extends StatelessWidget {
+  final bool isAnimated;
+
+  const _SplashCardShape({
+    required this.isAnimated,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final double cardHeight = size.height * 0.8;
+
+    return Container(
+      width: double.infinity,
+      height: size.height,
+      clipBehavior: Clip.hardEdge,
+      decoration: BoxDecoration(
+        color: AppColor.primaryBackgroundColor,
+      ),
+      child: Stack(
+        children: [
+          _AnimatedLogo(isAnimated: isAnimated),
+          _AnimatedBottomWave(
+            isAnimated: isAnimated,
+            cardHeight: cardHeight,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AnimatedLogo extends StatelessWidget {
+  final bool isAnimated;
+
+  const _AnimatedLogo({
+    required this.isAnimated,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedAlign(
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeOutBack,
+      alignment: isAnimated
+          ? Alignment(0, _logoEndAlignmentY)
+          : Alignment(0, _logoStartAlignmentY),
+      child: AnimatedScale(
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeOutBack,
+        scale: isAnimated ? 1.0 : 0.2,
+        child: AnimatedOpacity(
+          duration: const Duration(milliseconds: 600),
+          opacity: isAnimated ? 1.0 : 0.0,
+          child: Container(
+            width: 147.w,
+            height: 147.w,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.08),
+                  blurRadius: 18,
+                  offset: const Offset(0, 8),
                 ),
+              ],
+            ),
+            child: ClipOval(
+              child: CustomImageWidget(
+                isFlag: true,
+                imageUrl: AppImages.appLogo,
               ),
             ),
           ),
@@ -70,4 +128,61 @@ class SplashScreen extends ConsumerWidget {
       ),
     );
   }
+}
+
+class _AnimatedBottomWave extends StatelessWidget {
+  final bool isAnimated;
+  final double cardHeight;
+
+  const _AnimatedBottomWave({
+    required this.isAnimated,
+    required this.cardHeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedPositioned(
+      duration: const Duration(milliseconds: 900),
+      curve: Curves.easeOutCubic,
+      left: 0,
+      right: 0,
+      bottom: isAnimated ? 0 : -cardHeight * 0.35,
+      height: cardHeight * 0.30,
+      child: ClipPath(
+        clipper: _BottomWaveClipper(),
+        child: Container(
+          color: AppColor.primaryColor,
+        ),
+      ),
+    );
+  }
+}
+
+class _BottomWaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+
+    final double leftBaseY = size.height * 0.20;
+    final double peakX = size.width * 0.17;
+    final double peakY = size.height * 0.02;
+    final double rightBaseY = size.height * 0.20;
+
+    path.moveTo(0, size.height);
+    path.lineTo(0, leftBaseY);
+    path.lineTo(peakX, peakY);
+    path.quadraticBezierTo(
+      size.width * 0.60,
+      size.height * 0.40,
+      size.width,
+      rightBaseY,
+    );
+    path.lineTo(size.width, size.height);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }

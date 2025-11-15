@@ -35,7 +35,10 @@ class TitleSubtitleWidget extends StatelessWidget {
         AppText(
           text: title,
           textAlign: TextAlign.center,
-          appTextTheme: AppTextTheme.introTitleTextStyle(),
+          appTextTheme: AppTextTheme.introTitleTextStyle().copyWith(
+            color:AppColor .primaryTextColor,
+            fontSize: 50,
+          ),
         ),
         const SizedBox(height: 16),
         AppText(

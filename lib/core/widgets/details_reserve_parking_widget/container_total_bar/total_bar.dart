@@ -32,7 +32,7 @@ class TotalBar extends StatelessWidget {
         children: [
           AppText(
             text: label ?? 'الإجمالي',
-            appTextTheme: AppTextTheme.yellowTextStyle(),
+            appTextTheme: AppTextTheme.descriptionTextStyle(),
           ),
           SizedBox(width: 12.w),
           Row(

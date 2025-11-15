@@ -60,7 +60,8 @@ class OnboardingController extends AutoDisposeNotifier<OnboardingState> {
         curve: Curves.easeOut,
       );
     } else {
-      onSkip();
+      NavigationService.go(RoutePaths.loginPage);
+
     }
   }
 
