@@ -111,6 +111,8 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
                   LatLng(area.latitude, area.longitude),
                   14.0, // ⬅️ ZOOM LEVEL (try 14–17)
                 );
+
+                print("Selected area: ${area.latitude}, ${area.longitude}");
               },
             );
           },
