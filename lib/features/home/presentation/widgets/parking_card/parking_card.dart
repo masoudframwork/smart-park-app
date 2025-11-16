@@ -44,7 +44,6 @@ class ParkingCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        // -------- TITLE (Only name + code) --------
                         Text(
                           "${parkingArea.code} ${parkingArea.name}",
                           maxLines: 1,
@@ -59,7 +58,6 @@ class ParkingCard extends StatelessWidget {
 
                         SizedBox(height: 4.h),
 
-                        // -------- LOCATION --------
                         Text(
                           parkingArea.location,
                           maxLines: 1,
@@ -72,7 +70,6 @@ class ParkingCard extends StatelessWidget {
                         ),
                         const Spacer(),
 
-                        // -------- BOTTOM ROW (arrow + stats) --------
                         Row(
                           textDirection: TextDirection.ltr,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +90,6 @@ class ParkingCard extends StatelessWidget {
 
                             SizedBox(width: 10.w),
 
-                            // MAIN EXPANDED — only ONE allowed
                             Expanded(
                               child: Directionality(
                                 textDirection: TextDirection.rtl,
