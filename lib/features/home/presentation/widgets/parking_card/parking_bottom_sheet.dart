@@ -24,8 +24,53 @@ class ParkingBottomSheet extends ConsumerStatefulWidget {
 // 14 = street level
 // 16 = close parking-level zoom (best for your UI)
 
-
 class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
+  late ScrollController _scrollCtrl;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollCtrl = ScrollController();
+    _scrollCtrl.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollCtrl.dispose();
+  }
+
+  void _onScroll() {
+    if (!_scrollCtrl.hasClients) return;
+
+    final offset = _scrollCtrl.offset;
+
+    // Width of each card + spacing between cards
+    const cardWidth = 332.0;
+    const spacing = 20.0;
+
+    final itemExtent = cardWidth + spacing;
+
+    // Calculate which card is at the center
+    int index = (offset / itemExtent).round();
+
+    final parkingAreas = ref.read(bottomSheetProvider).parkingAreas;
+
+    if (index < 0 || index >= parkingAreas.length) return;
+
+    final selectedArea = parkingAreas[index];
+
+    // Move (zoom) map to the card location
+    widget.mapController.move(
+      LatLng(selectedArea.latitude, selectedArea.longitude),
+      13.0, // Your zoom level
+    );
+
+    // Update green box
+    ref.read(selectedParkingAreaDetailsProvider.notifier).state = selectedArea;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final controller = ref.watch(bottomSheetProvider);
@@ -43,6 +88,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
       child: SizedBox(
         height: 150.h,
         child: ListView.separated(
+          controller: _scrollCtrl,
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           scrollDirection: Axis.horizontal,
           itemCount: parkingAreas.length,
@@ -63,7 +109,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
                 // 3️⃣ Animate map to the marker
                 widget.mapController.move(
                   LatLng(area.latitude, area.longitude),
-                  16.0, // ⬅️ ZOOM LEVEL (try 14–17)
+                  14.0, // ⬅️ ZOOM LEVEL (try 14–17)
                 );
               },
             );

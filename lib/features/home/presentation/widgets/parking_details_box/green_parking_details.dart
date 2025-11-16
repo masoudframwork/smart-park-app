@@ -34,10 +34,19 @@ class GreenParkingDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
+            // CLOSE BUTTON TOP LEFT
+            Align(
+              alignment: Alignment.topLeft,
+              child: GestureDetector(
+                onTap: onClose,
+                child: const Icon(Icons.close, color: Colors.white),
+              ),
+            ),
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /// TIMER CIRCLE
+                /// ⏳ TIMER CIRCLE
                 _buildTimer(),
 
                 SizedBox(width: 12.w),
