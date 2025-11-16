@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
-
-// NEW IMPORT
 import 'widgets/custom_bottom_nav_bar.dart';
 
 class BottomNavBarPage extends StatefulWidget {
@@ -25,6 +23,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      extendBody: false,
       body: Consumer(
         builder: (context, ref, child) {
           final currentIndex = ref.watch(bottomNavBarController).currentIndex;
@@ -38,6 +37,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
               children: pages.asMap().entries.map((entry) {
                 final index = entry.key;
                 final page = entry.value;
+
                 return Navigator(
                   key: ValueKey('navigator_$index'),
                   onGenerateRoute: (settings) {
@@ -53,9 +53,11 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
         },
       ),
 
-      // 🔥 HERE IS THE NEW BOTTOM NAV BAR
-      bottomNavigationBar: const SafeArea(
-        child: CustomBottomNavigationBar(),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: const SafeArea(
+          child: CustomBottomNavigationBar(),
+        ),
       ),
     );
   }
