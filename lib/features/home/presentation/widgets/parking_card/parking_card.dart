@@ -1,81 +1,154 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/theme/app_color.dart';
-import 'package:smart/core/widgets/custom_button.dart';
+import '../../../../../core/constants/image_string.dart';
 import '../../../domain/models/parking_area_model.dart';
-import 'parking_card_image.dart';
-import 'parking_card_stats.dart';
-import 'parking_info_card.dart';
 
 class ParkingCard extends StatelessWidget {
   final ParkingArea parkingArea;
-  final VoidCallback? onStartBooking;
+  final VoidCallback? onTap;
 
   const ParkingCard({
     super.key,
     required this.parkingArea,
-    this.onStartBooking,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 310.w,
-      //margin: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.shadowCardColor.withOpacity(0.40),
-            blurRadius: 18,
-            offset: const Offset(0, 8),
-          ),
-          BoxShadow(
-            color: AppColor.shadowCardColor.withOpacity(0.05),
-            blurRadius: 14,
-            offset: const Offset(6, 4),
-          ),
-          BoxShadow(
-            color: AppColor.shadowCardColor.withOpacity(0.20),
-            blurRadius: 14,
-            offset: const Offset(-6, 4),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.r),
+    return Directionality(
+      // 🔥 FORCE LTR so image stays on right
+      textDirection: TextDirection.ltr,
+      child: GestureDetector(
+        onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(12.w),
-          color: AppColor.whiteColor,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          width: 300.w,
+          height: 120.h,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.10),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Row(
             children: [
-              ParkingCardImage(parkingArea: parkingArea),
-              SizedBox(height: 5.h),
-              ParkingCardInfo(parkingArea: parkingArea),
-              SizedBox(height: 5.h),
-              ParkingCardStats(parkingArea: parkingArea),
-             // SizedBox(height: 15.h),
-              Spacer(),
-              _buildBookingButton(),
+              // ==========================
+              // LEFT SIDE CONTENT (Text)
+              // ==========================
+              Expanded(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Green button + title
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(6.r),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF6CBF4E),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.arrow_back_ios_new,
+                              size: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(width: 8.w),
+                          Expanded(
+                            child: Text(
+                              "${parkingArea.code} ${parkingArea.name}",
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // Description (location)
+                      Text(
+                        parkingArea.location,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.black54,
+                        ),
+                      ),
+
+                      // Price + availability + car icon
+                      Row(
+                        children: [
+                          Text(
+                            "${parkingArea.pricePerHour} ريال/ساعة",
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(width: 12.w),
+                          Text(
+                            parkingArea.formattedAvailability, // "5/10"
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          SizedBox(width: 6.w),
+                          const Icon(
+                            Icons.directions_car,
+                            size: 18,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              // ==========================
+              // RIGHT-SIDE IMAGE
+              // ==========================
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20.r),
+                  bottomRight: Radius.circular(20.r),
+                ),
+                child: Container(
+                  width: 110.w,
+                  height: double.infinity,
+                  color: Colors.grey.shade200,
+                  child: parkingArea.imageUrl != null
+                      ? Image.network(
+                          parkingArea.imageUrl!,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.asset(
+                          AppImages.parkingDemo,
+                          fit: BoxFit.cover,
+                        ),
+                ),
+              ),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildBookingButton() {
-    return CustomButtonWidget(
-      width: 288,
-      height: 40,
-      text: 'ابدأ الحجز',
-      onPressed: onStartBooking ?? () {},
-      type: ButtonType.elevated,
-      backgroundColor: AppColor.primaryColor,
-      verticalPadding: 12,
-      borderRadius: 4.r,
     );
   }
 }

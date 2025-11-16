@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 
-import 'widgets/home_bottom_nav_bar.dart';
+// NEW IMPORT
+import 'widgets/custom_bottom_nav_bar.dart';
 
 class BottomNavBarPage extends StatefulWidget {
   const BottomNavBarPage({super.key});
@@ -17,7 +18,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   @override
   void initState() {
     super.initState();
-
     lastBackPressTime = null;
   }
 
@@ -38,7 +38,6 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
               children: pages.asMap().entries.map((entry) {
                 final index = entry.key;
                 final page = entry.value;
-                // Wrap each page in a Navigator so it can have its own navigation stack
                 return Navigator(
                   key: ValueKey('navigator_$index'),
                   onGenerateRoute: (settings) {
@@ -53,7 +52,11 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
           );
         },
       ),
-      bottomNavigationBar: const SafeArea(child: HomeBottomNavigationBar()),
+
+      // 🔥 HERE IS THE NEW BOTTOM NAV BAR
+      bottomNavigationBar: const SafeArea(
+        child: CustomBottomNavigationBar(),
+      ),
     );
   }
 }

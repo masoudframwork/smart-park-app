@@ -39,6 +39,12 @@ class AppImages {
   static const String mice = "assets/images/home/mice.svg";
   static const String available = "assets/images/home/available.svg";
   static const String shipping = "assets/images/home/shipping.svg";
+  static const String arrowLeftIcon = "assets/images/home/arrow_left_icon.svg";
+  static const String carIcon = "assets/images/home/car_icon.svg";
+  static const String homeSelectedIcon = "assets/images/home/home_selected_icon.svg";
+  static const String qrCodeIcon = "assets/images/home/qr_code_icon.svg";
+  static const String reservationNotSelectedIcon = "assets/images/home/reservation_not_selected_icon.svg";
+
 
 
 
