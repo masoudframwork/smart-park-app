@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:latlong2/latlong.dart';
 import '../../../provider/selected_parking_provider.dart';
 import '../../controller/bottom_sheet_controller.dart';
+import '../../controller/home_controller.dart';
 import 'parking_card.dart';
 
 class ParkingBottomSheet extends ConsumerStatefulWidget {
@@ -63,7 +64,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
     // Move (zoom) map to the card location
     widget.mapController.move(
       LatLng(selectedArea.latitude, selectedArea.longitude),
-      13.0, // Your zoom level
+      17.0,  // 👈 SET ZOOM LEVEL FOR PARKING SELECTION
     );
 
     // Update green box
@@ -99,21 +100,33 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
             return ParkingCard(
               parkingArea: area,
               onTap: () {
-                // 1️⃣ Save selected parking area
-                ref.read(selectedParkingAreaDetailsProvider.notifier).state =
-                    area;
+                final homeState = ref.read(homeControllerProvider).state;
 
-                // 2️⃣ Hide bottom sheet
+                // 1️⃣ Find the matching map marker from homeState.locations
+                final matchingLocation = homeState.locations.firstWhere(
+                      (loc) =>
+                  (loc.code == area.code) ||          // best match
+                      (loc.lat == area.latitude) ||       // alternative match
+                      (loc.lng == area.longitude),        // alternative match
+                  orElse: () => homeState.locations.first,
+                );
+
+                // 2️⃣ Save selected card
+                ref.read(selectedParkingAreaDetailsProvider.notifier).state = area;
+
+                // 3️⃣ Hide sheet
                 ref.read(bottomSheetProvider).hide();
 
-                // 3️⃣ Animate map to the marker
+                // 4️⃣ Animate map to the ACTUAL marker position
                 widget.mapController.move(
-                  LatLng(area.latitude, area.longitude),
-                  14.0, // ⬅️ ZOOM LEVEL (try 14–17)
+                  LatLng(matchingLocation.lat, matchingLocation.lng),
+                  17.0,  // 👈 SET ZOOM LEVEL FOR PARKING SELECTION
                 );
 
                 print("Selected area: ${area.latitude}, ${area.longitude}");
+                print("Marker location: ${matchingLocation.lat}, ${matchingLocation.lng}");
               },
+
             );
           },
         ),
