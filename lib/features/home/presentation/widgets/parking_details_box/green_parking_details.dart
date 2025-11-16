@@ -20,7 +20,7 @@ class GreenParkingDetails extends StatelessWidget {
         padding: EdgeInsets.all(14.w),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xFF50A050),
+          color: const Color(0xFF1B8354),
           borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(

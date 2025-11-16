@@ -36,7 +36,7 @@ class HomeModel {
   // Dummy data initialization (kept for fallback/testing)
   factory HomeModel.withDummyData() {
     return HomeModel(
-      userLocation: const LatLng(24.7136, 46.6753), // Riyadh coordinates
+      userLocation: const LatLng(24.7136, 46.6753),
       locations: _generateDummyLocations(),
       isLoading: false,
       error: null,
