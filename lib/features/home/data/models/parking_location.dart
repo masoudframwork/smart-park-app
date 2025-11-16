@@ -13,6 +13,13 @@ class ParkingLocation {
   final String? imageUrl;
   final double? rating;
 
+  // ADD THESE:
+  final String code;
+  final String address;
+  final String carInfo;
+  final String startTime;
+  final String endTime;
+
   ParkingLocation({
     required this.id,
     required this.lat,
@@ -22,6 +29,11 @@ class ParkingLocation {
     required this.type,
     required this.isAvailable,
     required this.price,
+    required this.code,
+    required this.address,
+    required this.carInfo,
+    required this.startTime,
+    required this.endTime,
     this.distance,
     this.availableSpots,
     this.totalSpots,
@@ -62,6 +74,11 @@ class ParkingLocation {
       totalSpots: map['totalSpots'],
       imageUrl: map['imageUrl'],
       rating: map['rating']?.toDouble(),
+      code:  map['code']?.toDouble(),
+      address: map['address']?.toDouble(),
+      carInfo:  map['carInfo']?.toDouble(),
+      startTime: map['startTime']?.toDouble(),
+      endTime: map['endTime']?.toDouble(),
     );
   }
 }

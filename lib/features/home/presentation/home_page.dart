@@ -7,9 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'package:smart/features/home/presentation/widgets/parking_card/parking_bottom_sheet.dart';
+import 'package:smart/features/home/presentation/widgets/parking_details_box/green_parking_details.dart';
 import 'package:smart/features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custome_text_field_widget.dart';
+import '../provider/selected_parking_provider.dart';
 import 'controller/home_controller.dart';
 import 'package:smart/features/home/data/models/home_model.dart';
 import 'package:smart/features/home/data/models/parking_location.dart';
@@ -47,6 +49,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final homeController = ref.watch(homeControllerProvider);
     final homeState = homeController.state;
+    final selectedParking = ref.watch(selectedParkingAreaDetailsProvider);
 
     return Scaffold(
       body: Stack(
@@ -96,18 +99,19 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
           ),
           if (homeState.selectedMarker == null) const ParkingBottomSheet(),
-          if (homeState.selectedMarker != null)
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: _ParkingDetailsFloatingWidget(
-                parkingLocation: homeState.selectedMarker!,
-                onClose: () {
-                  ref.read(homeControllerProvider).clearSelection();
-                },
+          // if (homeState.selectedMarker != null)
+            if (selectedParking != null)
+              Positioned(
+                top: 160,
+                left: 16,
+                right: 16,
+                child: GreenParkingDetails(
+                  parkingArea: selectedParking!,
+                  onClose: () {
+                    ref.read(selectedParkingAreaDetailsProvider.notifier).state = null;
+                  },
+                ),
               ),
-            ),
         ],
       ),
     );
@@ -210,36 +214,6 @@ class _TopControls extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            width: 34.w,
-            height: 34.w,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: AppColor.whiteColor,
-              borderRadius: BorderRadius.circular(4.r),
-              border: Border.all(
-                color: AppColor.contanearGreyColor,
-                width: 1,
-              ),
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(10.r),
-                onTap: onMenuTap,
-                child: Center(
-                  child: Icon(
-                    Icons.menu,
-                    size: 22.w,
-                    color: AppColor.blackColor,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
         SizedBox(height: 20.h),
         _SearchBar(
           controller: searchController,

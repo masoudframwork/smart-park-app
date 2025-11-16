@@ -85,7 +85,8 @@ class LocationService {
           ),
           availableSpots: i % 3 != 0 ? 10 + (i * 3) : 0,
           totalSpots: 60 + (i * 5),
-          imageUrl: null,
+          imageUrl: null, code: '', address: '', carInfo: '', startTime: '',
+          endTime: '',
         ),
       );
     }
@@ -114,6 +115,11 @@ class LocationService {
             stationLng,
           ),
           imageUrl: null,
+          code: '',
+          address: '',
+          carInfo: '',
+          startTime: '',
+          endTime: '',
         ),
       );
     }
@@ -139,6 +145,11 @@ class LocationService {
         ),
         rating: 4.5,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
     );
 
