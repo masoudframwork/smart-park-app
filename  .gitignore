@@ -1,0 +1,78 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub/
+build/
+flutter_*.png
+app.*.map.json
+**/GeneratedPluginRegistrant.*
+**/generated_plugin_registrant.*
+**/generated_plugins.cmake
+.melos_tool/
+
+# Android related
+**/android/.gradle
+**/android/build/
+**/android/local.properties
+**/android/key.properties
+**/android/.settings/
+**/android/captures/
+**/android/gradle/
+**/android/*.iml
+**/android/.idea/
+
+# iOS related
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/engine/
+**/ios/Flutter/*.xcworkspace
+**/ios/.symlinks
+**/ios/Pods/
+**/ios/Runner/GeneratedPluginRegistrant.*
+**/ios/ServiceDefinitions.json
+
+# MacOS related
+**/macos/Flutter/ephemeral/
+**/macos/Pods/
+**/macos/Runner/GeneratedPluginRegistrant.*
+
+# Windows related
+**/windows/flutter/
+**/windows/runner/Debug/
+**/windows/runner/Release/
+**/windows/CMakeFiles/
+**/windows/Makefile
+**/windows/Runner.rc
+**/windows/Runner.log
+
+# Linux
+**/linux/flutter/
+**/linux/CMakeFiles/
+**/linux/Makefile
+
+# Web
+**/web/.dart_tool/
+**/web/.firebase/
+
+# VS Code
+.vscode/
+.history/
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+
+# Misc
+pubspec.lock
+pubspec_old.lock
+**/*.lock
+*.log
+*.tmp
+*.swp
+
+# Firebase/Secrets
+google-services.json
+GoogleService-Info.plist
+.env
+.env*
