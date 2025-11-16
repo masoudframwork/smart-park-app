@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:latlong2/latlong.dart';
 import '../../../provider/selected_parking_provider.dart';
 import '../../controller/bottom_sheet_controller.dart';
 import 'parking_card.dart';
 
 class ParkingBottomSheet extends ConsumerStatefulWidget {
-  const ParkingBottomSheet({super.key});
+  final MapController mapController;
+
+  const ParkingBottomSheet({
+    super.key,
+    required this.mapController,
+  });
 
   @override
   ConsumerState<ParkingBottomSheet> createState() => _ParkingBottomSheetState();
 }
+
+// ⭐ Recommended Zoom Level
+// 13 = city level
+// 14 = street level
+// 16 = close parking-level zoom (best for your UI)
+
 
 class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
   @override
@@ -40,11 +53,18 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
             return ParkingCard(
               parkingArea: area,
               onTap: () {
-                // THIS IS THE CORRECT PLACE TO USE ref
-                ref.read(selectedParkingAreaDetailsProvider.notifier).state = area;
+                // 1️⃣ Save selected parking area
+                ref.read(selectedParkingAreaDetailsProvider.notifier).state =
+                    area;
 
-                // hide the bottom sheet
+                // 2️⃣ Hide bottom sheet
                 ref.read(bottomSheetProvider).hide();
+
+                // 3️⃣ Animate map to the marker
+                widget.mapController.move(
+                  LatLng(area.latitude, area.longitude),
+                  16.0, // ⬅️ ZOOM LEVEL (try 14–17)
+                );
               },
             );
           },

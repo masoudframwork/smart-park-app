@@ -59,7 +59,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               mapController: _mapController,
               options: MapOptions(
                 initialCenter: homeState.userLocation!,
-                initialZoom: 15.0,
+                initialZoom: 13,
                 onTap: (_, __) {
                   ref.read(homeControllerProvider).clearSelection();
                   searchFocus.unfocus();
@@ -98,20 +98,24 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
-          if (homeState.selectedMarker == null) const ParkingBottomSheet(),
+          if (homeState.selectedMarker == null)
+            ParkingBottomSheet(
+              mapController: _mapController,
+            ),
           // if (homeState.selectedMarker != null)
-            if (selectedParking != null)
-              Positioned(
-                top: 160,
-                left: 16,
-                right: 16,
-                child: GreenParkingDetails(
-                  parkingArea: selectedParking!,
-                  onClose: () {
-                    ref.read(selectedParkingAreaDetailsProvider.notifier).state = null;
-                  },
-                ),
+          if (selectedParking != null)
+            Positioned(
+              top: 160,
+              left: 16,
+              right: 16,
+              child: GreenParkingDetails(
+                parkingArea: selectedParking!,
+                onClose: () {
+                  ref.read(selectedParkingAreaDetailsProvider.notifier).state =
+                      null;
+                },
               ),
+            ),
         ],
       ),
     );
