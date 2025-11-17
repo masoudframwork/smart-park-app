@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smart/core/routing/navigation_service.dart';
 import 'package:smart/core/routing/routes.dart';
-
 import 'package:smart/features/bottom_nav_bar/presentation/bottom_nav_bar_page.dart';
-import 'package:smart/features/details_reserve_parking_spot/booking_summary/presentation/booking_summary.dart';
-import 'package:smart/features/details_reserve_parking_spot/duration/presentation/duration_screen.dart';
-import 'package:smart/features/details_reserve_parking_spot/payment/presentation/payment_screen.dart';
-import 'package:smart/features/details_reserve_parking_spot/the_vehicle/persentation/the_vehicle_screen.dart';
 import 'package:smart/features/on_boarding/presentation/on_boarding_screen.dart';
 import 'package:smart/features/splash/presentation/splash_screen.dart';
-
+import '../../features/auth/bankcarddata/presentation/bank_card_data_page.dart';
 import '../../features/auth/login/presentation/login_page.dart';
 import '../../features/auth/send_the_code/presentation/send_the_code_page.dart';
+import '../../features/auth/sign_up/presentation/sign_up_page.dart';
+import '../../features/details_reserve_parking_spot/booking-parking_details/presentation/booking_parking_details_page.dart';
+import '../../features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 import '../../features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
 import '../helpers/soft_transition_page.dart';
 
@@ -48,38 +46,6 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: RoutePaths.durationScreen,
-        pageBuilder: (context, state) {
-          return softTransitionPage(
-            child: DurationScreen(),
-          );
-        },
-      ),
-      GoRoute(
-        path: RoutePaths.theVehicleScreen,
-        pageBuilder: (context, state) {
-          return softTransitionPage(
-            child: TheVehicleScreen(),
-          );
-        },
-      ),
-      GoRoute(
-        path: RoutePaths.paymentScreen,
-        pageBuilder: (context, state) {
-          return softTransitionPage(
-            child: PaymentScreen(),
-          );
-        },
-      ),
-      GoRoute(
-        path: RoutePaths.bookingSummary,
-        pageBuilder: (context, state) {
-          return softTransitionPage(
-            child: BookingSummary(),
-          );
-        },
-      ),
-      GoRoute(
         path: RoutePaths.voiceToTextScreen,
         pageBuilder: (context, state) {
           return softTransitionPage(
@@ -100,6 +66,38 @@ class AppRouter {
         pageBuilder: (context, state) {
           return softTransitionPage(
             child: SendTheCodePage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.signUpPage,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: SignUpPage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.bankCardDataPage,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: BankCardDataPage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.bookingParkingDetailsPage,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: BookingParkingDetailsPage(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.bookingStep1Page,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: BookingStep1Page(),
           );
         },
       ),

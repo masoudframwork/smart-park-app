@@ -14,8 +14,14 @@ class AppImages {
   static const String iconIntro2 = 'assets/images/svgs/icon_intro2.svg';
   static const String iconIntro3 = 'assets/images/svgs/intro3.svg';
 
-  static const String iconArrawIntro1 = 'assets/images/svgs/iconArrawIntro1.svg';
-  static const String iconArrawBackIntro1 = 'assets/images/svgs/iconArrawBackIntro1.svg';
+  static const String iconArrawIntro1 =
+      'assets/images/svgs/iconArrawIntro1.svg';
+  static const String iconArrawBackIntro1 =
+      'assets/images/svgs/iconArrawBackIntro1.svg';
+
+  //auth
+  static const String mada = 'assets/images/svgs/mada.svg';
+  //static const String visaImage = 'assets/images/visa2.png';
 
   // arraw icons
   static const String arrowIcon = 'assets/images/left-arrow (1).png';
@@ -65,6 +71,15 @@ class AppImages {
   static const String add = "assets/images/addd.png";
   static const String location3 = "assets/images/location.svg";
   static const String warningSign = "assets/images/warning_sign.svg";
+  static const String iconsMaps = "assets/images/svgs/icons_maps.svg";
+  static const String laundryService = "assets/images/svgs/laundryservice.svg";
+  static const String shipping2 = "assets/images/svgs/shipping (2).svg";
+  static const String umbrella = "assets/images/svgs/umbrella.svg";
+  static const String wifi = "assets/images/svgs/wifi.svg";
+  static const String iconsCars = "assets/images/svgs/iconscars.svg";
+  static const String payments = "assets/images/svgs/payments.svg";
+  static const String pinMap = "assets/images/svgs/pin_map.svg";
+  static const String timer = "assets/images/svgs/timess.svg";
 
 
 

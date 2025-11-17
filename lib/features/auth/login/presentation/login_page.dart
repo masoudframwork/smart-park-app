@@ -28,41 +28,43 @@ class LoginPage extends ConsumerWidget {
     });
 
     return Scaffold(
-      backgroundColor: AppColor.primaryBackgroundColor,
+      backgroundColor: AppColor.backgroundColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: ClipOval(
-                  child: CustomImageWidget(
-                    isFlag: true,
-                    imageUrl: AppImages.appLogo,
-                    width: 147.w,
-                    height: 147.w,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Center(
+                  child: ClipOval(
+                    child: CustomImageWidget(
+                      isFlag: true,
+                      imageUrl: AppImages.appLogo,
+                      width: 147.w,
+                      height: 147.w,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 40.h),
-              const DescrpationTitelWidget(),
-              SizedBox(height: 40.h),
-              TextFieldAndButtonsWidget(
-                formKey: controller.formKey,
-                phoneController: controller.phoneController,
-                onPhoneChanged: controller.onPhoneChanged,
-                phoneValidator: controller.validatePhone,
-                onSendCode: controller.sendCode,
-                onLoginWithNafath: controller.loginWithNafath,
-                isLoading: state.isLoading,
-              ),
-              SizedBox(height: 40.h),
-              TitelDescWidget(
-                onCreateAccount: controller.goToRegister,
-                onGuestLogin: controller.guestLogin,
-              ),
-            ],
+                SizedBox(height: 40.h),
+                const DescrpationTitelWidget(),
+                SizedBox(height: 40.h),
+                TextFieldAndButtonsWidget(
+                  formKey: controller.formKey,
+                  phoneController: controller.phoneController,
+                  onPhoneChanged: controller.onPhoneChanged,
+                  phoneValidator: controller.validatePhone,
+                  onSendCode: controller.sendCode,
+                  onLoginWithNafath: controller.loginWithNafath,
+                  isLoading: state.isLoading,
+                ),
+                SizedBox(height: 40.h),
+                TitelDescWidget(
+                  onCreateAccount: controller.goToRegister,
+                  onGuestLogin: controller.guestLogin,
+                ),
+              ],
+            ),
           ),
         ),
       ),

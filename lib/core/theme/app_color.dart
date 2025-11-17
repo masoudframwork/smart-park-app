@@ -3,7 +3,9 @@ import 'dart:ui';
 class AppColor {
   AppColor._();
   static const primaryColor = Color(0xFF86B925);
-  static const primaryBackgroundColor = Color(0xFF033838);
+  static const backgroundColor = Color(0xFF033838);
+  static const textColor = Color(0xFF045859);
+
 
   static const primaryTextColor = Color(0xFF93D11C);
 //7
@@ -12,7 +14,10 @@ class AppColor {
   static const primaryTextSmallColor = Color(0xFF085D3A);
 
   //اختر المركبه contanear 9
-  static const secondaryColor = Color(0xFFABEFC6);
+  static const secondaryColor = Color(0xFFB7D57C);
+
+
+
   //contaner الحجز السريع 6
   static const containerColor = Color(0xFFECFDF3);
   //متاح الان
@@ -43,6 +48,7 @@ class AppColor {
   static const selectedTabTextColor = Color(0xFF1A8154);
   static const introTextColor = Color(0xFF17E387);
 
+
   static const greyTextVerySmallColor = Color(0xFFB0B9C6);
   static const contanearGreyColor = Color(0xFFE5E7EB);
   static const greysCardColor = Color(0xFFF9F5FA);
@@ -52,6 +58,9 @@ class AppColor {
   static const whiteContainerColor = Color(0xFFF5F5F5);
   static const whiteTextColor = Color(0xFFF5F5F5);
   static const shadowCardColor = Color(0x1018283D);
+
+  static const whiteBackgroundColor = Color(0xFFF1F2F3);
+
 
   static const settingsBackgroundColor = Color(0xFFF1F2F3);
 }
