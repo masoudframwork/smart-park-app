@@ -52,4 +52,6 @@ class AppColor {
   static const whiteContainerColor = Color(0xFFF5F5F5);
   static const whiteTextColor = Color(0xFFF5F5F5);
   static const shadowCardColor = Color(0x1018283D);
+
+  static const settingsBackgroundColor = Color(0xFFF1F2F3);
 }

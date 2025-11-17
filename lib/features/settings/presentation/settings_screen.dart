@@ -22,7 +22,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final s = S.of(context);
 
     return Scaffold(
-      backgroundColor: AppColor.lightBackgroundColor,
+      backgroundColor: AppColor.settingsBackgroundColor,
 
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
     final text = S.of(context); // localization shortcut
 
     return Scaffold(
-      backgroundColor: AppColor.lightPurpleColor,
+      backgroundColor: AppColor.settingsBackgroundColor,
 
       body: SafeArea(
         child: SingleChildScrollView(
