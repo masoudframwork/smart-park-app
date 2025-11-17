@@ -1,265 +1,183 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theme/app_color.dart';
+import 'package:smart/core/theme/app_color.dart';
+import 'package:smart/generated/l10n.dart';
+
 import '../data/models/user_profile.dart';
-import 'component/profile_header_card.dart';
+import 'component/profile_header.dart';
+import 'component/profile_tile.dart';
+
 
 class ProfileScreen extends StatelessWidget {
-  final UserProfile profile;
+  final UserProfile? profile; // change later when API ready
 
-  const ProfileScreen({super.key, required this.profile});
+  const ProfileScreen({super.key, this.profile});
 
   @override
   Widget build(BuildContext context) {
+    final text = S.of(context); // localization shortcut
+
     return Scaffold(
-      backgroundColor: AppColor.lightBackgroundColor,
+      backgroundColor: AppColor.lightPurpleColor,
+
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: Column(
-              children: [
-                // HEADER
-                ProfileHeaderCard(
-                  profile: profile,
-                ),
+          child: Column(
+            children: [
 
-                SizedBox(height: 12.h),
+              /// TOP HEADER
+              ProfileHeader(
+                fullName: profile?.fullName ?? "عبدالرحمن أحمد عبدالله",
+                avatarIcon: Icons.person_rounded,
+              ),
 
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // ===== BASIC INFO CARD =====
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 16.w, vertical: 14.h),
-                        decoration: BoxDecoration(
-                          color: AppColor.whiteColor,
-                          borderRadius: BorderRadius.circular(8.r),
-                          boxShadow: [
-                            BoxShadow(
-                              color: AppColor.shadowCardColor,
-                              blurRadius: 6,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'رقم الهوية',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: AppColor.greyTextColor,
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              profile.nationalId,
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.blackTextColor,
-                              ),
-                            ),
-                            SizedBox(height: 12.h),
-                            Divider(color: AppColor.greyDividerColor),
-                            SizedBox(height: 12.h),
-                            Text(
-                              'رقم الهاتف',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: AppColor.greyTextColor,
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              profile.phoneNumber,
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.blackTextColor,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+              SizedBox(height: 20.h),
 
-                      SizedBox(height: 24.h),
+              /// NATIONAL ID + PHONE
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
 
-                      _sectionTitle("بيانات إضافية"),
-
-                      SizedBox(height: 12.h),
-
-                      Row(
+                    _SectionCard(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: _smallButton(
-                              title: "المخالفات",
-                              icon: Icons.receipt_long_rounded,
-                            ),
-                          ),
-                          SizedBox(width: 10.w),
-                          Expanded(
-                            child: _smallButton(
-                              title: "المحفظة",
-                              icon: Icons.account_balance_wallet_outlined,
-                            ),
-                          ),
+                          _Label(text.profile_nationalId),
+                          _Value(profile?.nationalId ?? "ABCD1234"),
+                          SizedBox(height: 20.h),
+                          _Label(text.profile_phoneNumber),
+                          _Value(profile?.phoneNumber ?? "+966 11 234 5678"),
                         ],
                       ),
+                    ),
 
-                      SizedBox(height: 24.h),
+                    SizedBox(height: 20.h),
 
-                      _sectionTitle("المعلومات المحفوظة مسبقًا"),
-                      SizedBox(height: 12.h),
+                    /// Additional Information
+                    _SectionTitle(text.profile_additionalInfo),
 
-                      _largeTile(
-                        title: "المركبات",
-                        icon: Icons.directions_car_rounded,
-                      ),
-                      SizedBox(height: 12.h),
-                      _largeTile(
-                        title: "بطاقات الدفع الإلكتروني",
-                        icon: Icons.credit_card,
-                        showDot: true,
-                      ),
-                      SizedBox(height: 12.h),
-                      _largeTile(
-                        title: "الإعدادات",
-                        icon: Icons.settings_rounded,
-                      ),
+                    ProfileTile(
+                      title: text.profile_fines,
+                      icon: Icons.receipt_long_rounded,
+                    ),
+                    ProfileTile(
+                      title: text.profile_wallet,
+                      icon: Icons.account_balance_wallet_rounded,
+                    ),
 
-                      SizedBox(height: 28.h),
+                    SizedBox(height: 20.h),
 
-                      // LOGOUT BUTTON
-                      SizedBox(
-                        height: 48.h,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColor.secondaryContainerColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6.r),
-                            ),
-                          ),
-                          onPressed: () {},
-                          child: Text(
-                            "تسجيل الخروج",
-                            style: TextStyle(
-                              color: AppColor.whiteColor,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                      ),
+                    /// Saved Information
+                    _SectionTitle(text.profile_savedInfo),
 
-                      SizedBox(height: 32.h),
-                    ],
-                  ),
+                    ProfileTile(
+                      title: text.profile_vehicles,
+                      icon: Icons.local_shipping_rounded,
+                    ),
+                    ProfileTile(
+                      title: text.profile_paymentCards,
+                      icon: Icons.credit_card_rounded,
+                    ),
+                    ProfileTile(
+                      title: text.profile_settings,
+                      icon: Icons.settings_rounded,
+                    ),
+
+                    SizedBox(height: 25.h),
+
+                    /// LOGOUT BUTTON
+                    _LogoutButton(text.profile_logout),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  // ===== Helper Widgets =====
-
-  Widget _sectionTitle(String text) {
+  Widget _Label(String text) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 15.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColor.primaryTextColor,
+        fontSize: 14.sp,
+        color: AppColor.greyTextColor,
       ),
     );
   }
 
-  Widget _smallButton({
-    required String title,
-    required IconData icon,
-  }) {
-    return Container(
-      height: 50.h,
-      padding: EdgeInsets.symmetric(horizontal: 12.w),
-      decoration: BoxDecoration(
-        color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(8.r),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.shadowCardColor,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        textDirection: TextDirection.rtl,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: AppColor.blackTextColor,
-            ),
-          ),
-          const Spacer(),
-          Icon(icon, size: 22, color: AppColor.primaryColor),
-        ],
+  Widget _Value(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.w600,
+        color: AppColor.blackColor,
       ),
     );
   }
 
-  Widget _largeTile({
-    required String title,
-    required IconData icon,
-    bool showDot = false,
-  }) {
+  Widget _SectionTitle(String text) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10.h),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 15.sp,
+          fontWeight: FontWeight.bold,
+          color: AppColor.primaryButtonColor,
+        ),
+      ),
+    );
+  }
+
+  Widget _LogoutButton(String text) {
     return Container(
-      height: 55.h,
-      padding: EdgeInsets.symmetric(horizontal: 14.w),
+      width: double.infinity,
+      height: 48.h,
+      decoration: BoxDecoration(
+        color: Colors.red.shade400,
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: AppColor.whiteColor,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Wrapper card
+class _SectionCard extends StatelessWidget {
+  final Widget child;
+  const _SectionCard({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(8.r),
+        borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
-            color: AppColor.shadowCardColor,
-            blurRadius: 5,
-            offset: const Offset(0, 2),
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
           ),
         ],
       ),
-      child: Row(
-        textDirection: TextDirection.rtl,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: AppColor.blackTextColor,
-            ),
-          ),
-          const Spacer(),
-          if (showDot)
-            Container(
-              width: 8,
-              height: 8,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColor.primaryTextColor,
-              ),
-            ),
-          if (showDot) SizedBox(width: 8.w),
-          Icon(icon, size: 22, color: AppColor.primaryColor),
-        ],
-      ),
+      child: child,
     );
   }
 }

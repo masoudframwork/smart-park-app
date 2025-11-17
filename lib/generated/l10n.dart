@@ -45,7 +45,7 @@ class S {
     final instance = S.maybeOf(context);
     assert(
       instance != null,
-      'No instance of S present in the widgets tree. Did you add S.delegate in localizationsDelegates?',
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
     );
     return instance!;
   }
@@ -187,6 +187,101 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Full Name`
+  String get profile_fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'profile_fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `National ID`
+  String get profile_nationalId {
+    return Intl.message(
+      'National ID',
+      name: 'profile_nationalId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get profile_phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'profile_phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional Information`
+  String get profile_additionalInfo {
+    return Intl.message(
+      'Additional Information',
+      name: 'profile_additionalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fines`
+  String get profile_fines {
+    return Intl.message('Fines', name: 'profile_fines', desc: '', args: []);
+  }
+
+  /// `Wallet`
+  String get profile_wallet {
+    return Intl.message('Wallet', name: 'profile_wallet', desc: '', args: []);
+  }
+
+  /// `Saved Information`
+  String get profile_savedInfo {
+    return Intl.message(
+      'Saved Information',
+      name: 'profile_savedInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicles`
+  String get profile_vehicles {
+    return Intl.message(
+      'Vehicles',
+      name: 'profile_vehicles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-Payment Cards`
+  String get profile_paymentCards {
+    return Intl.message(
+      'E-Payment Cards',
+      name: 'profile_paymentCards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get profile_settings {
+    return Intl.message(
+      'Settings',
+      name: 'profile_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get profile_logout {
+    return Intl.message('Logout', name: 'profile_logout', desc: '', args: []);
   }
 }
 

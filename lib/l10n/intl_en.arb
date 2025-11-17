@@ -31,4 +31,15 @@
   "bookings":"Bookings",
   "@bookings": {},
   "doNotDisplayInstructionsAgain": "Do not display instructions again",
+  "profile_fullName": "Full Name",
+  "profile_nationalId": "National ID",
+  "profile_phoneNumber": "Phone Number",
+  "profile_additionalInfo": "Additional Information",
+  "profile_fines": "Fines",
+  "profile_wallet": "Wallet",
+  "profile_savedInfo": "Saved Information",
+  "profile_vehicles": "Vehicles",
+  "profile_paymentCards": "E-Payment Cards",
+  "profile_settings": "Settings",
+  "profile_logout": "Logout"
 }

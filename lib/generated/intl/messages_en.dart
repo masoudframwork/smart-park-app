@@ -22,41 +22,58 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "bookings": MessageLookupByLibrary.simpleMessage("Bookings"),
-        "dio_generic_error": MessageLookupByLibrary.simpleMessage(
-          "⚠️ Error: An error occured while fetching data",
-        ),
-        "dio_no_connection": MessageLookupByLibrary.simpleMessage(
-          "📴 No internet connection.",
-        ),
-        "dio_not_found": MessageLookupByLibrary.simpleMessage("🔎 Not found."),
-        "dio_request_cancelled": MessageLookupByLibrary.simpleMessage(
-          "❌ Request was cancelled.",
-        ),
-        "dio_server_error": MessageLookupByLibrary.simpleMessage(
-          "🔥 Server error. Try again later.",
-        ),
-        "dio_ssl_error": MessageLookupByLibrary.simpleMessage(
-          "🔒 SSL certificate error.",
-        ),
-        "dio_timeout": MessageLookupByLibrary.simpleMessage(
-          "⏱️ Connection timed out.",
-        ),
-        "dio_unauthorized": MessageLookupByLibrary.simpleMessage(
-          "🔐 Unauthorized. Please log in again.",
-        ),
-        "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
-          "❗ Unexpected error occurred.",
-        ),
-        "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
-          "Do not display instructions again",
-        ),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
-        "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
-        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
-        "unknonError": MessageLookupByLibrary.simpleMessage(
-          "Oops! Something went wrong. Please try again later.",
-        ),
-        "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
-      };
+    "bookings": MessageLookupByLibrary.simpleMessage("Bookings"),
+    "dio_generic_error": MessageLookupByLibrary.simpleMessage(
+      "⚠️ Error: An error occured while fetching data",
+    ),
+    "dio_no_connection": MessageLookupByLibrary.simpleMessage(
+      "📴 No internet connection.",
+    ),
+    "dio_not_found": MessageLookupByLibrary.simpleMessage("🔎 Not found."),
+    "dio_request_cancelled": MessageLookupByLibrary.simpleMessage(
+      "❌ Request was cancelled.",
+    ),
+    "dio_server_error": MessageLookupByLibrary.simpleMessage(
+      "🔥 Server error. Try again later.",
+    ),
+    "dio_ssl_error": MessageLookupByLibrary.simpleMessage(
+      "🔒 SSL certificate error.",
+    ),
+    "dio_timeout": MessageLookupByLibrary.simpleMessage(
+      "⏱️ Connection timed out.",
+    ),
+    "dio_unauthorized": MessageLookupByLibrary.simpleMessage(
+      "🔐 Unauthorized. Please log in again.",
+    ),
+    "dio_unexpected_error": MessageLookupByLibrary.simpleMessage(
+      "❗ Unexpected error occurred.",
+    ),
+    "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
+      "Do not display instructions again",
+    ),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "profile_additionalInfo": MessageLookupByLibrary.simpleMessage(
+      "Additional Information",
+    ),
+    "profile_fines": MessageLookupByLibrary.simpleMessage("Fines"),
+    "profile_fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "profile_logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "profile_nationalId": MessageLookupByLibrary.simpleMessage("National ID"),
+    "profile_paymentCards": MessageLookupByLibrary.simpleMessage(
+      "E-Payment Cards",
+    ),
+    "profile_phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "profile_savedInfo": MessageLookupByLibrary.simpleMessage(
+      "Saved Information",
+    ),
+    "profile_settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "profile_vehicles": MessageLookupByLibrary.simpleMessage("Vehicles"),
+    "profile_wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+    "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
+    "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "unknonError": MessageLookupByLibrary.simpleMessage(
+      "Oops! Something went wrong. Please try again later.",
+    ),
+    "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+  };
 }
