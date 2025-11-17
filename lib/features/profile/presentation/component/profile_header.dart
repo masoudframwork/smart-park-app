@@ -18,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
       height: 140.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColor.primaryBackgroundColor,
+        color: AppColor.primaryButtonColor,
       ),
       child: Stack(
         children: [
