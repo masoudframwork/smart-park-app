@@ -283,6 +283,76 @@ class S {
   String get profile_logout {
     return Intl.message('Logout', name: 'profile_logout', desc: '', args: []);
   }
+
+  /// `Settings`
+  String get settings_title {
+    return Intl.message('Settings', name: 'settings_title', desc: '', args: []);
+  }
+
+  /// `Terms & Conditions`
+  String get settings_terms {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'settings_terms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get settings_privacy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'settings_privacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQ`
+  String get settings_faq {
+    return Intl.message('FAQ', name: 'settings_faq', desc: '', args: []);
+  }
+
+  /// `Help & Support`
+  String get settings_support {
+    return Intl.message(
+      'Help & Support',
+      name: 'settings_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get settings_dark_mode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'settings_dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get settings_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AR`
+  String get settings_lang_ar {
+    return Intl.message('AR', name: 'settings_lang_ar', desc: '', args: []);
+  }
+
+  /// `EN`
+  String get settings_lang_en {
+    return Intl.message('EN', name: 'settings_lang_en', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

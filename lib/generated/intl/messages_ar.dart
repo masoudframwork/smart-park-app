@@ -72,6 +72,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("المركبات"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
+    "settings_dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
+    "settings_faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
+    "settings_lang_ar": MessageLookupByLibrary.simpleMessage("عر"),
+    "settings_lang_en": MessageLookupByLibrary.simpleMessage("En"),
+    "settings_language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "settings_privacy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+    "settings_support": MessageLookupByLibrary.simpleMessage(
+      "المساعدة و الدعم الفني",
+    ),
+    "settings_terms": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+    "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",

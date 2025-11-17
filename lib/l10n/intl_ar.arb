@@ -39,5 +39,14 @@
   "profile_vehicles": "المركبات",
   "profile_paymentCards": "بطاقات الدفع الإلكتروني",
   "profile_settings": "الإعدادات",
-  "profile_logout": "تسجيل الخروج"
+  "profile_logout": "تسجيل الخروج",
+  "settings_title": "الإعدادات",
+  "settings_terms": "الشروط والأحكام",
+  "settings_privacy": "سياسة الخصوصية",
+  "settings_faq": "الأسئلة الشائعة",
+  "settings_support": "المساعدة و الدعم الفني",
+  "settings_dark_mode": "الوضع الليلي",
+  "settings_language": "اللغة",
+  "settings_lang_ar": "عر",
+  "settings_lang_en": "En"
 }

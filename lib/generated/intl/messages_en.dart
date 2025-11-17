@@ -70,6 +70,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("Vehicles"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
+    "settings_dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "settings_faq": MessageLookupByLibrary.simpleMessage("FAQ"),
+    "settings_lang_ar": MessageLookupByLibrary.simpleMessage("AR"),
+    "settings_lang_en": MessageLookupByLibrary.simpleMessage("EN"),
+    "settings_language": MessageLookupByLibrary.simpleMessage("Language"),
+    "settings_privacy": MessageLookupByLibrary.simpleMessage("Privacy Policy"),
+    "settings_support": MessageLookupByLibrary.simpleMessage("Help & Support"),
+    "settings_terms": MessageLookupByLibrary.simpleMessage(
+      "Terms & Conditions",
+    ),
+    "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",

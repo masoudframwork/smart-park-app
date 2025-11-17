@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/booking/booking_page.dart';
 import 'package:smart/features/home/presentation/home_page.dart';
+import 'package:smart/features/settings/presentation/settings_screen.dart';
 
 import '../../../profile/data/models/user_profile.dart';
 import '../../../profile/presentation/profile_screen.dart';
@@ -26,7 +27,8 @@ class BottomNavBarController extends ChangeNotifier {
     const ProfileScreen(
       profile: mockProfile,
     ), // CAMERA PAGE (index 2) — replace later
-    const Placeholder(), // PROFILE PAGE (index 3) — replace later
+    //  Placeholder(), // PROFILE PAGE (index 3) — replace later
+    const SettingsScreen(),
   ];
 
   void changeIndex(int val) {
