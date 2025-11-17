@@ -1,0 +1,24 @@
+<svg id="Group_783" data-name="Group 783" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="13.927" height="13.928" viewBox="0 0 13.927 13.928">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1515" data-name="Rectangle 1515" width="13.927" height="13.928" fill="#045859"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_1513" data-name="Rectangle 1513" width="8.907" height="10.203" fill="#045859"/>
+    </clipPath>
+  </defs>
+  <g id="Group_332" data-name="Group 332" clip-path="url(#clip-path)">
+    <g id="Group_331" data-name="Group 331" transform="translate(0 0)">
+      <g id="Group_330" data-name="Group 330" clip-path="url(#clip-path)">
+        <path id="Path_3423" data-name="Path 3423" d="M1.754,6.964a5.7,5.7,0,0,1,5.7-5.7A5.635,5.635,0,0,1,11.9,3.434c.143.183.215.275.208.394s-.1.208-.273.385l-.4.4a.633.633,0,0,0,.448,1.08h1.583a.633.633,0,0,0,.6-.823,6.953,6.953,0,1,0-6.618,9.053.633.633,0,1,0,0-1.266,5.7,5.7,0,0,1-5.7-5.7" transform="translate(-0.488 0)" fill="#045859"/>
+        <g id="Group_329" data-name="Group 329" transform="translate(5.02 3.725)" opacity="0.4" style="mix-blend-mode: normal;isolation: isolate">
+          <g id="Group_328" data-name="Group 328">
+            <g id="Group_327" data-name="Group 327" clip-path="url(#clip-path-3)">
+              <path id="Path_3424" data-name="Path 3424" d="M1.3,6.4a.648.648,0,1,1,1.3,0V8.989a.647.647,0,0,1-.19.458l-1.3,1.3a.648.648,0,0,1-.916-.916L1.3,8.72ZM7.64,8.989a.633.633,0,0,1,1.266,0c0,.233-.01.463-.031.69a.633.633,0,1,1-1.261-.113q.025-.285.025-.577m-.4,2.212a.633.633,0,1,1,1.185.446,7.432,7.432,0,0,1-.356.8.633.633,0,0,1-1.124-.584,6.007,6.007,0,0,0,.3-.661M6.018,13.184a.633.633,0,1,1,.928.862,7.121,7.121,0,0,1-.678.641.633.633,0,1,1-.807-.976,5.859,5.859,0,0,0,.558-.527M4.212,14.5a.633.633,0,1,1,.527,1.151,6.712,6.712,0,0,1-.7.274.633.633,0,0,1-.4-1.2,5.574,5.574,0,0,0,.567-.223" transform="translate(0 -5.75)" fill="#045859" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

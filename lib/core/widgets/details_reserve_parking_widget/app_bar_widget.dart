@@ -56,7 +56,7 @@ class CloseButtonCircle extends StatelessWidget {
         width: size.w,
         height: size.w,
         decoration: BoxDecoration(
-          color: AppColor.greysCloseColor,
+          color: AppColor.whiteColor,
           shape: BoxShape.circle,
         ),
         alignment: Alignment.center,
@@ -97,7 +97,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return Container(
       height: preferredSize.height,
-      color: AppColor.whiteColor,
+      color: AppColor.whiteBackgroundColor,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
         children: [

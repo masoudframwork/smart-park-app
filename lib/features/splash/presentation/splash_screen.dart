@@ -66,7 +66,7 @@ class _SplashCardShape extends StatelessWidget {
       height: size.height,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: AppColor.primaryBackgroundColor,
+        color: AppColor.backgroundColor,
       ),
       child: Stack(
         children: [
