@@ -44,8 +44,8 @@ class AppImages {
   static const String homeSelectedIcon = "assets/images/home/home_selected_icon.svg";
   static const String qrCodeIcon = "assets/images/home/qr_code_icon.svg";
   static const String reservationNotSelectedIcon = "assets/images/home/reservation_not_selected_icon.svg";
-
-
+  static const String personIcon = "assets/images/home/person_icon.svg";
+  static const String homeIcon = "assets/images/home/home_icon.svg";
 
 
   //details screen duration

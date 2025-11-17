@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
+import '../../../../core/constants/image_string.dart';
 
 class CustomBottomNavigationBar extends ConsumerWidget {
   const CustomBottomNavigationBar({super.key});
@@ -30,48 +32,52 @@ class CustomBottomNavigationBar extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             _navItem(
-              icon: Icons.home_rounded,
               index: 0,
               currentIndex: currentIndex,
               onTap: () => ref.read(bottomNavBarController).changeIndex(0),
+              icon: SvgPicture.asset(
+                AppImages.homeIcon,
+                color: currentIndex == 0 ? Colors.white : Colors.white70,
+                width: 20,
+                height: 20,
+              ),
             ),
+
+
             _navItem(
-              icon: Icons.list_alt_rounded,
               index: 1,
               currentIndex: currentIndex,
               onTap: () => ref.read(bottomNavBarController).changeIndex(1),
-            ),
-
-            // ----- CENTER CAMERA BUTTON -----
-            GestureDetector(
-              onTap: () => ref.read(bottomNavBarController).changeIndex(2),
-              child: Container(
-                width: 62,
-                height: 62,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF9EDB51), // Light green
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 10,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.camera_alt_rounded,
-                  color: Colors.white,
-                  size: 30,
-                ),
+              icon: SvgPicture.asset(
+                AppImages.reservationNotSelectedIcon,
+                color: currentIndex == 0 ? Colors.white : Colors.white70,
+                width: 20,
+                height: 20,
               ),
             ),
 
             _navItem(
-              icon: Icons.person_rounded,
+              index: 2,
+              currentIndex: currentIndex,
+              onTap: () => ref.read(bottomNavBarController).changeIndex(2),
+              icon: SvgPicture.asset(
+                AppImages.personIcon,
+                color: currentIndex == 0 ? Colors.white : Colors.white70,
+                width: 20,
+                height: 20,
+              ),
+            ),
+
+            _navItem(
               index: 3,
               currentIndex: currentIndex,
               onTap: () => ref.read(bottomNavBarController).changeIndex(3),
+              icon: SvgPicture.asset(
+                AppImages.qrCodeIcon,
+                color: currentIndex == 0 ? Colors.white : Colors.white70,
+                width: 20,
+                height: 20,
+              ),
             ),
           ],
         ),
@@ -79,19 +85,30 @@ class CustomBottomNavigationBar extends ConsumerWidget {
     );
   }
 
+
   Widget _navItem({
-    required IconData icon,
     required int index,
     required int currentIndex,
+    required Widget icon,
     required VoidCallback onTap,
   }) {
+    final bool isSelected = index == currentIndex;
+
     return GestureDetector(
       onTap: onTap,
-      child: Icon(
-        icon,
-        size: 28,
-        color: currentIndex == index ? Colors.white : Colors.white70,
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isSelected
+              ? const Color(0xFF6CBF4E) // green circle
+              : Colors.transparent,
+        ),
+        child: Center(child: icon),
       ),
     );
   }
+
+
 }
