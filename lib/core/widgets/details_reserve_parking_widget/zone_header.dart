@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
-import '../../constants/image_string.dart';
-import '../../theme/app_color.dart';
-import '../../theme/app_text_theme.dart';
-import '../app_text.dart';
+import '../../../../../core/constants/image_string.dart';
+import '../../../../../core/theme/app_color.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/widgets/app_text.dart';
+
+
 
 class ZoneHeader extends StatelessWidget {
   final String zoneName;
@@ -59,22 +60,7 @@ class ZoneHeader extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 6.h),
-        Row(
-          children: [
-            SvgPicture.asset(
-              AppImages.avParkings,
-              width: 19.w,
-              height: 14.w,
-            ),
-            SizedBox(width: 6.w),
-            AppText(
-              text: capacityText,
-              appTextTheme: AppTextTheme.numberSmallTextStyle(),
-            ),
-          ],
-        ),
-        if (showDurationSection) SizedBox(height: 20.h),
+
       ],
     );
   }

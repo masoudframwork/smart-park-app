@@ -45,6 +45,17 @@ class AppTextTheme {
         fontFamily: 'IBM Plex Sans Arabic',
       );
 
+  static TextStyle titleMSTextStyle() => TextStyle(
+    fontSize: 20,
+    color: AppColor.blackColor,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'IBM Plex Sans Arabic',
+  );
+
+
+
+
+
   // 🏷️ العناوين الصغيرة
   static TextStyle titleSmallTextStyle() => TextStyle(
         fontSize: 14,
