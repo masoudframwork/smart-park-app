@@ -29,18 +29,18 @@ class AppImages {
   static const String walletTab = 'assets/images/bottom-nav-bar/wallet-tab.svg';
 
   //home
-  static const String parkingMarkers = "assets/images/home/marker.svg";
-  static const String avParkings = "assets/images/home/av_parkings.svg";
-  static const String car = "assets/images/home/car.svg";
-  static const String locationDesc = "assets/images/home/location_desc.svg";
+  static const String parkingMarkers = "assets/images/home/marker_icon.svg";
+  static const String avParkings = "assets/images/home/av_parking_icon.svg";
+  static const String car = "assets/images/home/car_front_icon.svg";
+  static const String locationDesc = "assets/images/home/location_desc_icon.svg";
   static const String parkingDemo = "assets/images/home/parking-demo.jpeg";
-  static const String time = "assets/images/home/time.svg";
+  static const String time = "assets/images/home/time_icon.svg";
   static const String visa = "assets/images/home/visa.svg";
-  static const String mice = "assets/images/home/mice.svg";
-  static const String available = "assets/images/home/available.svg";
-  static const String shipping = "assets/images/home/shipping.svg";
+  static const String mice = "assets/images/home/mic_icon.svg";
+  static const String available = "assets/images/home/available_icon.svg";
+  static const String shipping = "assets/images/home/shipping_icon.svg";
   static const String arrowLeftIcon = "assets/images/home/arrow_left_icon.svg";
-  static const String carIcon = "assets/images/home/car_icon.svg";
+  static const String carIcon = "assets/images/home/car_front_icon.svg";
   static const String homeSelectedIcon = "assets/images/home/home_selected_icon.svg";
   static const String qrCodeIcon = "assets/images/home/qr_code_icon.svg";
   static const String reservationNotSelectedIcon = "assets/images/home/reservation_not_selected_icon.svg";
@@ -53,11 +53,11 @@ class AppImages {
   static const String check = 'assets/images/check.png';
   static const String pay = 'assets/images/pay.png';
   static const String visaImage = 'assets/images/visa2.png';
-  static const String realSu = "assets/images/home/realSu.svg";
-  static const String charging = "assets/images/home/cable.svg";
-  static const String shower = "assets/images/home/shower.svg";
-  static const String timeStop = "assets/images/home/timeStop.svg";
-  static const String twoCars = "assets/images/home/twoCars.svg";
+  static const String realSu = "assets/images/home/real_su_icon.svg";
+  static const String charging = "assets/images/home/cable_icon.svg";
+  static const String shower = "assets/images/home/shower_icon.svg";
+  static const String timeStop = "assets/images/home/time_stop_icon.svg";
+  static const String twoCars = "assets/images/home/two_cars_icon.svg";
   static const String card = "assets/images/card.jpg";
   static const String arrawButton = "assets/images/svgs/arraw.svg";
   static const String account = "assets/images/account.png";
