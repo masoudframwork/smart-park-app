@@ -11,5 +11,8 @@ class RoutePaths {
   static const String voiceToTextScreen = '/voiceToTextScreen';
   static const String loginPage = '/loginPage';
   static const String sendTheCodePage = '/sendTheCodePage';
-
+  static const String signUpPage = '/signUpPage';
+  static const String bankCardDataPage = '/bankCardDataPage';
+  static const String bookingParkingDetailsPage = '/bookingParkingDetailsPage';
+  static const String bookingStep1Page = '/bookingStep1Page';
 }
