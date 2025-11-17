@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/generated/l10n.dart';
 
+import '../../settings/presentation/settings_screen.dart';
 import '../data/models/user_profile.dart';
 import 'component/profile_header.dart';
 import 'component/profile_tile.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   final UserProfile? profile; // change later when API ready
@@ -19,12 +19,10 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColor.settingsBackgroundColor,
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-
               /// TOP HEADER
               ProfileHeader(
                 fullName: profile?.fullName ?? "عبدالرحمن أحمد عبدالله",
@@ -39,7 +37,6 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     _SectionCard(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,11 +77,18 @@ class ProfileScreen extends StatelessWidget {
                       title: text.profile_paymentCards,
                       icon: Icons.credit_card_rounded,
                     ),
+
                     ProfileTile(
                       title: text.profile_settings,
                       icon: Icons.settings_rounded,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const SettingsScreen()),
+                        );
+                      },
                     ),
-
                     SizedBox(height: 25.h),
 
                     /// LOGOUT BUTTON
