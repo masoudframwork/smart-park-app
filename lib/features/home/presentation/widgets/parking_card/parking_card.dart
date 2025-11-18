@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/constants/image_string.dart';
+import '../../../../../core/routing/navigation_service.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCard extends StatelessWidget {
@@ -55,9 +56,7 @@ class ParkingCard extends StatelessWidget {
                             color: Colors.black87,
                           ),
                         ),
-
                         SizedBox(height: 4.h),
-
                         Text(
                           parkingArea.location,
                           maxLines: 1,
@@ -69,22 +68,28 @@ class ParkingCard extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-
                         Row(
                           textDirection: TextDirection.ltr,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             // Arrow bottom-left
-                            Container(
-                              padding: EdgeInsets.all(6.r),
-                              decoration: const BoxDecoration(
-                                color: Color(0xFF6CBF4E),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: 12,
-                                color: Colors.white,
+                            GestureDetector(
+                              onTap: () {
+                                NavigationService.push(
+                                    '/bookingParkingDetailsPage',
+                                    context: context);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(6.r),
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFF6CBF4E),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  size: 12,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
 
