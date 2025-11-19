@@ -29,6 +29,7 @@ class LoginPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20.w),

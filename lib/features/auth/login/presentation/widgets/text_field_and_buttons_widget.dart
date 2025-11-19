@@ -55,12 +55,7 @@ class TextFieldAndButtonsWidget extends StatelessWidget {
               );
             },
           ),
-          CustomButtonWidget(
-            width: 360.w,
-            text: 'تسجيل الدخول عن طريق نفاذ',
-            borderRadius: 10.r,
-            onPressed: onLoginWithNafath,
-          ),
+
         ],
       ),
     );

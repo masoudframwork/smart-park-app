@@ -21,19 +21,19 @@ class TextFieldWidget extends StatelessWidget {
               AppText(
                 text: 'الاسم الكامل *',
                 appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                ),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: AppColor.whiteColor),
               ),
               SizedBox(
-                height: 6.h,
+                height: 10.h,
               ),
               CustomTextFormField(
                 width: 356.w,
                 //  controller: phoneController,
                 borderRadius: 10.r,
 
-                textInputType: TextInputType.phone,
+                textInputType: TextInputType.emailAddress,
                 hintStyle: const TextStyle(
                   color: AppColor.greyBorderColor,
                 ),
@@ -41,42 +41,17 @@ class TextFieldWidget extends StatelessWidget {
                 // validator: phoneValidator,
               ),
               SizedBox(
-                height: 22.h,
+                height: 20.h,
               ),
               AppText(
-                text: ' تاريخ الميلاد *',
+                text: 'رقم الهاتف *',
                 appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                ),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: AppColor.whiteColor),
               ),
               SizedBox(
-                height: 6.h,
-              ),
-              CustomTextFormField(
-                width: 356.w,
-                //  controller: phoneController,
-                borderRadius: 10.r,
-
-                textInputType: TextInputType.phone,
-                hintStyle: const TextStyle(
-                  color: AppColor.greyBorderColor,
-                ),
-                //   onChanged: onPhoneChanged,
-                // validator: phoneValidator,
-              ),
-              SizedBox(
-                height: 22.h,
-              ),
-              AppText(
-                text: 'العنوان الوطني *',
-                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
-              SizedBox(
-                height: 6.h,
+                height: 10.h,
               ),
               CustomTextFormField(
                 width: 356.w,

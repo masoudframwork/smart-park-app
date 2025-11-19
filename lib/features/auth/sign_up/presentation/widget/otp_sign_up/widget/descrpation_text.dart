@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/widgets/app_text.dart';
 
-import '../../../../../core/theme/app_color.dart';
-import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../../../core/theme/app_color.dart';
+import '../../../../../../../core/theme/app_text_theme.dart';
 
 class DescrpationTitelWidget extends StatelessWidget {
   const DescrpationTitelWidget({super.key});
@@ -23,12 +23,13 @@ class DescrpationTitelWidget extends StatelessWidget {
       spacing: 26.h,
       children: [
         AppText(
-          text: 'تسجيل الدخول',
+          text: 'لتأكيد الحساب',
           textAlign: TextAlign.center,
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:' لقد تم إرسال الرمز إلى الرقم المنتهي ب 000  \n أدخل الرمز لإتمام عملية الدخول  ',
+          text:
+              ' لقد تم إرسال الرمز إلى الرقم المنتهي ب 000  \n أدخل الرمز لإتمام عملية الدخول  ',
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

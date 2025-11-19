@@ -5,9 +5,16 @@ class AppColor {
   static const primaryColor = Color(0xFF86B925);
   static const backgroundColor = Color(0xFF033838);
   static const textColor = Color(0xFF045859);
-
-
+  static const backgroundAppBarColor = Color(0xFF518C8D);
   static const primaryTextColor = Color(0xFF93D11C);
+  static const primaryCard = Color(0xFFC0E27F);
+  static const logOutCard = Color(0xFFD92B2B);
+  static const greyCard = Color(0xFFA2A6AE);
+
+
+
+
+
 //7
   static const primaryButtonColor = Color(0xFF1A8154);
 
@@ -15,8 +22,6 @@ class AppColor {
 
   //اختر المركبه contanear 9
   static const secondaryColor = Color(0xFFB7D57C);
-
-
 
   //contaner الحجز السريع 6
   static const containerColor = Color(0xFFECFDF3);
@@ -47,8 +52,7 @@ class AppColor {
   static const greyBorderColor = Color(0xFF9DA4AE);
   static const selectedTabTextColor = Color(0xFF1A8154);
   static const introTextColor = Color(0xFF17E387);
-
-
+  static const timeColor = Color(0xFFBFC0C2);
   static const greyTextVerySmallColor = Color(0xFFB0B9C6);
   static const contanearGreyColor = Color(0xFFE5E7EB);
   static const greysCardColor = Color(0xFFF9F5FA);
@@ -59,8 +63,9 @@ class AppColor {
   static const whiteTextColor = Color(0xFFF5F5F5);
   static const shadowCardColor = Color(0x1018283D);
 
-  static const whiteBackgroundColor = Color(0xFFF1F2F3);
+  static const titelButtonColor = Color(0xFF707070);
 
+  static const whiteBackgroundColor = Color(0xFFF1F2F3);
 
   static const settingsBackgroundColor = Color(0xFFF1F2F3);
 }
