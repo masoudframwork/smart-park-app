@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/widgets/app_text.dart';
 
+import '../../../../../core/routing/navigation_service.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 
@@ -43,23 +45,28 @@ class TitelDescWidget extends StatelessWidget {
                 text: 'بإمكانك ',
                 textAlign: TextAlign.center,
                 appTextTheme: descriptionStyle.copyWith(
-                  color: AppColor.primaryColor,
+                  color: AppColor.whiteColor,
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              AppText(
-                text: 'إنشاء حساب جديد ',
-                textAlign: TextAlign.center,
-                appTextTheme: descriptionStyle.copyWith(
-                  color: AppColor.primaryColor,
-                  fontWeight: FontWeight.w600,
+              GestureDetector(
+                onTap: (){
+                  NavigationService.go(RoutePaths.signUpPage);
+                },
+                child: AppText(
+                  text: 'إنشاء حساب جديد ',
+                  textAlign: TextAlign.center,
+                  appTextTheme: descriptionStyle.copyWith(
+                    color: AppColor.primaryColor,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               AppText(
                 text: 'بخطوات سهلة',
                 textAlign: TextAlign.center,
                 appTextTheme: descriptionStyle.copyWith(
-                  color: AppColor.primaryColor,
+                  color: AppColor.whiteColor,
                   fontWeight: FontWeight.w300,
                 ),
               ),

@@ -15,4 +15,13 @@ class RoutePaths {
   static const String bankCardDataPage = '/bankCardDataPage';
   static const String bookingParkingDetailsPage = '/bookingParkingDetailsPage';
   static const String bookingStep1Page = '/bookingStep1Page';
+  static const String otpSignUpPage = '/otpSignUpPage';
+  static const String nafathPageLogin = '/nafathPageLogin';
+  static const String nafathOtpScreen = '/nafathOtpScreen';
+  static const String profileScreen = '/profileScreen';
+  static const String settingsScreen = '/settingsScreen';
+  static const String prePreservedVehicles = '/prePreservedVehicles';
+
+
+
 }

@@ -21,6 +21,8 @@ class AppImages {
 
   //auth
   static const String mada = 'assets/images/svgs/mada.svg';
+  static const String trueChek = 'assets/images/svgs/cheacke.svg';
+
   //static const String visaImage = 'assets/images/visa2.png';
 
   // arraw icons
@@ -38,7 +40,8 @@ class AppImages {
   static const String parkingMarkers = "assets/images/home/marker_icon.svg";
   static const String avParkings = "assets/images/home/av_parking_icon.svg";
   static const String car = "assets/images/home/car_front_icon.svg";
-  static const String locationDesc = "assets/images/home/location_desc_icon.svg";
+  static const String locationDesc =
+      "assets/images/home/location_desc_icon.svg";
   static const String parkingDemo = "assets/images/home/parking-demo.jpeg";
   static const String time = "assets/images/home/time_icon.svg";
   static const String visa = "assets/images/home/visa.svg";
@@ -47,12 +50,13 @@ class AppImages {
   static const String shipping = "assets/images/home/shipping_icon.svg";
   static const String arrowLeftIcon = "assets/images/home/arrow_left_icon.svg";
   static const String carIcon = "assets/images/home/car_front_icon.svg";
-  static const String homeSelectedIcon = "assets/images/home/home_selected_icon.svg";
+  static const String homeSelectedIcon =
+      "assets/images/home/home_selected_icon.svg";
   static const String qrCodeIcon = "assets/images/home/qr_code_icon.svg";
-  static const String reservationNotSelectedIcon = "assets/images/home/reservation_not_selected_icon.svg";
+  static const String reservationNotSelectedIcon =
+      "assets/images/home/reservation_not_selected_icon.svg";
   static const String personIcon = "assets/images/home/person_icon.svg";
   static const String homeIcon = "assets/images/home/home_icon.svg";
-
 
   //details screen duration
   static const String car1 = 'assets/images/car1.jpeg';
@@ -81,9 +85,13 @@ class AppImages {
   static const String pinMap = "assets/images/svgs/pin_map.svg";
   static const String timer = "assets/images/svgs/timess.svg";
 
-
-
   //the vehicle
   static const String carVehicleCar1 = "assets/images/svgs/Car1.svg";
   static const String carVehicleCar2 = "assets/images/svgs/Car2.svg";
+
+  //profile
+  static const String delete = "assets/images/svgs/delete.svg";
+  static const String dark = "assets/images/svgs/dark.svg";
+
+
 }

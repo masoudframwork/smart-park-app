@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/constants/image_string.dart';
-import '../../../../core/routing/navigation_service.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/theme/app_color.dart';
-import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/widgets/custom_image_widget.dart';
-import '../../../../core/widgets/pincodestyle.dart';
-import '../../login/presentation/widgets/descrpation_titel_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smart/features/auth/sign_up/presentation/widget/otp_sign_up/widget/descrpation_text.dart';
 
-class SendTheCodePage extends StatelessWidget {
-  const SendTheCodePage({super.key});
+import '../../../../../../core/constants/image_string.dart';
+import '../../../../../../core/routing/navigation_service.dart';
+import '../../../../../../core/routing/routes.dart';
+import '../../../../../../core/theme/app_color.dart';
+import '../../../../../../core/theme/app_text_theme.dart';
+import '../../../../../../core/widgets/app_result_dialog.dart' show AppResultDialog;
+import '../../../../../../core/widgets/app_text.dart';
+import '../../../../../../core/widgets/custom_button.dart';
+import '../../../../../../core/widgets/custom_image_widget.dart';
+import '../../../../../../core/widgets/pincodestyle.dart';
+
+class OtpSignUpPage extends StatelessWidget {
+  const OtpSignUpPage({super.key});
   @override
   Widget build(BuildContext context) {
     final codeController = TextEditingController();
@@ -37,7 +40,7 @@ class SendTheCodePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 40.h),
-                const DescrpationTitelWidget(),
+                DescrpationTitelWidget(),
                 SizedBox(height: 32.h),
                 PinCodeTextField(
                   controller: codeController,
@@ -62,14 +65,42 @@ class SendTheCodePage extends StatelessWidget {
                   // ),
                   onDone: (code) {},
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: 32.h),
                 CustomButtonWidget(
                   width: 360.w,
                   height: 50.h,
                   borderRadius: 10.r,
-                  text: 'تسجيل الدخول',
+                  text: 'تأكيد الحساب',
                   onPressed: () {
-                    NavigationService.go(RoutePaths.bottomNavBar);
+                    // NavigationService.go(RoutePaths.bottomNavBar);
+
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+
+                      builder: (context) {
+                        return AppResultDialog(
+                          headerWidget: SvgPicture.asset(
+                            AppImages.trueChek,
+                            width: 47.w,
+                            height: 47.w,
+                          ),
+                          message: 'لقد تم إنشاء حسابك بنجاح',
+                          buttonText: 'استمرار',
+                          onButtonPressed: () {
+                            NavigationService.go(RoutePaths.nafathPageLogin);
+
+
+                          },
+                        );
+                      },
+                    );
+
+
+
+
+
+
                   },
                 ),
                 SizedBox(height: 32.h),
