@@ -14,7 +14,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
     final currentIndex = controller.currentIndex;
 
     return Container(
-      height: 85,
+      height: 70,
       margin: const EdgeInsets.only(left: 16, right: 16, bottom: 14),
       decoration: BoxDecoration(
         color: const Color(0xFF0C6450), // Dark green background
@@ -108,19 +108,36 @@ class CustomBottomNavigationBar extends ConsumerWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: 50,
-        height: 50,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOut,
+
+        width: isSelected ? 70 : 60,
+        height: isSelected ? 40 : 35,
+
+        margin: EdgeInsets.only(bottom: isSelected ? 6 : 0),
+
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: isSelected
-              ? const Color(0xFF6CBF4E) // green circle
-              : Colors.transparent,
+          color: isSelected ? const Color(0xFF6CBF4E) : Colors.transparent,
+
+          /// <<<< Here is the REAL FIX (AutoCAD rounded shape)
+          borderRadius: BorderRadius.circular(18),   // not circle
         ),
-        child: Center(child: icon),
+
+        child: Center(
+          child: IconTheme(
+            data: IconThemeData(
+              color: isSelected ? Colors.white : Colors.white70,
+              size: isSelected ? 24 : 22,
+            ),
+            child: icon,
+          ),
+        ),
       ),
     );
   }
+
+
 
 
 }

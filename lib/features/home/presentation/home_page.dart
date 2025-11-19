@@ -74,6 +74,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                 _userLocationMark(homeState),
               ],
             ),
+
+          /// TOP SEARCH BAR – same horizontal padding as cards & nav
           Positioned(
             top: 12.h,
             left: 16.w,
@@ -98,21 +100,24 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
+
+          /// BOTTOM SHEET – will contain the white card + bottom nav
           if (homeState.selectedMarker == null)
             ParkingBottomSheet(
               mapController: _mapController,
             ),
-          // if (homeState.selectedMarker != null)
+
+          /// GREEN CARD – same horizontal 16.w margins as design
           if (selectedParking != null)
             Positioned(
-              top: 160,
-              left: 16,
-              right: 16,
+              top: 160.h,            // tune this value to match XD
+              left: 16.w,
+              right: 16.w,
               child: GreenParkingDetails(
                 parkingArea: selectedParking!,
                 onClose: () {
                   ref.read(selectedParkingAreaDetailsProvider.notifier).state =
-                      null;
+                  null;
                 },
               ),
             ),
@@ -175,26 +180,6 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 }
 
-class _ParkingDetailsFloatingWidget extends StatelessWidget {
-  final ParkingLocation parkingLocation;
-  final VoidCallback onClose;
-
-  const _ParkingDetailsFloatingWidget({
-    required this.parkingLocation,
-    required this.onClose,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ParkingDetailsSheet(
-      parkingData: parkingLocation,
-      onClose: onClose,
-      onBookNow: () {},
-      onDetails: () {},
-    );
-  }
-}
-
 class _TopControls extends StatelessWidget {
   const _TopControls({
     required this.searchController,
@@ -215,10 +200,8 @@ class _TopControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: 20.h),
+        SizedBox(height: 12.h),
         _SearchBar(
           controller: searchController,
           focusNode: searchFocus,
@@ -285,9 +268,10 @@ class _SearchBarState extends State<_SearchBar> {
       child: IgnorePointer(
         ignoring: true,
         child: CustomTextFormField(
-          width: 360.w,
+          // IMPORTANT: remove hardcoded 360.w to respect left/right = 16
+          width: double.infinity,
           controller: widget.controller,
-          borderRadius: 2.r,
+          borderRadius: 12.r,
           focusNode: widget.focusNode,
           hintText: widget.hintText,
           textInputAction: TextInputAction.search,
@@ -295,15 +279,16 @@ class _SearchBarState extends State<_SearchBar> {
           onChanged: (_) {},
           readOnly: true,
           enableShadow: true,
-          shadowTextFieldColor: AppColor.contanearGreyColor.withOpacity(1.0),
+          shadowTextFieldColor:
+          AppColor.contanearGreyColor.withOpacity(1.0),
           shadowOffset: const Offset(0, 1),
           shadowBlur: 1,
           shadowSpread: 1,
           prefixIcon: widget.leadingIcon != null
               ? Padding(
-                  padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
-                  child: widget.leadingIcon!,
-                )
+            padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
+            child: widget.leadingIcon!,
+          )
               : null,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,

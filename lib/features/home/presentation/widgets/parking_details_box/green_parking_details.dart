@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/features/home/presentation/widgets/parking_details_box/timer_progress_ring.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class GreenParkingDetails extends StatelessWidget {
@@ -15,126 +16,145 @@ class GreenParkingDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.ltr, // ⭐ FORCE RTL ALIGNMENT FOR ARABIC UI
+      textDirection: TextDirection.rtl,
       child: Container(
-        padding: EdgeInsets.all(14.w),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         width: double.infinity,
         decoration: BoxDecoration(
           color: const Color(0xFF1B8354),
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(30.r),   // FIXED: matches XD
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.25),
-              blurRadius: 12,
-              offset: const Offset(0, 5),
+              color: Colors.black.withOpacity(0.10),    // softer shadow like design
+              blurRadius: 10,
+              offset: const Offset(0, 4),
             )
           ],
         ),
+
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+
           children: [
-            // CLOSE BUTTON TOP LEFT
-            Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: onClose,
-                child: const Icon(Icons.close, color: Colors.white),
+
+            /// CLOSE BUTTON (top-left)
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: GestureDetector(
+            //     onTap: onClose,
+            //     child: Icon(Icons.close, color: Colors.white, size: 22.sp),
+            //   ),
+            // ),
+
+            SizedBox(height: 8.h),
+
+            /// TOP ROW (Timer + Text)
+            Directionality(
+              textDirection: TextDirection.ltr,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+
+                  /// TIMER RING — accurate to XD
+                  _buildTimerRing(),
+
+                  SizedBox(width: 16.w),
+
+                  /// TEXT COLUMN
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+
+                      children: [
+
+                        /// Parking name
+                        Text(
+                          "المنطقة ${parkingArea.code}",
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        SizedBox(height: 6.h),
+
+                        /// Location text
+                        Text(
+                          parkingArea.location,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+
+                        SizedBox(height: 6.h),
+
+                        /// Time Range
+                        Text(
+                          "٠٨:٠٠ ص ← ٠٤:٠٠ م",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+
+                        SizedBox(height: 6.h),
+
+                        /// Vehicle info
+                        Text(
+                          "${parkingArea.name} | ${parkingArea.availableSpots}",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
 
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /// ⏳ TIMER CIRCLE
-                _buildTimer(),
+            SizedBox(height: 18.h),
 
-                SizedBox(width: 12.w),
-
-                /// TEXT COLUMN
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        "${parkingArea.code} ${parkingArea.name}",
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 6.h),
-                      Text(
-                        parkingArea.location,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(height: 6.h),
-                      Text(
-                        "08:00 am  →  04:00 pm", // Replace with real data
-                        style: TextStyle(color: Colors.white, fontSize: 12.sp),
-                      ),
-                      SizedBox(height: 6.h),
-                      Text(
-                        "Nissan Pathfinder | Black", // Replace with real data
-                        style: TextStyle(color: Colors.white, fontSize: 12.sp),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-
-            SizedBox(height: 14.h),
-
-            /// BUTTON
+            /// BOOKING DETAILS BUTTON — identical to XD
             Container(
+              height: 46.h,
               width: double.infinity,
-              height: 44.h,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(color: Colors.white, width: 1.5),
               ),
               child: Center(
                 child: Text(
                   "تفاصيل الحجز",
                   style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildTimer() {
-    return Container(
-      width: 70.w,
-      height: 70.w,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.white.withOpacity(0.2),
-      ),
-      child: Center(
-        child: Text(
-          "05:06:30",
-          style: TextStyle(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
+  /// PERFECT CIRCULAR PROGRESS RING (stub visual identical to XD)
+  Widget _buildTimerRing() {
+    return TimerProgressRing(
+      progress: 0.35,        // 65% complete — replace with real value
+      timeText: "05:06:30",  // dynamic timer text
     );
   }
+
 }

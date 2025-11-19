@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../domain/models/parking_area_model.dart';
@@ -16,155 +17,179 @@ class ParkingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          width: 332.w,
-          height: 105.h,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.10),
-                blurRadius: 12,
-                offset: const Offset(0, 6),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 340.w,
+        height: 150.h,
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+        margin: EdgeInsets.only(bottom: 12.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(35.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 10,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          textDirection: TextDirection.rtl,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            /// IMAGE
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.r),
+              child: Container(
+                width: 80.w,
+                height: 80.h,
+                color: Colors.grey.shade200,
+                child: parkingArea.imageUrl != null
+                    ? Image.network(parkingArea.imageUrl!, fit: BoxFit.cover)
+                    : Image.asset(AppImages.parkingDemo, fit: BoxFit.cover),
               ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+            ),
+
+            SizedBox(width: 14.w),
+
+            /// TEXT SECTION
+            Expanded(
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    /// TITLE
+                    Text(
+                      "المنطقة ${parkingArea.code}",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xFF0F4A3A),
+                      ),
+                    ),
+
+                    SizedBox(height: 6.h),
+
+                    /// LOCATION
+                    Text(
+                      parkingArea.location,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontSize: 12.sp,
+                        color: Colors.black54,
+                      ),
+                    ),
+
+                    SizedBox(height: 12.h),
+
+                    /// BOTTOM ROW FIXED
+                    Row(
+                      textDirection: TextDirection.rtl,
                       children: [
-                        Text(
-                          "${parkingArea.code} ${parkingArea.name}",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        SizedBox(height: 4.h),
-                        Text(
-                          parkingArea.location,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.black54,
-                          ),
-                        ),
-                        const Spacer(),
-                        Row(
-                          textDirection: TextDirection.ltr,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            // Arrow bottom-left
-                            GestureDetector(
-                              onTap: () {
-                                NavigationService.push(
-                                    '/bookingParkingDetailsPage',
-                                    context: context);
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(6.r),
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF6CBF4E),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: const Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  size: 12,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-
-                            SizedBox(width: 10.w),
-
-                            Expanded(
-                              child: Directionality(
+                        /// EXPANDABLE PART (NO OVERFLOW)
+                        Expanded(
+                          child: Row(
+                            textDirection: TextDirection.rtl,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              /// PRICE
+                              Row(
                                 textDirection: TextDirection.rtl,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    // Shrinkable price text
-                                    Flexible(
-                                      child: Text(
-                                        "${parkingArea.pricePerHour} ريال/ساعة",
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.black87,
-                                        ),
-                                      ),
+                                children: [
+                                  Text(
+                                    parkingArea.pricePerHour.toString(),
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black87,
                                     ),
-
-                                    SizedBox(width: 12.w),
-
-                                    Text(
-                                      parkingArea.formattedAvailability,
-                                      style: TextStyle(
-                                        fontSize: 14.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.black87,
-                                      ),
+                                  ),
+                                  SizedBox(width: 2.w),
+                                  SvgPicture.asset(
+                                    AppImages.realSu,
+                                    width: 14.w,
+                                    height: 14.h,
+                                    color: Colors.black87,
+                                  ),
+                                  SizedBox(width: 2.w),
+                                  Text(
+                                    "/ ساعة",
+                                    style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black87,
                                     ),
+                                  ),
+                                ],
+                              ),
 
-                                    SizedBox(width: 6.w),
+                              SizedBox(width: 14.w),
 
-                                    Icon(
-                                      Icons.directions_car,
-                                      size: 18,
-                                      color: Colors.grey,
-                                    ),
-                                  ],
+                              /// AVAILABILITY (flexible)
+                              SvgPicture.asset(
+                                AppImages.carIcon,
+                                width: 14.w,
+                                height: 14.h,
+                                color: Colors.black87,
+                              ),
+
+                              SizedBox(width: 8.w),
+                              Flexible(
+                                child: Text(
+                                  parkingArea.formattedAvailability,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black87,
+                                  ),
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+
+                        SizedBox(width: 16.w),
+
+                        /// ARROW
+                        GestureDetector(
+                          onTap: () {
+                            NavigationService.push(
+                              '/bookingParkingDetailsPage',
+                              context: context,
+                            );
+                          },
+                          child: Container(
+                            width: 32.w,
+                            height: 32.h,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF6CBF4E),
+                              shape: BoxShape.circle,
                             ),
-                          ],
+                            child: const Center(
+                              child: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.all(15.w),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.r),
-                  child: Container(
-                    width: 110.w,
-                    height: double.infinity,
-                    color: Colors.grey.shade200,
-                    child: parkingArea.imageUrl != null
-                        ? Image.network(
-                            parkingArea.imageUrl!,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(
-                            AppImages.parkingDemo,
-                            fit: BoxFit.cover,
-                          ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

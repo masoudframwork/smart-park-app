@@ -23,7 +23,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      extendBody: false,
+      // extendBody: true, // <-- keep this for transparent BOTTOM ONLY
       body: Consumer(
         builder: (context, ref, child) {
           final currentIndex = ref.watch(bottomNavBarController).currentIndex;
@@ -54,7 +54,7 @@ class _BottomNavBarPageState extends State<BottomNavBarPage> {
       ),
 
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: Colors.transparent,
         child: const SafeArea(
           child: CustomBottomNavigationBar(),
         ),

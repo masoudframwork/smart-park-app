@@ -27,72 +27,77 @@ class CustomImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Safe default color
+    final safeColor = color ?? Colors.black;
+
+    if (imageUrl == null || imageUrl!.isEmpty) {
+      return _placeholder();
+    }
+
     if (isFlag) {
+      // -----------------------
+      // LOAD FROM ASSETS (icons)
+      // -----------------------
       if (_isSvg) {
         return SvgPicture.asset(
-          imageUrl ?? 'assets/images/no_image.svg',
+          imageUrl!,
           width: width,
           height: height,
           fit: fit,
-          colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(safeColor, BlendMode.srcIn),
           placeholderBuilder: (_) => _placeholder(),
         );
       } else {
         return Image.asset(
-          imageUrl ?? "assets/images/no_image.jpg",
+          imageUrl!,
           width: width,
           height: height,
           fit: fit,
           color: color,
-          colorBlendMode: BlendMode.srcIn,
-          errorBuilder: (context, error, stackTrace) =>
-              errorWidget ??
-              Image.asset(
-                "assets/images/no_image.jpg",
-                fit: fit,
-                width: width,
-                height: height,
-              ),
-        );
-      }
-    } else {
-      if (_isSvg) {
-        return SvgPicture.network(
-          imageUrl ??
-              'https://upload.wikimedia.org/wikipedia/commons/6/6b/Bitmap_VS_SVG.svg',
-          width: width,
-          height: height,
-          fit: fit,
-          colorFilter: ColorFilter.mode(color!, BlendMode.srcIn),
-          placeholderBuilder: (_) => _placeholder(),
-        );
-      } else {
-        return CachedNetworkImage(
-          imageUrl: imageUrl ??
-              'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop',
-          width: width,
-          height: height,
-          fit: fit,
-          color: color,
-          colorBlendMode: BlendMode.srcIn,
-          errorWidget: (context, url, error) =>
-              errorWidget ??
-              Image.asset(
-                "assets/images/no_image.jpg",
-                fit: fit,
-                width: width,
-                height: height,
-              ),
-          placeholder: (context, url) => _placeholder(),
+          colorBlendMode: color != null ? BlendMode.srcIn : null,
+          errorBuilder: (_, __, ___) =>
+          errorWidget ?? Image.asset("assets/images/no_image.jpg"),
         );
       }
     }
+
+    // -----------------------------------------
+    // NETWORK IMAGE (with SVG or normal image)
+    // -----------------------------------------
+    if (_isSvg) {
+      return SvgPicture.network(
+        imageUrl!,
+        width: width,
+        height: height,
+        fit: fit,
+        colorFilter: ColorFilter.mode(safeColor, BlendMode.srcIn),
+        placeholderBuilder: (_) => _placeholder(),
+      );
+    }
+
+    return CachedNetworkImage(
+      imageUrl: imageUrl!,
+      width: width,
+      height: height,
+      fit: fit,
+      color: color,
+      colorBlendMode: color != null ? BlendMode.srcIn : null,
+      placeholder: (_, __) => _placeholder(),
+      errorWidget: (_, __, ___) =>
+      errorWidget ??
+          Image.asset(
+            "assets/images/no_image.jpg",
+            width: width,
+            height: height,
+            fit: fit,
+          ),
+    );
   }
 
   Widget _placeholder() => Container(
-        width: width,
-        height: height,
-        color: Colors.grey[200],
-        child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-      );
+    width: width,
+    height: height,
+    color: Colors.grey[200],
+    child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+  );
 }
