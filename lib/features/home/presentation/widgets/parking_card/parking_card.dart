@@ -138,7 +138,6 @@ class ParkingCard extends StatelessWidget {
                                 AppImages.carIcon,
                                 width: 14.w,
                                 height: 14.h,
-                                color: Colors.black87,
                               ),
 
                               SizedBox(width: 8.w),
