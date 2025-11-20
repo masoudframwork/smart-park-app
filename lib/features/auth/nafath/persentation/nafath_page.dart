@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/features/auth/nafath/persentation/widget/text_descrpatin_widget.dart';
 import 'package:smart/features/auth/nafath/persentation/widget/text_field.dart';
 import '../../../../core/constants/image_string.dart';
-
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 

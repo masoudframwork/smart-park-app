@@ -14,6 +14,7 @@ import '../../features/auth/nafath/persentation/widget/nafath_otp_widget.dart';
 import '../../features/auth/send_the_code/presentation/send_the_code_page.dart';
 import '../../features/auth/sign_up/presentation/sign_up_page.dart';
 import '../../features/auth/sign_up/presentation/widget/otp_sign_up/otp_sign_up.dart';
+import '../../features/booking/domain/models/booking_model.dart';
 import '../../features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../features/details_reserve_parking_spot/booking-parking_details/presentation/booking_parking_details_page.dart';
 import '../../features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
@@ -29,6 +30,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: RoutePaths.splashScreen,
+
     routes: [
       GoRoute(
         path: RoutePaths.splashScreen,
@@ -46,17 +48,34 @@ class AppRouter {
           );
         },
       ),
+      // GoRoute(
+      //   path: RoutePaths.bottomNavBar,
+      //   pageBuilder: (context, state) {
+      //     final tabParam = state.uri.queryParameters['tab'];
+      //     final initialIndex = int.tryParse(tabParam ?? '0') ?? 0;
+      //
+      //     final container = ProviderScope.containerOf(context, listen: false);
+      //     container.read(bottomNavBarController).changeIndex(initialIndex);
+      //
+      //     return softTransitionPage(
+      //       child: const BottomNavBarPage(),
+      //     );
+      //   },
+      // ),
       GoRoute(
         path: RoutePaths.bottomNavBar,
-        pageBuilder: (context, state) {
-          final tabParam = state.uri.queryParameters['tab'];
-          final initialIndex = int.tryParse(tabParam ?? '0') ?? 0;
+        builder: (context, state) {
+          final initialIndex =
+              state.extra as int? ?? BottomNavBarController.homeIndex;
 
-          final container = ProviderScope.containerOf(context, listen: false);
-          container.read(bottomNavBarController).changeIndex(initialIndex);
+          return Consumer(
+            builder: (context, ref, _) {
+              Future.microtask(() {
+                ref.read(bottomNavBarController).changeIndex(initialIndex);
+              });
 
-          return softTransitionPage(
-            child: const BottomNavBarPage(),
+              return const BottomNavBarPage();
+            },
           );
         },
       ),
@@ -165,16 +184,14 @@ class AppRouter {
           );
         },
       ),
-
       GoRoute(
         path: RoutePaths.prePreservedVehicles,
         pageBuilder: (context, state) {
           return softTransitionPage(
-            child:       PrePreservedVehicles(),
+            child: PrePreservedVehicles(),
           );
         },
       ),
-
     ],
     errorPageBuilder: (context, state) {
       return softTransitionPage(

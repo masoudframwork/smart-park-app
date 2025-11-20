@@ -5,8 +5,8 @@ import 'package:smart/core/widgets/app_text.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 
-class DescrpationTitelWidget extends StatelessWidget {
-  const DescrpationTitelWidget({super.key});
+class DescrpationWidget extends StatelessWidget {
+  const DescrpationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class DescrpationTitelWidget extends StatelessWidget {
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:'أدخل رقم هاتفك ليصلك رمز التفعيل ',
+          text:'لقد تم إرسال الرمز إلى الرقم المنتهي ب 000\nدخل الرمز لإتمام عملية الدخولn',
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),
