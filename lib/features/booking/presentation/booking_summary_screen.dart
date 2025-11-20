@@ -8,6 +8,7 @@ import 'package:smart/features/booking/presentation/widgets/booking_widgets.dart
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 import 'package:smart/features/home/presentation/home_page.dart';
 
+import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 
 class BookingSummaryScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class BookingSummaryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: AppColor.settingsBackgroundColor,
+        backgroundColor: AppColor.settingsBackgroundColor,
         appBar: CustomAppBar(
           backgroundColor: AppColor.backgroundAppBarColor,
           leading: CircleImageButton(
@@ -86,25 +87,39 @@ class BookingSummaryScreen extends StatelessWidget {
   /// HEADER BAR
   Widget _buildHeader(BuildContext context) {
     return Container(
-      height: 70.h,
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      decoration: const BoxDecoration(
-        // color: AppColor.primaryColor,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Row(
-        textDirection: TextDirection.rtl,
+        spacing: 15,
         children: [
           GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(Icons.arrow_back_ios_rounded,
-                color: Colors.white, size: 22),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
+            child: Container(
+              width: 34.w,
+              height: 34.w,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: AppColor.whiteColor,
+                borderRadius: BorderRadius.circular(10.r),
+                border: Border.all(
+                  color: AppColor.contanearGreyColor,
+                  width: 1,
+                ),
+              ),
+              child: CustomImageWidget(
+                imageUrl: AppImages.arrowRightIcon,
+                width: 20.w,
+                height: 20.w,
+                isFlag: true,
+                color: AppColor.primaryColor,
+              ),
+            ),
           ),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: AppText(
-              text: "ملخص الحجز",
-              appTextTheme: AppTextTheme.titleLargeTextStyle()
-                  .copyWith(color: AppColor.textColor, fontSize: 20.sp),
+          AppText(
+            text: "ملخص الحجز",
+            appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
+              color: AppColor.textColor,
             ),
           ),
         ],
@@ -156,7 +171,7 @@ class BookingSummaryScreen extends StatelessWidget {
 
           /// DATE + TIME + CAR + PRICE
           BookingWidgets.buildInfoRow(
-             icon: AppImages.timerClock,
+            icon: AppImages.timerClock,
             text: "الخميس 2025/10/30",
           ),
 
