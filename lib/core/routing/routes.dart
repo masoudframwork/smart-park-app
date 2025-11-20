@@ -21,6 +21,9 @@ class RoutePaths {
   static const String profileScreen = '/profileScreen';
   static const String settingsScreen = '/settingsScreen';
   static const String prePreservedVehicles = '/prePreservedVehicles';
+  static const String scanCodeScreen = '/ScanCodeScreen';
+
+
 
 
 

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../../../core/constants/image_string.dart';
+import '../../../qr_scanner/scan_code_screen.dart';
 
 class CustomBottomNavigationBar extends ConsumerWidget {
   const CustomBottomNavigationBar({super.key});
@@ -42,8 +43,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
                 height: 20,
               ),
             ),
-
-
             _navItem(
               index: 1,
               currentIndex: currentIndex,
@@ -68,25 +67,14 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               ),
             ),
 
-            // _navItem(
-            //   index: 3,
-            //   currentIndex: currentIndex,
-            //   onTap: () => ref.read(bottomNavBarController).changeIndex(3),
-            //   icon: SvgPicture.asset(
-            //     AppImages.qrCodeIcon,
-            //     color: currentIndex == 0 ? Colors.white : Colors.white70,
-            //     width: 20,
-            //     height: 20,
-            //   ),
-            // ),
             _navItem(
               index: 3,
               currentIndex: currentIndex,
               onTap: () {
-                // ref.read(bottomNavBarController).changeIndex(3);
-                // Navigator.push(context,
-                //   MaterialPageRoute(builder: (_) => const SettingsScreen()),
-                // );
+                ref.read(bottomNavBarController).changeIndex(3);
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const ScanCodeScreen()),
+                );
               },
               icon: SvgPicture.asset(AppImages.qrCodeIcon, width: 20),
             ),

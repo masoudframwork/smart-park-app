@@ -5,6 +5,7 @@ import 'package:smart/core/routing/navigation_service.dart';
 import 'package:smart/core/routing/routes.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/bottom_nav_bar_page.dart';
 import 'package:smart/features/on_boarding/presentation/on_boarding_screen.dart';
+import 'package:smart/features/qr_scanner/scan_code_screen.dart';
 import 'package:smart/features/splash/presentation/splash_screen.dart';
 import '../../features/auth/bankcarddata/presentation/bank_card_data_page.dart';
 import '../../features/auth/login/presentation/login_page.dart';
@@ -144,6 +145,15 @@ class AppRouter {
         pageBuilder: (context, state) {
           return softTransitionPage(
             child: ProfileScreen(),
+          );
+        },
+      ),
+
+      GoRoute(
+        path: RoutePaths.scanCodeScreen,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: ScanCodeScreen(),
           );
         },
       ),

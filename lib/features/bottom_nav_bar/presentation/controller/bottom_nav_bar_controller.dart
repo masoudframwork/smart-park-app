@@ -42,6 +42,7 @@ import 'package:smart/features/booking/booking_page.dart';
 import 'package:smart/features/home/presentation/home_page.dart';
 import 'package:smart/features/settings/presentation/settings_screen.dart';
 import '../../../profile/presentation/profile_screen.dart';
+import '../../../qr_scanner/scan_code_screen.dart';
 
 final bottomNavBarController = ChangeNotifierProvider(
   (ref) => BottomNavBarController(),
@@ -53,13 +54,13 @@ class BottomNavBarController extends ChangeNotifier {
   static const int homeIndex = 0;
   static const int bookingIndex = 1;
   static const int profileIndex = 2;
-  static const int settingsIndex = 3;
+  static const int cameraIndex = 3;
 
   List<Widget> pages = [
     const HomePage(), // 0
     const BookingPage(), // 1
     const ProfileScreen(), // 2
-    const SettingsScreen(), // 3
+    const ScanCodeScreen(), // 3
   ];
 
   void changeIndex(int val) {
