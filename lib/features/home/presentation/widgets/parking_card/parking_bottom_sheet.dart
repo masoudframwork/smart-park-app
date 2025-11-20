@@ -59,7 +59,8 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
 
     if (index < 0 || index >= parkingAreas.length) return;
 
-    final selectedArea = parkingAreas[index];
+    /// final selectedArea = parkingAreas[index];
+       final selectedArea = parkingAreas[0];
 
     // Move (zoom) map to the card location
     widget.mapController.move(

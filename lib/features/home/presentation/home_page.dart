@@ -114,7 +114,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               left: 16.w,
               right: 16.w,
               child: GreenParkingDetails(
-                parkingArea: selectedParking!,
+                parkingArea: selectedParking,
                 onClose: () {
                   ref.read(selectedParkingAreaDetailsProvider.notifier).state =
                   null;
