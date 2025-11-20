@@ -144,11 +144,12 @@ class BookingSummaryScreen extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,   // ⭐ CENTER ALL CONTENT
         children: [
+
           /// Title
           AppText(
-            text: "013 المنطقة",
+            text: "المنطقة 013",
             appTextTheme: AppTextTheme.titleLargeTextStyle()
                 .copyWith(fontWeight: FontWeight.w700),
           ),
@@ -158,25 +159,26 @@ class BookingSummaryScreen extends StatelessWidget {
           /// Address
           AppText(
             text: "طريق خريص، الرياض، المملكة العربية السعودية",
+            textAlign: TextAlign.center,                   // ⭐ CENTER TEXT
             appTextTheme: AppTextTheme.bodySmallTextStyle(),
-            // maxLines: 2,
           ),
 
           SizedBox(height: 16.h),
 
-          /// DIVIDER
           Divider(color: Colors.grey.shade300),
 
           SizedBox(height: 10.h),
 
-          /// DATE + TIME + CAR + PRICE
+          /// DATE
           BookingWidgets.buildInfoRow(
             icon: AppImages.timerClock,
+            iconColor: AppColor.textColor,
             text: "الخميس 2025/10/30",
           ),
 
           SizedBox(height: 8.h),
 
+          /// TIME
           BookingWidgets.buildTimeRow(
             startTime: "08:00 ص",
             endTime: "04:00 م",
@@ -184,26 +186,29 @@ class BookingSummaryScreen extends StatelessWidget {
 
           SizedBox(height: 8.h),
 
+          /// CAR
           BookingWidgets.buildInfoRow(
             icon: AppImages.car,
+            iconColor: AppColor.textColor,
             text: "نيسان / 2023 / أسود",
           ),
 
           SizedBox(height: 8.h),
 
+          /// TOTAL PRICE
           BookingWidgets.buildInfoRow(
             icon: AppImages.realSu,
-            text: "إجمالي المدفوع  30ر.س",
+            iconColor: AppColor.textColor,
+            text: "إجمالي المدفوع  30 ر.س",
           ),
 
           SizedBox(height: 20.h),
 
-          /// Download Invoice
+          /// DOWNLOAD INVOICE
           Center(
             child: TextButton.icon(
               onPressed: () {},
-              icon:
-                  Icon(Icons.download, color: AppColor.primaryColor, size: 20),
+              icon: Icon(Icons.download_for_offline_outlined, color: AppColor.primaryColor, size: 20),
               label: AppText(
                 text: "تحميل الفاتورة",
                 appTextTheme: AppTextTheme.bodyMediumTextStyle()
@@ -215,6 +220,7 @@ class BookingSummaryScreen extends StatelessWidget {
       ),
     );
   }
+
 
   /// Outlined WHITE BUTTON
   Widget _buildOutlinedButton({
