@@ -139,6 +139,40 @@ class BookingWidgets {
     );
   }
 
+
+  /// Build out lined Button
+  static Widget buildOutlinedButton({
+    required String text,
+    required VoidCallback onTap,
+    Color borderColor = const Color(0xFF6CBF4E),
+    double height = 44,
+    double fontSize = 14,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height.h,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.white,                     // WHITE BACKGROUND
+          borderRadius: BorderRadius.circular(6.r),
+          border: Border.all(
+            color: borderColor,                    // GREEN BORDER
+            width: 1.5,
+          ),
+        ),
+        child: AppText(
+          text: text,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            color: borderColor,                    // GREEN TEXT
+            fontWeight: FontWeight.w600,
+            fontSize: fontSize.sp,
+          ),
+        ),
+      ),
+    );
+  }
+
   /// Card container with shadow
   static BoxDecoration cardDecoration() {
     return BoxDecoration(

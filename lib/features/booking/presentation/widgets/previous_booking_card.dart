@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
+import 'package:smart/features/booking/presentation/booking_summary_screen.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
@@ -24,7 +25,7 @@ class PreviousBookingCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(top: 22.h,bottom: 16.h),
+        margin: EdgeInsets.only(top: 22.h, bottom: 16.h),
         decoration: BookingWidgets.cardDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +37,7 @@ class PreviousBookingCard extends StatelessWidget {
             BookingWidgets.buildDivider(),
             Padding(
               padding: EdgeInsets.fromLTRB(16.w, 12.h, 16.w, 16.h),
-              child: _buildContent(),
+              child: _buildContent(context),
             ),
           ],
         ),
@@ -61,7 +62,7 @@ class PreviousBookingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,19 +86,43 @@ class PreviousBookingCard extends StatelessWidget {
           price: reservation.price,
         ),
         SizedBox(height: 16.h),
-        _buildBookAgainButton(),
+        _buildActionButtons(context),
       ],
     );
   }
 
-  Widget _buildBookAgainButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: BookingWidgets.buildActionButton(
-        text: 'احجز مرة اخرى',
-        onTap: onBookAgain,
-        backgroundColor: AppColor.primaryColor,
-      ),
+  Widget _buildActionButtons(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: BookingWidgets.buildActionButton(
+            text: 'احجز مرة أخرى',
+            onTap: onBookAgain,
+            backgroundColor: AppColor.primaryColor,
+          ),
+        ),
+        SizedBox(width: 12.w),
+        // Expanded(
+        //   child: BookingWidgets.buildOutlinedButton(
+        //     text: 'ملخص الحجز',
+        //     onTap: onBookAgain,
+        //   ),
+        // ),
+
+        Expanded(
+          child: BookingWidgets.buildOutlinedButton(
+            text: 'ملخص الحجز',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => BookingSummaryScreen(),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
