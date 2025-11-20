@@ -4,7 +4,6 @@ import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
-import 'package:smart/features/booking/booking_page.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_widgets.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 import 'package:smart/features/home/presentation/home_page.dart';
@@ -72,7 +71,6 @@ class BookingSummaryScreen extends StatelessWidget {
                           );
                         },
                       ),
-
                       SizedBox(height: 40.h),
                     ],
                   ),
@@ -91,7 +89,7 @@ class BookingSummaryScreen extends StatelessWidget {
       height: 70.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: const BoxDecoration(
-        color: AppColor.primaryColor,
+        // color: AppColor.primaryColor,
       ),
       child: Row(
         textDirection: TextDirection.rtl,
@@ -103,12 +101,10 @@ class BookingSummaryScreen extends StatelessWidget {
           ),
           SizedBox(width: 12.w),
           Expanded(
-            child: Center(
-              child: AppText(
-                text: "ملخص الحجز",
-                appTextTheme: AppTextTheme.titleLargeTextStyle()
-                    .copyWith(color: Colors.white, fontSize: 20.sp),
-              ),
+            child: AppText(
+              text: "ملخص الحجز",
+              appTextTheme: AppTextTheme.titleLargeTextStyle()
+                  .copyWith(color: AppColor.textColor, fontSize: 20.sp),
             ),
           ),
         ],
