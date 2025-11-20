@@ -46,7 +46,6 @@ class TextFieldAndButtonsWidget extends StatelessWidget {
             // validator: phoneValidator,
           ),
           CustomButtonWidget(
-            width: 360.w,
             text: isLoading ? 'جاري الإرسال...' : 'أرسل الرمز',
             borderRadius: 10.r,
             onPressed: () {

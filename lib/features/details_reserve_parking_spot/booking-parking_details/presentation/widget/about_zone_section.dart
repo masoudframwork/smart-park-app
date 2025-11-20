@@ -18,8 +18,7 @@ class AboutZoneSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       spacing: 11.h,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
+
       children: [
         AppText(
           text: title,

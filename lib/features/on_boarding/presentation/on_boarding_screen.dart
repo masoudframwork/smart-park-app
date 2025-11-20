@@ -11,10 +11,8 @@ import '../../../core/widgets/custom_image_widget.dart';
 import 'controller/on_boarding_controller.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/on_boarding/presentation/widget/title_subtitle_widget.dart';
-
 class OnBoardingScreen extends ConsumerWidget {
   const OnBoardingScreen({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(onboardingControllerProvider);
@@ -122,7 +120,6 @@ class OnBoardingScreen extends ConsumerWidget {
     activeDotColor: AppColor.whiteColor,
   );
 }
-
 enum Edge { top, bottom, left, right }
 
 class _EdgeFade extends StatelessWidget {

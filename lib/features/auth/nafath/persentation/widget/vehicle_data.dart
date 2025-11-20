@@ -22,13 +22,44 @@ class VehicleDataScreen extends ConsumerWidget {
     final state = ref.watch(vehicleFormControllerProvider);
     final controller = ref.read(vehicleFormControllerProvider.notifier);
     return SafeArea(
+      top: false,
       child: Scaffold(
         backgroundColor: AppColor.settingsBackgroundColor,
+        resizeToAvoidBottomInset: true,
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CustomButtonWidget(
+                borderRadius: 10.r,
+                text: 'حفظ المركبة',
+                onPressed: () {
+                  NavigationService.go('${RoutePaths.bottomNavBar}?tab=2');
+                },
+                backgroundColor: AppColor.primaryColor,
+              ),
+              SizedBox(height: 13.h),
+              CustomButtonWidget(
+                borderRadius: 10.r,
+                type: ButtonType.outlined,
+                textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                  color: AppColor.primaryColor,
+                  fontWeight: FontWeight.w600,
+                ),
+                text: 'لاحقاً ',
+                onPressed: () {
+                  NavigationService.push(RoutePaths.bottomNavBar);
+                },
+                backgroundColor: AppColor.primaryColor,
+              ),
+            ],
+          ),
+        ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 50.h),
                 Row(
@@ -155,68 +186,6 @@ class VehicleDataScreen extends ConsumerWidget {
                   showError:
                       state.showErrors && (state.avatar?.isEmpty ?? true),
                 ),
-                SizedBox(height: 20.h),
-                // Row(
-                //   spacing: 10.w,
-                //   children: [
-                //     Switch(
-                //       value: state.saveForLater,
-                //       onChanged: controller.toggleSaveForLater,
-                //       overlayColor: WidgetStateProperty.all(Colors.transparent),
-                //       activeColor: AppColor.primaryColor,
-                //       trackColor: WidgetStateProperty.resolveWith((states) {
-                //         final isOn = states.contains(WidgetState.selected);
-                //         return isOn
-                //             ? AppColor.primaryColor
-                //             : AppColor.greyContainerColor;
-                //       }),
-                //       trackOutlineColor:
-                //           WidgetStateProperty.all(Colors.transparent),
-                //       trackOutlineWidth: WidgetStateProperty.all(0),
-                //       thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
-                //       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                //     ),
-                //     AppText(
-                //       text: 'احفظ المركبة للاستخدام لاحقاً',
-                //       appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                //         fontWeight: FontWeight.w300,
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                SizedBox(
-                  height: 200,
-                ),
-                CustomButtonWidget(
-                  borderRadius: 10.r,
-                  text: 'حفظ المركبة',
-
-                    onPressed:(){
-                    NavigationService.go('${RoutePaths.bottomNavBar}?tab=2');
-
-                  },
-
-                  backgroundColor: AppColor.primaryColor,
-                ),
-                SizedBox(height: 13.h),
-
-                CustomButtonWidget(
-                  borderRadius: 10.r,
-                  type: ButtonType.outlined,
-                  textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
-                    color: AppColor.primaryColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  text: 'لاحقاً ',
-                  onPressed: () {
-                    NavigationService.push(
-                      '/bottomNavBar',
-                    );
-                  },
-                  backgroundColor: AppColor.primaryColor,
-                ),
-
-                SizedBox(height: 8.h),
               ],
             ),
           ),

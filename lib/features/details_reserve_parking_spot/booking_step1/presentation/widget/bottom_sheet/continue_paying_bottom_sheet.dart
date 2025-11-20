@@ -11,11 +11,14 @@ import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
 
 import '../../../../../booking/domain/models/booking_model.dart';
+import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/duration_states.dart';
+
 enum CardSelection {
   saved,
   newCard,
 }
+
 enum CardBrand {
   mada,
   visa,
@@ -23,12 +26,15 @@ enum CardBrand {
 
 final cardSelectionProvider =
     StateProvider<CardSelection>((ref) => CardSelection.saved);
+late final Function(int) onTabChanged;
 
 final cardBrandProvider = StateProvider<CardBrand>((ref) => CardBrand.mada);
 late final BookingModel reservation;
 
 class ContinuePayingMethodBottomSheet extends ConsumerWidget {
-  const ContinuePayingMethodBottomSheet({super.key});
+ // final BookingModel reservation;
+
+   const ContinuePayingMethodBottomSheet( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -53,15 +59,24 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
               const _PaymentSummaryVisaCard(),
               SizedBox(height: 16.h),
               CustomButtonWidget(
-                type: ButtonType.elevated,
-                borderRadius: 10.r,
-                text: 'تأكيد الحجز',
-                textStyle: AppTextTheme.mainButtonTextStyle(),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                //  BookingDetailView
-                },
-              ),
+                  type: ButtonType.elevated,
+                  borderRadius: 10.r,
+                  text: 'تأكيد الحجز',
+                  textStyle: AppTextTheme.mainButtonTextStyle(),
+                  onPressed: () {
+
+                    Navigator.of(context).pop();
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) => BookingDetailView(
+                    //
+                    //     ),
+                    //   ),
+                    // );
+
+
+
+                  }),
               SizedBox(height: 8.h),
             ],
           ),
@@ -69,6 +84,17 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
       ),
     );
   }
+}
+
+void _navigateToDetail(BuildContext context, reservation) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => BookingDetailView(
+        reservation: reservation,
+      ),
+    ),
+  );
 }
 
 class _CardSelectionRow extends ConsumerWidget {

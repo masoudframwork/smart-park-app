@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -23,7 +22,8 @@ import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../domain/duration_states.dart';
 
 class BookingStep1Page extends ConsumerWidget {
-  const BookingStep1Page({super.key});
+
+   const BookingStep1Page( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -74,7 +74,7 @@ class BookingStep1Page extends ConsumerWidget {
                   onPressed: () {
                     showBlurBottomSheet(
                       context: context,
-                      child: ContinuePayingMethodBottomSheet(),
+                      child: ContinuePayingMethodBottomSheet( ),
                     );
                   },
                 ),
@@ -345,6 +345,7 @@ class _DurationStepContent extends ConsumerWidget {
           onPressed: () {
             showBlurBottomSheet(
               context: context,
+              isScrollControlled: false,
               child: const BookingCustomTimeBottomSheet(),
             );
           },
@@ -432,11 +433,8 @@ class _SummaryStepContent extends ConsumerWidget {
             ],
           ),
           Row(
-            spacing: 5.w,
             children: [
-              SvgPicture.asset(
-                AppImages.pinMap,
-              ),
+              SvgPicture.asset(AppImages.pinMap),
               AppText(
                 text:
                     'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',

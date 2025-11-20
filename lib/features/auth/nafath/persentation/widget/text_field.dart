@@ -31,7 +31,6 @@ class TextFieldWidgets extends StatelessWidget {
                 height: 10.h,
               ),
               CustomTextFormField(
-                width: 356.w,
                 //  controller: phoneController,
                 borderRadius: 10.r,
                 hintStyle: AppTextTheme.numberSmallTextStyle().copyWith(
@@ -50,7 +49,6 @@ class TextFieldWidgets extends StatelessWidget {
                 height: 20.h,
               ),
               CustomButtonWidget(
-                  width: 356.w,
                   borderRadius: 10.r,
                   text: 'تسجيل الدخول',
                   onPressed: () {
@@ -60,7 +58,6 @@ class TextFieldWidgets extends StatelessWidget {
                 height: 150.h,
               ),
               CustomButtonWidget(
-                width: 356.w,
                 borderRadius: 10.r,
                 textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
                   color: AppColor.primaryColor,
