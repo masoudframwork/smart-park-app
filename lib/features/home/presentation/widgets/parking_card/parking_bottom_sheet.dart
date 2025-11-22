@@ -56,7 +56,8 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
 
     if (index < 0 || index >= parkingAreas.length) return;
 
-    final selectedArea = parkingAreas[index];
+    // final selectedArea = parkingAreas[index];
+    final selectedArea = parkingAreas[0];
 
     // ⭐ FIX — Wait until the map is fully rendered
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -99,7 +100,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
           itemCount: parkingAreas.length,
           separatorBuilder: (_, __) => SizedBox(width: 16.w),
           itemBuilder: (context, i) {
-            final area = parkingAreas[i];
+            final area = parkingAreas[0];
 
             return ParkingCard(
               parkingArea: area,
