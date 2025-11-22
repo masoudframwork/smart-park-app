@@ -8,6 +8,7 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/booking_step1_controller.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/booking_custom_time_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
@@ -21,66 +22,31 @@ import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../domain/duration_states.dart';
 
 class BookingStep1Page extends ConsumerWidget {
-  final String? qrCode; // <-- NEW
 
-  const BookingStep1Page({
-    super.key,
-    this.qrCode,
-  });
+  const BookingStep1Page( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingFlowControllerProvider);
     final controller = ref.read(bookingFlowControllerProvider.notifier);
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteBackgroundColor,
         appBar: CustomAppBar(
-          trailing: CloseButtonCircle(
-            onTap: () {
-              controller.reset();
-              Navigator.of(context).pop();
-            },
-          ),
+          trailing: CloseButtonCircle(onTap: () {
+            controller.reset();
+            Navigator.of(context).pop();
+          }),
         ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(15.h),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               textDirection: TextDirection.rtl,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const HeaderSection(),
-
-                /// QR CODE BANNER (Optional)
-                if (qrCode != null) ...[
-                  SizedBox(height: 16),
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade50,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColor.primaryColor),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        AppText(
-                          text: "تم قراءة الكود:",
-                          appTextTheme: AppTextTheme.bodyMediumTextStyle(),
-                        ),
-                        AppText(
-                          text: qrCode!,
-                          appTextTheme: AppTextTheme.bodyMediumTextStyle()
-                              .copyWith(color: AppColor.primaryColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                ],
-
+                SizedBox(height: 16.h),
                 _StepRow(
                   index: 1,
                   title: 'اختر المركبة',
@@ -91,7 +57,6 @@ class BookingStep1Page extends ConsumerWidget {
                     onSelect: controller.selectVehicle,
                   ),
                 ),
-
                 _StepRow(
                   index: 2,
                   title: 'حدّد مدة الوقوف',
@@ -99,11 +64,8 @@ class BookingStep1Page extends ConsumerWidget {
                   state: state,
                   child: const _DurationStepContent(),
                 ),
-
                 _SummaryStepSection(state: state),
-
                 SizedBox(height: 12.h),
-
                 CustomButtonWidget(
                   type: ButtonType.elevated,
                   borderRadius: 10.r,
@@ -112,7 +74,7 @@ class BookingStep1Page extends ConsumerWidget {
                   onPressed: () {
                     showBlurBottomSheet(
                       context: context,
-                      child: ContinuePayingMethodBottomSheet(),
+                      child: ContinuePayingMethodBottomSheet( ),
                     );
                   },
                 ),
@@ -124,10 +86,6 @@ class BookingStep1Page extends ConsumerWidget {
     );
   }
 }
-
-// --------------------------------------------------------------------------------
-// OTHER WIDGETS — UNCHANGED (your original logic)
-// --------------------------------------------------------------------------------
 
 class _StepRow extends StatelessWidget {
   final int index;
@@ -151,6 +109,7 @@ class _StepRow extends StatelessWidget {
     final bool isEnabled = state.currentStep >= index;
 
     return Row(
+      textDirection: TextDirection.rtl,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _StepIndicator(
@@ -158,7 +117,9 @@ class _StepRow extends StatelessWidget {
           currentStep: state.currentStep,
           totalSteps: totalSteps,
         ),
-        SizedBox(width: 5.w),
+        SizedBox(
+          width: 5.w,
+        ),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,10 +147,6 @@ class _StepRow extends StatelessWidget {
   }
 }
 
-// (THE REST OF YOUR FILE IS KEPT AS-IS…)
-// You don't need to change the rest of your classes.
-// --------------------------------------------------------------------------------
-
 class _StepIndicator extends StatelessWidget {
   final int index;
   final int currentStep;
@@ -203,10 +160,14 @@ class _StepIndicator extends StatelessWidget {
 
   bool get _showTopLine => index != 1;
   bool get _showBottomLine => index != totalSteps;
+  double _topSegmentHeight() {
+    if (!_showTopLine) return 0;
+    return 0;
+  }
 
-  double _topSegmentHeight() => _showTopLine ? 0 : 0;
   double _bottomSegmentHeight() {
     if (!_showBottomLine) return 0;
+
     if (index == 1) return 264.h;
     if (index == 2) return 264.h;
     return 0;
@@ -219,15 +180,25 @@ class _StepIndicator extends StatelessWidget {
 
     final Color circleColor =
     isCompleted ? AppColor.primaryColor : AppColor.whiteColor;
-    final Color borderColor =
-    (isActive || isCompleted) ? AppColor.primaryColor : AppColor.greyDividerColor;
-    final Color textColor =
-    isCompleted ? AppColor.whiteColor : (isActive ? AppColor.primaryColor : AppColor.greyColor);
 
-    Color _lineColor(bool isAbove) {
-      if (isAbove && !_showTopLine) return Colors.transparent;
-      if (!isAbove && !_showBottomLine) return Colors.transparent;
-      return currentStep >= (isAbove ? index : index + 1)
+    final Color borderColor = (isActive || isCompleted)
+        ? AppColor.primaryColor
+        : AppColor.greyDividerColor;
+
+    final Color textColor = isCompleted
+        ? AppColor.whiteColor
+        : (isActive ? AppColor.primaryColor : AppColor.greyColor);
+
+    Color _topLineColor() {
+      if (!_showTopLine) return Colors.transparent;
+      return currentStep >= index
+          ? AppColor.primaryColor
+          : AppColor.greyDividerColor;
+    }
+
+    Color _bottomLineColor() {
+      if (!_showBottomLine) return Colors.transparent;
+      return currentStep > index
           ? AppColor.primaryColor
           : AppColor.greyDividerColor;
     }
@@ -236,7 +207,14 @@ class _StepIndicator extends StatelessWidget {
       width: 40.w,
       child: Column(
         children: [
-          Container(height: _topSegmentHeight(), color: _lineColor(true)),
+          Container(
+            height: _topSegmentHeight(),
+            alignment: Alignment.center,
+            child: Container(
+              width: 1.5,
+              color: _topLineColor(),
+            ),
+          ),
           Container(
             width: 32.w,
             height: 32.w,
@@ -255,14 +233,20 @@ class _StepIndicator extends StatelessWidget {
               ),
             ),
           ),
-          Container(height: _bottomSegmentHeight(), color: _lineColor(false)),
+          Container(
+            height: _bottomSegmentHeight(),
+            alignment: Alignment.center,
+            child: Container(
+              width: 1.5,
+              color: _bottomLineColor(),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-// --> Vehicle Step
 class _VehiclesStepContent extends StatelessWidget {
   final String? selectedId;
   final ValueChanged<String> onSelect;
@@ -276,12 +260,16 @@ class _VehiclesStepContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 12),
+        SizedBox(
+          height: 12,
+        ),
         TheVehicleTile(
           title: 'نيسان باتلفايندر 2023 - أسود',
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
-          carIcon: SvgPicture.asset(AppImages.iconsCars),
+          carIcon: SvgPicture.asset(
+            AppImages.iconsCars,
+          ),
           isSelected: selectedId == 'nissan',
           onTap: () => onSelect('nissan'),
         ),
@@ -290,7 +278,9 @@ class _VehiclesStepContent extends StatelessWidget {
           title: 'تويوتا كورولا 2024 - أحمر',
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
-          carIcon: SvgPicture.asset(AppImages.iconsCars),
+          carIcon: SvgPicture.asset(
+            AppImages.iconsCars,
+          ),
           isSelected: selectedId == 'corolla',
           onTap: () => onSelect('corolla'),
         ),
@@ -304,6 +294,7 @@ class _VehiclesStepContent extends StatelessWidget {
           isSelected: selectedId == 'new',
           onTap: () {
             onSelect('new');
+
             showBlurBottomSheet(
               context: context,
               child: const AnotherVehicleBottomSheet(),
@@ -315,7 +306,6 @@ class _VehiclesStepContent extends StatelessWidget {
   }
 }
 
-// --> Duration Step
 class _DurationStepContent extends ConsumerWidget {
   const _DurationStepContent({super.key});
 
@@ -323,6 +313,7 @@ class _DurationStepContent extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bookingState = ref.watch(bookingFlowControllerProvider);
     final bookingController = ref.read(bookingFlowControllerProvider.notifier);
+
     final durationController = ref.read(durationControllerProvider.notifier);
 
     return Column(
@@ -348,8 +339,9 @@ class _DurationStepContent extends ConsumerWidget {
             color: AppColor.primaryColor,
           ),
           text: 'تحديد المدة',
-          textStyle: AppTextTheme.mainButtonTextStyle()
-              .copyWith(color: AppColor.primaryColor),
+          textStyle: AppTextTheme.mainButtonTextStyle().copyWith(
+            color: AppColor.primaryColor,
+          ),
           onPressed: () {
             showBlurBottomSheet(
               context: context,
@@ -363,313 +355,6 @@ class _DurationStepContent extends ConsumerWidget {
   }
 }
 
-// → Summary Step (UNCHANGED)
-class _SummaryStepSection extends ConsumerWidget {
-  final BookingStep1State state;
-  const _SummaryStepSection({required this.state});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final durationState = ref.watch(durationControllerProvider);
-    final bool isEnabled =
-        state.hasVehicle && state.hasDuration && durationState.hours > 0;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _StepRow(
-          index: 3,
-          title: 'ملخص الحجز',
-          totalSteps: 3,
-          state: state,
-          bottomSpacing: 0,
-          child: const SizedBox.shrink(),
-        ),
-        SizedBox(height: 8.h),
-        AnimatedOpacity(
-          duration: const Duration(milliseconds: 200),
-          opacity: isEnabled ? 1 : 0.4,
-          child: IgnorePointer(
-            ignoring: !isEnabled,
-            child: Padding(
-              padding: EdgeInsets.only(right: 2.w),
-              child: _SummaryStepContent(state: state),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-// class _StepRow extends StatelessWidget {
-//   final int index;
-//   final int totalSteps;
-//   final String title;
-//   final BookingStep1State state;
-//   final Widget child;
-//   final double bottomSpacing;
-//
-//   const _StepRow({
-//     required this.index,
-//     required this.title,
-//     required this.totalSteps,
-//     required this.state,
-//     required this.child,
-//     this.bottomSpacing = 2,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final bool isEnabled = state.currentStep >= index;
-//
-//     return Row(
-//       textDirection: TextDirection.rtl,
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         _StepIndicator(
-//           index: index,
-//           currentStep: state.currentStep,
-//           totalSteps: totalSteps,
-//         ),
-//         SizedBox(
-//           width: 5.w,
-//         ),
-//         Expanded(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               AppText(
-//                 text: title,
-//                 appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-//                   fontWeight: FontWeight.w600,
-//                   color: AppColor.textColor,
-//                 ),
-//               ),
-//               IgnorePointer(
-//                 ignoring: !isEnabled,
-//                 child: Opacity(
-//                   opacity: isEnabled ? 1 : 0.4,
-//                   child: child,
-//                 ),
-//               ),
-//               if (bottomSpacing > 0) SizedBox(height: bottomSpacing.h),
-//             ],
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-//
-// class _StepIndicator extends StatelessWidget {
-//   final int index;
-//   final int currentStep;
-//   final int totalSteps;
-//
-//   const _StepIndicator({
-//     required this.index,
-//     required this.currentStep,
-//     required this.totalSteps,
-//   });
-//
-//   bool get _showTopLine => index != 1;
-//   bool get _showBottomLine => index != totalSteps;
-//   double _topSegmentHeight() {
-//     if (!_showTopLine) return 0;
-//     return 0;
-//   }
-//
-//   double _bottomSegmentHeight() {
-//     if (!_showBottomLine) return 0;
-//
-//     if (index == 1) return 264.h;
-//     if (index == 2) return 264.h;
-//     return 0;
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final bool isActive = currentStep == index;
-//     final bool isCompleted = currentStep > index;
-//
-//     final Color circleColor =
-//         isCompleted ? AppColor.primaryColor : AppColor.whiteColor;
-//
-//     final Color borderColor = (isActive || isCompleted)
-//         ? AppColor.primaryColor
-//         : AppColor.greyDividerColor;
-//
-//     final Color textColor = isCompleted
-//         ? AppColor.whiteColor
-//         : (isActive ? AppColor.primaryColor : AppColor.greyColor);
-//
-//     Color _topLineColor() {
-//       if (!_showTopLine) return Colors.transparent;
-//       return currentStep >= index
-//           ? AppColor.primaryColor
-//           : AppColor.greyDividerColor;
-//     }
-//
-//     Color _bottomLineColor() {
-//       if (!_showBottomLine) return Colors.transparent;
-//       return currentStep > index
-//           ? AppColor.primaryColor
-//           : AppColor.greyDividerColor;
-//     }
-//
-//     return SizedBox(
-//       width: 40.w,
-//       child: Column(
-//         children: [
-//           Container(
-//             height: _topSegmentHeight(),
-//             alignment: Alignment.center,
-//             child: Container(
-//               width: 1.5,
-//               color: _topLineColor(),
-//             ),
-//           ),
-//           Container(
-//             width: 32.w,
-//             height: 32.w,
-//             decoration: BoxDecoration(
-//               color: circleColor,
-//               shape: BoxShape.circle,
-//               border: Border.all(color: borderColor, width: 2),
-//             ),
-//             child: Center(
-//               child: AppText(
-//                 text: '$index',
-//                 appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-//                   fontWeight: FontWeight.w600,
-//                   color: textColor,
-//                 ),
-//               ),
-//             ),
-//           ),
-//           Container(
-//             height: _bottomSegmentHeight(),
-//             alignment: Alignment.center,
-//             child: Container(
-//               width: 1.5,
-//               color: _bottomLineColor(),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-//
-// class _VehiclesStepContent extends StatelessWidget {
-//   final String? selectedId;
-//   final ValueChanged<String> onSelect;
-//
-//   const _VehiclesStepContent({
-//     required this.selectedId,
-//     required this.onSelect,
-//   });
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         SizedBox(
-//           height: 12,
-//         ),
-//         TheVehicleTile(
-//           title: 'نيسان باتلفايندر 2023 - أسود',
-//           bgColor: AppColor.whiteColor,
-//           borderColor: AppColor.lightPurpleColor,
-//           carIcon: SvgPicture.asset(
-//             AppImages.iconsCars,
-//           ),
-//           isSelected: selectedId == 'nissan',
-//           onTap: () => onSelect('nissan'),
-//         ),
-//         SizedBox(height: 8.h),
-//         TheVehicleTile(
-//           title: 'تويوتا كورولا 2024 - أحمر',
-//           bgColor: AppColor.whiteColor,
-//           borderColor: AppColor.lightPurpleColor,
-//           carIcon: SvgPicture.asset(
-//             AppImages.iconsCars,
-//           ),
-//           isSelected: selectedId == 'corolla',
-//           onTap: () => onSelect('corolla'),
-//         ),
-//         SizedBox(height: 8.h),
-//         TheVehicleTile(
-//           title: 'مركبة أخرى',
-//           bgColor: AppColor.whiteColor,
-//           borderColor: AppColor.whiteColor,
-//           carIcon: const SizedBox.shrink(),
-//           isAddNew: true,
-//           isSelected: selectedId == 'new',
-//           onTap: () {
-//             onSelect('new');
-//
-//             showBlurBottomSheet(
-//               context: context,
-//               child: const AnotherVehicleBottomSheet(),
-//             );
-//           },
-//         ),
-//       ],
-//     );
-//   }
-// }
-//
-// class _DurationStepContent extends ConsumerWidget {
-//   const _DurationStepContent({super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final bookingState = ref.watch(bookingFlowControllerProvider);
-//     final bookingController = ref.read(bookingFlowControllerProvider.notifier);
-//
-//     final durationController = ref.read(durationControllerProvider.notifier);
-//
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         SizedBox(height: 20.h),
-//         QuickDurationGrid(
-//           selectedId: bookingState.selectedDurationId,
-//           onSelect: (String id, double hours) {
-//             durationController.setHours(hours);
-//             bookingController.selectDuration(id);
-//           },
-//         ),
-//         SizedBox(height: 20.h),
-//         CustomButtonWidget(
-//           iconOnRight: false,
-//           type: ButtonType.outlined,
-//           iconLayout: ButtonIconLayout.center,
-//           icon: Image.asset(
-//             AppImages.add,
-//             width: 24.w,
-//             height: 24.w,
-//             color: AppColor.primaryColor,
-//           ),
-//           text: 'تحديد المدة',
-//           textStyle: AppTextTheme.mainButtonTextStyle().copyWith(
-//             color: AppColor.primaryColor,
-//           ),
-//           onPressed: () {
-//             showBlurBottomSheet(
-//               context: context,
-//               isScrollControlled: false,
-//               child: const BookingCustomTimeBottomSheet(),
-//             );
-//           },
-//         ),
-//       ],
-//     );
-//   }
-// }
-//
 class _SummaryStepContent extends ConsumerWidget {
   final BookingStep1State state;
 
@@ -752,7 +437,7 @@ class _SummaryStepContent extends ConsumerWidget {
               SvgPicture.asset(AppImages.pinMap),
               AppText(
                 text:
-                    'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
+                'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                   color: AppColor.blackNumberSmallColor,
                   fontWeight: FontWeight.w400,
@@ -808,42 +493,42 @@ class _SummaryStepContent extends ConsumerWidget {
   }
 }
 
-// class _SummaryStepSection extends ConsumerWidget {
-//   final BookingStep1State state;
-//
-//   const _SummaryStepSection({required this.state, super.key});
-//
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final durationState = ref.watch(durationControllerProvider);
-//
-//     final bool isEnabled =
-//         state.hasVehicle && state.hasDuration && durationState.hours > 0;
-//
-//     return Column(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         _StepRow(
-//           index: 3,
-//           title: 'ملخص الحجز',
-//           totalSteps: 3,
-//           state: state,
-//           bottomSpacing: 0,
-//           child: const SizedBox.shrink(),
-//         ),
-//         SizedBox(height: 8.h),
-//         AnimatedOpacity(
-//           duration: const Duration(milliseconds: 200),
-//           opacity: isEnabled ? 1 : 0.4,
-//           child: IgnorePointer(
-//             ignoring: !isEnabled,
-//             child: Padding(
-//               padding: EdgeInsets.only(right: 2.w),
-//               child: _SummaryStepContent(state: state),
-//             ),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
+class _SummaryStepSection extends ConsumerWidget {
+  final BookingStep1State state;
+
+  const _SummaryStepSection({required this.state, super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final durationState = ref.watch(durationControllerProvider);
+
+    final bool isEnabled =
+        state.hasVehicle && state.hasDuration && durationState.hours > 0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _StepRow(
+          index: 3,
+          title: 'ملخص الحجز',
+          totalSteps: 3,
+          state: state,
+          bottomSpacing: 0,
+          child: const SizedBox.shrink(),
+        ),
+        SizedBox(height: 8.h),
+        AnimatedOpacity(
+          duration: const Duration(milliseconds: 200),
+          opacity: isEnabled ? 1 : 0.4,
+          child: IgnorePointer(
+            ignoring: !isEnabled,
+            child: Padding(
+              padding: EdgeInsets.only(right: 2.w),
+              child: _SummaryStepContent(state: state),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
