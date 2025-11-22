@@ -8,10 +8,10 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_bottom_sheet.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/widgets/custom_button.dart';
+import 'package:smart/core/widgets/custom_image_widget.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
 
 import '../../../../../booking/domain/models/booking_model.dart';
-import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/duration_states.dart';
 
 enum CardSelection {
@@ -32,9 +32,7 @@ final cardBrandProvider = StateProvider<CardBrand>((ref) => CardBrand.mada);
 late final BookingModel reservation;
 
 class ContinuePayingMethodBottomSheet extends ConsumerWidget {
- // final BookingModel reservation;
-
-   const ContinuePayingMethodBottomSheet( {super.key});
+  const ContinuePayingMethodBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -64,7 +62,6 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                   text: 'تأكيد الحجز',
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
-
                     Navigator.of(context).pop();
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(
@@ -73,9 +70,6 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                     //     ),
                     //   ),
                     // );
-
-
-
                   }),
               SizedBox(height: 8.h),
             ],
@@ -84,17 +78,6 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
       ),
     );
   }
-}
-
-void _navigateToDetail(BuildContext context, reservation) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => BookingDetailView(
-        reservation: reservation,
-      ),
-    ),
-  );
 }
 
 class _CardSelectionRow extends ConsumerWidget {
@@ -227,8 +210,9 @@ class _NewCardForm extends ConsumerWidget {
             _BrandOption(
               isSelected: brand == CardBrand.mada,
               onTap: () => brandNotifier.state = CardBrand.mada,
-              child: SvgPicture.asset(
-                AppImages.mada,
+              child: CustomImageWidget(
+                imageUrl: AppImages.mada,
+                isFlag: true,
                 width: 40.w,
                 height: 28.h,
               ),
@@ -444,9 +428,9 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
     final double totalPrice = hours * pricePerHour;
 
     return Container(
-      width: 326.w,
-      height: 185.h,
-      padding: EdgeInsets.all(14.w),
+      width: 361,
+      height: 185,
+      padding: EdgeInsets.all(6.h),
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
         borderRadius: BorderRadius.circular(10.r),
@@ -455,17 +439,14 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
         spacing: 12.h,
         children: [
           Row(
-            textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
                 text: 'الإجمالي',
                 appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                  color: AppColor.textColor,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 22,
-                ),
+                    color: AppColor.textColor,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22),
               ),
               Row(
                 spacing: 5.w,
@@ -487,22 +468,27 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
             ],
           ),
           Row(
+            spacing: 5.w,
             children: [
-              SvgPicture.asset(AppImages.pinMap),
+              SvgPicture.asset(
+                AppImages.pinMap,
+              ),
               AppText(
                 text:
                     'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w400,
-                ),
+                    color: AppColor.blackNumberSmallColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp),
               ),
             ],
           ),
           Row(
             textDirection: TextDirection.rtl,
             children: [
-              SvgPicture.asset(AppImages.timer),
+              SvgPicture.asset(
+                AppImages.timer,
+              ),
               SizedBox(width: 6.w),
               AppText(
                 text: _durationLabel(hours),
@@ -516,16 +502,20 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
           Row(
             textDirection: TextDirection.rtl,
             children: [
-              SvgPicture.asset(AppImages.payments),
+              SvgPicture.asset(
+                AppImages.payments,
+              ),
               SizedBox(width: 6.w),
               AppText(
-                text: pricePerHour.toStringAsFixed(0),
+                text: '${pricePerHour.toStringAsFixed(0)} ',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                   color: AppColor.blackNumberSmallColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SvgPicture.asset(AppImages.realSu),
+              SvgPicture.asset(
+                AppImages.realSu,
+              ),
               AppText(
                 text: '/ساعة ',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(

@@ -216,10 +216,12 @@ class _VehicleTypeTabs extends StatelessWidget {
     }) {
       if (isLeft) {
         return BorderRadius.only(
-          topLeft: Radius.circular((active ? 4 : 6).r),
+          topLeft: Radius.circular(0),
           bottomLeft: Radius.circular(0),
-          topRight: Radius.circular((active ? 4 : 6).r),
           bottomRight: Radius.circular(0),
+
+          topRight: Radius.circular((active ? 4 : 6).r),
+
         );
       } else {
         return BorderRadius.only(

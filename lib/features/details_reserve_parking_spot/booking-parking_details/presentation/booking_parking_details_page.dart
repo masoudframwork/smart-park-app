@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/theme/app_color.dart';
-import 'package:smart/features/details_reserve_parking_spot/booking-parking_details/presentation/widget/about_zone_section.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking-parking_details/presentation/widget/additional_services.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking-parking_details/presentation/widget/day_pice_card.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking-parking_details/presentation/widget/zone_header.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking-parking_details/presentation/widget/zone_image_card.dart';
-
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
+
+import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/custom_button.dart';
 
 class BookingParkingDetailsPage extends StatelessWidget {
@@ -33,10 +33,14 @@ class BookingParkingDetailsPage extends StatelessWidget {
             SizedBox(height: 22.h),
             AdditionalServicesSection(),
             SizedBox(height: 22.h),
-            AboutZoneSection(
-              title: 'عن هذا المصف',
-              description:
-                  'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي \nالقارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة\n التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ',
+            ZoneHeader(
+              zoneName: 'عن هذا المصف',
+              zoneNameTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                color: AppColor.textColor,
+                fontWeight: FontWeight.w600,
+              ),
+              locationText:
+                  'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ',
             ),
             Spacer(),
             CustomButtonWidget(
