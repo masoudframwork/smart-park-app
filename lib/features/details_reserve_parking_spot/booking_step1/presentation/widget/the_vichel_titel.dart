@@ -1,13 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
-
 
 class TheVehicleTile extends StatelessWidget {
   final bool isSelected;
@@ -46,10 +43,9 @@ class TheVehicleTile extends StatelessWidget {
 
     final Color effectiveBg = isSelected ? selectedBg : bgColor;
     final Color effectiveBorder = isSelected ? selectedBorder : borderColor;
-    final Color effectiveText =
-    isSelected ? selectedTextColor : (textStyle?.color ?? AppColor.blackColor);
-
-
+    final Color effectiveText = isSelected
+        ? selectedTextColor
+        : (textStyle?.color ?? AppColor.blackColor);
 
     return Material(
       color: Colors.transparent,
@@ -74,8 +70,9 @@ class TheVehicleTile extends StatelessWidget {
               SizedBox(width: 12.w),
               AppText(
                 text: title,
-                appTextTheme: (textStyle ?? AppTextTheme.bodyMediumTextStyle())
-                    .copyWith(color: effectiveText,
+                appTextTheme:
+                    (textStyle ?? AppTextTheme.bodyMediumTextStyle()).copyWith(
+                  color: effectiveText,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                 ),
               ),
@@ -93,6 +90,7 @@ class TheVehicleTile extends StatelessWidget {
         width: 24.w,
         height: 24.w,
         isFlag: true,
+        color: AppColor.primaryColor,
       );
     }
 

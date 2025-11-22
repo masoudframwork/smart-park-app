@@ -142,7 +142,7 @@ class PinCodeTextField extends StatefulWidget {
   final bool hasUnderline;
 
   const PinCodeTextField({
-    Key? key,
+    super.key,
     this.isCupertino = false,
     this.maxLength = 4,
     this.controller,
@@ -178,7 +178,7 @@ class PinCodeTextField extends StatefulWidget {
     this.pinBoxRadius = 1,
     this.hideDefaultKeyboard = false,
     this.hasUnderline = false,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -314,7 +314,6 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     return width;
   }
   void _onTextChanged(String text) {
-    // كول باك خارجي لو مستخدمه onTextChanged من برة
     final onTextChanged = widget.onTextChanged;
     if (onTextChanged != null) {
       onTextChanged(text);
@@ -323,7 +322,6 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     setState(() {
       this.text = text;
 
-      // نضمن أن طول الليست يساوي عدد الخانات
       if (strList.length > widget.maxLength) {
         strList.length = widget.maxLength;
       }
@@ -331,14 +329,11 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
         strList.add("");
       }
 
-      // نحدّث محتوى كل خانة حسب النص الحالي
       for (int i = 0; i < widget.maxLength; i++) {
         if (i < text.length) {
-          // في رقم في هذا الإندكس
           strList[i] =
           widget.hideCharacter ? widget.maskCharacter : text[i];
         } else {
-          // بعد المسح نخلي الخانة فاضية
           strList[i] = "";
         }
       }
@@ -346,7 +341,6 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
       currentIndex = text.length;
     });
 
-    // لما يكتمل الإدخال
     if (text.length == widget.maxLength) {
       FocusScope.of(context).requestFocus(FocusNode());
       final onDone = widget.onDone;
@@ -422,6 +416,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
         style: TextStyle(
           height: 0.1, color: Colors.transparent,
 //          color: Colors.transparent,
+
         ),
         decoration: InputDecoration(
           focusedErrorBorder: transparentBorder,

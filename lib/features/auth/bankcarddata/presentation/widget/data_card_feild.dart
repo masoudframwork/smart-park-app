@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
@@ -66,10 +65,11 @@ class _CardTypeSelectorColumn extends ConsumerWidget {
                 ref.read(selectedCardTypeProvider.notifier).state =
                     CardType.mada;
               },
-              child: SvgPicture.asset(
-                AppImages.mada,
+              child: CustomImageWidget(
+                imageUrl: AppImages.mada,
                 width: 52.w,
                 height: 37.h,
+                isFlag: true,
               ),
             ),
           ],
@@ -99,10 +99,9 @@ class _CardTypeOption extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(3.r),
           border: Border.all(
-            color: isSelected
-                ? AppColor.primaryColor
-                : AppColor.whiteBackgroundColor,
-            width: 3,
+            color:
+                isSelected ? AppColor.primaryColor : AppColor.greyDividerColor,
+            width: isSelected ? 3 : 1,
           ),
           color: AppColor.whiteColor,
         ),
@@ -142,7 +141,7 @@ class _CardDataFieldsSection extends StatelessWidget {
               textInputType: TextInputType.datetime,
               width: 157.w,
             ),
-            SizedBox(width: 12.w),
+            SizedBox(width: 16.w),
             // CVV
             _LabeledTextField(
               label: 'CVV',

@@ -20,7 +20,8 @@ class AppImages {
       'assets/images/svgs/iconArrawBackIntro1.svg';
 
   //auth
-  static const String mada = 'assets/images/svgs/mada.svg';
+  static const String mada = 'assets/images/mada.png';
+
   static const String trueChek = 'assets/images/svgs/cheacke.svg';
 
   //static const String visaImage = 'assets/images/visa2.png';

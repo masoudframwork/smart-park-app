@@ -5,8 +5,8 @@ import 'package:smart/core/widgets/custom_button.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
-import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
+import '../../../../../core/widgets/required_field_label.dart';
 
 class TextFieldWidgets extends StatelessWidget {
   const TextFieldWidgets({super.key});
@@ -20,12 +20,9 @@ class TextFieldWidgets extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText(
-                text: ' رقم الهوية*',
-                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: AppColor.blackColor),
+              RequiredFieldLabel(
+                text: 'رقم الهوية',
+                textColor: AppColor.blackColor,
               ),
               SizedBox(
                 height: 10.h,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/theme/app_text_theme.dart';
-import 'package:smart/core/widgets/app_text.dart';
 
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
+import '../../../../../core/widgets/required_field_label.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({super.key});
@@ -18,13 +17,7 @@ class TextFieldWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText(
-                text: 'الاسم الكامل *',
-                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: AppColor.whiteColor),
-              ),
+              RequiredFieldLabel(text: 'الاسم الكامل'),
               SizedBox(
                 height: 10.h,
               ),
@@ -43,13 +36,7 @@ class TextFieldWidget extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              AppText(
-                text: 'رقم الهاتف *',
-                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: AppColor.whiteColor),
-              ),
+              RequiredFieldLabel(text: ' رقم الهاتف'),
               SizedBox(
                 height: 10.h,
               ),

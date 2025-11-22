@@ -21,48 +21,64 @@ class BankCardDataPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.whiteBackgroundColor,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(20.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: bigSpace),
-              const BackAndTextWidget(),
-              SizedBox(height: bigSpace),
-              const DataCardFeild(),
-              SizedBox(height: bigSpace),
-              Spacer(),
-              CustomButtonWidget(
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return const VehicleDataScreen();
-                  }));
-                },
-                text: 'حفظ البطاقة',
-                type: ButtonType.elevated,
-                borderRadius: 10.r,
-              ),
-              SizedBox(height: smallSpace),
-              CustomButtonWidget(
-                onPressed: () {
-                  NavigationService.push(
-                    RoutePaths.bottomNavBar,
-                    context: context,
-                  );
-                },
-                text: ' لاحقاً',
-                textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
-                  color: AppColor.primaryColor,
-                  fontWeight: FontWeight.w600,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(20.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: bigSpace),
+                    const BackAndTextWidget(),
+                    SizedBox(height: bigSpace),
+                    const DataCardFeild(),
+                    SizedBox(height: bigSpace),
+                  ],
                 ),
-                type: ButtonType.outlined,
-                borderRadius: 10.r,
-                backgroundColor: AppColor.whiteBackgroundColor,
-                borderColor: AppColor.primaryColor,
               ),
-            ],
-          ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 16.h,
+              ),
+              child: Column(
+                children: [
+                  CustomButtonWidget(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const VehicleDataScreen(),
+                        ),
+                      );
+                    },
+                    text: 'حفظ البطاقة',
+                    type: ButtonType.elevated,
+                    borderRadius: 10.r,
+                  ),
+                  SizedBox(height: smallSpace),
+                  CustomButtonWidget(
+                    onPressed: () {
+                      NavigationService.push(
+                        RoutePaths.bottomNavBar,
+                        context: context,
+                      );
+                    },
+                    text: ' لاحقاً',
+                    textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    type: ButtonType.outlined,
+                    borderRadius: 10.r,
+                    backgroundColor: AppColor.whiteBackgroundColor,
+                    borderColor: AppColor.primaryColor,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

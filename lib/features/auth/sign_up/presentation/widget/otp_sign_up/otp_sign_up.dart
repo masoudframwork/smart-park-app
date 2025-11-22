@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,20 +9,20 @@ import '../../../../../../core/routing/navigation_service.dart';
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/theme/app_color.dart';
 import '../../../../../../core/theme/app_text_theme.dart';
-import '../../../../../../core/widgets/app_result_dialog.dart'
-    show AppResultDialog;
+
+import '../../../../../../core/widgets/app_result_dialog.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custom_image_widget.dart';
 import '../../../../../../core/widgets/pincodestyle.dart';
-import '../../../../send_the_code/presentation/controller/send_code_controller.dart';
+import '../../controller/sign_up_controller.dart';
 
 class OtpSignUpPage extends ConsumerWidget {
   const OtpSignUpPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final codeController = TextEditingController();
+    final codeController = ref.watch(otpCodeControllerProvider);
 
     final remainingSeconds = ref.watch(sendCodeTimerProvider);
 
@@ -63,7 +62,14 @@ class OtpSignUpPage extends ConsumerWidget {
                   highlightColor: AppColor.primaryColor,
                   highlight: true,
                   pinBoxRadius: 10.r,
+                  pinTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                    color: AppColor.blackColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                  ),
                   onDone: (code) {
+                    // هنا تقدري تتحققي من الكود لو حابة
+                    // debugPrint('OTP: $code');
                   },
                 ),
                 SizedBox(height: 32.h),
@@ -92,7 +98,6 @@ class OtpSignUpPage extends ConsumerWidget {
                   },
                 ),
                 SizedBox(height: 32.h),
-
                 AppText(
                   text: remainingSeconds > 0
                       ? 'سيتم إرسال رمز جديد خلال $minutesStr:$secondsStr ثانية'
@@ -103,8 +108,6 @@ class OtpSignUpPage extends ConsumerWidget {
                     fontWeight: FontWeight.w300,
                   ),
                 ),
-
-
               ],
             ),
           ),
