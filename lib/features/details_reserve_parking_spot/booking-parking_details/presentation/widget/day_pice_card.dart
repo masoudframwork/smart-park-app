@@ -177,7 +177,7 @@ class DayPriceCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Padding(
-        padding: EdgeInsets.all(10.h),
+        padding: EdgeInsets.all(5.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

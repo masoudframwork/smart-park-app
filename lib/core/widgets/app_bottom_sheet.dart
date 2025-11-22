@@ -42,7 +42,9 @@ class AppBottomSheet extends StatelessWidget {
         bottom: 24.h + 16.h,
       ),
       decoration: BoxDecoration(
-        color: AppColor.whiteColor,
+        color: AppColor.settingsBackgroundColor,
+
+      //  color: AppColor.whiteColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16.r),
           topRight: Radius.circular(16.r),
@@ -158,7 +160,7 @@ class _CloseButtonCircle extends StatelessWidget {
         width: 28.w,
         height: 28.w,
         decoration: BoxDecoration(
-          color: AppColor.greysCloseColor,
+          color: AppColor.whiteColor,
           shape: BoxShape.circle,
         ),
         alignment: Alignment.center,

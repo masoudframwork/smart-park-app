@@ -45,7 +45,7 @@ class S {
     final instance = S.maybeOf(context);
     assert(
       instance != null,
-      'No instance of S present in the widgets tree. Did you add S.delegate in localizationsDelegates?',
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
     );
     return instance!;
   }
@@ -187,6 +187,171 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Full Name`
+  String get profile_fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'profile_fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `National ID`
+  String get profile_nationalId {
+    return Intl.message(
+      'National ID',
+      name: 'profile_nationalId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get profile_phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'profile_phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Additional Information`
+  String get profile_additionalInfo {
+    return Intl.message(
+      'Additional Information',
+      name: 'profile_additionalInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fines`
+  String get profile_fines {
+    return Intl.message('Fines', name: 'profile_fines', desc: '', args: []);
+  }
+
+  /// `Wallet`
+  String get profile_wallet {
+    return Intl.message('Wallet', name: 'profile_wallet', desc: '', args: []);
+  }
+
+  /// `Saved Information`
+  String get profile_savedInfo {
+    return Intl.message(
+      'Saved Information',
+      name: 'profile_savedInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vehicles`
+  String get profile_vehicles {
+    return Intl.message(
+      'Vehicles',
+      name: 'profile_vehicles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-Payment Cards`
+  String get profile_paymentCards {
+    return Intl.message(
+      'E-Payment Cards',
+      name: 'profile_paymentCards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get profile_settings {
+    return Intl.message(
+      'Settings',
+      name: 'profile_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get profile_logout {
+    return Intl.message('Logout', name: 'profile_logout', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings_title {
+    return Intl.message('Settings', name: 'settings_title', desc: '', args: []);
+  }
+
+  /// `Terms & Conditions`
+  String get settings_terms {
+    return Intl.message(
+      'Terms & Conditions',
+      name: 'settings_terms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get settings_privacy {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'settings_privacy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FAQ`
+  String get settings_faq {
+    return Intl.message('FAQ', name: 'settings_faq', desc: '', args: []);
+  }
+
+  /// `Help & Support`
+  String get settings_support {
+    return Intl.message(
+      'Help & Support',
+      name: 'settings_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Mode`
+  String get settings_dark_mode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'settings_dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get settings_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AR`
+  String get settings_lang_ar {
+    return Intl.message('AR', name: 'settings_lang_ar', desc: '', args: []);
+  }
+
+  /// `EN`
+  String get settings_lang_en {
+    return Intl.message('EN', name: 'settings_lang_en', desc: '', args: []);
   }
 }
 

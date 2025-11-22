@@ -28,7 +28,7 @@ class DescrpationTitelWidget extends StatelessWidget {
           appTextTheme: titleStyle,
         ),
         AppText(
-          text: 'أدخل رقم هاتفك ليصلك رمز التفعيل',
+          text:'أدخل رقم هاتفك ليصلك رمز التفعيل ',
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

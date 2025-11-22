@@ -7,9 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'package:smart/features/home/presentation/widgets/parking_card/parking_bottom_sheet.dart';
+import 'package:smart/features/home/presentation/widgets/parking_details_box/green_parking_details.dart';
 import 'package:smart/features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custome_text_field_widget.dart';
+import '../provider/selected_parking_provider.dart';
 import 'controller/home_controller.dart';
 import 'package:smart/features/home/data/models/home_model.dart';
 import 'package:smart/features/home/data/models/parking_location.dart';
@@ -47,6 +49,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final homeController = ref.watch(homeControllerProvider);
     final homeState = homeController.state;
+    final selectedParking = ref.watch(selectedParkingAreaDetailsProvider);
 
     return Scaffold(
       body: Stack(
@@ -56,7 +59,7 @@ class _HomePageState extends ConsumerState<HomePage> {
               mapController: _mapController,
               options: MapOptions(
                 initialCenter: homeState.userLocation!,
-                initialZoom: 15.0,
+                initialZoom: 13,
                 onTap: (_, __) {
                   ref.read(homeControllerProvider).clearSelection();
                   searchFocus.unfocus();
@@ -71,6 +74,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                 _userLocationMark(homeState),
               ],
             ),
+
+          /// TOP SEARCH BAR – same horizontal padding as cards & nav
           Positioned(
             top: 12.h,
             left: 16.w,
@@ -95,16 +100,24 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           ),
-          if (homeState.selectedMarker == null) const ParkingBottomSheet(),
-          if (homeState.selectedMarker != null)
+
+          /// BOTTOM SHEET – will contain the white card + bottom nav
+          if (homeState.selectedMarker == null)
+            ParkingBottomSheet(
+              mapController: _mapController,
+            ),
+
+          /// GREEN CARD – same horizontal 16.w margins as design
+          if (selectedParking != null)
             Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: _ParkingDetailsFloatingWidget(
-                parkingLocation: homeState.selectedMarker!,
+              top: 160.h,            // tune this value to match XD
+              left: 16.w,
+              right: 16.w,
+              child: GreenParkingDetails(
+                parkingArea: selectedParking,
                 onClose: () {
-                  ref.read(homeControllerProvider).clearSelection();
+                  ref.read(selectedParkingAreaDetailsProvider.notifier).state =
+                  null;
                 },
               ),
             ),
@@ -167,26 +180,6 @@ class _HomePageState extends ConsumerState<HomePage> {
   }
 }
 
-class _ParkingDetailsFloatingWidget extends StatelessWidget {
-  final ParkingLocation parkingLocation;
-  final VoidCallback onClose;
-
-  const _ParkingDetailsFloatingWidget({
-    required this.parkingLocation,
-    required this.onClose,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ParkingDetailsSheet(
-      parkingData: parkingLocation,
-      onClose: onClose,
-      onBookNow: () {},
-      onDetails: () {},
-    );
-  }
-}
-
 class _TopControls extends StatelessWidget {
   const _TopControls({
     required this.searchController,
@@ -207,40 +200,8 @@ class _TopControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            width: 34.w,
-            height: 34.w,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: AppColor.whiteColor,
-              borderRadius: BorderRadius.circular(4.r),
-              border: Border.all(
-                color: AppColor.contanearGreyColor,
-                width: 1,
-              ),
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(10.r),
-                onTap: onMenuTap,
-                child: Center(
-                  child: Icon(
-                    Icons.menu,
-                    size: 22.w,
-                    color: AppColor.blackColor,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 20.h),
+        SizedBox(height: 12.h),
         _SearchBar(
           controller: searchController,
           focusNode: searchFocus,
@@ -307,9 +268,10 @@ class _SearchBarState extends State<_SearchBar> {
       child: IgnorePointer(
         ignoring: true,
         child: CustomTextFormField(
-          width: 360.w,
+          // IMPORTANT: remove hardcoded 360.w to respect left/right = 16
+          width: double.infinity,
           controller: widget.controller,
-          borderRadius: 2.r,
+          borderRadius: 12.r,
           focusNode: widget.focusNode,
           hintText: widget.hintText,
           textInputAction: TextInputAction.search,
@@ -317,15 +279,16 @@ class _SearchBarState extends State<_SearchBar> {
           onChanged: (_) {},
           readOnly: true,
           enableShadow: true,
-          shadowTextFieldColor: AppColor.contanearGreyColor.withOpacity(1.0),
+          shadowTextFieldColor:
+          AppColor.contanearGreyColor.withOpacity(1.0),
           shadowOffset: const Offset(0, 1),
           shadowBlur: 1,
           shadowSpread: 1,
           prefixIcon: widget.leadingIcon != null
               ? Padding(
-                  padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
-                  child: widget.leadingIcon!,
-                )
+            padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
+            child: widget.leadingIcon!,
+          )
               : null,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,

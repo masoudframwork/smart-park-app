@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/widgets/app_text.dart';
 
+import '../../../../../core/routing/navigation_service.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 
 class TitelDescrpationWidget extends StatelessWidget {
@@ -13,18 +16,38 @@ class TitelDescrpationWidget extends StatelessWidget {
       spacing: 11.h,
       children: [
         AppText(
-          text: 'أهلاً بك في تطبيق المواقف',
+          text: 'إنشاء حساب جديد',
           textAlign: TextAlign.center,
           appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
             fontSize: 20,
             fontWeight: FontWeight.w500,
+            color: AppColor.whiteColor,
           ),
         ),
-        AppText(
-          text: 'يرجى استكمال ملفك الشخصي',
-          textAlign: TextAlign.center,
-          appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(),
-        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppText(
+              text: ' لديك حساب؟ ',
+              textAlign: TextAlign.center,
+              appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                color: AppColor.whiteColor,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                NavigationService.go(RoutePaths.loginPage);
+              },
+              child: AppText(
+                text: ' تسجيل الدخول',
+                textAlign: TextAlign.center,
+                appTextTheme: AppTextTheme.font18SimiBoldBlack()
+                    .copyWith(color: AppColor.primaryColor),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }

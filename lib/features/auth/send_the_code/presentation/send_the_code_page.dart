@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/features/auth/send_the_code/presentation/widget/descrpation_widget.dart';
+
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
@@ -9,13 +12,20 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/pincodestyle.dart';
-import '../../login/presentation/widgets/descrpation_titel_widget.dart';
+import '../../../bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
+import 'controller/send_code_controller.dart';
 
-class SendTheCodePage extends StatelessWidget {
+class SendTheCodePage extends ConsumerWidget {
   const SendTheCodePage({super.key});
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final codeController = TextEditingController();
+
+    final remainingSeconds = ref.watch(sendCodeTimerProvider);
+
+    final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
+    final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
@@ -25,9 +35,7 @@ class SendTheCodePage extends StatelessWidget {
             padding: EdgeInsets.all(16.w),
             child: Column(
               children: [
-                SizedBox(
-                  height: 30.h,
-                ),
+                SizedBox(height: 30.h),
                 ClipOval(
                   child: CustomImageWidget(
                     isFlag: true,
@@ -37,44 +45,62 @@ class SendTheCodePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 40.h),
-                const DescrpationTitelWidget(),
+                const DescrpationWidget(),
                 SizedBox(height: 32.h),
+                // PinCodeTextField(
+                //   controller: codeController,
+                //   maxLength: 4,
+                //   keyboardType: TextInputType.number,
+                //   hideCharacter: false,
+                //   pinBoxWidth: 82.w,
+                //   pinBoxHeight: 76.w,
+                //   pinBoxColor: AppColor.whiteColor,
+                //   defaultBorderColor: Colors.white,
+                //   hasTextBorderColor: AppColor.primaryColor,
+                //   highlightColor: AppColor.primaryColor,
+                //   highlight: true,
+                //   pinBoxRadius: 10.r,
+                //
+                // ),
                 PinCodeTextField(
                   controller: codeController,
-                  maxLength: 5,
+                  maxLength: 4,
                   keyboardType: TextInputType.number,
                   hideCharacter: false,
-
-                  pinBoxWidth: 65.w,
-                  pinBoxHeight: 60.w,
-
-                  pinBoxColor: Colors.white,
+                  pinBoxWidth: 82.w,
+                  pinBoxHeight: 76.w,
+                  pinBoxColor: AppColor.whiteColor,
                   defaultBorderColor: Colors.white,
                   hasTextBorderColor: AppColor.primaryColor,
                   highlightColor: AppColor.primaryColor,
                   highlight: true,
                   pinBoxRadius: 10.r,
-
-                  // pinTextStyle: TextStyle(
-                  //   fontSize: 20,
-                  //   fontWeight: FontWeight.bold,
-                  //   color: AppColor.primaryColor,
-                  // ),
+                  pinTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                    color: AppColor.blackColor,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                  ),
                   onDone: (code) {},
                 ),
-                SizedBox(height: 16.h),
+
+                SizedBox(height: 25.h),
                 CustomButtonWidget(
-                  width: 360.w,
-                  height: 50.h,
                   borderRadius: 10.r,
                   text: 'تسجيل الدخول',
                   onPressed: () {
-                    NavigationService.go(RoutePaths.signUpPage);
+
+                    ref.read(bottomNavBarController).changeIndex(
+                      BottomNavBarController.homeIndex,
+                    );
+                    NavigationService.go(RoutePaths.bottomNavBar);
+
                   },
                 ),
                 SizedBox(height: 32.h),
                 AppText(
-                  text: 'سيتم إرسال رمز جديد خلال 00:23 ثانية',
+                  text: remainingSeconds > 0
+                      ? 'سيتم إرسال رمز جديد خلال $minutesStr:$secondsStr ثانية'
+                      : 'يمكنك طلب رمز جديد الآن',
                   textAlign: TextAlign.center,
                   appTextTheme: AppTextTheme.descriptionTextStyle().copyWith(
                     color: AppColor.whiteColor,

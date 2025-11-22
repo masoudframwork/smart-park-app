@@ -86,7 +86,6 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
@@ -105,10 +104,8 @@ class QuickDurationGrid extends StatelessWidget {
     required this.onSelect,
   });
 
-  /// الـ id المختار حالياً (مثلاً '1h' أو '2h' ...)
   final String? selectedId;
 
-  /// كولباك يرجع الـ id + عدد الساعات
   final void Function(String id, double hours) onSelect;
 
   @override

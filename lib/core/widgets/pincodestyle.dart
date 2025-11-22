@@ -313,6 +313,48 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     }
     return width;
   }
+  void _onTextChanged(String text) {
+    // كول باك خارجي لو مستخدمه onTextChanged من برة
+    final onTextChanged = widget.onTextChanged;
+    if (onTextChanged != null) {
+      onTextChanged(text);
+    }
+
+    setState(() {
+      this.text = text;
+
+      // نضمن أن طول الليست يساوي عدد الخانات
+      if (strList.length > widget.maxLength) {
+        strList.length = widget.maxLength;
+      }
+      while (strList.length < widget.maxLength) {
+        strList.add("");
+      }
+
+      // نحدّث محتوى كل خانة حسب النص الحالي
+      for (int i = 0; i < widget.maxLength; i++) {
+        if (i < text.length) {
+          // في رقم في هذا الإندكس
+          strList[i] =
+          widget.hideCharacter ? widget.maskCharacter : text[i];
+        } else {
+          // بعد المسح نخلي الخانة فاضية
+          strList[i] = "";
+        }
+      }
+
+      currentIndex = text.length;
+    });
+
+    // لما يكتمل الإدخال
+    if (text.length == widget.maxLength) {
+      FocusScope.of(context).requestFocus(FocusNode());
+      final onDone = widget.onDone;
+      if (onDone != null) {
+        onDone(text);
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -432,28 +474,28 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     );
   }
 
-  void _onTextChanged(text) {
-    var onTextChanged = widget.onTextChanged;
-    if (onTextChanged != null) {
-      onTextChanged(text);
-    }
-    setState(() {
-      this.text = text;
-      if (text.length >= currentIndex) {
-        for (int i = currentIndex; i < text.length; i++) {
-          strList[i] = widget.hideCharacter ? widget.maskCharacter : text[i];
-        }
-      }
-      currentIndex = text.length;
-    });
-    if (text.length == widget.maxLength) {
-      FocusScope.of(context).requestFocus(FocusNode());
-      var onDone = widget.onDone;
-      if (onDone != null) {
-        onDone(text);
-      }
-    }
-  }
+  // void _onTextChanged(text) {
+  //   var onTextChanged = widget.onTextChanged;
+  //   if (onTextChanged != null) {
+  //     onTextChanged(text);
+  //   }
+  //   setState(() {
+  //     this.text = text;
+  //     if (text.length >= currentIndex) {
+  //       for (int i = currentIndex; i < text.length; i++) {
+  //         strList[i] = widget.hideCharacter ? widget.maskCharacter : text[i];
+  //       }
+  //     }
+  //     currentIndex = text.length;
+  //   });
+  //   if (text.length == widget.maxLength) {
+  //     FocusScope.of(context).requestFocus(FocusNode());
+  //     var onDone = widget.onDone;
+  //     if (onDone != null) {
+  //       onDone(text);
+  //     }
+  //   }
+  // }
 
   Widget _pinBoxRow(BuildContext context) {
     _calculateStrList();

@@ -47,25 +47,25 @@ class BottomSheetController extends ChangeNotifier {
         id: '1',
         code: '013',
         name: 'المنطقة',
-        location: 'الطريق الدائري الشرقي، المنطقة العزيزية السعودية',
+        location: 'الطريق الدائري الشرقي، العزيزية، الرياض',
         waitTimeMinutes: 5,
         availableSpots: 70,
         totalSpots: 83,
-        latitude: 24.7136,
-        longitude: 46.6753,
-        pricePerHour: 5.0,
+        latitude: 24.7085, // NEW
+        longitude: 46.7303, // NEW
+        pricePerHour: 5,
       ),
       ParkingArea(
         id: '2',
         code: '025',
         name: 'المنطقة',
-        location: 'شارع الملك فهد، الرياض',
+        location: 'طريق الملك فهد، الرياض',
         waitTimeMinutes: 10,
         availableSpots: 45,
         totalSpots: 53,
-        latitude: 24.7136,
-        longitude: 46.6753,
-        pricePerHour: 7.0,
+        latitude: 24.7240, // NEW
+        longitude: 46.6705, // NEW
+        pricePerHour: 7,
       ),
       ParkingArea(
         id: '3',
@@ -77,7 +77,7 @@ class BottomSheetController extends ChangeNotifier {
         totalSpots: 45,
         latitude: 24.6981,
         longitude: 46.6847,
-        pricePerHour: 10.0,
+        pricePerHour: 10,
       ),
       ParkingArea(
         id: '4',
@@ -89,7 +89,7 @@ class BottomSheetController extends ChangeNotifier {
         totalSpots: 103,
         latitude: 24.7492,
         longitude: 46.7263,
-        pricePerHour: 6.0,
+        pricePerHour: 6,
       ),
       ParkingArea(
         id: '5',
@@ -101,7 +101,7 @@ class BottomSheetController extends ChangeNotifier {
         totalSpots: 50,
         latitude: 24.7748,
         longitude: 46.7385,
-        pricePerHour: 4.0,
+        pricePerHour: 4,
       ),
     ];
   }

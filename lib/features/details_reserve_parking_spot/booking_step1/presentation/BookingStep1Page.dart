@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -11,7 +10,9 @@ import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/booking_step1_controller.dart';
-import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/booking_custom_time_bottom_sheet.dart';
+import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/booking_custom_time_bottom_sheet.dart';
+import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
+import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/continue_paying_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/header_section.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/data/models/booking_flow_state.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/quick_duration_grid.dart';
@@ -21,7 +22,8 @@ import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../domain/duration_states.dart';
 
 class BookingStep1Page extends ConsumerWidget {
-  const BookingStep1Page({super.key});
+
+   const BookingStep1Page( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,7 +72,10 @@ class BookingStep1Page extends ConsumerWidget {
                   text: 'الاستمرار للدفع',
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
-                    // NavigationService.push(RoutePaths.paymentScreen);
+                    showBlurBottomSheet(
+                      context: context,
+                      child: ContinuePayingMethodBottomSheet( ),
+                    );
                   },
                 ),
               ],
@@ -287,7 +292,14 @@ class _VehiclesStepContent extends StatelessWidget {
           carIcon: const SizedBox.shrink(),
           isAddNew: true,
           isSelected: selectedId == 'new',
-          onTap: () => onSelect('new'),
+          onTap: () {
+            onSelect('new');
+
+            showBlurBottomSheet(
+              context: context,
+              child: const AnotherVehicleBottomSheet(),
+            );
+          },
         ),
       ],
     );
@@ -333,6 +345,7 @@ class _DurationStepContent extends ConsumerWidget {
           onPressed: () {
             showBlurBottomSheet(
               context: context,
+              isScrollControlled: false,
               child: const BookingCustomTimeBottomSheet(),
             );
           },
@@ -420,11 +433,8 @@ class _SummaryStepContent extends ConsumerWidget {
             ],
           ),
           Row(
-            spacing: 5.w,
             children: [
-              SvgPicture.asset(
-                AppImages.pinMap,
-              ),
+              SvgPicture.asset(AppImages.pinMap),
               AppText(
                 text:
                     'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',

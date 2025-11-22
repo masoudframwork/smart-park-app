@@ -5,7 +5,6 @@ import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/auth/login/presentation/widgets/descrpation_titel_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/text_field_and_buttons_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/titel_desc_widget.dart';
-
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import 'controller/login_controller.dart';
@@ -29,6 +28,7 @@ class LoginPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20.w),

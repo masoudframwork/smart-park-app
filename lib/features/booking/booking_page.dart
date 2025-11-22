@@ -136,6 +136,8 @@ import 'package:smart/features/booking/presentation/widgets/booking_list_view.da
 
 import '../../../../core/theme/app_color.dart';
 
+import '../../core/constants/image_string.dart';
+import '../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import 'presentation/widgets/booking_components.dart';
 
 class BookingPage extends ConsumerWidget {
@@ -155,26 +157,28 @@ class BookingPage extends ConsumerWidget {
     final bool inDetailsView = reservationState.selectedReservationId != null &&
         selectedReservation != null;
 
-    return Directionality(
-      textDirection: TextDirection.rtl,
+    return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.lightBackgroundColor,
-        body: Column(
-          children: [
-            BookingCustomAppBar(
-              inDetailsView: inDetailsView,
-              onBackToList: () {
-                ref.read(reservationController.notifier).clearSelection();
-              },
-              onMenu: () {},
-            ),
-
-            Expanded(
-              child: inDetailsView
-                  ? BookingDetailView(reservation: selectedReservation)
-                  : const BookingListView(),
-            ),
-          ],
+        backgroundColor: AppColor.settingsBackgroundColor,
+        appBar: CustomAppBar(
+          backgroundColor: AppColor.backgroundAppBarColor,
+          leading: CircleImageButton(
+            onTap: () {},
+            imageUrl: AppImages.appLogo,
+            size: 37,
+          ),
+        ),
+        body: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Column(
+            children: [
+              Expanded(
+                child: inDetailsView
+                    ? BookingDetailView(reservation: selectedReservation)
+                    : const BookingListView(),
+              ),
+            ],
+          ),
         ),
       ),
     );

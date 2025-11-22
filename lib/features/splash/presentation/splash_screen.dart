@@ -12,30 +12,81 @@ import 'controller/splash_controller.dart';
 const double _logoEndAlignmentY = -0.08;
 const double _logoStartAlignmentY = -0.25;
 
+// class SplashScreen extends ConsumerWidget {
+//   const SplashScreen({super.key});
+//
+//   @override
+//   Widget build(BuildContext context, WidgetRef ref) {
+//     final controller = ref.watch(splashControllerProvider);
+//     final onboardingHiddenAsync = ref.watch(isOnboardingHiddenProvider);
+//
+//     ref.listen(splashControllerProvider, (_, next) {
+//       if (next.isFinished && context.mounted) {
+//         onboardingHiddenAsync.when(
+//           data: (hidden) {
+//             if (hidden) {
+//               context.go(RoutePaths.bottomNavBar);
+//             } else {
+//               context.go(RoutePaths.onBoardingScreen);
+//             }
+//           },
+//           loading: () {},
+//           error: (_, __) {
+//             context.go(RoutePaths.onBoardingScreen);
+//           },
+//         );
+//       }
+//     });
+//
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       body: Center(
+//         child: _SplashCardShape(
+//           isAnimated: controller.isAnimated,
+//         ),
+//       ),
+//     );
+//   }
+// }
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
+
+  void _tryNavigate(BuildContext context, WidgetRef ref) {
+    if (!context.mounted) return;
+
+    final alreadyNavigated = ref.read(splashNavigationDoneProvider);
+    if (alreadyNavigated) return;
+
+    final splashState = ref.read(splashControllerProvider);
+    final onboardingHiddenAsync = ref.read(isOnboardingHiddenProvider);
+
+    if (!splashState.isFinished) return;
+
+    if (!onboardingHiddenAsync.hasValue) return;
+
+    ref.read(splashNavigationDoneProvider.notifier).state = true;
+
+    final hidden = onboardingHiddenAsync.value ?? false;
+
+    if (hidden) {
+      context.go(RoutePaths.bottomNavBar);
+    } else {
+      context.go(RoutePaths.onBoardingScreen);
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(splashControllerProvider);
-    final onboardingHiddenAsync = ref.watch(isOnboardingHiddenProvider);
 
-    ref.listen(splashControllerProvider, (_, next) {
-      if (next.isFinished && context.mounted) {
-        onboardingHiddenAsync.when(
-          data: (hidden) {
-            if (hidden) {
-              context.go(RoutePaths.bottomNavBar);
-            } else {
-              context.go(RoutePaths.onBoardingScreen);
-            }
-          },
-          loading: () {},
-          error: (_, __) {
-            context.go(RoutePaths.onBoardingScreen);
-          },
-        );
-      }
+    // نسمع لتغيّر حالة السبلاش
+    ref.listen(splashControllerProvider, (_, __) {
+      _tryNavigate(context, ref);
+    });
+
+    // ونسمع برضه لتغيّر حالة الـ onboarding prefs
+    ref.listen(isOnboardingHiddenProvider, (_, __) {
+      _tryNavigate(context, ref);
     });
 
     return Scaffold(

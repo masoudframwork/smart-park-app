@@ -18,6 +18,14 @@ class BookingTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      padding: EdgeInsets.all(4.w),
+      decoration: BoxDecoration(
+        color:  AppColor.textColor,   // VERY IMPORTANT — light grey background
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12.r),
+          topRight: Radius.circular(12.r),
+        ),
+      ),
       child: Row(
         children: [
           Expanded(
@@ -54,7 +62,7 @@ class BookingTabBar extends StatelessWidget {
             alignment: Alignment.center,
             child: AppText(
               text: title,
-              appTextTheme: AppTextTheme.font18SimiBoldBlack(),
+              appTextTheme: AppTextTheme.mainButtonTextStyle(),
             ),
           ),
           SizedBox(
@@ -63,7 +71,7 @@ class BookingTabBar extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  color: AppColor.greyContainerColor,
+                  color:  AppColor.textColor,
                 ),
                 if (isSelected)
                   Center(

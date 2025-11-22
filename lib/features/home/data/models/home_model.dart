@@ -36,7 +36,7 @@ class HomeModel {
   // Dummy data initialization (kept for fallback/testing)
   factory HomeModel.withDummyData() {
     return HomeModel(
-      userLocation: const LatLng(24.7136, 46.6753), // Riyadh coordinates
+      userLocation: const LatLng(24.7136, 46.6753),
       locations: _generateDummyLocations(),
       isLoading: false,
       error: null,
@@ -64,6 +64,11 @@ class HomeModel {
         availableSpots: 13,
         totalSpots: 70,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'parking_2',
@@ -78,6 +83,11 @@ class HomeModel {
         availableSpots: 25,
         totalSpots: 80,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'parking_3',
@@ -92,6 +102,11 @@ class HomeModel {
         availableSpots: 0,
         totalSpots: 60,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'parking_4',
@@ -106,6 +121,11 @@ class HomeModel {
         availableSpots: 45,
         totalSpots: 90,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'parking_5',
@@ -120,6 +140,11 @@ class HomeModel {
         availableSpots: 30,
         totalSpots: 75,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'charging_1',
@@ -132,6 +157,11 @@ class HomeModel {
         price: '2.5',
         distance: 1.0,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'charging_2',
@@ -144,6 +174,11 @@ class HomeModel {
         price: '3',
         distance: 1.3,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
       ParkingLocation(
         id: 'service_1',
@@ -157,6 +192,11 @@ class HomeModel {
         distance: 1.8,
         rating: 4.5,
         imageUrl: null,
+        code: '',
+        address: '',
+        carInfo: '',
+        startTime: '',
+        endTime: '',
       ),
     ];
   }

@@ -18,7 +18,7 @@ class HeaderSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Padding(
-        padding: EdgeInsets.all(24.h),
+        padding: EdgeInsets.all(20.h),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +30,6 @@ class HeaderSection extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: 4.h),
             AppText(
               text: 'طريق خريص، الرياض، المملكة العربية السعودية',
               appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(

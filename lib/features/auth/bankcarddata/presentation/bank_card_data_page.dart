@@ -8,6 +8,7 @@ import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../nafath/persentation/widget/vehicle_data.dart';
 
 class BankCardDataPage extends StatelessWidget {
   const BankCardDataPage({super.key});
@@ -32,7 +33,12 @@ class BankCardDataPage extends StatelessWidget {
               SizedBox(height: bigSpace),
               Spacer(),
               CustomButtonWidget(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const VehicleDataScreen();
+                  }));
+                },
                 text: 'حفظ البطاقة',
                 type: ButtonType.elevated,
                 borderRadius: 10.r,
