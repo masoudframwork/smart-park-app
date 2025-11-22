@@ -20,7 +20,7 @@ class SendTheCodePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final codeController = TextEditingController();
+    final codeController = ref.watch(codeControllerProvider);
 
     final remainingSeconds = ref.watch(sendCodeTimerProvider);
 
@@ -47,21 +47,6 @@ class SendTheCodePage extends ConsumerWidget {
                 SizedBox(height: 40.h),
                 const DescrpationWidget(),
                 SizedBox(height: 32.h),
-                // PinCodeTextField(
-                //   controller: codeController,
-                //   maxLength: 4,
-                //   keyboardType: TextInputType.number,
-                //   hideCharacter: false,
-                //   pinBoxWidth: 82.w,
-                //   pinBoxHeight: 76.w,
-                //   pinBoxColor: AppColor.whiteColor,
-                //   defaultBorderColor: Colors.white,
-                //   hasTextBorderColor: AppColor.primaryColor,
-                //   highlightColor: AppColor.primaryColor,
-                //   highlight: true,
-                //   pinBoxRadius: 10.r,
-                //
-                // ),
                 PinCodeTextField(
                   controller: codeController,
                   maxLength: 4,
@@ -82,18 +67,15 @@ class SendTheCodePage extends ConsumerWidget {
                   ),
                   onDone: (code) {},
                 ),
-
                 SizedBox(height: 25.h),
                 CustomButtonWidget(
                   borderRadius: 10.r,
                   text: 'تسجيل الدخول',
                   onPressed: () {
-
                     ref.read(bottomNavBarController).changeIndex(
-                      BottomNavBarController.homeIndex,
-                    );
+                          BottomNavBarController.homeIndex,
+                        );
                     NavigationService.go(RoutePaths.bottomNavBar);
-
                   },
                 ),
                 SizedBox(height: 32.h),

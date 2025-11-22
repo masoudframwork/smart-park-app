@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const int kOtpResendSeconds = 23;
 
 final sendCodeTimerProvider =
-    StateNotifierProvider.autoDispose<SendCodeTimerNotifier, int>(
-  (ref) => SendCodeTimerNotifier(),
+StateNotifierProvider.autoDispose<SendCodeTimerNotifier, int>(
+      (ref) => SendCodeTimerNotifier(),
 );
 
 class SendCodeTimerNotifier extends StateNotifier<int> {
@@ -43,3 +44,14 @@ class SendCodeTimerNotifier extends StateNotifier<int> {
     super.dispose();
   }
 }
+
+final otpCodeControllerProvider =
+Provider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+
+  ref.onDispose(() {
+    controller.dispose();
+  });
+
+  return controller;
+});

@@ -46,6 +46,7 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
                   children: [
                     _PlateTextField(
                       width: 157.w,
+
                       hintText: '0000',
                       keyboardType: TextInputType.number,
                       onChanged: controller.setSaudiNumbers,
@@ -155,6 +156,195 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+class _AnotherVehicleBottomSheetState
+    extends ConsumerState<AnotherVehicleBottomSheet> {
+  final ScrollController _scrollController = ScrollController();
+
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_scrollController.hasClients) return;
+
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(vehicleFormControllerProvider);
+    final controller = ref.read(vehicleFormControllerProvider.notifier);
+
+    return AppBottomSheet(
+      maxHeightFactor: (state.isSaudi ? 0.66 : 0.60).h,
+      title: 'مركبة جديدة',
+      headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
+      body: Material(
+        color: AppColor.settingsBackgroundColor,
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom + 24.h,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10.h),
+              _VehicleTypeTabs(
+                selected: state.vehicleType,
+                onChanged: controller.setVehicleType,
+              ),
+              SizedBox(height: 24.h),
+
+              if (state.isSaudi) ...[
+                const _LabelWithStar(text: 'نوع اللوحة'),
+                SizedBox(height: 8.h),
+                _PlateTypeDropdown(
+                  value: state.plateType,
+                  onChanged: controller.setPlateType,
+                  showError: state.showErrors && (state.plateType == null),
+                ),
+                SizedBox(height: 16.h),
+                const _LabelWithStar(text: 'رقم اللوحة'),
+                SizedBox(height: 8.h),
+                Row(
+                  children: [
+                    _PlateTextField(
+                      width: 157.w,
+                      hintText: '0000',
+                      keyboardType: TextInputType.number,
+                      onChanged: controller.setSaudiNumbers,
+                      validator: (value) {
+                        if (!state.showErrors) return null;
+                        if (value.length != 4) {
+                          return 'أدخل 4 أرقام';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(width: 8.w),
+                    _PlateTextField(
+                      width: 157.w,
+                      hintText: 'أ ب ج',
+                      keyboardType: TextInputType.text,
+                      onChanged: controller.setSaudiLetters,
+
+                      validator: (value) {
+                        if (!state.showErrors) return null;
+                        if (value.length != 3) {
+                          return 'أدخل 3 أحرف';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
+              ] else ...[
+                const _LabelWithStar(text: 'رقم اللوحة'),
+                SizedBox(height: 8.h),
+                _PlateTextField(
+                  hintText: '',
+                  keyboardType: TextInputType.text,
+                  onChanged: controller.setNonSaudiPlate,
+
+                  validator: (value) {
+                    if (!state.showErrors) return null;
+                    if (value.isEmpty) {
+                      return 'رقم اللوحة مطلوب';
+                    }
+                    return null;
+                  },
+                ),
+              ],
+
+              SizedBox(height: 16.h),
+              const _LabelWithStar(text: 'لون المركبة'),
+              SizedBox(height: 8.h),
+              _VehicleColorDropdown(
+                value: state.vehicleColor,
+                onChanged: (val) {
+                  controller.setVehicleColor(val);
+                  _scrollToBottom();
+                },
+                showError:
+                state.showErrors && (state.vehicleColor?.isEmpty ?? true),
+              ),
+
+              SizedBox(height: 16.h),
+              AppText(
+                text: 'الصورة الرمزية',
+                appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              _AvatarDropdown(
+                value: state.avatar,
+                onChanged: (val) {
+                  controller.setAvatar(val);
+                  _scrollToBottom();
+                },
+                showError: state.showErrors && (state.avatar?.isEmpty ?? true),
+              ),
+
+              SizedBox(height: 20.h),
+              Row(
+                spacing: 10.w,
+                children: [
+                  Switch(
+                    value: state.saveForLater,
+                    onChanged: (v) {
+                      controller.toggleSaveForLater(v);
+                      _scrollToBottom();
+                    },
+                    overlayColor: WidgetStateProperty.all(Colors.transparent),
+                    activeColor: AppColor.primaryColor,
+                    trackColor: WidgetStateProperty.resolveWith((states) {
+                      final isOn = states.contains(WidgetState.selected);
+                      return isOn
+                          ? AppColor.primaryColor
+                          : AppColor.greyContainerColor;
+                    }),
+                    trackOutlineColor:
+                    WidgetStateProperty.all(Colors.transparent),
+                    trackOutlineWidth: WidgetStateProperty.all(0),
+                    thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
+                  AppText(
+                    text: 'احفظ المركبة للاستخدام لاحقاً',
+                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 24.h),
+              CustomButtonWidget(
+                text: 'إضافة المركبة',
+                onPressed: () {
+                  _scrollToBottom();
+                  // controller.submit(context);
+                },
+                backgroundColor: AppColor.primaryColor,
+              ),
+              SizedBox(height: 8.h),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }
 
@@ -351,6 +541,8 @@ class _PlateTextField extends StatelessWidget {
       ),
       borderSideColor: AppColor.greyDividerColor,
       textInputType: keyboardType,
+
+
       borderRadius: 10,
       onChanged: onChanged,
       validator: (value) {

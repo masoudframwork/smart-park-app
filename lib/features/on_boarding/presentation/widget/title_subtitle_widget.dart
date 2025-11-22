@@ -23,15 +23,15 @@ class TitleSubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
+      //crossAxisAlignment: CrossAxisAlignment.center,
+      children:[
         SvgPicture.asset(
           iconPath,
           width: 107.w,
           height: 107.h,
           fit: BoxFit.contain,
         ),
-         SizedBox(height: 46.h),
+         SizedBox(height: 60.h),
         AppText(
           text: title,
           textAlign: TextAlign.center,
@@ -40,7 +40,7 @@ class TitleSubtitleWidget extends StatelessWidget {
             fontSize: 50,
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 12),
         AppText(
           text: subtitle,
           textAlign: TextAlign.center,

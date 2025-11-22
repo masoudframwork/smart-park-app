@@ -8,7 +8,6 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
-
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/booking_step1_controller.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/booking_custom_time_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
@@ -19,12 +18,11 @@ import 'package:smart/features/details_reserve_parking_spot/booking_step1/presen
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/the_vichel_titel.dart';
 
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
+import '../../../../generated/l10n.dart';
 import '../domain/duration_states.dart';
 
 class BookingStep1Page extends ConsumerWidget {
-
-   const BookingStep1Page( {super.key});
-
+  const BookingStep1Page({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingFlowControllerProvider);
@@ -65,16 +63,21 @@ class BookingStep1Page extends ConsumerWidget {
                   child: const _DurationStepContent(),
                 ),
                 _SummaryStepSection(state: state),
-                SizedBox(height: 12.h),
+                SizedBox(height: 30.h),
                 CustomButtonWidget(
                   type: ButtonType.elevated,
                   borderRadius: 10.r,
                   text: 'الاستمرار للدفع',
+                  icon: SvgPicture.asset(
+                    AppImages.arrawButton,
+                  ),
+                  iconOnRight: false,
+                  iconLayout: ButtonIconLayout.separate,
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
                     showBlurBottomSheet(
                       context: context,
-                      child: ContinuePayingMethodBottomSheet( ),
+                      child: ContinuePayingMethodBottomSheet(),
                     );
                   },
                 ),
@@ -359,15 +362,8 @@ class _SummaryStepContent extends ConsumerWidget {
   final BookingStep1State state;
 
   const _SummaryStepContent({required this.state});
-
   String _durationLabel(double hours) {
-    if (hours == 0.5) return '30 دقيقة';
-    if (hours == 1) return 'ساعة';
-    if (hours == 2) return 'ساعتين';
-    if (hours == 3) return '3 ساعات';
-    if (hours == 4) return '4 ساعات';
-    if (hours == 6) return '6 ساعات';
-    return '${hours.toStringAsFixed(1)} ساعة';
+    return formatDurationLabel(hours);
   }
 
   @override
@@ -396,15 +392,12 @@ class _SummaryStepContent extends ConsumerWidget {
       decoration: BoxDecoration(
         color: AppColor.whiteColor,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(color: AppColor.greyDividerColor),
       ),
       child: Column(
         spacing: 12.h,
         children: [
           Row(
-            textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
                 text: 'الإجمالي',
@@ -433,15 +426,18 @@ class _SummaryStepContent extends ConsumerWidget {
             ],
           ),
           Row(
+            spacing: 5.w,
             children: [
-              SvgPicture.asset(AppImages.pinMap),
+              SvgPicture.asset(
+                AppImages.pinMap,
+              ),
               AppText(
                 text:
                     'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w400,
-                ),
+                    color: AppColor.blackNumberSmallColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp),
               ),
             ],
           ),
@@ -510,7 +506,7 @@ class _SummaryStepSection extends ConsumerWidget {
       children: [
         _StepRow(
           index: 3,
-          title: 'ملخص الحجز',
+          title: 'ملخص الحجز ',
           totalSteps: 3,
           state: state,
           bottomSpacing: 0,

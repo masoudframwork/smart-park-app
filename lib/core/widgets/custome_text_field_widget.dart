@@ -36,8 +36,7 @@ class CustomTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextInputAction? textInputAction;
   final void Function(String)? onFieldSubmitted;
-
-  // خيارات الشادو
+  final VoidCallback? onTap;
   final bool enableShadow;
   final Color? shadowTextFieldColor;
   final double shadowBlur;
@@ -49,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
     this.contentPadding,
     this.focusedBorder,
     this.enabledBorder,
+    this.onTap,
     this.inputTextStyle,
     this.hintStyle,
     this.hintText,

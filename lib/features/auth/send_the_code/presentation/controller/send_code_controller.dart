@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const int kOtpResendSeconds = 23;
@@ -43,3 +44,14 @@ class SendCodeTimerNotifier extends StateNotifier<int> {
     super.dispose();
   }
 }
+
+final codeControllerProvider =
+    Provider.autoDispose<TextEditingController>((ref) {
+  final controller = TextEditingController();
+
+  ref.onDispose(() {
+    controller.dispose();
+  });
+
+  return controller;
+});

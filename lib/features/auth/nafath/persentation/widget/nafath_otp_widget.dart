@@ -20,10 +20,8 @@ class NafathOtpScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final remainingSeconds = ref.watch(nafathTimerProvider);
 
-    final minutesStr =
-    (remainingSeconds ~/ 60).toString().padLeft(2, '0');
-    final secondsStr =
-    (remainingSeconds % 60).toString().padLeft(2, '0');
+    final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
+    final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
 
     return SafeArea(
       child: Scaffold(
@@ -80,10 +78,8 @@ class NafathOtpScreen extends ConsumerWidget {
                   ),
                 ),
                 AppText(
-                  text:
-                  'يرجى تسجيل الدخول عبر تطبيق نفاذ و اختيار الرقم أدناه',
-                  appTextTheme:
-                  AppTextTheme.titleMSTextStyle().copyWith(
+                  text: 'يرجى تسجيل الدخول عبر تطبيق نفاذ و اختيار الرقم أدناه',
+                  appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
                   ),
@@ -95,15 +91,12 @@ class NafathOtpScreen extends ConsumerWidget {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-
                 AppText(
                   text: 'سيتم التحديث خلال $minutesStr:$secondsStr ثانية',
-                  appTextTheme:
-                  AppTextTheme.titleMediumTextStyle().copyWith(
+                  appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-
                 SizedBox(height: 30.h),
                 CustomButtonWidget(
                   text: 'افتح تطبيق نفاذ',

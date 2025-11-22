@@ -4,15 +4,12 @@ import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/button_widget.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/text_field_widget.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/titel_desc_widget.dart';
-
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
-
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

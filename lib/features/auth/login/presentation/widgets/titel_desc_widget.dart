@@ -1,13 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/widgets/app_text.dart';
-
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
-
 class TitelDescWidget extends StatelessWidget {
   const TitelDescWidget({
     super.key,

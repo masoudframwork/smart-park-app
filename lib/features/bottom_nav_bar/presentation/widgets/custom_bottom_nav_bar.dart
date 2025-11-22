@@ -71,7 +71,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               index: 3,
               currentIndex: currentIndex,
               onTap: () {
-                ref.read(bottomNavBarController).changeIndex(3);
+                /  ref.read(bottomNavBarController).changeIndex(3);
                 // Navigator.push(context,
                 //   MaterialPageRoute(builder: (_) => const ScanCodeScreen()),
                 // );
