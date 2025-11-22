@@ -46,32 +46,35 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
 
     final offset = _scrollCtrl.offset;
 
-    // Width of each card + spacing between cards
     const cardWidth = 332.0;
     const spacing = 20.0;
-
     final itemExtent = cardWidth + spacing;
 
-    // Calculate which card is at the center
     int index = (offset / itemExtent).round();
 
     final parkingAreas = ref.read(bottomSheetProvider).parkingAreas;
 
     if (index < 0 || index >= parkingAreas.length) return;
 
-    /// final selectedArea = parkingAreas[index];
-       final selectedArea = parkingAreas[0];
+    final selectedArea = parkingAreas[index];
 
-    // Move (zoom) map to the card location
-    widget.mapController.move(
-      LatLng(selectedArea.latitude, selectedArea.longitude),
-      17.0,  // 👈 SET ZOOM LEVEL FOR PARKING SELECTION
-    );
+    // ⭐ FIX — Wait until the map is fully rendered
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
 
-    // Update green box
+      try {
+        widget.mapController.move(
+          LatLng(selectedArea.latitude, selectedArea.longitude),
+          17.0,
+        );
+      } catch (e) {
+        print("MAP NOT READY YET — delaying...");
+      }
+    });
+
+    // Update selected card
     ref.read(selectedParkingAreaDetailsProvider.notifier).state = selectedArea;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -105,15 +108,16 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
 
                 // 1️⃣ Find the matching map marker from homeState.locations
                 final matchingLocation = homeState.locations.firstWhere(
-                      (loc) =>
-                  (loc.code == area.code) ||          // best match
-                      (loc.lat == area.latitude) ||       // alternative match
-                      (loc.lng == area.longitude),        // alternative match
+                  (loc) =>
+                      (loc.code == area.code) || // best match
+                      (loc.lat == area.latitude) || // alternative match
+                      (loc.lng == area.longitude), // alternative match
                   orElse: () => homeState.locations.first,
                 );
 
                 // 2️⃣ Save selected card
-                ref.read(selectedParkingAreaDetailsProvider.notifier).state = area;
+                ref.read(selectedParkingAreaDetailsProvider.notifier).state =
+                    area;
 
                 // 3️⃣ Hide sheet
                 ref.read(bottomSheetProvider).hide();
@@ -121,13 +125,13 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
                 // 4️⃣ Animate map to the ACTUAL marker position
                 widget.mapController.move(
                   LatLng(matchingLocation.lat, matchingLocation.lng),
-                  17.0,  // 👈 SET ZOOM LEVEL FOR PARKING SELECTION
+                  17.0, // 👈 SET ZOOM LEVEL FOR PARKING SELECTION
                 );
 
                 print("Selected area: ${area.latitude}, ${area.longitude}");
-                print("Marker location: ${matchingLocation.lat}, ${matchingLocation.lng}");
+                print(
+                    "Marker location: ${matchingLocation.lat}, ${matchingLocation.lng}");
               },
-
             );
           },
         ),

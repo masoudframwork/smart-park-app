@@ -19,6 +19,7 @@ import '../../features/details_reserve_parking_spot/booking_step1/presentation/B
 import '../../features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/profile/presentation/widget/pre_preserved_vehicles.dart';
+import '../../features/qr_scanner/scan_code_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../helpers/soft_transition_page.dart';
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
