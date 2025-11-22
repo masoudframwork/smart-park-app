@@ -168,14 +168,14 @@ class AppRouter {
         },
       ),
 
-      // GoRoute(
-      //   path: RoutePaths.scanCodeScreen,
-      //   pageBuilder: (context, state) {
-      //     return softTransitionPage(
-      //       child: ScanCodeScreen(),
-      //     );
-      //   },
-      // ),
+      GoRoute(
+        path: RoutePaths.scanCodeScreen,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: ScanCodeScreen(),
+          );
+        },
+      ),
       GoRoute(
         path: RoutePaths.settingsScreen,
         pageBuilder: (context, state) {
