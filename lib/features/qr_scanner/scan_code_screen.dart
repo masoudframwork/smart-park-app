@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
+
 class ScanCodeScreen extends StatefulWidget {
   const ScanCodeScreen({super.key});
 
@@ -9,15 +11,33 @@ class ScanCodeScreen extends StatefulWidget {
 }
 
 class _ScanCodeScreenState extends State<ScanCodeScreen> {
-  Barcode? _barcode;
+  final MobileScannerController controller = MobileScannerController();
+  bool isNavigated = false;
 
-  void _handleBarcode(BarcodeCapture capture) {
-    if (mounted) {
-      final code = capture.barcodes.firstOrNull?.displayValue;
-      if (code != null) {
-        Navigator.pop(context, code);
-      }
-    }
+  void _handleBarcode(BarcodeCapture capture) async {
+    if (!mounted || isNavigated) return;
+
+    final code = capture.barcodes.firstOrNull?.displayValue;
+    if (code == null) return;
+
+    isNavigated = true;
+    await controller.stop();
+
+    if (!mounted) return;
+
+    /// 🔥 Navigate to BookingStep1Page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => BookingStep1Page(
+         // scannedCode: code,   // <-- your code from QR
+        ),
+      ),
+    ).then((_) {
+      /// Restart scanner when user comes back
+      isNavigated = false;
+      controller.start();
+    });
   }
 
   @override
@@ -26,15 +46,13 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          /// CAMERA VIEW
           MobileScanner(
+            controller: controller,
             onDetect: _handleBarcode,
           ),
 
-          /// CUSTOM OVERLAY
-          _ScannerOverlay(),
+       //   _ScannerOverlay(),
 
-          /// BOTTOM LABEL
           Positioned(
             bottom: 80,
             left: 0,
@@ -53,61 +71,5 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
         ],
       ),
     );
-  }
-}
-
-class _ScannerOverlay extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      final double boxSize = constraints.maxWidth * 0.65;
-
-      return Stack(
-        children: [
-          /// DARK BACKGROUND
-          ColorFiltered(
-            colorFilter:
-            const ColorFilter.mode(Colors.black54, BlendMode.srcOut),
-            child: Stack(
-              children: [
-                /// Full-screen layer
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: Colors.black54,
-                ),
-
-                /// Transparent cut-out (camera visible inside)
-                Center(
-                  child: Container(
-                    width: boxSize,
-                    height: boxSize,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          /// WHITE BORDER FRAME
-          Center(
-            child: Container(
-              width: boxSize,
-              height: boxSize,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: Colors.white,
-                  width: 3,
-                ),
-              ),
-            ),
-          ),
-        ],
-      );
-    });
   }
 }
