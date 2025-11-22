@@ -21,7 +21,6 @@ import 'package:smart/features/details_reserve_parking_spot/booking_step1/presen
 
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../domain/duration_states.dart';
-
 class BookingStep1Page extends ConsumerWidget {
 
   const BookingStep1Page( {super.key});

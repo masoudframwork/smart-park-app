@@ -8,6 +8,7 @@ import '../../../core/constants/image_string.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/custom_image_widget.dart';
+import '../../../generated/l10n.dart';
 import 'controller/on_boarding_controller.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/on_boarding/presentation/widget/title_subtitle_widget.dart';
@@ -62,7 +63,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     AppText(
-                      text: 'تخطي',
+                      text: S.of(context).skip,
                       appTextTheme:
                           AppTextTheme.titleMediumTextStyle().copyWith(
                         color: AppColor.whiteColor,
