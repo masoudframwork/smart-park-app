@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -52,26 +53,39 @@ class _ProfileBody extends StatelessWidget {
           const SizedBox(height: 24),
           const _SectionTitle(text: 'بيانات اضافية'),
           const SizedBox(height: 12),
-          const _AdditionalInfoTile(
+          _AdditionalInfoTile(
             title: 'المخالفات',
             hint: 'قريباً',
-            icon: Icons.gavel_outlined,
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
           ),
           const SizedBox(height: 12),
-          const _AdditionalInfoTile(
+          _AdditionalInfoTile(
             title: 'المحفظة',
             hint: 'قريباً',
-            icon: Icons.account_balance_wallet_outlined,
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
           ),
           const SizedBox(height: 24),
           const _SectionTitle(text: 'المعلومات المحفوظة مسبقاً'),
           const SizedBox(height: 12),
           _StoredInfoTile(
             title: 'المركبات',
-            icon: Icons.directions_car,
+            icon: SvgPicture.asset(
+              AppImages.userProfileCarLeft,
+              width: 20,
+              height: 20,
+            ),
+            // icon: Icons.directions_car,
             onTap: () {
-
-              final container = ProviderScope.containerOf(context, listen: false);
+              final container =
+                  ProviderScope.containerOf(context, listen: false);
               // container
               //     .read(bottomNavBarController)
               //     .changeIndex(BottomNavBarController.profileIndex);
@@ -82,13 +96,16 @@ class _ProfileBody extends StatelessWidget {
                   builder: (context) => const PrePreservedVehicles(),
                 ),
               );
-
             },
           ),
           const SizedBox(height: 12),
           _StoredInfoTile(
             title: 'بطاقات الدفع الالكتروني',
-            icon: Icons.credit_card,
+            icon: SvgPicture.asset(
+              AppImages.userProfileElectronicPayment,
+              width: 20,
+              height: 20,
+            ),
             showStatusDot: true,
             onTap: () {
               Navigator.of(context).push(
@@ -101,8 +118,11 @@ class _ProfileBody extends StatelessWidget {
           const SizedBox(height: 12),
           _StoredInfoTile(
             title: 'الإعدادات',
-            icon: Icons.settings,
-
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
             onTap: () {
               //  NavigationService.push('/settingsScreen');
 
@@ -257,13 +277,16 @@ class _ProfileDetailItem extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        AppText(
-          text: value,
-          appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-            color: AppColor.blackColor,
-            fontWeight: FontWeight.w400,
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: AppText(
+            text: value,
+            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+              color: AppColor.blackColor,
+              fontWeight: FontWeight.w400,
+            ),
           ),
-        ),
+        )
       ],
     );
   }
@@ -339,7 +362,7 @@ class _AdditionalTileContainer extends StatelessWidget {
 class _AdditionalInfoTile extends StatelessWidget {
   final String title;
   final String hint;
-  final IconData icon;
+  final Widget icon;
 
   const _AdditionalInfoTile({
     required this.title,
@@ -352,18 +375,15 @@ class _AdditionalInfoTile extends StatelessWidget {
     return _AdditionalTileContainer(
       child: Row(
         children: [
-          Icon(
-            icon,
-            size: 20,
-         //   color: Colors.teal.shade300,
-            color:AppColor.textColor.withOpacity(0.50),
-
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: icon,
           ),
           const SizedBox(width: 8),
           AppText(
             text: title,
             appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-              // color: AppColor.textColor.withOpacity(0.85),
               color: Colors.grey.shade400,
             ),
           ),
@@ -382,7 +402,7 @@ class _AdditionalInfoTile extends StatelessWidget {
 
 class _StoredInfoTile extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final Widget icon;
   final bool showStatusDot;
   final VoidCallback? onTap;
 
@@ -401,10 +421,10 @@ class _StoredInfoTile extends StatelessWidget {
       child: _ProfileTileContainer(
         child: Row(
           children: [
-            Icon(
-              icon,
-              size: 22,
-              color:AppColor.textColor,
+            SizedBox(
+              width: 22,
+              height: 22,
+              child: icon,
             ),
             const SizedBox(width: 8),
             AppText(
@@ -447,6 +467,7 @@ class _LogoutButton extends StatelessWidget {
     );
   }
 }
+
 class _ProfileTileContainer extends StatelessWidget {
   final Widget child;
 
