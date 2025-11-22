@@ -12,6 +12,7 @@ import 'package:smart/features/profile/presentation/widget/pre_preserved_vehicle
 import '../../../core/routing/navigation_service.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../generated/l10n.dart';
 import '../../settings/presentation/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -51,10 +52,12 @@ class _ProfileBody extends StatelessWidget {
         children: [
           const _ProfileHeaderCard(),
           const SizedBox(height: 24),
-          const _SectionTitle(text: 'بيانات اضافية'),
+          _SectionTitle(
+            text: S.of(context).profile_additionalInfo,
+          ),
           const SizedBox(height: 12),
           _AdditionalInfoTile(
-            title: 'المخالفات',
+            title: S.of(context).profile_fines,
             hint: 'قريباً',
             icon: SvgPicture.asset(
               AppImages.userProfileWallet,
@@ -64,7 +67,7 @@ class _ProfileBody extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _AdditionalInfoTile(
-            title: 'المحفظة',
+            title: S.of(context).wallet,
             hint: 'قريباً',
             icon: SvgPicture.asset(
               AppImages.userProfileWallet,
@@ -73,10 +76,12 @@ class _ProfileBody extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          const _SectionTitle(text: 'المعلومات المحفوظة مسبقاً'),
+          _SectionTitle(
+            text: S.of(context).profile_savedInfo,
+          ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'المركبات',
+            title: S.of(context).profile_vehicles,
             icon: SvgPicture.asset(
               AppImages.userProfileCarLeft,
               width: 20,
@@ -100,7 +105,7 @@ class _ProfileBody extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'بطاقات الدفع الالكتروني',
+            title: S.of(context).profile_paymentCards,
             icon: SvgPicture.asset(
               AppImages.userProfileElectronicPayment,
               width: 20,
@@ -117,7 +122,7 @@ class _ProfileBody extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'الإعدادات',
+            title: S.of(context).profile_settings,
             icon: SvgPicture.asset(
               AppImages.userProfileWallet,
               width: 20,
@@ -231,23 +236,23 @@ class _ProfileDetails extends StatelessWidget {
       padding: EdgeInsets.all(12.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           _ProfileDetailItem(
-            label: 'رقم الهاتف',
+            label: S.of(context).profile_phoneNumber,
             value: '+966 11 234 5678',
           ),
-          SizedBox(height: 12),
-          Divider(height: 0),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          const Divider(height: 0),
+          const SizedBox(height: 12),
           _ProfileDetailItem(
-            label: 'تاريخ الميلاد',
+            label: S.of(context).profile_date_of_birth,
             value: '1998/5/12',
           ),
-          SizedBox(height: 12),
-          Divider(height: 0),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          const Divider(height: 0),
+          const SizedBox(height: 12),
           _ProfileDetailItem(
-            label: 'العنوان الوطني',
+            label: S.of(context).profile_nationalId,
             value: 'ABCD1234',
           ),
         ],
@@ -299,7 +304,7 @@ class _NafathButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButtonWidget(
       backgroundColor: AppColor.primaryCard,
-      text: 'الربط مع نفاذ',
+      text: S.of(context).profile_connect_with_nafath,
       width: 315,
       onPressed: () {
         NavigationService.push(
@@ -455,7 +460,7 @@ class _LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButtonWidget(
       backgroundColor: AppColor.logOutCard,
-      text: 'تسجيل الخروج',
+      text: S.of(context).profile_logout,
       width: 315,
       borderRadius: 10.r,
       iconLayout: ButtonIconLayout.center,

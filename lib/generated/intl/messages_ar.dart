@@ -55,6 +55,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_additionalInfo": MessageLookupByLibrary.simpleMessage(
       "بيانات إضافية",
     ),
+    "profile_connect_with_nafath": MessageLookupByLibrary.simpleMessage(
+      "الربط مع نفاذ",
+    ),
+    "profile_date_of_birth": MessageLookupByLibrary.simpleMessage(
+      "تاريخ الميلاد",
+    ),
     "profile_fines": MessageLookupByLibrary.simpleMessage("المخالفات"),
     "profile_fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "profile_logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),

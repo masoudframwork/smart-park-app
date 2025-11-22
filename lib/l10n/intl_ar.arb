@@ -31,6 +31,8 @@
   "doNotDisplayInstructionsAgain": "لا تعرض التعليمات مرة أخرى",
   "profile_fullName": "الاسم الكامل",
   "profile_nationalId": "العنوان الوطني",
+  "profile_date_of_birth": "تاريخ الميلاد",
+  "profile_connect_with_nafath": "الربط مع نفاذ",
   "profile_phoneNumber": "رقم الهاتف",
   "profile_additionalInfo": "بيانات إضافية",
   "profile_fines": "المخالفات",

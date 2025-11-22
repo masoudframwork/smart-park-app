@@ -33,6 +33,8 @@
   "doNotDisplayInstructionsAgain": "Do not display instructions again",
   "profile_fullName": "Full Name",
   "profile_nationalId": "National ID",
+  "profile_date_of_birth": "Date Of Birth",
+  "profile_connect_with_nafath": "Connect With Nafath",
   "profile_phoneNumber": "Phone Number",
   "profile_additionalInfo": "Additional Information",
   "profile_fines": "Fines",
