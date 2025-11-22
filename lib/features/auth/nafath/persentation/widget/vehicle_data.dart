@@ -12,8 +12,7 @@ import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
-import '../../../../bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
-import '../../../../profile/presentation/profile_screen.dart';
+
 
 class VehicleDataScreen extends ConsumerWidget {
   const VehicleDataScreen({super.key});
@@ -60,9 +59,12 @@ class VehicleDataScreen extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+
               children: [
                 SizedBox(height: 50.h),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   spacing: 15.w,
                   children: [
                     GestureDetector(
@@ -131,9 +133,9 @@ class VehicleDataScreen extends ConsumerWidget {
                           return null;
                         },
                       ),
-                      SizedBox(width: 8.w),
+                      SizedBox(width: 20.w),
                       _PlateTextField(
-                        width: 157.w,
+                        width: 168.w,
                         hintText: 'أ ب ج',
                         keyboardType: TextInputType.text,
                         onChanged: controller.setSaudiLetters,

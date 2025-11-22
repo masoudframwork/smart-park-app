@@ -5,7 +5,6 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
-
 class TextFieldAndButtonsWidget extends StatelessWidget {
   const TextFieldAndButtonsWidget({
     super.key,

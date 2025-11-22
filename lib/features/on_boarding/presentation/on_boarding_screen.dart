@@ -26,6 +26,7 @@ class OnBoardingScreen extends ConsumerWidget {
         child: Stack(
           children: [
             PageView.builder(
+
               controller: notifier.pageController,
               itemCount: state.items.length,
               onPageChanged: notifier.onPageChanged,
@@ -36,6 +37,7 @@ class OnBoardingScreen extends ConsumerWidget {
                   fit: StackFit.expand,
                   children: [
                     Image.asset(item.bgImage, fit: BoxFit.cover),
+
                     _EdgeFade(edge: Edge.top, size: 180.h, start: shadow(0.65)),
                     _EdgeFade(
                         edge: Edge.bottom, size: 220.h, start: shadow(0.70)),
@@ -80,7 +82,7 @@ class OnBoardingScreen extends ConsumerWidget {
               ),
             ),
             Positioned(
-              bottom: 120,
+              bottom: 100,
               left: 0,
               right: 0,
               child: Center(
