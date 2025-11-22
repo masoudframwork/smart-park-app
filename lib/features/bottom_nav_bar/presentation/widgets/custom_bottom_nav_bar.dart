@@ -71,10 +71,10 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               index: 3,
               currentIndex: currentIndex,
               onTap: () {
-                // /  ref.read(bottomNavBarController).changeIndex(3);
-                // Navigator.push(context,
-                //   MaterialPageRoute(builder: (_) => const ScanCodeScreen()),
-                // );
+                ref.read(bottomNavBarController).changeIndex(3);
+                Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const ScanCodeScreen()),
+                );
               },
               icon: SvgPicture.asset(AppImages.qrCodeIcon, width: 20),
             ),

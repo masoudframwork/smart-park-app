@@ -209,6 +209,26 @@ class S {
     );
   }
 
+  /// `Date Of Birth`
+  String get profile_date_of_birth {
+    return Intl.message(
+      'Date Of Birth',
+      name: 'profile_date_of_birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connect With Nafath`
+  String get profile_connect_with_nafath {
+    return Intl.message(
+      'Connect With Nafath',
+      name: 'profile_connect_with_nafath',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Phone Number`
   String get profile_phoneNumber {
     return Intl.message(

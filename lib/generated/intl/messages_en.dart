@@ -55,6 +55,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_additionalInfo": MessageLookupByLibrary.simpleMessage(
       "Additional Information",
     ),
+    "profile_connect_with_nafath": MessageLookupByLibrary.simpleMessage(
+      "Connect With Nafath",
+    ),
+    "profile_date_of_birth": MessageLookupByLibrary.simpleMessage(
+      "Date Of Birth",
+    ),
     "profile_fines": MessageLookupByLibrary.simpleMessage("Fines"),
     "profile_fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "profile_logout": MessageLookupByLibrary.simpleMessage("Logout"),

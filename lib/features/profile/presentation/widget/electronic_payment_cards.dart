@@ -152,8 +152,9 @@ class SavedCardTile extends StatelessWidget {
           ],
         ),
         child: Row(
-          spacing: 20,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // VISA BOX
             Container(
               width: 71.w,
               height: 61.h,
@@ -170,54 +171,68 @@ class SavedCardTile extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            Column(
-              children: [
-                AppText(
-                  text: cardNumber,
-                  appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(),
-                ),
-                SizedBox(height: 4.h),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        AppText(
-                          text: 'تاريخ الانتهاء',
-                          appTextTheme: AppTextTheme.bodySmallTextStyle()
-                              .copyWith(color: AppColor.greyCard),
-                        ),
-                        SizedBox(height: 2.h),
-                        AppText(
-                          text: expiryDate,
-                          appTextTheme: AppTextTheme.bodySmallTextStyle()
-                              .copyWith(color: AppColor.greyCard),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 24.w),
 
-                    // CVV
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AppText(
-                          text: 'CVV',
-                          appTextTheme: AppTextTheme.bodySmallTextStyle()
-                              .copyWith(color: AppColor.greyColor),
-                        ),
-                        SizedBox(height: 2.h),
-                        AppText(
-                          text: cvv,
-                          appTextTheme: AppTextTheme.bodySmallTextStyle()
-                              .copyWith(color: AppColor.greyCard),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+            SizedBox(width: 12.w),
+
+            // TEXT SECTION (aligned vertically nicely)
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // card number
+                  AppText(
+                    text: cardNumber,
+                    appTextTheme: AppTextTheme.titleMediumTextStyle(),
+                  ),
+                  SizedBox(height: 8.h),
+
+                  // expiry date + cvv
+                  Row(
+                    children: [
+                      // EXPIRY
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            text: 'تاريخ الانتهاء',
+                            appTextTheme: AppTextTheme.bodySmallTextStyle()
+                                .copyWith(color: AppColor.greyCard),
+                          ),
+                          SizedBox(height: 2.h),
+                          AppText(
+                            text: expiryDate,
+                            appTextTheme: AppTextTheme.bodySmallTextStyle()
+                                .copyWith(color: AppColor.greyCard),
+                          ),
+                        ],
+                      ),
+
+                      SizedBox(width: 35.w),
+
+                      // CVV
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppText(
+                            text: 'CVV',
+                            appTextTheme: AppTextTheme.bodySmallTextStyle()
+                                .copyWith(color: AppColor.greyColor),
+                          ),
+                          SizedBox(height: 2.h),
+                          AppText(
+                            text: cvv,
+                            appTextTheme: AppTextTheme.bodySmallTextStyle()
+                                .copyWith(color: AppColor.greyCard),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            Spacer(),
+
+            // DELETE ICON
             GestureDetector(
               onTap: onDelete,
               child: Padding(
@@ -235,6 +250,7 @@ class SavedCardTile extends StatelessWidget {
     );
   }
 }
+
 
 class TheVehicleTiles extends StatelessWidget {
   final bool isSelected;
@@ -324,6 +340,7 @@ class TheVehicleTiles extends StatelessWidget {
         width: 24.w,
         height: 24.w,
         isFlag: true,
+        color: AppColor.secondaryColor,
       );
     }
 

@@ -93,4 +93,10 @@ class AppImages {
   //profile
   static const String delete = "assets/images/svgs/delete.svg";
   static const String dark = "assets/images/svgs/dark.svg";
+  static const String userProfileCarLeft =
+      "assets/images/svgs/user_profile_car_left.svg";
+  static const String userProfileWallet =
+      "assets/images/svgs/user_profile_wallet.svg";
+  static const String userProfileElectronicPayment =
+      "assets/images/svgs/user_profile_electronic_payment.svg";
 }

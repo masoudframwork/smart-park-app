@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
@@ -11,6 +12,7 @@ import 'package:smart/features/profile/presentation/widget/pre_preserved_vehicle
 import '../../../core/routing/navigation_service.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../generated/l10n.dart';
 import '../../settings/presentation/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -50,28 +52,45 @@ class _ProfileBody extends StatelessWidget {
         children: [
           const _ProfileHeaderCard(),
           const SizedBox(height: 24),
-          const _SectionTitle(text: 'بيانات اضافية'),
-          const SizedBox(height: 12),
-          const _AdditionalInfoTile(
-            title: 'المخالفات',
-            hint: 'قريباً',
-            icon: Icons.gavel_outlined,
+          _SectionTitle(
+            text: S.of(context).profile_additionalInfo,
           ),
           const SizedBox(height: 12),
-          const _AdditionalInfoTile(
-            title: 'المحفظة',
+          _AdditionalInfoTile(
+            title: S.of(context).profile_fines,
             hint: 'قريباً',
-            icon: Icons.account_balance_wallet_outlined,
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
+          ),
+          const SizedBox(height: 12),
+          _AdditionalInfoTile(
+            title: S.of(context).wallet,
+            hint: 'قريباً',
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
           ),
           const SizedBox(height: 24),
-          const _SectionTitle(text: 'المعلومات المحفوظة مسبقاً'),
+          _SectionTitle(
+            text: S.of(context).profile_savedInfo,
+          ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'المركبات',
-            icon: Icons.directions_car,
+            title: S.of(context).profile_vehicles,
+            icon: SvgPicture.asset(
+              AppImages.userProfileCarLeft,
+              width: 20,
+              height: 20,
+            ),
+            // icon: Icons.directions_car,
             onTap: () {
-
-              final container = ProviderScope.containerOf(context, listen: false);
+              final container =
+                  ProviderScope.containerOf(context, listen: false);
               // container
               //     .read(bottomNavBarController)
               //     .changeIndex(BottomNavBarController.profileIndex);
@@ -82,13 +101,16 @@ class _ProfileBody extends StatelessWidget {
                   builder: (context) => const PrePreservedVehicles(),
                 ),
               );
-
             },
           ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'بطاقات الدفع الالكتروني',
-            icon: Icons.credit_card,
+            title: S.of(context).profile_paymentCards,
+            icon: SvgPicture.asset(
+              AppImages.userProfileElectronicPayment,
+              width: 20,
+              height: 20,
+            ),
             showStatusDot: true,
             onTap: () {
               Navigator.of(context).push(
@@ -100,9 +122,12 @@ class _ProfileBody extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           _StoredInfoTile(
-            title: 'الإعدادات',
-            icon: Icons.settings,
-
+            title: S.of(context).profile_settings,
+            icon: SvgPicture.asset(
+              AppImages.userProfileWallet,
+              width: 20,
+              height: 20,
+            ),
             onTap: () {
               //  NavigationService.push('/settingsScreen');
 
@@ -211,23 +236,23 @@ class _ProfileDetails extends StatelessWidget {
       padding: EdgeInsets.all(12.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
+        children: [
           _ProfileDetailItem(
-            label: 'رقم الهاتف',
+            label: S.of(context).profile_phoneNumber,
             value: '+966 11 234 5678',
           ),
-          SizedBox(height: 12),
-          Divider(height: 0),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          const Divider(height: 0),
+          const SizedBox(height: 12),
           _ProfileDetailItem(
-            label: 'تاريخ الميلاد',
+            label: S.of(context).profile_date_of_birth,
             value: '1998/5/12',
           ),
-          SizedBox(height: 12),
-          Divider(height: 0),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          const Divider(height: 0),
+          const SizedBox(height: 12),
           _ProfileDetailItem(
-            label: 'العنوان الوطني',
+            label: S.of(context).profile_nationalId,
             value: 'ABCD1234',
           ),
         ],
@@ -257,13 +282,16 @@ class _ProfileDetailItem extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 4),
-        AppText(
-          text: value,
-          appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-            color: AppColor.blackColor,
-            fontWeight: FontWeight.w400,
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: AppText(
+            text: value,
+            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+              color: AppColor.blackColor,
+              fontWeight: FontWeight.w400,
+            ),
           ),
-        ),
+        )
       ],
     );
   }
@@ -276,7 +304,7 @@ class _NafathButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButtonWidget(
       backgroundColor: AppColor.primaryCard,
-      text: 'الربط مع نفاذ',
+      text: S.of(context).profile_connect_with_nafath,
       width: 315,
       onPressed: () {
         NavigationService.push(
@@ -339,7 +367,7 @@ class _AdditionalTileContainer extends StatelessWidget {
 class _AdditionalInfoTile extends StatelessWidget {
   final String title;
   final String hint;
-  final IconData icon;
+  final Widget icon;
 
   const _AdditionalInfoTile({
     required this.title,
@@ -352,18 +380,15 @@ class _AdditionalInfoTile extends StatelessWidget {
     return _AdditionalTileContainer(
       child: Row(
         children: [
-          Icon(
-            icon,
-            size: 20,
-         //   color: Colors.teal.shade300,
-            color:AppColor.textColor.withOpacity(0.50),
-
+          SizedBox(
+            width: 20,
+            height: 20,
+            child: icon,
           ),
           const SizedBox(width: 8),
           AppText(
             text: title,
             appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-              // color: AppColor.textColor.withOpacity(0.85),
               color: Colors.grey.shade400,
             ),
           ),
@@ -382,7 +407,7 @@ class _AdditionalInfoTile extends StatelessWidget {
 
 class _StoredInfoTile extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final Widget icon;
   final bool showStatusDot;
   final VoidCallback? onTap;
 
@@ -401,10 +426,10 @@ class _StoredInfoTile extends StatelessWidget {
       child: _ProfileTileContainer(
         child: Row(
           children: [
-            Icon(
-              icon,
-              size: 22,
-              color:AppColor.textColor,
+            SizedBox(
+              width: 22,
+              height: 22,
+              child: icon,
             ),
             const SizedBox(width: 8),
             AppText(
@@ -435,7 +460,7 @@ class _LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomButtonWidget(
       backgroundColor: AppColor.logOutCard,
-      text: 'تسجيل الخروج',
+      text: S.of(context).profile_logout,
       width: 315,
       borderRadius: 10.r,
       iconLayout: ButtonIconLayout.center,
@@ -447,6 +472,7 @@ class _LogoutButton extends StatelessWidget {
     );
   }
 }
+
 class _ProfileTileContainer extends StatelessWidget {
   final Widget child;
 

@@ -254,3 +254,10 @@ ios/Podfile.lock
 
 # FVM Version Cache
 .fvm/
+
+# Flutter auto-generated plugin registrant
+**/generated_plugin_registrant.*
+**/GeneratedPluginRegistrant.*
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
+macos/Flutter/GeneratedPluginRegistrant.swift

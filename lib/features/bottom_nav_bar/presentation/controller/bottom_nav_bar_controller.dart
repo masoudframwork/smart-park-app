@@ -60,7 +60,7 @@ class BottomNavBarController extends ChangeNotifier {
     const HomePage(), // 0
     const BookingPage(), // 1
     const ProfileScreen(), // 2
-    // const ScanCodeScreen(), // 3
+    const ScanCodeScreen(), // 3
   ];
 
   void changeIndex(int val) {
