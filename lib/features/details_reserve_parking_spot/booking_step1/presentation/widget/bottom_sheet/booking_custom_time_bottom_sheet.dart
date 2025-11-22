@@ -8,6 +8,7 @@ import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../domain/duration_states.dart';
+
 // class BookingCustomTimeBottomSheet extends ConsumerWidget {
 //   const BookingCustomTimeBottomSheet({super.key});
 //   @override
@@ -174,29 +175,30 @@ class _TimePartField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(
-          text: label,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            fontWeight: FontWeight.w600,
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AppText(
+            text: label,
+            appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
-        SizedBox(height: 8.h),
-        CustomTextFormField(
-          controller: controller,
-          width: 147.w,
-          hintText: '00',
-          textAlign: TextAlign.center,
-          textInputType: TextInputType.number,
-
-          borderSideColor: AppColor.greyDividerColor,
-          borderRadius: 10.r,
-          backgroundColor: Colors.white,
-          contentPadding: EdgeInsets.symmetric(vertical: 14.h),
-        ),
-      ],
+          SizedBox(height: 17.h),
+          CustomTextFormField(
+            controller: controller,
+            width: 147,
+            hintText: '00',
+            textAlign: TextAlign.center,
+            textInputType: TextInputType.number,
+            borderSideColor: AppColor.greyDividerColor,
+            borderRadius: 10.r,
+            backgroundColor: Colors.white,
+            contentPadding: EdgeInsets.symmetric(vertical: 14.h),
+          ),
+        ],
+      ),
     );
   }
 }

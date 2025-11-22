@@ -12,6 +12,7 @@ import 'package:smart/core/widgets/custom_image_widget.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
 
 import '../../../../../booking/domain/models/booking_model.dart';
+import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/duration_states.dart';
 
 enum CardSelection {
@@ -32,7 +33,8 @@ final cardBrandProvider = StateProvider<CardBrand>((ref) => CardBrand.mada);
 late final BookingModel reservation;
 
 class ContinuePayingMethodBottomSheet extends ConsumerWidget {
-  const ContinuePayingMethodBottomSheet({super.key});
+
+  const ContinuePayingMethodBottomSheet( {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -70,6 +72,12 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                     //     ),
                     //   ),
                     // );
+
+
+
+
+
+
                   }),
               SizedBox(height: 8.h),
             ],

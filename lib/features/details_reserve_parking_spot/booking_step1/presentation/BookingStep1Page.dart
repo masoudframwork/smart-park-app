@@ -8,6 +8,7 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import 'package:smart/features/booking/domain/models/booking_model.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/booking_step1_controller.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/booking_custom_time_bottom_sheet.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
@@ -18,15 +19,24 @@ import 'package:smart/features/details_reserve_parking_spot/booking_step1/presen
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/the_vichel_titel.dart';
 
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
-import '../../../../generated/l10n.dart';
 import '../domain/duration_states.dart';
 
 class BookingStep1Page extends ConsumerWidget {
   const BookingStep1Page({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingFlowControllerProvider);
     final controller = ref.read(bookingFlowControllerProvider.notifier);
+    final BookingModel reservation;
+
+    final durationState = ref.watch(durationControllerProvider);
+
+    final bool canContinue = state.hasVehicle &&
+        state.hasDuration &&
+        durationState.hours > 0 &&
+        state.currentStep >= 3;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.whiteBackgroundColor,
@@ -64,22 +74,33 @@ class BookingStep1Page extends ConsumerWidget {
                 ),
                 _SummaryStepSection(state: state),
                 SizedBox(height: 30.h),
-                CustomButtonWidget(
-                  type: ButtonType.elevated,
-                  borderRadius: 10.r,
-                  text: 'الاستمرار للدفع',
-                  icon: SvgPicture.asset(
-                    AppImages.arrawButton,
+                AnimatedOpacity(
+                  duration: const Duration(milliseconds: 200),
+                  opacity: canContinue ? 1 : 0.4,
+                  child: IgnorePointer(
+                    ignoring: !canContinue,
+                    child: CustomButtonWidget(
+                      type: ButtonType.elevated,
+                      borderRadius: 10.r,
+                      text: 'الاستمرار للدفع',
+                      icon: SvgPicture.asset(
+                        AppImages.arrawButton,
+                      ),
+                      iconOnRight: false,
+                      iconLayout: ButtonIconLayout.separate,
+                      textStyle: AppTextTheme.mainButtonTextStyle(),
+                      onPressed: () {
+                        showBlurBottomSheet(
+                          context: context,
+                          child: ContinuePayingMethodBottomSheet(),
+                        );
+
+
+
+
+                      },
+                    ),
                   ),
-                  iconOnRight: false,
-                  iconLayout: ButtonIconLayout.separate,
-                  textStyle: AppTextTheme.mainButtonTextStyle(),
-                  onPressed: () {
-                    showBlurBottomSheet(
-                      context: context,
-                      child: ContinuePayingMethodBottomSheet(),
-                    );
-                  },
                 ),
               ],
             ),

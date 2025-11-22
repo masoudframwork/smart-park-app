@@ -5,7 +5,10 @@ import 'package:smart/features/booking/domain/models/timer_state.dart';
 import 'package:smart/features/booking/presentation/controller/booking_controller.dart'
     show reservationController;
 
+import '../../domain/models/booking_model.dart';
+
 class TimerController extends StateNotifier<TimerState> {
+
   Timer? _timer;
   final DateTime startTime;
   final DateTime endTime;
