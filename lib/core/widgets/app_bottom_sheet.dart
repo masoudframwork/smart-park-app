@@ -39,7 +39,9 @@ class AppBottomSheet extends StatelessWidget {
         left: 16.w,
         right: 16.w,
         top: 16.h,
-        bottom: 24.h + 16.h,
+        //bottom: 16.h + 16.h,
+        bottom: 15.h + 8.h,
+
       ),
       decoration: BoxDecoration(
         color: AppColor.settingsBackgroundColor,

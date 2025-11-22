@@ -59,6 +59,8 @@ class BookingDetailView extends ConsumerWidget {
               ),
             ),
           ),
+
+
         ],
       ),
     );

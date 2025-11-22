@@ -12,6 +12,7 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../../core/widgets/required_field_label.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/continue_paying_bottom_sheet.dart';
 
 class ElectronicPaymentCards extends StatelessWidget {
@@ -338,14 +339,13 @@ class TheVehicleTiles extends StatelessWidget {
     );
   }
 }
-
 class NewCardBottomSheet extends ConsumerWidget {
   const NewCardBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBottomSheet(
-      maxHeightFactor: 0.59,
+      maxHeightFactor: 0.62,
       title: 'بطاقة جديدة',
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
@@ -388,8 +388,9 @@ class _NewCardForm extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText(
-          text: 'نوع البطاقة :',
+        RequiredFieldLabel(
+          text: 'نوع البطاقة ',
+          textColor: AppColor.blackColor,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,
             fontWeight: FontWeight.w600,
@@ -401,10 +402,11 @@ class _NewCardForm extends ConsumerWidget {
             _BrandOption(
               isSelected: brand == CardBrand.mada,
               onTap: () => brandNotifier.state = CardBrand.mada,
-              child: SvgPicture.asset(
-                AppImages.mada,
+              child: CustomImageWidget(
+                imageUrl: AppImages.mada,
                 width: 40.w,
                 height: 28.h,
+                isFlag: true,
               ),
             ),
             SizedBox(width: 12.w),
@@ -420,7 +422,14 @@ class _NewCardForm extends ConsumerWidget {
           ],
         ),
         SizedBox(height: 16.h),
-        const _LabelWithStar(text: 'رقم البطاقة'),
+        RequiredFieldLabel(
+          text: 'رقم البطاقة',
+          textColor: AppColor.blackColor,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            color: AppColor.blackNumberSmallColor,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         SizedBox(height: 6.h),
         CustomTextFormField(
           width: double.infinity,
@@ -435,7 +444,14 @@ class _NewCardForm extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        const _LabelWithStar(text: 'الاسم'),
+        RequiredFieldLabel(
+          text: 'الاسم',
+          textColor: AppColor.blackColor,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            color: AppColor.blackNumberSmallColor,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         SizedBox(height: 6.h),
         CustomTextFormField(
           width: double.infinity,
@@ -455,7 +471,14 @@ class _NewCardForm extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const _LabelWithStar(text: 'تاريخ الانتهاء'),
+                  RequiredFieldLabel(
+                    text: 'تاريخ الانتهاء',
+                    textColor: AppColor.blackColor,
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   SizedBox(height: 6.h),
                   CustomTextFormField(
                     width: double.infinity,
@@ -480,7 +503,14 @@ class _NewCardForm extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const _LabelWithStar(text: 'CVV'),
+                  RequiredFieldLabel(
+                    text: 'CVV',
+                    textColor: AppColor.blackColor,
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   SizedBox(height: 6.h),
                   CustomTextFormField(
                     width: double.infinity,
@@ -537,35 +567,6 @@ class _BrandOption extends StatelessWidget {
         ),
         child: child,
       ),
-    );
-  }
-}
-
-class _LabelWithStar extends StatelessWidget {
-  final String text;
-
-  const _LabelWithStar({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      textDirection: TextDirection.rtl,
-      children: [
-        AppText(
-          text: text,
-          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-            color: AppColor.blackNumberSmallColor,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        AppText(
-          text: ' *',
-          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-            color: Colors.red,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
     );
   }
 }

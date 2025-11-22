@@ -11,6 +11,7 @@ class BookingController extends StateNotifier<BookingState> {
   BookingController() : super(BookingState.initial()) {
     loadReservations();
   }
+  BookingModel? reservation;
 
   Future<void> loadReservations() async {
     state = state.copyWith(isLoading: true);
