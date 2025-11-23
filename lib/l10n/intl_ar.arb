@@ -140,5 +140,9 @@
   "addvehicle": "إضافة المركبة",
   "specifythebookingduration": "تحديد مدة الحجز",
   "minute": "دقيقة",
-  "accept": "موافق"
+  "accept": "موافق",
+  "paymentConfirmation": "إتمام الدفع",
+  "bookingconfirmation": "تأكيد الحجز",
+  "cardendingin000": "البطاقة المنتهية بـ 0000",
+  "newcard": "بطاقة جديدة"
 }

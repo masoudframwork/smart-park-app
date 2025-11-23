@@ -142,5 +142,9 @@
   "addvehicle": " Add Vehicle",
   "specifythebookingduration": "Specify the booking duration",
   "minute": "Minute",
-  "accept": "Accept"
+  "accept": "Accept",
+  "paymentConfirmation": "Payment Confirmation",
+  "bookingconfirmation": "Booking confirmation",
+  "cardendingin000": "Card ending in 0000",
+  "newcard": "New card"
 }

@@ -52,7 +52,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "avatar": MessageLookupByLibrary.simpleMessage("الصورة الرمزية"),
     "bookHere": MessageLookupByLibrary.simpleMessage("احجز هنا"),
     "bookingSummary": MessageLookupByLibrary.simpleMessage("ملخص الحجز"),
+    "bookingconfirmation": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
     "bookings": MessageLookupByLibrary.simpleMessage("الحجوزات"),
+    "cardendingin000": MessageLookupByLibrary.simpleMessage(
+      "البطاقة المنتهية بـ 0000",
+    ),
     "cardnumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
     "cardtype": MessageLookupByLibrary.simpleMessage("نوع البطاقة"),
     "change_in_plans_no_problem": MessageLookupByLibrary.simpleMessage(
@@ -137,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minute30": MessageLookupByLibrary.simpleMessage("30 دقيقة"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "newVehicle": MessageLookupByLibrary.simpleMessage("مركبة جديدة"),
+    "newcard": MessageLookupByLibrary.simpleMessage("بطاقة جديدة"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("مركبة أخرى"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
       "نيسان باتلفايندر 2023 - أسود",
@@ -156,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "parkyourvehiclewithease": MessageLookupByLibrary.simpleMessage(
       "اركـــــن مركبتك\n بكل ســــــهولة!",
     ),
+    "paymentConfirmation": MessageLookupByLibrary.simpleMessage("إتمام الدفع"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "platenumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
     "platetype": MessageLookupByLibrary.simpleMessage("نوع اللوحة"),

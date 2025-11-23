@@ -1093,6 +1093,41 @@ class S {
   String get accept {
     return Intl.message('Accept', name: 'accept', desc: '', args: []);
   }
+
+  /// `Payment Confirmation`
+  String get paymentConfirmation {
+    return Intl.message(
+      'Payment Confirmation',
+      name: 'paymentConfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking confirmation`
+  String get bookingconfirmation {
+    return Intl.message(
+      'Booking confirmation',
+      name: 'bookingconfirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card ending in 0000`
+  String get cardendingin000 {
+    return Intl.message(
+      'Card ending in 0000',
+      name: 'cardendingin000',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New card`
+  String get newcard {
+    return Intl.message('New card', name: 'newcard', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

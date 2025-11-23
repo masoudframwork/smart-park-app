@@ -11,8 +11,8 @@ import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/custom_image_widget.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../booking/domain/models/booking_model.dart';
-import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/duration_states.dart';
 
 enum CardSelection {
@@ -33,8 +33,7 @@ final cardBrandProvider = StateProvider<CardBrand>((ref) => CardBrand.mada);
 late final BookingModel reservation;
 
 class ContinuePayingMethodBottomSheet extends ConsumerWidget {
-
-  const ContinuePayingMethodBottomSheet( {super.key});
+  const ContinuePayingMethodBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -42,7 +41,7 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
 
     return AppBottomSheet(
       maxHeightFactor: selected == CardSelection.saved ? 0.56 : 0.80,
-      title: 'إتمام الدفع',
+      title: S.of(context).paymentConfirmation,
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
         color: AppColor.settingsBackgroundColor,
@@ -61,7 +60,7 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
               CustomButtonWidget(
                   type: ButtonType.elevated,
                   borderRadius: 10.r,
-                  text: 'تأكيد الحجز',
+                  text: S.of(context).bookingconfirmation,
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -72,12 +71,6 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                     //     ),
                     //   ),
                     // );
-
-
-
-
-
-
                   }),
               SizedBox(height: 8.h),
             ],
@@ -115,7 +108,8 @@ class _CardSelectionRow extends ConsumerWidget {
                 ),
                 SizedBox(height: 6.h),
                 AppText(
-                  text: 'البطاقة المنتهية بـ 0000',
+                  //البطاقة المنتهية 0000
+                  text: S.of(context).cardendingin000,
                   appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                     color: selected == CardSelection.saved
                         ? AppColor.whiteColor
@@ -144,7 +138,7 @@ class _CardSelectionRow extends ConsumerWidget {
                 ),
                 SizedBox(height: 8.h),
                 AppText(
-                  text: 'بطاقة جديدة',
+                  text: S.of(context).newcard,
                   appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                     color: selected == CardSelection.newCard
                         ? AppColor.whiteColor
@@ -206,7 +200,8 @@ class _NewCardForm extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppText(
-          text: 'نوع البطاقة :',
+          //نوع البطاقة
+          text: S.of(context).cardtype,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,
             fontWeight: FontWeight.w600,
@@ -238,7 +233,11 @@ class _NewCardForm extends ConsumerWidget {
           ],
         ),
         SizedBox(height: 16.h),
-        const _LabelWithStar(text: 'رقم البطاقة'),
+        _LabelWithStar(
+          text:
+              //'رقم البطاقة'
+              S.of(context).cardnumber,
+        ),
         SizedBox(height: 6.h),
         CustomTextFormField(
           width: double.infinity,
@@ -253,7 +252,10 @@ class _NewCardForm extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        const _LabelWithStar(text: 'الاسم'),
+        _LabelWithStar(
+          //   text: 'الاسم'
+          text: S.of(context).name,
+        ),
         SizedBox(height: 6.h),
         CustomTextFormField(
           width: double.infinity,
@@ -273,7 +275,10 @@ class _NewCardForm extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const _LabelWithStar(text: 'تاريخ الانتهاء'),
+                  _LabelWithStar(
+                    //  text: 'تاريخ الانتهاء'
+                    text: S.of(context).expirydate,
+                  ),
                   SizedBox(height: 6.h),
                   CustomTextFormField(
                     width: double.infinity,
@@ -339,7 +344,9 @@ class _NewCardForm extends ConsumerWidget {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             AppText(
-              text: 'احفظ البطاقة للاستخدام لاحقاً',
+              text: S.of(context).savethevehicleforlateruse,
+
+              //'احفظ البطاقة للاستخدام لاحقاً',
               appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                 color: AppColor.blackNumberSmallColor,
                 fontWeight: FontWeight.w500,

@@ -52,7 +52,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "avatar": MessageLookupByLibrary.simpleMessage("Avatar"),
     "bookHere": MessageLookupByLibrary.simpleMessage("Book Here"),
     "bookingSummary": MessageLookupByLibrary.simpleMessage("Booking Summary"),
+    "bookingconfirmation": MessageLookupByLibrary.simpleMessage(
+      "Booking confirmation",
+    ),
     "bookings": MessageLookupByLibrary.simpleMessage("Bookings"),
+    "cardendingin000": MessageLookupByLibrary.simpleMessage(
+      "Card ending in 0000",
+    ),
     "cardnumber": MessageLookupByLibrary.simpleMessage("Card number"),
     "cardtype": MessageLookupByLibrary.simpleMessage("Card type"),
     "change_in_plans_no_problem": MessageLookupByLibrary.simpleMessage(
@@ -139,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minute30": MessageLookupByLibrary.simpleMessage("30 minute"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "newVehicle": MessageLookupByLibrary.simpleMessage("New Vehicle"),
+    "newcard": MessageLookupByLibrary.simpleMessage("New card"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("New vehicle"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
       "Nissan Pathfinder 2023 / Black",
@@ -159,6 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "parkyourvehiclewithease": MessageLookupByLibrary.simpleMessage(
       "Park your vehicle with ease!",
+    ),
+    "paymentConfirmation": MessageLookupByLibrary.simpleMessage(
+      "Payment Confirmation",
     ),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "platenumber": MessageLookupByLibrary.simpleMessage("Plate number"),
