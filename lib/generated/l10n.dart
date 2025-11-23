@@ -373,6 +373,31 @@ class S {
   String get settings_lang_en {
     return Intl.message('EN', name: 'settings_lang_en', desc: '', args: []);
   }
+
+  /// `Search for parking`
+  String get searchParkingHint {
+    return Intl.message(
+      'Search for parking',
+      name: 'searchParkingHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get searchTooltip {
+    return Intl.message('Search', name: 'searchTooltip', desc: '', args: []);
+  }
+
+  /// `Please scan the parking code`
+  String get scanParkingCode {
+    return Intl.message(
+      'Please scan the parking code',
+      name: 'scanParkingCode',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

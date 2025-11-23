@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../generated/l10n.dart';
 import '../details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 
 class ScanCodeScreen extends StatefulWidget {
@@ -95,7 +96,7 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             right: 0,
             child: Center(
               child: Text(
-                "الرجاء مسح رمز الموقف",
+                S.of(context).scanParkingCode,
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,

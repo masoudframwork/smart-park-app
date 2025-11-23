@@ -11,6 +11,7 @@ import 'package:smart/features/home/presentation/widgets/parking_details_box/gre
 import 'package:smart/features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custome_text_field_widget.dart';
+import '../../../generated/l10n.dart';
 import '../provider/selected_parking_provider.dart';
 import 'controller/home_controller.dart';
 import 'package:smart/features/home/data/models/home_model.dart';
@@ -205,7 +206,7 @@ class _TopControls extends StatelessWidget {
         _SearchBar(
           controller: searchController,
           focusNode: searchFocus,
-          hintText: 'ابحث عن موقف',
+          hintText: S.of(context).searchParkingHint,
           trailingIcon: SvgPicture.asset(AppImages.mice),
           onSubmitted: onSearchSubmit,
           onSuffixTap: onSuffixTap,
@@ -297,7 +298,7 @@ class _SearchBarState extends State<_SearchBar> {
                 IconButton(
                   onPressed: widget.onSuffixTap,
                   icon: widget.trailingIcon!,
-                  tooltip: 'بحث',
+                  tooltip: S.of(context).searchTooltip,
                 ),
             ],
           ),

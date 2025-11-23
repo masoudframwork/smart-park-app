@@ -52,5 +52,8 @@
   "settings_dark_mode": "Dark Mode",
   "settings_language": "Language",
   "settings_lang_ar": "AR",
-  "settings_lang_en": "EN"
+  "settings_lang_en": "EN",
+  "searchParkingHint": "Search for parking",
+  "searchTooltip": "Search",
+  "scanParkingCode": "Please scan the parking code"
 }

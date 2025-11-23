@@ -78,6 +78,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("المركبات"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
+    "scanParkingCode": MessageLookupByLibrary.simpleMessage(
+      "الرجاء مسح رمز الموقف",
+    ),
+    "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
+    "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("عر"),

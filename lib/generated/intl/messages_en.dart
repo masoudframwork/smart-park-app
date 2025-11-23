@@ -76,6 +76,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("Vehicles"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),
+    "scanParkingCode": MessageLookupByLibrary.simpleMessage(
+      "Please scan the parking code",
+    ),
+    "searchParkingHint": MessageLookupByLibrary.simpleMessage(
+      "Search for parking",
+    ),
+    "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("AR"),

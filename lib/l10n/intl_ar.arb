@@ -50,5 +50,8 @@
   "settings_dark_mode": "الوضع الليلي",
   "settings_language": "اللغة",
   "settings_lang_ar": "عر",
-  "settings_lang_en": "En"
+  "settings_lang_en": "En",
+  "searchParkingHint": "ابحث عن موقف",
+  "searchTooltip": "بحث",
+  "scanParkingCode": "الرجاء مسح رمز الموقف"
 }
