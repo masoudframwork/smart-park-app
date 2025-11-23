@@ -43,47 +43,61 @@ class TermsScreen extends StatelessWidget {
                   const _TermsHeader(),
                   SizedBox(height: 16.h),
                   Expanded(
-                    child: ListView(
-                      children: [
-                        _buildSection(
-                          S.of(context).terms_section_1,
-                        ),
+                      child: ListView(
+                    children: [
+                      _buildSection(
+                        locale,
+                        S.of(context).terms_section_1,
+                      ),
+                      _buildSection(
+                        locale,
+                        S.of(context).terms_section_2,
+                        children: [
+                          // THIS IS THE HEADER (no bullet)
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 6),
+                            child: AppText(
+                              text: S.of(context).terms_usage_0,
+                              appTextTheme: AppTextTheme.titleMediumTextStyle(),
+                              textAlign: locale.isArabic()
+                                  ? TextAlign.right
+                                  : TextAlign.left,
+                            ),
+                          ),
 
-                        _buildSection(
-                          S.of(context).terms_section_2,
-                          children: usageItems
-                              .map(
-                                (e) => Padding(
+                          // BULLET ITEMS
+                          ...usageItems.map(
+                            (e) => Padding(
                               padding: const EdgeInsets.symmetric(vertical: 6),
-                              child: Directionality(
-                                textDirection: TextDirection.rtl,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("• ", style: TextStyle(fontSize: 18)),
-                                    Expanded(
-                                      child: AppText(
-                                        text: e,
-                                        appTextTheme: AppTextTheme.descriptionTextStyle(),
-                                      ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text("• ", style: TextStyle(fontSize: 18)),
+                                  Expanded(
+                                    child: AppText(
+                                      text: e,
+                                      appTextTheme:
+                                          AppTextTheme.descriptionTextStyle(),
+                                      textAlign: locale.isArabic()
+                                          ? TextAlign.right
+                                          : TextAlign.left,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           )
-                              .toList(),
-                        ),
-
-                        _buildSection(S.of(context).terms_section_3),
-                        _buildSection(S.of(context).terms_section_4),
-                        _buildSection(S.of(context).terms_section_5),
-                        _buildSection(S.of(context).terms_section_6),
-                        _buildSection(S.of(context).terms_section_7),
-                        _buildSection(S.of(context).terms_section_8),
-                      ],
-                    )
-                  ),
+                        ],
+                      ),
+                      _buildSection(locale, S.of(context).terms_section_3),
+                      _buildSection(locale, S.of(context).terms_section_4),
+                      _buildSection(locale, S.of(context).terms_section_5),
+                      _buildSection(locale, S.of(context).terms_section_6),
+                      _buildSection(locale, S.of(context).terms_section_7),
+                      _buildSection(locale, S.of(context).terms_section_8),
+                    ],
+                  )),
                 ],
               ),
             ),
@@ -93,7 +107,8 @@ class TermsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSection(String title, {List<Widget>? children}) {
+  Widget _buildSection(AppLocale locale, String title,
+      {List<Widget>? children}) {
     return Container(
       margin: EdgeInsets.only(bottom: 3.h),
       decoration: BoxDecoration(
@@ -104,7 +119,9 @@ class TermsScreen extends StatelessWidget {
         tilePadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         childrenPadding: EdgeInsets.all(12.w),
         title: Align(
-          alignment: AlignmentDirectional.centerStart,
+          alignment: locale.isArabic()
+              ? Alignment.centerRight
+              : Alignment.centerLeft,
           child: AppText(
             text: title,
             appTextTheme: AppTextTheme.titleMediumTextStyle(),
@@ -114,7 +131,6 @@ class TermsScreen extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class _TermsHeader extends StatelessWidget {
