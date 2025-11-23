@@ -7,6 +7,7 @@ import '../../../../../../core/widgets/app_bottom_sheet.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custome_text_field_widget.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../domain/duration_states.dart';
 
 // class BookingCustomTimeBottomSheet extends ConsumerWidget {
@@ -110,7 +111,8 @@ class BookingCustomTimeBottomSheet extends ConsumerWidget {
         ),
         child: AppBottomSheet(
           maxHeightFactor: 0.33,
-          title: 'تحديد مدة الحجز',
+          //تحديد مدة الحجز
+          title: S.of(context).specifythebookingduration,
           headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -120,12 +122,15 @@ class BookingCustomTimeBottomSheet extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   _TimePartField(
-                    label: 'ساعة',
+                    label: 
+                    //'ساعة',
+                    S.of(context).hours,
                     controller: hoursController,
                   ),
                   SizedBox(width: 16.w),
                   _TimePartField(
-                    label: 'دقيقة',
+                    //دقيقه
+                    label: S.of(context).minute,
                     controller: minutesController,
                   ),
                 ],
@@ -133,7 +138,8 @@ class BookingCustomTimeBottomSheet extends ConsumerWidget {
             ],
           ),
           bottomAction: CustomButtonWidget(
-            text: 'موافق',
+            //موافق
+            text: S.of(context).accept,
             onPressed: () {
               final hoursText = hoursController.text.trim();
               final minutesText = minutesController.text.trim();

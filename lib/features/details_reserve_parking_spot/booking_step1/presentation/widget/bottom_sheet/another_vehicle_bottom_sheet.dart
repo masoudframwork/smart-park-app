@@ -9,6 +9,8 @@ import '../../../../../../core/widgets/app_bottom_sheet.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custome_text_field_widget.dart';
+import '../../../../../../generated/l10n.dart';
+
 class AnotherVehicleBottomSheet extends ConsumerWidget {
   const AnotherVehicleBottomSheet({super.key});
   @override
@@ -17,7 +19,7 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
     final controller = ref.read(vehicleFormControllerProvider.notifier);
     return AppBottomSheet(
       maxHeightFactor: (state.isSaudi ? 0.66 : 0.60).h,
-      title: 'مركبة جديدة',
+      title: S.of(context).newVehicle,
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
         color: AppColor.settingsBackgroundColor,
@@ -32,7 +34,11 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
               ),
               SizedBox(height: 24.h),
               if (state.isSaudi) ...[
-                const _LabelWithStar(text: 'نوع اللوحة'),
+                _LabelWithStar(
+                  text:
+                      //نوع لوحة
+                      S.of(context).platetype,
+                ),
                 SizedBox(height: 8.h),
                 _PlateTypeDropdown(
                   value: state.plateType,
@@ -40,13 +46,18 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
                   showError: state.showErrors && (state.plateType == null),
                 ),
                 SizedBox(height: 16.h),
-                const _LabelWithStar(text: 'رقم اللوحة'),
+                _LabelWithStar(
+                  text:
+
+                      // 'رقم اللوحة'
+
+                      S.of(context).platenumber,
+                ),
                 SizedBox(height: 8.h),
                 Row(
                   children: [
                     _PlateTextField(
                       width: 157.w,
-
                       hintText: '0000',
                       keyboardType: TextInputType.number,
                       onChanged: controller.setSaudiNumbers,
@@ -75,7 +86,11 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
                   ],
                 ),
               ] else ...[
-                const _LabelWithStar(text: 'رقم اللوحة'),
+                _LabelWithStar(
+                  text:
+                      //'رقم اللوحة'),
+                      S.of(context).platenumber,
+                ),
                 SizedBox(height: 8.h),
                 _PlateTextField(
                   hintText: '',
@@ -91,7 +106,12 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
                 ),
               ],
               SizedBox(height: 16.h),
-              const _LabelWithStar(text: 'لون المركبة'),
+              _LabelWithStar(
+                text:
+                    //'لون المركبة'
+
+                    S.of(context).vehiclecolor,
+              ),
               SizedBox(height: 8.h),
               _VehicleColorDropdown(
                 value: state.vehicleColor,
@@ -101,7 +121,9 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
               ),
               SizedBox(height: 16.h),
               AppText(
-                text: 'الصورة الرمزية',
+                text:
+                    //'الصورة الرمزية',
+                    S.of(context).avatar,
                 appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                   fontWeight: FontWeight.w300,
                 ),
@@ -134,7 +156,7 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   AppText(
-                    text: 'احفظ المركبة للاستخدام لاحقاً',
+                    text: S.of(context).savethevehicleforlateruse,
                     appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                       fontWeight: FontWeight.w300,
                     ),
@@ -143,7 +165,7 @@ class AnotherVehicleBottomSheet extends ConsumerWidget {
               ),
               SizedBox(height: 24.h),
               CustomButtonWidget(
-                text: 'إضافة المركبة',
+                text: S.of(context).addvehicle,
                 onPressed: () {},
                 // onPressed: state.isSubmitting
                 //     ? null
@@ -182,7 +204,7 @@ class _AnotherVehicleBottomSheetState
 
     return AppBottomSheet(
       maxHeightFactor: (state.isSaudi ? 0.66 : 0.60).h,
-      title: 'مركبة جديدة',
+      title: S.of(context).newVehicle,
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
         color: AppColor.settingsBackgroundColor,
@@ -200,9 +222,12 @@ class _AnotherVehicleBottomSheetState
                 onChanged: controller.setVehicleType,
               ),
               SizedBox(height: 24.h),
-
               if (state.isSaudi) ...[
-                const _LabelWithStar(text: 'نوع اللوحة'),
+                _LabelWithStar(
+                  text: S.of(context).platetype,
+
+                  // 'نوع اللوحة'
+                ),
                 SizedBox(height: 8.h),
                 _PlateTypeDropdown(
                   value: state.plateType,
@@ -210,7 +235,11 @@ class _AnotherVehicleBottomSheetState
                   showError: state.showErrors && (state.plateType == null),
                 ),
                 SizedBox(height: 16.h),
-                const _LabelWithStar(text: 'رقم اللوحة'),
+                 _LabelWithStar(
+                  //  text: 'رقم اللوحة'
+                   text: S.of(context).platenumber,
+
+                ),
                 SizedBox(height: 8.h),
                 Row(
                   children: [
@@ -233,7 +262,6 @@ class _AnotherVehicleBottomSheetState
                       hintText: 'أ ب ج',
                       keyboardType: TextInputType.text,
                       onChanged: controller.setSaudiLetters,
-
                       validator: (value) {
                         if (!state.showErrors) return null;
                         if (value.length != 3) {
@@ -245,13 +273,15 @@ class _AnotherVehicleBottomSheetState
                   ],
                 ),
               ] else ...[
-                const _LabelWithStar(text: 'رقم اللوحة'),
+                 _LabelWithStar(
+                   //  text: 'رقم اللوحة'
+                   text: S.of(context).platenumber,
+                 ),
                 SizedBox(height: 8.h),
                 _PlateTextField(
                   hintText: '',
                   keyboardType: TextInputType.text,
                   onChanged: controller.setNonSaudiPlate,
-
                   validator: (value) {
                     if (!state.showErrors) return null;
                     if (value.isEmpty) {
@@ -261,9 +291,11 @@ class _AnotherVehicleBottomSheetState
                   },
                 ),
               ],
-
               SizedBox(height: 16.h),
-              const _LabelWithStar(text: 'لون المركبة'),
+               _LabelWithStar(
+                //   text: 'لون المركبة'
+               text: S.of(context).vehiclecolor,
+               ),
               SizedBox(height: 8.h),
               _VehicleColorDropdown(
                 value: state.vehicleColor,
@@ -272,12 +304,12 @@ class _AnotherVehicleBottomSheetState
                   _scrollToBottom();
                 },
                 showError:
-                state.showErrors && (state.vehicleColor?.isEmpty ?? true),
+                    state.showErrors && (state.vehicleColor?.isEmpty ?? true),
               ),
-
               SizedBox(height: 16.h),
               AppText(
-                text: 'الصورة الرمزية',
+                //text: 'الصورة الرمزية',
+                text: S.of(context).avatar,
                 appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                   fontWeight: FontWeight.w300,
                 ),
@@ -291,7 +323,6 @@ class _AnotherVehicleBottomSheetState
                 },
                 showError: state.showErrors && (state.avatar?.isEmpty ?? true),
               ),
-
               SizedBox(height: 20.h),
               Row(
                 spacing: 10.w,
@@ -311,13 +342,14 @@ class _AnotherVehicleBottomSheetState
                           : AppColor.greyContainerColor;
                     }),
                     trackOutlineColor:
-                    WidgetStateProperty.all(Colors.transparent),
+                        WidgetStateProperty.all(Colors.transparent),
                     trackOutlineWidth: WidgetStateProperty.all(0),
                     thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   AppText(
-                    text: 'احفظ المركبة للاستخدام لاحقاً',
+                   // text: 'احفظ المركبة للاستخدام لاحقاً',
+                    text: S.of(context).savethevehicleforlateruse,
                     appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                       fontWeight: FontWeight.w300,
                     ),
@@ -326,7 +358,9 @@ class _AnotherVehicleBottomSheetState
               ),
               SizedBox(height: 24.h),
               CustomButtonWidget(
-                text: 'إضافة المركبة',
+                text: S.of(context).addvehicle,
+
+                //'إضافة المركبة',
                 onPressed: () {
                   _scrollToBottom();
                   // controller.submit(context);
@@ -412,13 +446,13 @@ class _VehicleTypeTabs extends StatelessWidget {
     return Row(
       children: [
         buildTab(
-          text: 'مركبة سعودية',
+          text: S.of(context).saudivehicle,
           active: isSaudi,
           isLeft: true,
           onTap: () => onChanged(VehicleType.saudi),
         ),
         buildTab(
-          text: 'مركبة غير سعودية',
+          text: S.of(context).nonsaudivehicle,
           active: !isSaudi,
           isLeft: false,
           onTap: () => onChanged(VehicleType.nonSaudi),
@@ -541,8 +575,6 @@ class _PlateTextField extends StatelessWidget {
       ),
       borderSideColor: AppColor.greyDividerColor,
       textInputType: keyboardType,
-
-
       borderRadius: 10,
       onChanged: onChanged,
       validator: (value) {

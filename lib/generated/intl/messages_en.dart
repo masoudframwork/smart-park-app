@@ -30,9 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
           "It is a long-established fact that the readable content of a page will distract the reader from focusing on the external appearance of the text or the layout of the paragraphs on the page. Therefore, the Lorem Ipsum method is used because it provides a natural distribution.",
         ),
     "aboutthispark": MessageLookupByLibrary.simpleMessage("About this park"),
+    "accept": MessageLookupByLibrary.simpleMessage("Accept"),
     "additionalservices": MessageLookupByLibrary.simpleMessage(
       "Additional services",
     ),
+    "addvehicle": MessageLookupByLibrary.simpleMessage(" Add Vehicle"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account ?",
     ),
@@ -122,16 +124,24 @@ class MessageLookup extends MessageLookupByLibrary {
     "full_name": MessageLookupByLibrary.simpleMessage("Full name "),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "hour": MessageLookupByLibrary.simpleMessage("/hour"),
+    "hour2": MessageLookupByLibrary.simpleMessage("2 hour"),
+    "hour3": MessageLookupByLibrary.simpleMessage("3 hour"),
+    "hour4": MessageLookupByLibrary.simpleMessage("4 hour"),
+    "hour6": MessageLookupByLibrary.simpleMessage("6 hour"),
+    "hours": MessageLookupByLibrary.simpleMessage("hour"),
     "idNumber": MessageLookupByLibrary.simpleMessage("ID number"),
     "khuraisRoadRiyadhSaudiArabia": MessageLookupByLibrary.simpleMessage(
       "Khurais Road, Riyadh, Saudi Arabia",
     ),
     "laundryservice": MessageLookupByLibrary.simpleMessage("laundry service"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "minute": MessageLookupByLibrary.simpleMessage("Minute"),
+    "minute30": MessageLookupByLibrary.simpleMessage("30 minute"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "newVehicle": MessageLookupByLibrary.simpleMessage("New Vehicle"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("New vehicle"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
-      "Nissan Pathfinder 2023 / Blackد",
+      "Nissan Pathfinder 2023 / Black",
     ),
     "no_more_searching_or_hassle": MessageLookupByLibrary.simpleMessage(
       "No more searching or hassle",
@@ -190,6 +200,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "saudivehicle": MessageLookupByLibrary.simpleMessage("Saudi vehicle"),
     "saveCard": MessageLookupByLibrary.simpleMessage("Save Card"),
     "saveVehicle": MessageLookupByLibrary.simpleMessage("Save Vehicle"),
+    "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
+      "Save the vehicle for later use.",
+    ),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("Set the duration"),
@@ -205,6 +218,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "specifythebookingduration": MessageLookupByLibrary.simpleMessage(
+      "Specify the booking duration",
+    ),
     "specifythedurationofthestop": MessageLookupByLibrary.simpleMessage(
       "Specify the duration of the stop",
     ),

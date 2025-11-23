@@ -30,9 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
           "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ",
         ),
     "aboutthispark": MessageLookupByLibrary.simpleMessage("عن هذا المصف"),
+    "accept": MessageLookupByLibrary.simpleMessage("موافق"),
     "additionalservices": MessageLookupByLibrary.simpleMessage(
       "الخدمات الإضافية",
     ),
+    "addvehicle": MessageLookupByLibrary.simpleMessage("إضافة المركبة"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "لديك حساب ؟",
     ),
@@ -120,13 +122,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "hour": MessageLookupByLibrary.simpleMessage("ساعة/"),
+    "hour2": MessageLookupByLibrary.simpleMessage("ساعتين"),
+    "hour3": MessageLookupByLibrary.simpleMessage("3 ساعات"),
+    "hour4": MessageLookupByLibrary.simpleMessage("4 ساعات"),
+    "hour6": MessageLookupByLibrary.simpleMessage("6 ساعات"),
+    "hours": MessageLookupByLibrary.simpleMessage("ساعه"),
     "idNumber": MessageLookupByLibrary.simpleMessage("رقم الهوية"),
     "khuraisRoadRiyadhSaudiArabia": MessageLookupByLibrary.simpleMessage(
       "طريق خريص، الرياض، المملكة العربية السعودية",
     ),
     "laundryservice": MessageLookupByLibrary.simpleMessage("خدمة غسيل"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "minute": MessageLookupByLibrary.simpleMessage("دقيقة"),
+    "minute30": MessageLookupByLibrary.simpleMessage("30 دقيقة"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "newVehicle": MessageLookupByLibrary.simpleMessage("مركبة جديدة"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("مركبة أخرى"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
       "نيسان باتلفايندر 2023 - أسود",
@@ -188,6 +198,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "saudivehicle": MessageLookupByLibrary.simpleMessage("مركبة سعودية"),
     "saveCard": MessageLookupByLibrary.simpleMessage("حفظ البطاقة"),
     "saveVehicle": MessageLookupByLibrary.simpleMessage("حفظ المركبة"),
+    "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
+      "احفظ المركبة للاستخدام لاحقاً",
+    ),
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("تحديد المدة"),
@@ -203,6 +216,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_terms": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
     "settings_title": MessageLookupByLibrary.simpleMessage("الإعدادات"),
     "skip": MessageLookupByLibrary.simpleMessage("تخطي"),
+    "specifythebookingduration": MessageLookupByLibrary.simpleMessage(
+      "تحديد مدة الحجز",
+    ),
     "specifythedurationofthestop": MessageLookupByLibrary.simpleMessage(
       "حدّد مدة الوقوف",
     ),

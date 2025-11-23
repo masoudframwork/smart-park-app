@@ -383,18 +383,18 @@ class _SummaryStepContent extends ConsumerWidget {
 
   const _SummaryStepContent({required this.state});
 
-  String _durationLabel(double hours) {
-    if (hours == 0.5) return '30 دقيقة';
-    if (hours == 1) return 'ساعة';
-    if (hours == 2) return 'ساعتين';
-    if (hours == 3) return '3 ساعات';
-    if (hours == 4) return '4 ساعات';
-    if (hours == 6) return '6 ساعات';
-    return '${hours.toStringAsFixed(1)} ساعة';
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    String durationLabel(double hours) {
+      if (hours == 0.5) return S.of(context).minute30;
+      if (hours == 1) return S.of(context).hour;
+      if (hours == 2) return S.of(context).hour2;
+      if (hours == 3) return S.of(context).hour3;
+      if (hours == 4) return S.of(context).hour4;
+      if (hours == 6) return S.of(context).hour6;
+      return '${hours.toStringAsFixed(1)} ${S.of(context).hour}';
+    }
+
     final durationState = ref.watch(durationControllerProvider);
     final double hours = durationState.hours;
     const double pricePerHour = 5;
@@ -425,9 +425,7 @@ class _SummaryStepContent extends ConsumerWidget {
         spacing: 12.h,
         children: [
           Row(
-            textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
                 //الاجمالي
@@ -464,26 +462,23 @@ class _SummaryStepContent extends ConsumerWidget {
               ),
               AppText(
                 text:
-                'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
+                    S.of(context).zone013KhuraisRoadRiyadhKingdomofSaudiArabia,
+                //'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                     color: AppColor.blackNumberSmallColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp),
+                    fontWeight: FontWeight.w300,
+                    fontSize: 11.sp),
               ),
             ],
           ),
-
-
-
           Row(
-            textDirection: TextDirection.rtl,
             children: [
               SvgPicture.asset(
                 AppImages.timer,
               ),
               SizedBox(width: 6.w),
               AppText(
-                text: _durationLabel(hours),
+                text: durationLabel(hours),
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                   color: AppColor.blackNumberSmallColor,
                   fontWeight: FontWeight.w600,
@@ -492,7 +487,6 @@ class _SummaryStepContent extends ConsumerWidget {
             ],
           ),
           Row(
-            textDirection: TextDirection.rtl,
             children: [
               SvgPicture.asset(
                 AppImages.payments,

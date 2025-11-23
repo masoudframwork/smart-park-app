@@ -74,6 +74,7 @@ class TheVehicleTile extends StatelessWidget {
                     (textStyle ?? AppTextTheme.bodyMediumTextStyle()).copyWith(
                   color: effectiveText,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                      fontSize: 14.sp
                 ),
               ),
             ],

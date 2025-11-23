@@ -92,6 +92,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 import '../../domain/duration_states.dart';
 
 class QuickDurationGrid extends ConsumerWidget {
@@ -109,12 +110,12 @@ class QuickDurationGrid extends ConsumerWidget {
     final durationState = ref.watch(durationControllerProvider);
 
     final baseOptions = <_DurationOption>[
-      _DurationOption(id: '30m', hours: 0.5, label: '30 دقيقة'),
-      _DurationOption(id: '1h', hours: 1, label: 'ساعة'),
-      _DurationOption(id: '2h', hours: 2, label: 'ساعتين'),
-      _DurationOption(id: '3h', hours: 3, label: '3 ساعات'),
-      _DurationOption(id: '4h', hours: 4, label: '4 ساعات'),
-      _DurationOption(id: '6h', hours: 6, label: '6 ساعات'),
+      _DurationOption(id: '30m', hours: 0.5, label: S.of(context).minute30),
+      _DurationOption(id: '1h', hours: 1, label: S.of(context).hours),
+      _DurationOption(id: '2h', hours: 2, label: S.of(context).hour2),
+      _DurationOption(id: '3h', hours: 3, label: S.of(context).hour3),
+      _DurationOption(id: '4h', hours: 4, label: S.of(context).hour4),
+      _DurationOption(id: '6h', hours: 6, label: S.of(context).hour6),
     ];
 
     final options = [...baseOptions];

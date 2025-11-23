@@ -128,5 +128,17 @@
   "total": "الإجمالي",
   "bookingSummary": "ملخص الحجز",
   "hour": "ساعة/",
-  "zone013KhuraisRoadRiyadhKingdomofSaudiArabia": "المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية"
+  "zone013KhuraisRoadRiyadhKingdomofSaudiArabia": "المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية",
+  "minute30": "30 دقيقة",
+  "hour2": "ساعتين",
+  "hour3": "3 ساعات",
+  "hour4": "4 ساعات",
+  "hour6": "6 ساعات",
+  "hours": "ساعه",
+  "newVehicle": "مركبة جديدة",
+  "savethevehicleforlateruse": "احفظ المركبة للاستخدام لاحقاً",
+  "addvehicle": "إضافة المركبة",
+  "specifythebookingduration": "تحديد مدة الحجز",
+  "minute": "دقيقة",
+  "accept": "موافق"
 }

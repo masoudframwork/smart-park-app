@@ -959,10 +959,10 @@ class S {
     );
   }
 
-  /// `Nissan Pathfinder 2023 / Blackد`
+  /// `Nissan Pathfinder 2023 / Black`
   String get nissanPathfinderBlack {
     return Intl.message(
-      'Nissan Pathfinder 2023 / Blackد',
+      'Nissan Pathfinder 2023 / Black',
       name: 'nissanPathfinderBlack',
       desc: '',
       args: [],
@@ -1022,6 +1022,76 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `30 minute`
+  String get minute30 {
+    return Intl.message('30 minute', name: 'minute30', desc: '', args: []);
+  }
+
+  /// `2 hour`
+  String get hour2 {
+    return Intl.message('2 hour', name: 'hour2', desc: '', args: []);
+  }
+
+  /// `3 hour`
+  String get hour3 {
+    return Intl.message('3 hour', name: 'hour3', desc: '', args: []);
+  }
+
+  /// `4 hour`
+  String get hour4 {
+    return Intl.message('4 hour', name: 'hour4', desc: '', args: []);
+  }
+
+  /// `6 hour`
+  String get hour6 {
+    return Intl.message('6 hour', name: 'hour6', desc: '', args: []);
+  }
+
+  /// `hour`
+  String get hours {
+    return Intl.message('hour', name: 'hours', desc: '', args: []);
+  }
+
+  /// `New Vehicle`
+  String get newVehicle {
+    return Intl.message('New Vehicle', name: 'newVehicle', desc: '', args: []);
+  }
+
+  /// `Save the vehicle for later use.`
+  String get savethevehicleforlateruse {
+    return Intl.message(
+      'Save the vehicle for later use.',
+      name: 'savethevehicleforlateruse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Add Vehicle`
+  String get addvehicle {
+    return Intl.message(' Add Vehicle', name: 'addvehicle', desc: '', args: []);
+  }
+
+  /// `Specify the booking duration`
+  String get specifythebookingduration {
+    return Intl.message(
+      'Specify the booking duration',
+      name: 'specifythebookingduration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minute`
+  String get minute {
+    return Intl.message('Minute', name: 'minute', desc: '', args: []);
+  }
+
+  /// `Accept`
+  String get accept {
+    return Intl.message('Accept', name: 'accept', desc: '', args: []);
   }
 }
 
