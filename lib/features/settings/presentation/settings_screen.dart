@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
-import 'package:smart/features/settings/presentation/terms/terms_screen.dart';
+import 'package:smart/features/settings/presentation/terms/help_support_screen.dart';
+import 'package:smart/features/settings/presentation/terms/terms_conditions_screen.dart';
 
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_text.dart';
@@ -24,7 +25,6 @@ class SettingsScreen extends StatelessWidget {
         appBar: CustomAppBar(
           backgroundColor: AppColor.backgroundAppBarColor,
           leading: CircleImageButton(
-            onTap: () {},
             imageUrl: AppImages.appLogo,
             size: 37,
           ),
@@ -129,7 +129,12 @@ class _SettingsList extends StatelessWidget {
             ),
             SettingsCard(
               title:  S.of(context).settings_support,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HelpSupportScreen()),
+                );
+              },
             ),
             SettingsCard(
               title:  S.of(context).settings_dark_mode,

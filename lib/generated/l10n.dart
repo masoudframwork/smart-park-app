@@ -543,6 +543,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Help and technical support`
+  String get help_support_title {
+    return Intl.message(
+      'Help and technical support',
+      name: 'help_support_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get help_contact_us {
+    return Intl.message(
+      'Contact us',
+      name: 'help_contact_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message us`
+  String get help_message_us {
+    return Intl.message(
+      'Message us',
+      name: 'help_message_us',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -51,6 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
       "Do not display instructions again",
     ),
+    "help_contact_us": MessageLookupByLibrary.simpleMessage("Contact us"),
+    "help_message_us": MessageLookupByLibrary.simpleMessage("Message us"),
+    "help_support_title": MessageLookupByLibrary.simpleMessage(
+      "Help and technical support",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "profile_additionalInfo": MessageLookupByLibrary.simpleMessage(
       "Additional Information",

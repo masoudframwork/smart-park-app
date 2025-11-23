@@ -70,7 +70,10 @@
   "terms_usage_2": "Improving user experience and service development",
   "terms_usage_3": "Communicating with you regarding inquiries or important notifications",
   "terms_usage_4": "For analytical and statistical purposes to improve app performance",
-  "terms_usage_5": "Ensuring compliance with local laws and regulations"
+  "terms_usage_5": "Ensuring compliance with local laws and regulations",
+  "help_support_title": "Help and technical support",
+  "help_contact_us": "Contact us",
+  "help_message_us": "Message us"
 
 
 }

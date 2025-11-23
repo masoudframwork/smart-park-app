@@ -51,6 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "doNotDisplayInstructionsAgain": MessageLookupByLibrary.simpleMessage(
       "لا تعرض التعليمات مرة أخرى",
     ),
+    "help_contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "help_message_us": MessageLookupByLibrary.simpleMessage("راسلنا"),
+    "help_support_title": MessageLookupByLibrary.simpleMessage(
+      "المساعدة و الدعم الفني",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "profile_additionalInfo": MessageLookupByLibrary.simpleMessage(
       "بيانات إضافية",
