@@ -13,6 +13,8 @@ class HelpSupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.settingsBackgroundColor,
@@ -22,19 +24,22 @@ class HelpSupportScreen extends StatelessWidget {
             imageUrl: AppImages.appLogo,
             size: 37,
           ),
-          // title: S.of(context).terms_title,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
           child: Column(
             children: [
-              const _HelpAndSupportHeader(),
+              _HelpAndSupportHeader(isRTL: isRTL),
               SizedBox(height: 16.h),
+
+              /// Contact Us
               _CardItem(
                 icon: AppImages.helpSupportContactUs,
                 title: S.of(context).help_contact_us,
               ),
               SizedBox(height: 12.h),
+
+              /// Message Us
               _CardItem(
                 icon: AppImages.helpSupportMessageUs,
                 title: S.of(context).help_message_us,
@@ -48,18 +53,21 @@ class HelpSupportScreen extends StatelessWidget {
 }
 
 class _HelpAndSupportHeader extends StatelessWidget {
-  const _HelpAndSupportHeader();
+  final bool isRTL;
+
+  const _HelpAndSupportHeader({required this.isRTL});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.w),
       child: Row(
-        spacing: 15.w,
         children: [
           _ArrowBackButton(
+            isRTL: isRTL,
             onTap: () => Navigator.of(context).pop(),
           ),
+          SizedBox(width: 15.w),
           AppText(
             text: S.of(context).help_support_title,
             appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
@@ -73,9 +81,13 @@ class _HelpAndSupportHeader extends StatelessWidget {
 }
 
 class _ArrowBackButton extends StatelessWidget {
+  final bool isRTL;
   final VoidCallback onTap;
 
-  const _ArrowBackButton({required this.onTap});
+  const _ArrowBackButton({
+    required this.onTap,
+    required this.isRTL,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -93,12 +105,15 @@ class _ArrowBackButton extends StatelessWidget {
             width: 1,
           ),
         ),
-        child: CustomImageWidget(
-          imageUrl: AppImages.arrowRightIcon,
-          width: 20.w,
-          height: 20.w,
-          isFlag: true,
-          color: AppColor.primaryColor,
+        child: Transform.rotate(
+          angle: isRTL ? 0 : 3.14, // flip arrow in LTR
+          child: CustomImageWidget(
+            imageUrl: AppImages.arrowRightIcon,
+            width: 20.w,
+            height: 20.w,
+            isFlag: true,
+            color: AppColor.primaryColor,
+          ),
         ),
       ),
     );
@@ -116,7 +131,6 @@ class _CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Detect if current language is RTL (Arabic)
     bool isRTL = Directionality.of(context) == TextDirection.rtl;
 
     return Container(
@@ -128,48 +142,35 @@ class _CardItem extends StatelessWidget {
         border: Border.all(color: AppColor.contanearGreyColor, width: 1),
       ),
 
-      // Build Row based on language direction
       child: Row(
-        children: isRTL
-            ? [
-                // Arabic: TEXT RIGHT → ICON LEFT
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: AppText(
-                      text: title,
-                      appTextTheme: AppTextTheme.titleMediumTextStyle(),
-                    ),
-                  ),
-                ),
-                CustomImageWidget(
-                  imageUrl: icon,
-                  width: 22.w,
-                  height: 22.w,
-                  isFlag: true,
-                  color: AppColor.primaryColor,
-                ),
-              ]
-            : [
-                // English: TEXT LEFT → ICON RIGHT
-                CustomImageWidget(
-                  imageUrl: icon,
-                  width: 22.w,
-                  height: 22.w,
-                  isFlag: true,
-                  color: AppColor.primaryColor,
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: AppText(
-                      text: title,
-                      appTextTheme: AppTextTheme.titleMediumTextStyle(),
-                    ),
-                  ),
-                ),
-              ],
+        children: [
+          /// TEXT first (left)
+          Expanded(
+            child: Align(
+              alignment:
+              isRTL ? Alignment.centerRight : Alignment.centerLeft,
+              child: AppText(
+                text: title,
+                appTextTheme: AppTextTheme.titleMediumTextStyle(),
+              ),
+            ),
+          ),
+
+          SizedBox(width: 12.w),
+
+          /// ICON second (right)
+          CustomImageWidget(
+            imageUrl: icon,
+            width: 22.w,
+            height: 22.w,
+            isFlag: true,
+            color: AppColor.primaryColor,
+          ),
+        ],
       ),
     );
   }
 }
+
+
+
