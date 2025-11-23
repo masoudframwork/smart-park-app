@@ -128,6 +128,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "free": MessageLookupByLibrary.simpleMessage("Free"),
     "freeWifi": MessageLookupByLibrary.simpleMessage("Free Wi-Fi"),
     "full_name": MessageLookupByLibrary.simpleMessage("Full name "),
+    "help_contact_us": MessageLookupByLibrary.simpleMessage("Contact us"),
+    "help_message_us": MessageLookupByLibrary.simpleMessage("Message us"),
+    "help_support_title": MessageLookupByLibrary.simpleMessage(
+      "Help and technical support",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "hour": MessageLookupByLibrary.simpleMessage("/hour"),
     "hour2": MessageLookupByLibrary.simpleMessage("2 hour"),
@@ -189,7 +194,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile_date_of_birth": MessageLookupByLibrary.simpleMessage(
       "Date Of Birth",
     ),
-    "profile_fines": MessageLookupByLibrary.simpleMessage("Fines"),
+    "profile_fines": MessageLookupByLibrary.simpleMessage("Tickets"),
     "profile_fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "profile_logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "profile_nationalId": MessageLookupByLibrary.simpleMessage("National ID"),
@@ -201,6 +206,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Saved Information",
     ),
     "profile_settings": MessageLookupByLibrary.simpleMessage("Settings"),
+    "profile_soon": MessageLookupByLibrary.simpleMessage("Soon"),
+    "profile_test_name": MessageLookupByLibrary.simpleMessage(
+      "bdulrahman Ahmed Abdullah",
+    ),
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("Vehicles"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
     "reserve_your_parking_spot": MessageLookupByLibrary.simpleMessage(
@@ -216,6 +225,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("Set the duration"),
+    "scanParkingCode": MessageLookupByLibrary.simpleMessage(
+      "Please scan the parking code",
+    ),
+    "searchParkingHint": MessageLookupByLibrary.simpleMessage(
+      "Search for parking",
+    ),
+    "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("AR"),
@@ -240,6 +256,41 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "Toyota Corolla 2024 / Red",
+    ),
+    "terms_section_1": MessageLookupByLibrary.simpleMessage(
+      "The information we collect",
+    ),
+    "terms_section_2": MessageLookupByLibrary.simpleMessage(
+      "How to use the information",
+    ),
+    "terms_section_3": MessageLookupByLibrary.simpleMessage(
+      "Sharing information",
+    ),
+    "terms_section_4": MessageLookupByLibrary.simpleMessage("Data protection"),
+    "terms_section_5": MessageLookupByLibrary.simpleMessage("User rights"),
+    "terms_section_6": MessageLookupByLibrary.simpleMessage("Cookies"),
+    "terms_section_7": MessageLookupByLibrary.simpleMessage(
+      "Privacy Policy Update",
+    ),
+    "terms_section_8": MessageLookupByLibrary.simpleMessage("Contact us"),
+    "terms_title": MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+    "terms_usage_0": MessageLookupByLibrary.simpleMessage(
+      "We use your data for the following purposes:",
+    ),
+    "terms_usage_1": MessageLookupByLibrary.simpleMessage(
+      "Managing parking booking and payment processes",
+    ),
+    "terms_usage_2": MessageLookupByLibrary.simpleMessage(
+      "Improving user experience and service development",
+    ),
+    "terms_usage_3": MessageLookupByLibrary.simpleMessage(
+      "Communicating with you regarding inquiries or important notifications",
+    ),
+    "terms_usage_4": MessageLookupByLibrary.simpleMessage(
+      "For analytical and statistical purposes to improve app performance",
+    ),
+    "terms_usage_5": MessageLookupByLibrary.simpleMessage(
+      "Ensuring compliance with local laws and regulations",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",

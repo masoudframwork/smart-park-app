@@ -124,6 +124,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "free": MessageLookupByLibrary.simpleMessage("مجانا"),
     "freeWifi": MessageLookupByLibrary.simpleMessage("WIFI مجاني"),
     "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "help_contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "help_message_us": MessageLookupByLibrary.simpleMessage("راسلنا"),
+    "help_support_title": MessageLookupByLibrary.simpleMessage(
+      "المساعدة و الدعم الفني",
+    ),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "hour": MessageLookupByLibrary.simpleMessage("ساعة/"),
     "hour2": MessageLookupByLibrary.simpleMessage("ساعتين"),
@@ -195,6 +200,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "المعلومات المحفوظة مسبقًا",
     ),
     "profile_settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "profile_soon": MessageLookupByLibrary.simpleMessage("قريباً"),
+    "profile_test_name": MessageLookupByLibrary.simpleMessage(
+      "عبد الرحمن أحمد عبدالله",
+    ),
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("المركبات"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "reserve_your_parking_spot": MessageLookupByLibrary.simpleMessage(
@@ -210,6 +219,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("تحديد المدة"),
+    "scanParkingCode": MessageLookupByLibrary.simpleMessage(
+      "الرجاء مسح رمز الموقف",
+    ),
+    "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
+    "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("عر"),
@@ -234,6 +248,41 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "تويوتا كورولا 2024 - أحمر",
+    ),
+    "terms_section_1": MessageLookupByLibrary.simpleMessage(
+      "المعلومات التي نقوم بجمعها",
+    ),
+    "terms_section_2": MessageLookupByLibrary.simpleMessage(
+      "كيفية استخدام المعلومات",
+    ),
+    "terms_section_3": MessageLookupByLibrary.simpleMessage("مشاركة المعلومات"),
+    "terms_section_4": MessageLookupByLibrary.simpleMessage("حماية البيانات"),
+    "terms_section_5": MessageLookupByLibrary.simpleMessage("حقوق المستخدم"),
+    "terms_section_6": MessageLookupByLibrary.simpleMessage(
+      "ملفات تعريف الارتباط",
+    ),
+    "terms_section_7": MessageLookupByLibrary.simpleMessage(
+      "تحديث سياسة الخصوصية",
+    ),
+    "terms_section_8": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
+    "terms_title": MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+    "terms_usage_0": MessageLookupByLibrary.simpleMessage(
+      "نستخدم بياناتكم للأغراض التالية:",
+    ),
+    "terms_usage_1": MessageLookupByLibrary.simpleMessage(
+      "إدارة عمليات الحجز والدفع للمواقف",
+    ),
+    "terms_usage_2": MessageLookupByLibrary.simpleMessage(
+      "تحسين تجربة المستخدم وتطوير الخدمات",
+    ),
+    "terms_usage_3": MessageLookupByLibrary.simpleMessage(
+      "التواصل معكم في حال وجود استفسارات مهمة",
+    ),
+    "terms_usage_4": MessageLookupByLibrary.simpleMessage(
+      "أغراض التحليل والإحصاء لتحسين أداء التطبيق",
+    ),
+    "terms_usage_5": MessageLookupByLibrary.simpleMessage(
+      "ضمان الامتثال للقوانين المحلية",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",

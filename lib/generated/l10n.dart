@@ -249,9 +249,9 @@ class S {
     );
   }
 
-  /// `Fines`
+  /// `Tickets`
   String get profile_fines {
-    return Intl.message('Fines', name: 'profile_fines', desc: '', args: []);
+    return Intl.message('Tickets', name: 'profile_fines', desc: '', args: []);
   }
 
   /// `Wallet`
@@ -302,6 +302,21 @@ class S {
   /// `Logout`
   String get profile_logout {
     return Intl.message('Logout', name: 'profile_logout', desc: '', args: []);
+  }
+
+  /// `Soon`
+  String get profile_soon {
+    return Intl.message('Soon', name: 'profile_soon', desc: '', args: []);
+  }
+
+  /// `bdulrahman Ahmed Abdullah`
+  String get profile_test_name {
+    return Intl.message(
+      'bdulrahman Ahmed Abdullah',
+      name: 'profile_test_name',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Settings`
@@ -1127,6 +1142,206 @@ class S {
   /// `New card`
   String get newcard {
     return Intl.message('New card', name: 'newcard', desc: '', args: []);
+  }
+
+  /// `Search for parking`
+  String get searchParkingHint {
+    return Intl.message(
+      'Search for parking',
+      name: 'searchParkingHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get searchTooltip {
+    return Intl.message('Search', name: 'searchTooltip', desc: '', args: []);
+  }
+
+  /// `Please scan the parking code`
+  String get scanParkingCode {
+    return Intl.message(
+      'Please scan the parking code',
+      name: 'scanParkingCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms and Conditions`
+  String get terms_title {
+    return Intl.message(
+      'Terms and Conditions',
+      name: 'terms_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The information we collect`
+  String get terms_section_1 {
+    return Intl.message(
+      'The information we collect',
+      name: 'terms_section_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to use the information`
+  String get terms_section_2 {
+    return Intl.message(
+      'How to use the information',
+      name: 'terms_section_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sharing information`
+  String get terms_section_3 {
+    return Intl.message(
+      'Sharing information',
+      name: 'terms_section_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data protection`
+  String get terms_section_4 {
+    return Intl.message(
+      'Data protection',
+      name: 'terms_section_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User rights`
+  String get terms_section_5 {
+    return Intl.message(
+      'User rights',
+      name: 'terms_section_5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cookies`
+  String get terms_section_6 {
+    return Intl.message('Cookies', name: 'terms_section_6', desc: '', args: []);
+  }
+
+  /// `Privacy Policy Update`
+  String get terms_section_7 {
+    return Intl.message(
+      'Privacy Policy Update',
+      name: 'terms_section_7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get terms_section_8 {
+    return Intl.message(
+      'Contact us',
+      name: 'terms_section_8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We use your data for the following purposes:`
+  String get terms_usage_0 {
+    return Intl.message(
+      'We use your data for the following purposes:',
+      name: 'terms_usage_0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Managing parking booking and payment processes`
+  String get terms_usage_1 {
+    return Intl.message(
+      'Managing parking booking and payment processes',
+      name: 'terms_usage_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Improving user experience and service development`
+  String get terms_usage_2 {
+    return Intl.message(
+      'Improving user experience and service development',
+      name: 'terms_usage_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Communicating with you regarding inquiries or important notifications`
+  String get terms_usage_3 {
+    return Intl.message(
+      'Communicating with you regarding inquiries or important notifications',
+      name: 'terms_usage_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For analytical and statistical purposes to improve app performance`
+  String get terms_usage_4 {
+    return Intl.message(
+      'For analytical and statistical purposes to improve app performance',
+      name: 'terms_usage_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ensuring compliance with local laws and regulations`
+  String get terms_usage_5 {
+    return Intl.message(
+      'Ensuring compliance with local laws and regulations',
+      name: 'terms_usage_5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help and technical support`
+  String get help_support_title {
+    return Intl.message(
+      'Help and technical support',
+      name: 'help_support_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get help_contact_us {
+    return Intl.message(
+      'Contact us',
+      name: 'help_contact_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Message us`
+  String get help_message_us {
+    return Intl.message(
+      'Message us',
+      name: 'help_message_us',
+      desc: '',
+      args: [],
+    );
   }
 }
 

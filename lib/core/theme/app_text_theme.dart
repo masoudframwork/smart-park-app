@@ -53,9 +53,6 @@ class AppTextTheme {
   );
 
 
-
-
-
   // 🏷️ العناوين الصغيرة
   static TextStyle titleSmallTextStyle() => TextStyle(
         fontSize: 14,

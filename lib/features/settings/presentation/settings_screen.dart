@@ -4,11 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
+import 'package:smart/features/settings/presentation/terms/help_support_screen.dart';
+import 'package:smart/features/settings/presentation/terms/terms_conditions_screen.dart';
 
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../generated/l10n.dart';
 import '../../../l10n/app_locale.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -22,7 +25,6 @@ class SettingsScreen extends StatelessWidget {
         appBar: CustomAppBar(
           backgroundColor: AppColor.backgroundAppBarColor,
           leading: CircleImageButton(
-            onTap: () {},
             imageUrl: AppImages.appLogo,
             size: 37,
           ),
@@ -53,7 +55,7 @@ class _SettingsHeader extends StatelessWidget {
             onTap: () => Navigator.of(context).pop(),
           ),
           AppText(
-            text: 'الإعدادات',
+            text: S.of(context).settings_title,
             appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
               color: AppColor.textColor,
             ),
@@ -109,28 +111,38 @@ class _SettingsList extends StatelessWidget {
           spacing: 12.h,
           children: [
             SettingsCard(
-              title: 'الشروط و الأحكام',
+              title: S.of(context).settings_terms,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const TermsScreen()),
+                );
+              },
+            ),
+            SettingsCard(
+              title:  S.of(context).settings_privacy,
               onTap: () {},
             ),
             SettingsCard(
-              title: 'سياسة الخصوصية',
+              title:  S.of(context).settings_faq,
               onTap: () {},
             ),
             SettingsCard(
-              title: 'الأسئلة الشائعة',
-              onTap: () {},
+              title:  S.of(context).settings_support,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const HelpSupportScreen()),
+                );
+              },
             ),
             SettingsCard(
-              title: 'المساعدة و الدعم الفني',
-              onTap: () {},
-            ),
-            SettingsCard(
-              title: 'الوضع الليلي',
+              title:  S.of(context).settings_dark_mode,
               trailing: const _NightModeTrailing(),
               onTap: () {},
             ),
             SettingsCard(
-              title: 'اللغة',
+              title:  S.of(context).settings_language,
               trailing: const _LanguageTrailing(),
               onTap: () {},
             ),
@@ -308,7 +320,7 @@ class _LanguageTrailing extends StatelessWidget {
               text: 'عر',
               appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                 color: AppColor.primaryColor,
-               // isArabic ? AppColor.primaryColor : AppColor.blackColor,
+                // isArabic ? AppColor.primaryColor : AppColor.blackColor,
               ),
             ),
           ],
