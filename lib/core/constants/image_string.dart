@@ -105,4 +105,12 @@ class AppImages {
 
   static const String userProfileTickets =
       "assets/images/svgs/user_profile_tickets.svg";
+
+  //Help And Support
+
+  static const String helpSupportContactUs =
+      "assets/images/svgs/help_support_contact_us.svg";
+
+  static const String helpSupportMessageUs =
+      "assets/images/svgs/help_support_message_us.svg";
 }
