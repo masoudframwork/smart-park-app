@@ -124,7 +124,7 @@ class _ProfileBody extends StatelessWidget {
           _StoredInfoTile(
             title: S.of(context).profile_settings,
             icon: SvgPicture.asset(
-              AppImages.userProfileWallet,
+              AppImages.userProfileSettings,
               width: 20,
               height: 20,
             ),

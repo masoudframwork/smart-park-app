@@ -99,4 +99,7 @@ class AppImages {
       "assets/images/svgs/user_profile_wallet.svg";
   static const String userProfileElectronicPayment =
       "assets/images/svgs/user_profile_electronic_payment.svg";
+
+  static const String userProfileSettings =
+      "assets/images/svgs/user_profile_settings.svg";
 }
