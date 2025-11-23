@@ -216,14 +216,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
       "احفظ المركبة للاستخدام لاحقاً",
     ),
-    "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
-    "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
-    "settheduration": MessageLookupByLibrary.simpleMessage("تحديد المدة"),
     "scanParkingCode": MessageLookupByLibrary.simpleMessage(
       "الرجاء مسح رمز الموقف",
     ),
     "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
+    "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
+    "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
+    "settheduration": MessageLookupByLibrary.simpleMessage("تحديد المدة"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الليلي"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("الأسئلة الشائعة"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("عر"),
@@ -244,10 +244,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "terms_and_conditions": MessageLookupByLibrary.simpleMessage(
       "الشروط و الأحكام",
-    ),
-    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
-    "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
-      "تويوتا كورولا 2024 - أحمر",
     ),
     "terms_section_1": MessageLookupByLibrary.simpleMessage(
       "المعلومات التي نقوم بجمعها",
@@ -283,6 +279,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "terms_usage_5": MessageLookupByLibrary.simpleMessage(
       "ضمان الامتثال للقوانين المحلية",
+    ),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
+      "تويوتا كورولا 2024 - أحمر",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",
