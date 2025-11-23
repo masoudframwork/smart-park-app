@@ -304,6 +304,21 @@ class S {
     return Intl.message('Logout', name: 'profile_logout', desc: '', args: []);
   }
 
+  /// `Soon`
+  String get profile_soon {
+    return Intl.message('Soon', name: 'profile_soon', desc: '', args: []);
+  }
+
+  /// `bdulrahman Ahmed Abdullah`
+  String get profile_test_name {
+    return Intl.message(
+      'bdulrahman Ahmed Abdullah',
+      name: 'profile_test_name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settings_title {
     return Intl.message('Settings', name: 'settings_title', desc: '', args: []);

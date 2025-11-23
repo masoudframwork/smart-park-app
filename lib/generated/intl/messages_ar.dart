@@ -80,6 +80,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "المعلومات المحفوظة مسبقًا",
     ),
     "profile_settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+    "profile_soon": MessageLookupByLibrary.simpleMessage("قريباً"),
+    "profile_test_name": MessageLookupByLibrary.simpleMessage(
+      "عبد الرحمن أحمد عبدالله",
+    ),
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("المركبات"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "sampleLogo": MessageLookupByLibrary.simpleMessage("SAMPLE LOGO"),

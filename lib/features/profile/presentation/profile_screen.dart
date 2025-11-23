@@ -58,7 +58,7 @@ class _ProfileBody extends StatelessWidget {
           const SizedBox(height: 12),
           _AdditionalInfoTile(
             title: S.of(context).profile_fines,
-            hint: 'قريباً',
+            hint:  S.of(context).profile_soon,
             icon: SvgPicture.asset(
               AppImages.userProfileTickets,
               width: 20,
@@ -68,7 +68,7 @@ class _ProfileBody extends StatelessWidget {
           const SizedBox(height: 12),
           _AdditionalInfoTile(
             title: S.of(context).wallet,
-            hint: 'قريباً',
+            hint:  S.of(context).profile_soon,
             icon: SvgPicture.asset(
               AppImages.userProfileWallet,
               width: 20,
@@ -210,7 +210,7 @@ class _ProfileHeaderTop extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           AppText(
-            text: 'عبد الرحمن أحمد عبدالله',
+            text:S.of(context).profile_test_name,
             appTextTheme: AppTextTheme.secondaryButtonTextStyle().copyWith(
               fontWeight: FontWeight.w400,
             ),
