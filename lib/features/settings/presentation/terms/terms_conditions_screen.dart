@@ -30,9 +30,9 @@ class TermsScreen extends StatelessWidget {
             backgroundColor: AppColor.settingsBackgroundColor,
             appBar: CustomAppBar(
               backgroundColor: AppColor.backgroundAppBarColor,
-              leading: GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: const Icon(Icons.arrow_back, color: Colors.white),
+              leading: CircleImageButton(
+                imageUrl: AppImages.appLogo,
+                size: 37,
               ),
               // title: S.of(context).terms_title,
             ),
