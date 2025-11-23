@@ -12,74 +12,83 @@ class ScanCodeScreen extends StatefulWidget {
 }
 
 class _ScanCodeScreenState extends State<ScanCodeScreen> {
-  final MobileScannerController controller = MobileScannerController();
-
-  bool isNavigated = false;
+  bool _isHandling = false;
+  bool _cameraAllowed = false;
 
   @override
   void initState() {
     super.initState();
-    _initPermissions();
+    _checkCameraPermission();
   }
 
-  Future<void> _initPermissions() async {
-    await checkCameraPermission(); // 👈 request camera permission
-  }
+  Future<void> _checkCameraPermission() async {
+    final status = await Permission.camera.status;
 
-  Future<void> checkCameraPermission() async {
-    var status = await Permission.camera.status;
-
-    if (!status.isGranted) {
-      status = await Permission.camera.request();
+    if (status.isGranted) {
+      setState(() => _cameraAllowed = true);
+      return;
     }
 
-    if (!status.isGranted) {
-      // user denied → show error
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Camera permission is required")),
-      );
+    final result = await Permission.camera.request();
+    if (result.isGranted) {
+      setState(() => _cameraAllowed = true);
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Camera permission is required to scan."),
+          ),
+        );
+        Navigator.pop(context);
+      }
     }
   }
 
-  void _handleBarcode(BarcodeCapture capture) async {
-    if (!mounted || isNavigated) return;
+  void _handleBarcode(BarcodeCapture capture) {
+    if (_isHandling) return;
 
-    final code = capture.barcodes.firstOrNull?.displayValue;
+    final String? code = capture.barcodes.firstOrNull?.displayValue;
     if (code == null) return;
 
-    isNavigated = true;
-    await controller.stop();
+    _isHandling = true; // prevent double scan
 
-    if (!mounted) return;
-
-    /// 🔥 Navigate to BookingStep1Page
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (_) => BookingStep1Page(
-            // scannedCode: code,   // <-- your code from QR
-            ),
+        builder: (_) => BookingStep1Page(),
       ),
-    ).then((_) {
-      /// Restart scanner when user comes back
-      isNavigated = false;
-      controller.start();
-    });
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    if (!_cameraAllowed) {
+      return const Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+          child: CircularProgressIndicator(color: Colors.white),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
         children: [
+          /// CAMERA VIEW
           MobileScanner(
-            controller: controller,
+            controller: MobileScannerController(
+              detectionSpeed: DetectionSpeed.normal,
+              facing: CameraFacing.back,
+              torchEnabled: false,
+            ),
             onDetect: _handleBarcode,
           ),
 
-          //   _ScannerOverlay(),
+          /// CUSTOM OVERLAY
+          const _ScannerOverlay(),
 
+          /// TITLE
           Positioned(
             bottom: 80,
             left: 0,
@@ -87,7 +96,7 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             child: Center(
               child: Text(
                 "الرجاء مسح رمز الموقف",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -98,5 +107,63 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
         ],
       ),
     );
+  }
+}
+
+class _ScannerOverlay extends StatelessWidget {
+  const _ScannerOverlay({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      final double boxSize = constraints.maxWidth * 0.65;
+
+      return Stack(
+        children: [
+          /// DARK SCREEN WITH HOLE
+          ColorFiltered(
+            colorFilter:
+                const ColorFilter.mode(Colors.black54, BlendMode.srcOut),
+            child: Stack(
+              children: [
+                /// Full dark layer
+                Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: Colors.black54,
+                ),
+
+                /// Transparent cut-out
+                Center(
+                  child: Container(
+                    width: boxSize,
+                    height: boxSize,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// WHITE BORDER FRAME
+          Center(
+            child: Container(
+              width: boxSize,
+              height: boxSize,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Colors.white,
+                  width: 3,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    });
   }
 }
