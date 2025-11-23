@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 
@@ -12,7 +13,33 @@ class ScanCodeScreen extends StatefulWidget {
 
 class _ScanCodeScreenState extends State<ScanCodeScreen> {
   final MobileScannerController controller = MobileScannerController();
+
   bool isNavigated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _initPermissions();
+  }
+
+  Future<void> _initPermissions() async {
+    await checkCameraPermission(); // 👈 request camera permission
+  }
+
+  Future<void> checkCameraPermission() async {
+    var status = await Permission.camera.status;
+
+    if (!status.isGranted) {
+      status = await Permission.camera.request();
+    }
+
+    if (!status.isGranted) {
+      // user denied → show error
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Camera permission is required")),
+      );
+    }
+  }
 
   void _handleBarcode(BarcodeCapture capture) async {
     if (!mounted || isNavigated) return;
@@ -30,8 +57,8 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
       context,
       MaterialPageRoute(
         builder: (_) => BookingStep1Page(
-         // scannedCode: code,   // <-- your code from QR
-        ),
+            // scannedCode: code,   // <-- your code from QR
+            ),
       ),
     ).then((_) {
       /// Restart scanner when user comes back
@@ -51,7 +78,7 @@ class _ScanCodeScreenState extends State<ScanCodeScreen> {
             onDetect: _handleBarcode,
           ),
 
-       //   _ScannerOverlay(),
+          //   _ScannerOverlay(),
 
           Positioned(
             bottom: 80,
