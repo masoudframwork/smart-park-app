@@ -102,4 +102,7 @@ class AppImages {
 
   static const String userProfileSettings =
       "assets/images/svgs/user_profile_settings.svg";
+
+  static const String userProfileTickets =
+      "assets/images/svgs/user_profile_tickets.svg";
 }

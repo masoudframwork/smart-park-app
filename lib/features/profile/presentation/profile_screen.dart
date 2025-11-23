@@ -60,7 +60,7 @@ class _ProfileBody extends StatelessWidget {
             title: S.of(context).profile_fines,
             hint: 'قريباً',
             icon: SvgPicture.asset(
-              AppImages.userProfileWallet,
+              AppImages.userProfileTickets,
               width: 20,
               height: 20,
             ),

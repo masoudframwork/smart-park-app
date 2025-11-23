@@ -249,9 +249,9 @@ class S {
     );
   }
 
-  /// `Fines`
+  /// `Tickets`
   String get profile_fines {
-    return Intl.message('Fines', name: 'profile_fines', desc: '', args: []);
+    return Intl.message('Tickets', name: 'profile_fines', desc: '', args: []);
   }
 
   /// `Wallet`
