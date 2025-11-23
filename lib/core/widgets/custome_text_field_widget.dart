@@ -95,7 +95,7 @@ class CustomTextFormField extends StatelessWidget {
     final input = TextFormField(
       obscuringCharacter: obscuringCharacter ?? "*",
       textAlign: textAlign ??
-          (AppLocale.shared.isArabic() ? TextAlign.left : TextAlign.right),
+          (AppLocale.shared.isArabic() ? TextAlign.right:TextAlign.left  ),
       keyboardType: textInputType,
       enabled: enabled,
       readOnly: readOnly ?? false,
@@ -183,7 +183,7 @@ class CustomTextFormField extends StatelessWidget {
                 color: effectiveShadowColor,
                 blurRadius: shadowBlur,
                 spreadRadius: shadowSpread,
-                offset: shadowOffset, // ← 0, 15 (أسفل فقط)
+                offset: shadowOffset,
               ),
             ],
           ),

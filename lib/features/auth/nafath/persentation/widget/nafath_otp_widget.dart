@@ -23,6 +23,7 @@ class NafathOtpScreen extends ConsumerWidget {
 
     final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return SafeArea(
       child: Scaffold(
@@ -34,12 +35,13 @@ class NafathOtpScreen extends ConsumerWidget {
               spacing: 30,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    NavigationService.pop();
-                  },
-                  child: Align(
-                    alignment: Alignment.topRight,
+                Align(
+                  alignment:
+                  isRtl ? Alignment.centerRight : Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      NavigationService.pop();
+                    },
                     child: Container(
                       width: 34.w,
                       height: 34.w,
@@ -52,11 +54,8 @@ class NafathOtpScreen extends ConsumerWidget {
                           width: 1,
                         ),
                       ),
-                      child: CustomImageWidget(
-                        imageUrl: AppImages.arrowRightIcon,
-                        width: 20.w,
-                        height: 20.w,
-                        isFlag: true,
+                      child: SvgPicture.asset(
+                        isRtl ? AppImages.arrowIcon2 : AppImages.arrowIcon,
                         color: AppColor.primaryColor,
                       ),
                     ),

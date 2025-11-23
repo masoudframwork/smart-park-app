@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
 import 'package:smart/features/booking/presentation/controller/timer_controller.dart';
@@ -123,11 +124,9 @@ class CurrentBookingCard extends ConsumerWidget {
           ),
         ),
         SizedBox(width: 8.w),
-        Image.asset(
+       SvgPicture.asset(
           AppImages.arrowIcon,
           color: AppColor.primaryColor,
-          width: 12.w,
-          height: 12.w,
         ),
         SizedBox(width: 8.w),
         AppText(

@@ -87,6 +87,9 @@ class _PriceRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+    final String arrowText = isRtl ? '←' : '→';
+
     final timeStyle = AppTextTheme.timeTextStyle().copyWith(
       color: AppColor.blackNumberSmallColor,
       fontWeight: FontWeight.w300,
@@ -107,7 +110,7 @@ class _PriceRow extends StatelessWidget {
             ),
             SizedBox(width: 12.w),
             AppText(
-              text: '←',
+              text: arrowText,
               appTextTheme: timeStyle,
             ),
             SizedBox(width: 12.w),

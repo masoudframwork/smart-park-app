@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
@@ -18,29 +19,31 @@ class BackAndTextWidget extends StatelessWidget {
       spacing: 17.w,
       children: [
         GestureDetector(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
           child: Container(
-              width: 34.w,
-              height: 34.h,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppColor.whiteColor,
-                borderRadius: BorderRadius.circular(10.r),
-                border: Border.all(
-                  color: AppColor.contanearGreyColor,
-                  width: 1,
-                ),
+            width: 34.w,
+            height: 34.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: AppColor.whiteColor,
+              borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(
+                color: AppColor.contanearGreyColor,
+                width: 1,
               ),
-              child: Image.asset(
-                AppImages.arrowRightIcon,
-                width: 20.w,
-                color: AppColor.primaryColor,
-              )),
+            ),
+            child: SvgPicture.asset(
+              Directionality.of(context) == TextDirection.rtl
+                  ? AppImages.arrowIcon2
+                  : AppImages.arrowIcon,
+              color: AppColor.primaryColor,
+            ),
+          ),
         ),
         AppText(
-          //بيانات البطاقة البنكية
+            //بيانات البطاقة البنكية
             text: S.of(context).enteryourcardinfo,
             appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
               color: AppColor.textColor,

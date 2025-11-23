@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/domain/vehicle_form_state.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/another_vehicle_controller.dart';
 import '../../../../../../core/theme/app_color.dart';
@@ -11,7 +12,6 @@ import '../../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/widgets/custom_image_widget.dart';
 import '../../../../../generated/l10n.dart';
 
 
@@ -72,12 +72,11 @@ class VehicleDataScreen extends ConsumerWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        NavigationService.pop(context);
-                        //NavigationService.go(RoutePaths.loginPage);
+                        Navigator.pop(context);
                       },
                       child: Container(
                         width: 34.w,
-                        height: 34.w,
+                        height: 34.h,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: AppColor.whiteColor,
@@ -87,11 +86,10 @@ class VehicleDataScreen extends ConsumerWidget {
                             width: 1,
                           ),
                         ),
-                        child: CustomImageWidget(
-                          imageUrl: AppImages.arrowRightIcon,
-                          width: 20.w,
-                          height: 20.w,
-                          isFlag: true,
+                        child: SvgPicture.asset(
+                          Directionality.of(context) == TextDirection.rtl
+                              ? AppImages.arrowIcon2
+                              : AppImages.arrowIcon,
                           color: AppColor.primaryColor,
                         ),
                       ),
