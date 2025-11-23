@@ -12,6 +12,7 @@ import '../../../../core/widgets/app_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/pincodestyle.dart';
+import '../../../../generated/l10n.dart';
 import '../../../bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import 'controller/send_code_controller.dart';
 
@@ -70,7 +71,7 @@ class SendTheCodePage extends ConsumerWidget {
                 SizedBox(height: 25.h),
                 CustomButtonWidget(
                   borderRadius: 10.r,
-                  text: 'تسجيل الدخول',
+                  text: S.of(context).login,
                   onPressed: () {
                     ref.read(bottomNavBarController).changeIndex(
                           BottomNavBarController.homeIndex,

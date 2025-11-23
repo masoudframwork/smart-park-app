@@ -8,6 +8,7 @@ import '../../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/widgets/app_bottom_sheet.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../generated/l10n.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({super.key});
@@ -27,7 +28,7 @@ class ButtonWidget extends StatelessWidget {
             );
             //  NavigationService.push('/bankCardDataPage', context: context);
           },
-          text: 'إنشاء الحساب',
+          text: S.of(context).create_account,
           type: ButtonType.elevated,
           borderRadius: 10.r,
         ),
@@ -43,13 +44,13 @@ class TermsAndConditionsBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBottomSheet(
       maxHeightFactor: 0.50,
-      title: 'الشروط و الأحكام',
+      title: S.of(context).terms_and_conditions,
       bottomAction: CustomButtonWidget(
         onPressed: () {
           NavigationService.push('/otpSignUpPage', context: context);
           Navigator.pop(context);
         },
-        text: 'موافق على الشروط و الأحكام',
+        text: S.of(context).Iagreetothetermsandconditions,
         type: ButtonType.elevated,
         borderRadius: 10.r,
       ),
@@ -65,7 +66,7 @@ class TermsAndConditionsBottomSheet extends StatelessWidget {
               children: [
                 AppText(
                   text:
-                      'إدارة عمليات الحجز والدفع للمواقف تحسين تجربة المستخدم وتطوير الخدمات التواصل معكم في حال وجود استفسارات أو إشعارات مهمة أغراض التحليل والإحصاء لتحسين أداء التطبيق ضمان الامتثال لقوانين المحلية وتعليمات الجهات المختصة إدارة عمليات الحجز والدفع للمواقف تحسين تجربة المستخدم وتطوير الخدمات التواصل معكم في حال وجود استفسارات أو إشعارات مهمة أغراض التحليل والإحصاء لتحسين أداء التطبيق ضمان الامتثال لقوانين المحلية وتعليمات الجهات المختصة إدارة عمليات الحجز والدفع للمواقف تحسين تجربة المستخدم وتطوير الخدمات التواصل معكم في حال وجود استفسارات أو إشعارات مهمة أغراض التحليل والإحصاء لتحسين أداء التطبيق ضمان الامتثال لقوانين المحلية وتعليمات الجهات المختصة إدارة عمليات الحجز والدفع للمواقف تحسين تجربة المستخدم وتطوير الخدمات التواصل معكم في حال وجود استفسارات أو إشعارات مهمة أغراض التحليل والإحصاء لتحسين أداء التطبيق ضمان الامتثال لقوانين المحلية وتعليمات الجهات المختصة',
+                      S.of(context).parkingbookingandpaymentmanagementsystemimprovement,
                   appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                     color: AppColor.titelButtonColor,
                   ),

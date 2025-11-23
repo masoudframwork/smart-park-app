@@ -4,6 +4,7 @@ import 'package:smart/core/widgets/app_text.dart';
 
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../generated/l10n.dart';
 
 class DescrpationWidget extends StatelessWidget {
   const DescrpationWidget({super.key});
@@ -23,12 +24,12 @@ class DescrpationWidget extends StatelessWidget {
       spacing: 26.h,
       children: [
         AppText(
-          text: 'تسجيل الدخول',
+          text: S.of(context).login,
           textAlign: TextAlign.center,
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:'لقد تم إرسال الرمز إلى الرقم المنتهي ب 000\nدخل الرمز لإتمام عملية الدخولn',
+          text:S.of(context).an_otp_has_been_sent_to_the_number_ending,
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

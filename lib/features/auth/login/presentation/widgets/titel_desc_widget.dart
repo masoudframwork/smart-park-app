@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/widgets/app_text.dart';
@@ -5,6 +6,8 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../generated/l10n.dart';
+
 class TitelDescWidget extends StatelessWidget {
   const TitelDescWidget({
     super.key,
@@ -24,7 +27,7 @@ class TitelDescWidget extends StatelessWidget {
       spacing: 26.h,
       children: [
         AppText(
-          text: 'لا تملك حساباً؟',
+          text: S.of(context).you_dont_have_an_account,
           textAlign: TextAlign.center,
           appTextTheme: titleStyle.copyWith(
             color: AppColor.whiteColor,
@@ -32,46 +35,33 @@ class TitelDescWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        GestureDetector(
-          onTap: onCreateAccount,
-          child: Row(
-            spacing: 1.w,
-            mainAxisAlignment: MainAxisAlignment.center,
+
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: descriptionStyle.copyWith(
+              color: AppColor.whiteColor,
+              fontWeight: FontWeight.w300,
+            ),
             children: [
-              AppText(
-                text: 'بإمكانك ',
-                textAlign: TextAlign.center,
-                appTextTheme: descriptionStyle.copyWith(
-                  color: AppColor.whiteColor,
-                  fontWeight: FontWeight.w300,
+               TextSpan(text: S.of(context).you_can),
+              TextSpan(
+                text: S.of(context).create_anew_account,
+                style: descriptionStyle.copyWith(
+                  color: AppColor.primaryColor,
+                  fontWeight: FontWeight.w600,
                 ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    NavigationService.go(RoutePaths.signUpPage);
+                  },
               ),
-              GestureDetector(
-                onTap: (){
-                  NavigationService.go(RoutePaths.signUpPage);
-                },
-                child: AppText(
-                  text: 'إنشاء حساب جديد ',
-                  textAlign: TextAlign.center,
-                  appTextTheme: descriptionStyle.copyWith(
-                    color: AppColor.primaryColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              AppText(
-                text: 'بخطوات سهلة',
-                textAlign: TextAlign.center,
-                appTextTheme: descriptionStyle.copyWith(
-                  color: AppColor.whiteColor,
-                  fontWeight: FontWeight.w300,
-                ),
-              ),
+               TextSpan(text: S.of(context).easily),
             ],
           ),
         ),
         AppText(
-          text: 'أو',
+          text: S.of(context).or,
           textAlign: TextAlign.center,
           appTextTheme: titleStyle.copyWith(
             color: AppColor.whiteColor,
@@ -86,7 +76,7 @@ class TitelDescWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppText(
-                text: 'الدخول كزائر',
+                text: S.of(context).use_as_aguest,
                 textAlign: TextAlign.center,
                 appTextTheme: titleStyle.copyWith(
                   color: AppColor.primaryColor,

@@ -20,10 +20,11 @@ import 'package:smart/features/details_reserve_parking_spot/booking_step1/presen
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/widget/the_vichel_titel.dart';
 
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
+import '../../../../generated/l10n.dart';
 import '../domain/duration_states.dart';
-class BookingStep1Page extends ConsumerWidget {
 
-  const BookingStep1Page( {super.key});
+class BookingStep1Page extends ConsumerWidget {
+  const BookingStep1Page({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingFlowControllerProvider);
@@ -57,7 +58,8 @@ class BookingStep1Page extends ConsumerWidget {
                 SizedBox(height: 16.h),
                 _StepRow(
                   index: 1,
-                  title: 'اختر المركبة',
+                  //اختر المركبة
+                  title: S.of(context).choosethevehicle,
                   totalSteps: 3,
                   state: state,
                   child: _VehiclesStepContent(
@@ -66,8 +68,9 @@ class BookingStep1Page extends ConsumerWidget {
                   ),
                 ),
                 _StepRow(
+                  //حدّد مدة الوقوف
                   index: 2,
-                  title: 'حدّد مدة الوقوف',
+                  title: S.of(context).specifythedurationofthestop,
                   totalSteps: 3,
                   state: state,
                   child: const _DurationStepContent(),
@@ -82,7 +85,8 @@ class BookingStep1Page extends ConsumerWidget {
                     child: CustomButtonWidget(
                       type: ButtonType.elevated,
                       borderRadius: 10.r,
-                      text: 'الاستمرار للدفع',
+                      //الاستمرار للدفع
+                      text: S.of(context).continuetopay,
 
                       textStyle: AppTextTheme.mainButtonTextStyle(),
                       onPressed: () {
@@ -90,10 +94,6 @@ class BookingStep1Page extends ConsumerWidget {
                           context: context,
                           child: ContinuePayingMethodBottomSheet(),
                         );
-
-
-
-
                       },
                     ),
                   ),
@@ -199,7 +199,7 @@ class _StepIndicator extends StatelessWidget {
     final bool isCompleted = currentStep > index;
 
     final Color circleColor =
-    isCompleted ? AppColor.primaryColor : AppColor.whiteColor;
+        isCompleted ? AppColor.primaryColor : AppColor.whiteColor;
 
     final Color borderColor = (isActive || isCompleted)
         ? AppColor.primaryColor
@@ -284,7 +284,8 @@ class _VehiclesStepContent extends StatelessWidget {
           height: 12,
         ),
         TheVehicleTile(
-          title: 'نيسان باتلفايندر 2023 - أسود',
+          //نيسان باتلفايندر 2023 - أسود
+          title: S.of(context).nissanPathfinderBlack,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -295,7 +296,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTile(
-          title: 'تويوتا كورولا 2024 - أحمر',
+          title: S.of(context).toyotaCorollaRed,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -306,7 +307,8 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTile(
-          title: 'مركبة أخرى',
+          //مركبة اخرى
+          title: S.of(context).newvehicle,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.whiteColor,
           carIcon: const SizedBox.shrink(),
@@ -358,7 +360,8 @@ class _DurationStepContent extends ConsumerWidget {
             height: 24.w,
             color: AppColor.primaryColor,
           ),
-          text: 'تحديد المدة',
+          //تحديد المدة
+          text: S.of(context).settheduration,
           textStyle: AppTextTheme.mainButtonTextStyle().copyWith(
             color: AppColor.primaryColor,
           ),
@@ -427,7 +430,8 @@ class _SummaryStepContent extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppText(
-                text: 'الإجمالي',
+                //الاجمالي
+                text: S.of(context).total,
                 appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     color: AppColor.textColor,
                     fontWeight: FontWeight.w500,
@@ -453,18 +457,24 @@ class _SummaryStepContent extends ConsumerWidget {
             ],
           ),
           Row(
+            spacing: 5.w,
             children: [
-              SvgPicture.asset(AppImages.pinMap),
+              SvgPicture.asset(
+                AppImages.pinMap,
+              ),
               AppText(
                 text:
                 'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w400,
-                ),
+                    color: AppColor.blackNumberSmallColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp),
               ),
             ],
           ),
+
+
+
           Row(
             textDirection: TextDirection.rtl,
             children: [
@@ -499,7 +509,7 @@ class _SummaryStepContent extends ConsumerWidget {
                 AppImages.realSu,
               ),
               AppText(
-                text: '/ساعة ',
+                text: S.of(context).hour,
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                   color: AppColor.blackNumberSmallColor,
                   fontWeight: FontWeight.w600,
@@ -530,7 +540,8 @@ class _SummaryStepSection extends ConsumerWidget {
       children: [
         _StepRow(
           index: 3,
-          title: 'ملخص الحجز',
+          //ملخص الحجز
+          title: S.of(context).bookingSummary,
           totalSteps: 3,
           state: state,
           bottomSpacing: 0,

@@ -2,7 +2,7 @@ import 'onboarding_item_models.dart';
 
 class OnboardingState {
   final int currentIndex;
-  final List<OnboardItem> items;
+  final List<OnboardingItem> items;
 
   const OnboardingState({
     required this.currentIndex,
@@ -11,7 +11,7 @@ class OnboardingState {
 
   OnboardingState copyWith({
     int? currentIndex,
-    List<OnboardItem>? items,
+    List<OnboardingItem>? items,
   }) {
     return OnboardingState(
       currentIndex: currentIndex ?? this.currentIndex,

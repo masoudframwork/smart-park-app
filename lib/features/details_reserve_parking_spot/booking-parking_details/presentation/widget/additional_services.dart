@@ -6,24 +6,26 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/constants/image_string.dart';
+import '../../../../../generated/l10n.dart';
 
 class AdditionalServicesSection extends StatelessWidget {
-  const AdditionalServicesSection({super.key});
+   const AdditionalServicesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const items = <_ServiceItem>[
-      _ServiceItem(title: 'خدمة غسيل', iconPath: AppImages.laundryService),
-      _ServiceItem(title: 'شحن EV', iconPath: AppImages.shipping2),
-      _ServiceItem(title: 'مظلّة', iconPath: AppImages.umbrella),
-      _ServiceItem(title: 'WIFI مجاني', iconPath: AppImages.wifi),
+   final items = <_ServiceItem>[
+      _ServiceItem(title: S.of(context).laundryservice, iconPath: AppImages.laundryService),
+      _ServiceItem(title: S.of(context).evcharging, iconPath: AppImages.shipping2),
+      _ServiceItem(title: S.of(context).parachute, iconPath: AppImages.umbrella),
+      _ServiceItem(title: S.of(context).freeWifi, iconPath: AppImages.wifi),
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppText(
-          text: 'الخدمات الإضافية',
+          //الخدمات الاضافية
+          text: S.of(context).additionalservices,
           appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
             color: AppColor.textColor,
             fontWeight: FontWeight.w600,

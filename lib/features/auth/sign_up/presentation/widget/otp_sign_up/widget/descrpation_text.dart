@@ -4,6 +4,7 @@ import 'package:smart/core/widgets/app_text.dart';
 
 import '../../../../../../../core/theme/app_color.dart';
 import '../../../../../../../core/theme/app_text_theme.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class DescrpationTitelWidget extends StatelessWidget {
   const DescrpationTitelWidget({super.key});
@@ -23,13 +24,12 @@ class DescrpationTitelWidget extends StatelessWidget {
       spacing: 26.h,
       children: [
         AppText(
-          text: 'لتأكيد الحساب',
+          text: S.of(context).verifyAccount,
           textAlign: TextAlign.center,
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:
-              ' لقد تم إرسال الرمز إلى الرقم المنتهي ب 000  \n أدخل الرمز لإتمام عملية الدخول  ',
+          text: S.of(context).an_otp_has_been_sent_to_the_number_ending,
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

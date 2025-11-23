@@ -8,6 +8,7 @@ import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 import '../../nafath/persentation/widget/vehicle_data.dart';
 
 class BankCardDataPage extends StatelessWidget {
@@ -53,7 +54,7 @@ class BankCardDataPage extends StatelessWidget {
                         ),
                       );
                     },
-                    text: 'حفظ البطاقة',
+                    text: S.of(context).saveCard,
                     type: ButtonType.elevated,
                     borderRadius: 10.r,
                   ),
@@ -65,7 +66,7 @@ class BankCardDataPage extends StatelessWidget {
                         context: context,
                       );
                     },
-                    text: ' لاحقاً',
+                    text: S.of(context).do_this_later,
                     textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
                       color: AppColor.primaryColor,
                       fontWeight: FontWeight.w600,

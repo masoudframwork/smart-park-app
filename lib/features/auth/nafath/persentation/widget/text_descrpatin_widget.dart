@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class TextDescrpationWidget extends StatelessWidget {
   const TextDescrpationWidget({super.key});
@@ -22,12 +23,12 @@ class TextDescrpationWidget extends StatelessWidget {
         spacing: 74.h,
         children: [
           AppText(
-            text: 'أهلاً بك في تطبيق المواقف',
+            text: S.of(context).welcometoourparkingapp,
             textAlign: TextAlign.center,
             appTextTheme: titleStyle,
           ),
           AppText(
-            text: 'الربط عبر تطبيق نفاذ',
+            text: S.of(context).connectwithNafath,
             textAlign: TextAlign.center,
             appTextTheme: descriptionStyle,
           ),

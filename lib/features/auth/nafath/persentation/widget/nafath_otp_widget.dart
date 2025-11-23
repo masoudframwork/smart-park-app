@@ -11,6 +11,7 @@ import '../../../../../core/widgets/app_result_dialog.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../controller/nafath_timer_controller.dart';
 
 class NafathOtpScreen extends ConsumerWidget {
@@ -72,13 +73,13 @@ class NafathOtpScreen extends ConsumerWidget {
                   ),
                 ),
                 AppText(
-                  text: 'التحقق من خلال تطبيق نفاذ',
+                  text: S.of(context).verifythroughNafathapp,
                   appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
                 AppText(
-                  text: 'يرجى تسجيل الدخول عبر تطبيق نفاذ و اختيار الرقم أدناه',
+                  text: S.of(context).pleaselogintoNafathappandselectthefollowingnumber,
                   appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
@@ -99,15 +100,15 @@ class NafathOtpScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 30.h),
                 CustomButtonWidget(
-                  text: 'افتح تطبيق نفاذ',
+                  text: S.of(context).openNafathApp,
                   borderRadius: 10.r,
                   onPressed: () {
                     showDialog(
                       context: context,
                       barrierDismissible: false,
                       builder: (_) => AppResultDialog(
-                        message: 'لقد تم ربط حسابك مع تطبيق نفاذ',
-                        buttonText: 'استمرار',
+                        message: S.of(context).youraccountisnowconnectedwithNafath,
+                        buttonText: S.of(context).continu_e,
                         onButtonPressed: () {
                           NavigationService.push(
                             '/bankCardDataPage',

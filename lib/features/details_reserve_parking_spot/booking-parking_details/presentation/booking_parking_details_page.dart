@@ -11,6 +11,7 @@ import '../../../../core/routing/navigation_service.dart';
 
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../../../generated/l10n.dart';
 
 class BookingParkingDetailsPage extends StatelessWidget {
   const BookingParkingDetailsPage({super.key});
@@ -24,9 +25,12 @@ class BookingParkingDetailsPage extends StatelessWidget {
           children: [
             ZoneImageCard(),
             ZoneHeader(
-              zoneName: 'المنطقة 013',
-              capacityText: 'المواقف المتاحة 70/13',
-              locationText: 'طريق خريص، الرياض، المملكة العربية السعودية',
+              //المنطقة 013
+              zoneName: S.of(context).zone013,
+              //المواقف المتاحة 70/13
+              capacityText: S.of(context).availableparking,
+              //طريق خريص، الرياض، المملكة العربية السعودية
+              locationText: S.of(context).khuraisRoadRiyadhSaudiArabia,
               leadingIcon: SvgPicture.asset(AppImages.iconsMaps),
             ),
             DayPriceCard(),
@@ -34,17 +38,18 @@ class BookingParkingDetailsPage extends StatelessWidget {
             AdditionalServicesSection(),
             SizedBox(height: 22.h),
             ZoneHeader(
-              zoneName: 'عن هذا المصف',
+              zoneName: S.of(context).aboutthispark,
               zoneNameTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
                 color: AppColor.textColor,
                 fontWeight: FontWeight.w600,
               ),
-              locationText:
-                  'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ',
+              locationText: S
+                  .of(context)
+                  .Itisalongestablishedfactthatthereadablecontentofapage,
             ),
             Spacer(),
             CustomButtonWidget(
-              text: 'احجز هنا',
+              text: S.of(context).bookHere,
               type: ButtonType.elevated,
               onPressed: () {
                 NavigationService.push(

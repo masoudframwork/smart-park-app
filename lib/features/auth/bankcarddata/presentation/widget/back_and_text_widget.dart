@@ -5,6 +5,7 @@ import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class BackAndTextWidget extends StatelessWidget {
   const BackAndTextWidget({super.key});
@@ -39,7 +40,8 @@ class BackAndTextWidget extends StatelessWidget {
               )),
         ),
         AppText(
-            text: 'بيانات البطاقة البنكية',
+          //بيانات البطاقة البنكية
+            text: S.of(context).enteryourcardinfo,
             appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
               color: AppColor.textColor,
               fontSize: 20,

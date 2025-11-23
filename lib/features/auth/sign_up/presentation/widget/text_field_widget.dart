@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/widgets/required_field_label.dart';
+import '../../../../../generated/l10n.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({super.key});
@@ -17,7 +18,7 @@ class TextFieldWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              RequiredFieldLabel(text: 'الاسم الكامل'),
+              RequiredFieldLabel(text: S.of(context).full_name),
               SizedBox(
                 height: 10.h,
               ),
@@ -36,7 +37,7 @@ class TextFieldWidget extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              RequiredFieldLabel(text: ' رقم الهاتف'),
+              RequiredFieldLabel(text: S.of(context).phone_number),
               SizedBox(
                 height: 10.h,
               ),

@@ -5,6 +5,7 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
+import '../../../../../generated/l10n.dart';
 class TextFieldAndButtonsWidget extends StatelessWidget {
   const TextFieldAndButtonsWidget({
     super.key,
@@ -36,7 +37,7 @@ class TextFieldAndButtonsWidget extends StatelessWidget {
             width: 360.w,
             controller: phoneController,
             borderRadius: 10.r,
-            hintText: 'رقم الهاتف',
+            hintText: S.of(context).phone_number,
             textInputType: TextInputType.phone,
             hintStyle: const TextStyle(
               color: AppColor.greyBorderColor,
@@ -45,7 +46,7 @@ class TextFieldAndButtonsWidget extends StatelessWidget {
             // validator: phoneValidator,
           ),
           CustomButtonWidget(
-            text: isLoading ? 'جاري الإرسال...' : 'أرسل الرمز',
+            text: isLoading ? S.of(context).sending : S.of(context).send_code,
             borderRadius: 10.r,
             onPressed: () {
               NavigationService.go(

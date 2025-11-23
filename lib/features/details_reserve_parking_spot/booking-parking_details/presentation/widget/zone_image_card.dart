@@ -8,6 +8,7 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
+import '../../../../../generated/l10n.dart';
 import '../controler/zone_image_controller.dart';
 
 class ZoneImageCard extends ConsumerWidget {
@@ -83,7 +84,8 @@ class _ImageWithStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color statusColor =
         isAvailable ? AppColor.greenTextColor : AppColor.primaryColor;
-    final String statusText = isAvailable ? 'متاح الآن' : 'غير متاح';
+    final String statusText =
+        isAvailable ? S.of(context).availablenow : S.of(context).notavailable;
     final IconData statusIcon =
         isAvailable ? Icons.check_circle_outline : Icons.cancel;
 

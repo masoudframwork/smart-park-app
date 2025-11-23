@@ -7,6 +7,7 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/widgets/required_field_label.dart';
+import '../../../../../generated/l10n.dart';
 
 class TextFieldWidgets extends StatelessWidget {
   const TextFieldWidgets({super.key});
@@ -21,7 +22,7 @@ class TextFieldWidgets extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RequiredFieldLabel(
-                text: 'رقم الهوية',
+                text: S.of(context).idNumber,
                 textColor: AppColor.blackColor,
               ),
               SizedBox(
@@ -47,7 +48,7 @@ class TextFieldWidgets extends StatelessWidget {
               ),
               CustomButtonWidget(
                   borderRadius: 10.r,
-                  text: 'تسجيل الدخول',
+                  text:  S.of(context).login,
                   onPressed: () {
                     NavigationService.push('/nafathOtpScreen');
                   }),
@@ -59,7 +60,7 @@ class TextFieldWidgets extends StatelessWidget {
                 textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
                   color: AppColor.primaryColor,
                 ),
-                text: 'لاحقاً',
+                text: S.of(context).do_this_later,
                 onPressed: () {
                   NavigationService.push('/bottomNavBar');
                 },

@@ -6,6 +6,7 @@ import 'package:smart/core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class DayPriceCard extends StatelessWidget {
   const DayPriceCard({
@@ -15,28 +16,28 @@ class DayPriceCard extends StatelessWidget {
 
   final Widget? leadingIcon;
 
-  static const List<_PricePeriod> _periods = [
-    _PricePeriod(
-      label: 'مجانا',
-      timeStart: '7:00 ص',
-      timeEnd: '11:59 ص',
-    ),
-    _PricePeriod(
-      label: '    5',
-      timeStart: '12:00 م',
-      timeEnd: '10:59 م',
-      isHighlighted: true,
-      showCurrencyIcon: true,
-    ),
-    _PricePeriod(
-      label: '   مغلق',
-      timeStart: '11:00 م',
-      timeEnd: '6:59 ص',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    List<_PricePeriod> periods = [
+      _PricePeriod(
+        label: S.of(context).free,
+        timeStart: '7:00 ص',
+        timeEnd: '11:59 ص',
+      ),
+      _PricePeriod(
+        label: '    5',
+        timeStart: '12:00 م',
+        timeEnd: '10:59 م',
+        isHighlighted: true,
+        showCurrencyIcon: true,
+      ),
+      _PricePeriod(
+        label: S.of(context).close,
+        timeStart: '11:00 م',
+        timeEnd: '6:59 ص',
+      ),
+    ];
+
     return Container(
       width: 361.w,
       height: 120.h,
@@ -60,7 +61,7 @@ class DayPriceCard extends StatelessWidget {
                   SizedBox(width: 8.w),
                 ],
                 AppText(
-                  text: 'السعر على مدار اليوم',
+                  text: S.of(context).pricethroughouttheday,
                   appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                     color: AppColor.textColor,
                     fontWeight: FontWeight.w600,
@@ -69,7 +70,7 @@ class DayPriceCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 12.h),
-            ..._periods.map(
+            ...periods.map(
               (p) => _PriceRow(period: p),
             ),
           ],

@@ -12,6 +12,7 @@ import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
+import '../../../../../generated/l10n.dart';
 
 
 class VehicleDataScreen extends ConsumerWidget {
@@ -32,7 +33,8 @@ class VehicleDataScreen extends ConsumerWidget {
             children: [
               CustomButtonWidget(
                 borderRadius: 10.r,
-                text: 'حفظ المركبة',
+                //حفظ المركبة
+                text: S.of(context).saveVehicle,
                 onPressed: () {
                   NavigationService.go('${RoutePaths.bottomNavBar}?tab=2');
                 },
@@ -46,7 +48,8 @@ class VehicleDataScreen extends ConsumerWidget {
                   color: AppColor.primaryColor,
                   fontWeight: FontWeight.w600,
                 ),
-                text: 'لاحقاً ',
+                //لاحقا
+                text: S.of(context).do_this_later,
                 onPressed: () {
                   NavigationService.push(RoutePaths.bottomNavBar);
                 },
@@ -94,7 +97,7 @@ class VehicleDataScreen extends ConsumerWidget {
                       ),
                     ),
                     AppText(
-                      text: 'بيانات المركبة',
+                      text: S.of(context).enteryourvehicleinfo,
                       appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                         color: AppColor.textColor,
                       ),
@@ -108,7 +111,8 @@ class VehicleDataScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 24.h),
                 if (state.isSaudi) ...[
-                  const _LabelWithStar(text: 'نوع اللوحة'),
+                  //نوع اللوحة 
+                   _LabelWithStar(text: S.of(context).platetype),
                   SizedBox(height: 8.h),
                   _PlateTypeDropdown(
                     value: state.plateType,
@@ -116,7 +120,8 @@ class VehicleDataScreen extends ConsumerWidget {
                     showError: state.showErrors && (state.plateType == null),
                   ),
                   SizedBox(height: 16.h),
-                  const _LabelWithStar(text: 'رقم اللوحة'),
+                   //رقم للوحة
+                   _LabelWithStar(text: S.of(context).platenumber),
                   SizedBox(height: 8.h),
                   Row(
                     children: [
@@ -150,7 +155,7 @@ class VehicleDataScreen extends ConsumerWidget {
                     ],
                   ),
                 ] else ...[
-                  const _LabelWithStar(text: 'رقم اللوحة'),
+                   _LabelWithStar(text: S.of(context).platenumber),
                   SizedBox(height: 8.h),
                   _PlateTextField(
                     hintText: '',
@@ -166,7 +171,8 @@ class VehicleDataScreen extends ConsumerWidget {
                   ),
                 ],
                 SizedBox(height: 16.h),
-                const _LabelWithStar(text: 'لون المركبة'),
+                 //لون المركبة
+                 _LabelWithStar(text: S.of(context).vehiclecolor),
                 SizedBox(height: 8.h),
                 _VehicleColorDropdown(
                   value: state.vehicleColor,
@@ -176,7 +182,7 @@ class VehicleDataScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 16.h),
                 AppText(
-                  text: 'الصورة الرمزية',
+                  text: S.of(context).avatar,
                   appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                     fontWeight: FontWeight.w300,
                   ),
@@ -263,13 +269,15 @@ class _VehicleTypeTabs extends StatelessWidget {
     return Row(
       children: [
         buildTab(
-          text: 'مركبة سعودية',
+          //مركبة سعودية
+          text: S.of(context).saudivehicle,
           active: isSaudi,
           isLeft: true,
           onTap: () => onChanged(VehicleType.saudi),
         ),
         buildTab(
-          text: 'مركبة غير سعودية',
+          //مركبة غير  سعودية
+        text: S.of(context).nonsaudivehicle,
           active: !isSaudi,
           isLeft: false,
           onTap: () => onChanged(VehicleType.nonSaudi),

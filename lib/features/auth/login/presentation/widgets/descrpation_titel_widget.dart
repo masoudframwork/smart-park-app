@@ -4,6 +4,7 @@ import 'package:smart/core/widgets/app_text.dart';
 
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../generated/l10n.dart';
 
 class DescrpationTitelWidget extends StatelessWidget {
   const DescrpationTitelWidget({super.key});
@@ -23,12 +24,12 @@ class DescrpationTitelWidget extends StatelessWidget {
       spacing: 26.h,
       children: [
         AppText(
-          text: 'تسجيل الدخول',
+          text: S.of(context).login,
           textAlign: TextAlign.center,
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:'أدخل رقم هاتفك ليصلك رمز التفعيل ',
+          text: S.of(context).enteryourphonenumbertoreceivanotp,
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

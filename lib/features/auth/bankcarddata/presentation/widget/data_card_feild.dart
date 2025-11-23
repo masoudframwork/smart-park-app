@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/custom_image_widget.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
+import '../../../../../generated/l10n.dart';
 
 enum CardType { visa, mada }
 
@@ -40,7 +40,7 @@ class _CardTypeSelectorColumn extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _RequiredLabel('نوع البطاقة'),
+        _RequiredLabel(S.of(context).cardtype),
         SizedBox(height: 12.h),
         Row(
           children: [
@@ -121,13 +121,13 @@ class _CardDataFieldsSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _LabeledTextField(
-          label: 'رقم البطاقة',
+          label: S.of(context).cardnumber,
           isRequired: true,
           textInputType: TextInputType.number,
         ),
         SizedBox(height: 12.h),
         _LabeledTextField(
-          label: 'الاسم',
+          label: S.of(context).name,
           isRequired: true,
           textInputType: TextInputType.name,
         ),
@@ -135,7 +135,7 @@ class _CardDataFieldsSection extends StatelessWidget {
         Row(
           children: [
             _LabeledTextField(
-              label: 'تاريخ الانتهاء',
+              label: S.of(context).expirydate,
               isRequired: true,
               hintText: 'MM/YY',
               textInputType: TextInputType.datetime,

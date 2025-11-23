@@ -15,6 +15,7 @@ import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custom_image_widget.dart';
 import '../../../../../../core/widgets/pincodestyle.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../controller/sign_up_controller.dart';
 
 class OtpSignUpPage extends ConsumerWidget {
@@ -68,14 +69,13 @@ class OtpSignUpPage extends ConsumerWidget {
                     fontSize: 22,
                   ),
                   onDone: (code) {
-                    // هنا تقدري تتحققي من الكود لو حابة
-                    // debugPrint('OTP: $code');
+
                   },
                 ),
                 SizedBox(height: 32.h),
                 CustomButtonWidget(
                   borderRadius: 10.r,
-                  text: 'تأكيد الحساب',
+                  text: S.of(context).varifyAccount,
                   onPressed: () {
                     showDialog(
                       context: context,
@@ -87,8 +87,8 @@ class OtpSignUpPage extends ConsumerWidget {
                             width: 47.w,
                             height: 47.w,
                           ),
-                          message: 'لقد تم إنشاء حسابك بنجاح',
-                          buttonText: 'استمرار',
+                          message: S.of(context).youraccounthasbeencreatedsuccessfully,
+                          buttonText: S.of(context).continu_e,
                           onButtonPressed: () {
                             NavigationService.go(RoutePaths.nafathPageLogin);
                           },
