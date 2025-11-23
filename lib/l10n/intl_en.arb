@@ -55,5 +55,21 @@
   "settings_lang_en": "EN",
   "searchParkingHint": "Search for parking",
   "searchTooltip": "Search",
-  "scanParkingCode": "Please scan the parking code"
+  "scanParkingCode": "Please scan the parking code",
+  "terms_title": "Terms and Conditions",
+  "terms_section_1": "The information we collect",
+  "terms_section_2": "How to use the information",
+  "terms_section_3": "Sharing information",
+  "terms_section_4": "Data protection",
+  "terms_section_5": "User rights",
+  "terms_section_6": "Cookies",
+  "terms_section_7": "Privacy Policy Update",
+  "terms_section_8": "Contact us",
+  "terms_usage_1": "Managing parking booking and payment processes",
+  "terms_usage_2": "Improving user experience and service development",
+  "terms_usage_3": "Communicating with you regarding inquiries or important notifications",
+  "terms_usage_4": "For analytical and statistical purposes to improve app performance",
+  "terms_usage_5": "Ensuring compliance with local laws and regulations"
+
+
 }

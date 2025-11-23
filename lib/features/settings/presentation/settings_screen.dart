@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
+import 'package:smart/features/settings/presentation/terms/terms_screen.dart';
 
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_text.dart';
@@ -111,7 +112,12 @@ class _SettingsList extends StatelessWidget {
           children: [
             SettingsCard(
               title: S.of(context).settings_terms,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const TermsScreen()),
+                );
+              },
             ),
             SettingsCard(
               title:  S.of(context).settings_privacy,

@@ -95,6 +95,38 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "settings_title": MessageLookupByLibrary.simpleMessage("Settings"),
     "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+    "terms_section_1": MessageLookupByLibrary.simpleMessage(
+      "The information we collect",
+    ),
+    "terms_section_2": MessageLookupByLibrary.simpleMessage(
+      "How to use the information",
+    ),
+    "terms_section_3": MessageLookupByLibrary.simpleMessage(
+      "Sharing information",
+    ),
+    "terms_section_4": MessageLookupByLibrary.simpleMessage("Data protection"),
+    "terms_section_5": MessageLookupByLibrary.simpleMessage("User rights"),
+    "terms_section_6": MessageLookupByLibrary.simpleMessage("Cookies"),
+    "terms_section_7": MessageLookupByLibrary.simpleMessage(
+      "Privacy Policy Update",
+    ),
+    "terms_section_8": MessageLookupByLibrary.simpleMessage("Contact us"),
+    "terms_title": MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+    "terms_usage_1": MessageLookupByLibrary.simpleMessage(
+      "Managing parking booking and payment processes",
+    ),
+    "terms_usage_2": MessageLookupByLibrary.simpleMessage(
+      "Improving user experience and service development",
+    ),
+    "terms_usage_3": MessageLookupByLibrary.simpleMessage(
+      "Communicating with you regarding inquiries or important notifications",
+    ),
+    "terms_usage_4": MessageLookupByLibrary.simpleMessage(
+      "For analytical and statistical purposes to improve app performance",
+    ),
+    "terms_usage_5": MessageLookupByLibrary.simpleMessage(
+      "Ensuring compliance with local laws and regulations",
+    ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",
     ),

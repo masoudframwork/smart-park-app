@@ -398,6 +398,141 @@ class S {
       args: [],
     );
   }
+
+  /// `Terms and Conditions`
+  String get terms_title {
+    return Intl.message(
+      'Terms and Conditions',
+      name: 'terms_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The information we collect`
+  String get terms_section_1 {
+    return Intl.message(
+      'The information we collect',
+      name: 'terms_section_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `How to use the information`
+  String get terms_section_2 {
+    return Intl.message(
+      'How to use the information',
+      name: 'terms_section_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sharing information`
+  String get terms_section_3 {
+    return Intl.message(
+      'Sharing information',
+      name: 'terms_section_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data protection`
+  String get terms_section_4 {
+    return Intl.message(
+      'Data protection',
+      name: 'terms_section_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User rights`
+  String get terms_section_5 {
+    return Intl.message(
+      'User rights',
+      name: 'terms_section_5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cookies`
+  String get terms_section_6 {
+    return Intl.message('Cookies', name: 'terms_section_6', desc: '', args: []);
+  }
+
+  /// `Privacy Policy Update`
+  String get terms_section_7 {
+    return Intl.message(
+      'Privacy Policy Update',
+      name: 'terms_section_7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact us`
+  String get terms_section_8 {
+    return Intl.message(
+      'Contact us',
+      name: 'terms_section_8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Managing parking booking and payment processes`
+  String get terms_usage_1 {
+    return Intl.message(
+      'Managing parking booking and payment processes',
+      name: 'terms_usage_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Improving user experience and service development`
+  String get terms_usage_2 {
+    return Intl.message(
+      'Improving user experience and service development',
+      name: 'terms_usage_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Communicating with you regarding inquiries or important notifications`
+  String get terms_usage_3 {
+    return Intl.message(
+      'Communicating with you regarding inquiries or important notifications',
+      name: 'terms_usage_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For analytical and statistical purposes to improve app performance`
+  String get terms_usage_4 {
+    return Intl.message(
+      'For analytical and statistical purposes to improve app performance',
+      name: 'terms_usage_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ensuring compliance with local laws and regulations`
+  String get terms_usage_5 {
+    return Intl.message(
+      'Ensuring compliance with local laws and regulations',
+      name: 'terms_usage_5',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
