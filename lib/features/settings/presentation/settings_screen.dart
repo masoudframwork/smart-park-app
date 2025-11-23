@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 
@@ -8,6 +9,7 @@ import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../l10n/app_locale.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -25,15 +27,12 @@ class SettingsScreen extends StatelessWidget {
             size: 37,
           ),
         ),
-        body: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Column(
-            children: [
-              const _SettingsHeader(),
-              SizedBox(height: 16.h),
-              const _SettingsList(),
-            ],
-          ),
+        body: Column(
+          children: [
+            const _SettingsHeader(),
+            SizedBox(height: 16.h),
+            const _SettingsList(),
+          ],
         ),
       ),
     );
@@ -234,40 +233,87 @@ class _NightModeTrailing extends StatelessWidget {
   }
 }
 
+// class _LanguageTrailing extends StatelessWidget {
+//   const _LanguageTrailing();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     const bool isArabic = true;
+//
+//     return Row(
+//       spacing: 8.w,
+//       children: [
+//         AppText(
+//           text: 'En',
+//           appTextTheme: AppTextTheme.titleMediumTextStyle()
+//               .copyWith(color: AppColor.blackColor),
+//         ),
+//         Switch(
+//           value: true,
+//           onChanged: (_) {},
+//           overlayColor: WidgetStateProperty.all(Colors.transparent),
+//           trackColor: WidgetStateProperty.resolveWith((states) {
+//             final isOn = states.contains(WidgetState.selected);
+//             return isOn ? AppColor.primaryColor : AppColor.greyColor;
+//           }),
+//           trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+//           trackOutlineWidth: WidgetStateProperty.all(0),
+//           thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
+//           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+//         ),
+//         AppText(
+//           text: 'عر',
+//           appTextTheme: AppTextTheme.titleMediumTextStyle()
+//               .copyWith(color: AppColor.blackColor),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
 class _LanguageTrailing extends StatelessWidget {
   const _LanguageTrailing();
 
   @override
   Widget build(BuildContext context) {
-    const bool isArabic = true;
+    return ScopedModelDescendant<AppLocale>(
+      builder: (context, _, localeModel) {
+        final isArabic = localeModel.isArabic();
 
-    return Row(
-      spacing: 8.w,
-      children: [
-        AppText(
-          text: 'En',
-          appTextTheme: AppTextTheme.titleMediumTextStyle()
-              .copyWith(color: AppColor.blackColor),
-        ),
-        Switch(
-          value: true,
-          onChanged: (_) {},
-          overlayColor: WidgetStateProperty.all(Colors.transparent),
-          trackColor: WidgetStateProperty.resolveWith((states) {
-            final isOn = states.contains(WidgetState.selected);
-            return isOn ? AppColor.primaryColor : AppColor.greyColor;
-          }),
-          trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-          trackOutlineWidth: WidgetStateProperty.all(0),
-          thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
-          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        ),
-        AppText(
-          text: 'عر',
-          appTextTheme: AppTextTheme.titleMediumTextStyle()
-              .copyWith(color: AppColor.blackColor),
-        ),
-      ],
+        return Row(
+          spacing: 8.w,
+          children: [
+            AppText(
+              text: 'En',
+              appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                color: isArabic ? AppColor.blackColor : AppColor.primaryColor,
+              ),
+            ),
+            Switch(
+              value: isArabic,
+              onChanged: (_) async {
+                await localeModel.changeLanguage();
+              },
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              trackColor: WidgetStateProperty.resolveWith((states) {
+                final isOn = states.contains(WidgetState.selected);
+                return isOn ? AppColor.primaryColor : AppColor.primaryColor;
+              }),
+              trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+              trackOutlineWidth: WidgetStateProperty.all(0),
+              thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            AppText(
+              text: 'عر',
+              appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                color: AppColor.primaryColor,
+               // isArabic ? AppColor.primaryColor : AppColor.blackColor,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

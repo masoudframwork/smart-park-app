@@ -9,6 +9,7 @@ class CacheKeys {
 
   final String locale = 'locale';
   final String theme = 'theme';
+
 //
   final String onboardingHidden = 'onboarding_hidden';
 
