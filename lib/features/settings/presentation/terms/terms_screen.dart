@@ -115,7 +115,7 @@ class _TermsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20.w),
+      padding: EdgeInsets.all(10.w),
       child: Row(
         spacing: 15.w,
         children: [
