@@ -96,9 +96,12 @@ class TermsScreen extends StatelessWidget {
       child: ExpansionTile(
         tilePadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         childrenPadding: EdgeInsets.all(12.w),
-        title: AppText(
-          text: title,
-          appTextTheme: AppTextTheme.titleMediumTextStyle(),
+        title: Align(
+          alignment: Alignment.centerRight,
+          child: AppText(
+            text: title,
+            appTextTheme: AppTextTheme.titleMediumTextStyle(),
+          ),
         ),
         children: children ?? [],
       ),

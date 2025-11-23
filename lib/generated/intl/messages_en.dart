@@ -112,6 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "terms_section_8": MessageLookupByLibrary.simpleMessage("Contact us"),
     "terms_title": MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
+    "terms_usage_0": MessageLookupByLibrary.simpleMessage(
+      "We use your data for the following purposes:",
+    ),
     "terms_usage_1": MessageLookupByLibrary.simpleMessage(
       "Managing parking booking and payment processes",
     ),

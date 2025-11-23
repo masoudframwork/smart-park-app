@@ -484,6 +484,16 @@ class S {
     );
   }
 
+  /// `We use your data for the following purposes:`
+  String get terms_usage_0 {
+    return Intl.message(
+      'We use your data for the following purposes:',
+      name: 'terms_usage_0',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Managing parking booking and payment processes`
   String get terms_usage_1 {
     return Intl.message(
