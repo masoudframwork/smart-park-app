@@ -48,26 +48,33 @@ class TermsScreen extends StatelessWidget {
                         _buildSection(
                           S.of(context).terms_section_1,
                         ),
+
                         _buildSection(
                           S.of(context).terms_section_2,
                           children: usageItems
-                              .map((e) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 6),
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        const Text("• "),
-                                        Expanded(
-                                            child: AppText(
-                                          text: e,
-                                          appTextTheme:
-                                              AppTextTheme.descriptionTextStyle(),
-                                        )),
-                                      ],
+                              .map(
+                                (e) => Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 6),
+                              child: Directionality(
+                                textDirection: TextDirection.rtl,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("• ", style: TextStyle(fontSize: 18)),
+                                    Expanded(
+                                      child: AppText(
+                                        text: e,
+                                        appTextTheme: AppTextTheme.descriptionTextStyle(),
+                                      ),
                                     ),
-                                  ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
                               .toList(),
                         ),
+
                         _buildSection(S.of(context).terms_section_3),
                         _buildSection(S.of(context).terms_section_4),
                         _buildSection(S.of(context).terms_section_5),
@@ -75,7 +82,7 @@ class TermsScreen extends StatelessWidget {
                         _buildSection(S.of(context).terms_section_7),
                         _buildSection(S.of(context).terms_section_8),
                       ],
-                    ),
+                    )
                   ),
                 ],
               ),
@@ -97,7 +104,7 @@ class TermsScreen extends StatelessWidget {
         tilePadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         childrenPadding: EdgeInsets.all(12.w),
         title: Align(
-          alignment: Alignment.centerRight,
+          alignment: AlignmentDirectional.centerStart,
           child: AppText(
             text: title,
             appTextTheme: AppTextTheme.titleMediumTextStyle(),
@@ -107,6 +114,7 @@ class TermsScreen extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class _TermsHeader extends StatelessWidget {
