@@ -1633,6 +1633,16 @@ class S {
       args: [code],
     );
   }
+
+  /// `Voice recognition is not available on this device`
+  String get voice_not_available {
+    return Intl.message(
+      'Voice recognition is not available on this device',
+      name: 'voice_not_available',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

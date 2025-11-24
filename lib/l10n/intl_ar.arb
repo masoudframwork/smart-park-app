@@ -197,6 +197,7 @@
   "green_parking_details": "تفاصيل الحجز",
   "green_parking_vehicle_info": "{name} | {spots}",
   "green_parking_time_range": "{start} → {end}",
-  "green_parking_area_title": "Area {code}"
+  "green_parking_area_title": "Area {code}",
+  "voice_not_available": "التعرّف الصوتي غير متاح على هذا الجهاز"
 
 }

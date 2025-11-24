@@ -378,6 +378,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "verifythroughNafathapp": MessageLookupByLibrary.simpleMessage(
       "Verify through Nafath app",
     ),
+    "voice_not_available": MessageLookupByLibrary.simpleMessage(
+      "Voice recognition is not available on this device",
+    ),
     "wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
     "welcometoourparkingapp": MessageLookupByLibrary.simpleMessage(
       "Welcome to our parking app",

@@ -62,7 +62,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 onFieldSubmitted: (_) => controller.searchNow(),
                 suffixIcon: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: isAvailable ? () => controller.toggleVoice() : null,
+                  onTap: isAvailable ? () => controller.toggleVoice(context) : null,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     padding: EdgeInsets.symmetric(horizontal: 10.w),

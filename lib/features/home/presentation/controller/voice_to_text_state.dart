@@ -7,12 +7,14 @@ class VoiceUiState {
   final bool isListening;
   final String partialText;
   final String? error;
+  final String locale;
 
   const VoiceUiState({
     required this.isAvailable,
     required this.isListening,
     required this.partialText,
     this.error,
+    required this.locale,
   });
 
   VoiceUiState copyWith({
@@ -20,12 +22,14 @@ class VoiceUiState {
     bool? isListening,
     String? partialText,
     String? error,
+    String? locale,
   }) {
     return VoiceUiState(
       isAvailable: isAvailable ?? this.isAvailable,
       isListening: isListening ?? this.isListening,
       partialText: partialText ?? this.partialText,
       error: error,
+      locale: locale ?? this.locale,
     );
   }
 
@@ -34,6 +38,7 @@ class VoiceUiState {
     isListening: false,
     partialText: '',
     error: null,
+    locale: 'ar_SA',
   );
 }
 

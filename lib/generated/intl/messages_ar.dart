@@ -364,6 +364,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "verifythroughNafathapp": MessageLookupByLibrary.simpleMessage(
       "التحقق من خلال تطبيق نفاذ",
     ),
+    "voice_not_available": MessageLookupByLibrary.simpleMessage(
+      "التعرّف الصوتي غير متاح على هذا الجهاز",
+    ),
     "wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
     "welcometoourparkingapp": MessageLookupByLibrary.simpleMessage(
       "أهلاً بك في تطبيق المواقف",
