@@ -203,7 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile_phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "profile_savedInfo": MessageLookupByLibrary.simpleMessage(
-      "Saved Information",
+      "Previously Saved Info",
     ),
     "profile_settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "profile_soon": MessageLookupByLibrary.simpleMessage("Soon"),

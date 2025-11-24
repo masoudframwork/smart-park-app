@@ -94,7 +94,7 @@ class _ProfileBody extends StatelessWidget {
               Navigator.push(context, MaterialPageRoute(builder: (_) => const ElectronicPaymentCards()));
             },
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 48),
 
           _StoredInfoTile(
             title: S.of(context).profile_settings,
