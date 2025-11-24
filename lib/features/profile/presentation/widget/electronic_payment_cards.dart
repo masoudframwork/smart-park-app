@@ -200,7 +200,8 @@ class SavedCardTile extends StatelessWidget {
                           ),
                           SizedBox(height: 2.h),
                           AppText(
-                            text: expiryDate,
+                            text: 'CVV',
+
                             appTextTheme: AppTextTheme.bodySmallTextStyle()
                                 .copyWith(color: AppColor.greyCard),
                           ),
@@ -214,7 +215,7 @@ class SavedCardTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppText(
-                            text: 'CVV',
+                            text: expiryDate,
                             appTextTheme: AppTextTheme.bodySmallTextStyle()
                                 .copyWith(color: AppColor.greyColor),
                           ),
