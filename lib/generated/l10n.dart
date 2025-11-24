@@ -1518,6 +1518,71 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to end the reservation?`
+  String get dialog_end_title {
+    return Intl.message(
+      'Do you want to end the reservation?',
+      name: 'dialog_end_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By pressing cancel, you will end the reservation and refund the paid amount.`
+  String get dialog_end_message {
+    return Intl.message(
+      'By pressing cancel, you will end the reservation and refund the paid amount.',
+      name: 'dialog_end_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Reservation`
+  String get dialog_end_confirm {
+    return Intl.message(
+      'End Reservation',
+      name: 'dialog_end_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to extend the reservation?`
+  String get dialog_extend_title {
+    return Intl.message(
+      'Do you want to extend the reservation?',
+      name: 'dialog_extend_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By pressing extend, your reservation will be extended for the selected duration.`
+  String get dialog_extend_message {
+    return Intl.message(
+      'By pressing extend, your reservation will be extended for the selected duration.',
+      name: 'dialog_extend_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend Reservation`
+  String get dialog_extend {
+    return Intl.message(
+      'Extend Reservation',
+      name: 'dialog_extend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get dialog_cancel {
+    return Intl.message('Cancel', name: 'dialog_cancel', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

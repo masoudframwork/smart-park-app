@@ -5,6 +5,7 @@ import 'package:smart/core/constants/image_string.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class BookingConfirmationDialog extends StatelessWidget {
   final String title;
@@ -78,51 +79,54 @@ class BookingConfirmationDialog extends StatelessWidget {
   }
 
   Widget _buildHeader(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        SizedBox(width: 4.w),
+        // Warning ICON
         SvgPicture.asset(
           AppImages.warningSign,
           width: 32.w,
           height: 32.w,
         ),
-        SizedBox(width: 8.w),
-        Expanded(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              AppText(
-                text: title,
-                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16.sp,
-                  color: AppColor.blackColor,
-                ),
-              ),
-              Spacer(),
 
-              InkWell(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColor.greyContainerColor,
-                      shape: BoxShape.circle),
-                  padding: EdgeInsets.all(4.w),
-                  child: Icon(
-                    Icons.close,
-                    size: 20.w,
-                    color: AppColor.blackColor,
-                  ),
-                ),
-              ),
-            ],
+        SizedBox(width: 12.w),
+
+        // TITLE (Centered automatically)
+        Expanded(
+          child: AppText(
+            text: title,
+            textAlign: TextAlign.center,
+            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+              fontWeight: FontWeight.w600,
+              fontSize: 16.sp,
+              color: AppColor.blackColor,
+            ),
           ),
         ),
-        SizedBox(width: 8.w),
+
+        SizedBox(width: 12.w),
+
+        // CLOSE BUTTON
+        InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColor.greyContainerColor,
+              shape: BoxShape.circle,
+            ),
+            padding: EdgeInsets.all(6.w),
+            child: Icon(
+              Icons.close,
+              size: 18.w,
+              color: AppColor.blackColor,
+            ),
+          ),
+        ),
       ],
     );
   }
+
 
   Widget _buildMessage() {
     return Padding(
@@ -202,14 +206,15 @@ class BookingConfirmationDialog extends StatelessWidget {
     required BuildContext context,
     required VoidCallback onConfirm,
   }) {
+    final s = S.of(context);
+
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
-        title: 'هل تريد إنهاء الحجز؟',
-        message:
-            'بالضغط على إلغاء الحجز سوف تقوم بإلغاء حجز المركبة وإعادة المبلغ المدفوع',
-        confirmText: 'إنهاء الحجز',
-        cancelText: 'عودة',
+        title: s.dialog_end_title,       // "هل تريد إنهاء الحجز؟"
+        message: s.dialog_end_message,   // explanation
+        confirmText: s.dialog_end_confirm, // "إنهاء الحجز" / "End Reservation"
+        cancelText: s.dialog_cancel,       // "عودة" / "Back"
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.secondaryContainerColor,
         showWarningIcon: true,
@@ -221,14 +226,15 @@ class BookingConfirmationDialog extends StatelessWidget {
     required BuildContext context,
     required VoidCallback onConfirm,
   }) {
+    final s = S.of(context);
+
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
-        title: 'هل تريد إنهاء الحجز؟',
-        message:
-            'بالضغط على إلغاء الحجز سوف تقوم بإلغاء حجز المركبة وإعادة المبلغ المدفوع',
-        confirmText: 'إنهاء الحجز',
-        cancelText: 'عودة',
+        title: s.dialog_end_title,
+        message: s.dialog_end_message,
+        confirmText: s.dialog_end_confirm,
+        cancelText: s.dialog_cancel,
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.secondaryContainerColor,
         showWarningIcon: true,
@@ -240,14 +246,15 @@ class BookingConfirmationDialog extends StatelessWidget {
     required BuildContext context,
     required VoidCallback onConfirm,
   }) {
+    final s = S.of(context);
+
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
-        title: 'هل تريد تمديد الحجز؟',
-        message:
-            'بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة',
-        confirmText: 'تمديد الحجز',
-        cancelText: 'عودة',
+        title: s.dialog_extend_title,        // "هل تريد تمديد الحجز؟"
+        message: s.dialog_extend_message,    // explanation
+        confirmText: s.dialog_extend,        // "تمديد الحجز"
+        cancelText: s.dialog_cancel,
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.primaryColor,
         showWarningIcon: false,

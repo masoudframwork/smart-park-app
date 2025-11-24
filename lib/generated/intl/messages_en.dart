@@ -121,6 +121,23 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_anew_account": MessageLookupByLibrary.simpleMessage(
       "Create a new account ",
     ),
+    "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "dialog_end_confirm": MessageLookupByLibrary.simpleMessage(
+      "End Reservation",
+    ),
+    "dialog_end_message": MessageLookupByLibrary.simpleMessage(
+      "By pressing cancel, you will end the reservation and refund the paid amount.",
+    ),
+    "dialog_end_title": MessageLookupByLibrary.simpleMessage(
+      "Do you want to end the reservation?",
+    ),
+    "dialog_extend": MessageLookupByLibrary.simpleMessage("Extend Reservation"),
+    "dialog_extend_message": MessageLookupByLibrary.simpleMessage(
+      "By pressing extend, your reservation will be extended for the selected duration.",
+    ),
+    "dialog_extend_title": MessageLookupByLibrary.simpleMessage(
+      "Do you want to extend the reservation?",
+    ),
     "dio_generic_error": MessageLookupByLibrary.simpleMessage(
       "⚠️ Error: An error occured while fetching data",
     ),

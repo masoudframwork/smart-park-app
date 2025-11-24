@@ -113,6 +113,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "create_anew_account": MessageLookupByLibrary.simpleMessage(
       "إنشاء حساب جديد",
     ),
+    "dialog_cancel": MessageLookupByLibrary.simpleMessage("عودة"),
+    "dialog_end_confirm": MessageLookupByLibrary.simpleMessage("إنهاء الحجز"),
+    "dialog_end_message": MessageLookupByLibrary.simpleMessage(
+      "بالضغط على إلغاء الحجز سوف تقوم بإلغاء حجز المركبة وإعادة المبلغ المدفوع",
+    ),
+    "dialog_end_title": MessageLookupByLibrary.simpleMessage(
+      "هل تريد إنهاء الحجز؟",
+    ),
+    "dialog_extend": MessageLookupByLibrary.simpleMessage("تمديد الحجز"),
+    "dialog_extend_message": MessageLookupByLibrary.simpleMessage(
+      "بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة",
+    ),
+    "dialog_extend_title": MessageLookupByLibrary.simpleMessage(
+      "هل تريد تمديد الحجز؟",
+    ),
     "dio_generic_error": MessageLookupByLibrary.simpleMessage(
       "⚠️ خطأ: حدث خطأ أثناء جلب البيانات",
     ),
