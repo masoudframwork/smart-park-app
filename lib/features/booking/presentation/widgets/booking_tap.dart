@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class BookingTabBar extends StatelessWidget {
   final int selectedIndex;
@@ -16,30 +17,36 @@ class BookingTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       padding: EdgeInsets.all(4.w),
       decoration: BoxDecoration(
-        color:  AppColor.textColor,   // VERY IMPORTANT — light grey background
+        color: AppColor.textColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(12.r),
           topRight: Radius.circular(12.r),
         ),
       ),
+
       child: Row(
+        textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
         children: [
           Expanded(
             child: _buildTab(
-              title: 'الحجوزات الحالية',
+              title: S.of(context).booking_current_tab,   // localization
               isSelected: selectedIndex == 0,
               onTap: () => onTabChanged(0),
+              isRTL: isRTL,
             ),
           ),
           Expanded(
             child: _buildTab(
-              title: 'الحجوزات السابقة',
+              title: S.of(context).booking_previous_tab, // localization
               isSelected: selectedIndex == 1,
               onTap: () => onTabChanged(1),
+              isRTL: isRTL,
             ),
           ),
         ],
@@ -51,6 +58,7 @@ class BookingTabBar extends StatelessWidget {
     required String title,
     required bool isSelected,
     required VoidCallback onTap,
+    required bool isRTL,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -65,13 +73,15 @@ class BookingTabBar extends StatelessWidget {
               appTextTheme: AppTextTheme.mainButtonTextStyle(),
             ),
           ),
+
+          /// Bottom indicator bar
           SizedBox(
             height: 3.h,
             child: Stack(
               children: [
                 Container(
                   width: double.infinity,
-                  color:  AppColor.textColor,
+                  color: AppColor.textColor,
                 ),
                 if (isSelected)
                   Center(

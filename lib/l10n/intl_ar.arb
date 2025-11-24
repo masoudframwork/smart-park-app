@@ -147,7 +147,6 @@
   "bookingconfirmation": "تأكيد الحجز",
   "cardendingin000": "البطاقة المنتهية بـ 0000",
   "newcard": "بطاقة جديدة",
-  "settings_lang_en": "En",
   "searchParkingHint": "ابحث عن موقف",
   "searchTooltip": "بحث",
   "scanParkingCode": "الرجاء مسح رمز الموقف",
@@ -168,6 +167,20 @@
   "terms_usage_5": "ضمان الامتثال للقوانين المحلية",
   "help_support_title": "المساعدة و الدعم الفني",
   "help_contact_us": "اتصل بنا",
-  "help_message_us": "راسلنا"
+  "help_message_us": "راسلنا",
+  "booking_extend": "تمديد الحجز",
+  "booking_end": "إنهاء الحجز",
+  "booking_current_tab": "الحجوزات الحالية",
+  "booking_previous_tab": "الحجوزات السابقة",
+  "booking_again": "احجز مرة أخرى",
+  "booking_summary": "ملخص الحجز",
+  "booking_book_again": "احجز مرة أخرى",
+  "booking_go_home": "الرئيسية",
+  "booking_download_invoice": "تحميل الفاتورة",
+  "booking_date_example": "الخميس 2025/10/30",
+  "booking_time_start_example": "08:00 ص",
+  "booking_time_end_example": "04:00 م",
+  "booking_car_details": "نيسان / 2023 / أسود",
+  "booking_amount_paid": "إجمالي المدفوع 30 ر.س"
 
 }

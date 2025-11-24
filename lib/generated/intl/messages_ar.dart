@@ -52,6 +52,34 @@ class MessageLookup extends MessageLookupByLibrary {
     "avatar": MessageLookupByLibrary.simpleMessage("الصورة الرمزية"),
     "bookHere": MessageLookupByLibrary.simpleMessage("احجز هنا"),
     "bookingSummary": MessageLookupByLibrary.simpleMessage("ملخص الحجز"),
+    "booking_again": MessageLookupByLibrary.simpleMessage("احجز مرة أخرى"),
+    "booking_amount_paid": MessageLookupByLibrary.simpleMessage(
+      "إجمالي المدفوع 30 ر.س",
+    ),
+    "booking_book_again": MessageLookupByLibrary.simpleMessage("احجز مرة أخرى"),
+    "booking_car_details": MessageLookupByLibrary.simpleMessage(
+      "نيسان / 2023 / أسود",
+    ),
+    "booking_current_tab": MessageLookupByLibrary.simpleMessage(
+      "الحجوزات الحالية",
+    ),
+    "booking_date_example": MessageLookupByLibrary.simpleMessage(
+      "الخميس 2025/10/30",
+    ),
+    "booking_download_invoice": MessageLookupByLibrary.simpleMessage(
+      "تحميل الفاتورة",
+    ),
+    "booking_end": MessageLookupByLibrary.simpleMessage("إنهاء الحجز"),
+    "booking_extend": MessageLookupByLibrary.simpleMessage("تمديد الحجز"),
+    "booking_go_home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "booking_previous_tab": MessageLookupByLibrary.simpleMessage(
+      "الحجوزات السابقة",
+    ),
+    "booking_summary": MessageLookupByLibrary.simpleMessage("ملخص الحجز"),
+    "booking_time_end_example": MessageLookupByLibrary.simpleMessage("04:00 م"),
+    "booking_time_start_example": MessageLookupByLibrary.simpleMessage(
+      "08:00 ص",
+    ),
     "bookingconfirmation": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
     "bookings": MessageLookupByLibrary.simpleMessage("الحجوزات"),
     "cardendingin000": MessageLookupByLibrary.simpleMessage(

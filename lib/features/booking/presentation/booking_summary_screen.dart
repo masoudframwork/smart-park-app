@@ -7,7 +7,8 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_widgets.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 import 'package:smart/features/home/presentation/home_page.dart';
-
+import 'package:smart/generated/l10n.dart';
+import '../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 
@@ -16,119 +17,96 @@ class BookingSummaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.settingsBackgroundColor,
-        appBar: CustomAppBar(
-          backgroundColor: AppColor.backgroundAppBarColor,
-          leading: CircleImageButton(
-            onTap: () {},
-            imageUrl: AppImages.appLogo,
-            size: 37,
+      child: Directionality(
+        textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
+        child: Scaffold(
+          backgroundColor: AppColor.settingsBackgroundColor,
+          appBar: CustomAppBar(
+            backgroundColor: AppColor.backgroundAppBarColor,
+            leading: CircleImageButton(
+              onTap: () {},
+              imageUrl: AppImages.appLogo,
+              size: 37,
+            ),
           ),
-        ),
-        body: Column(
-          children: [
-            _buildHeader(context),
-            SizedBox(height: 16.h),
-            Expanded(
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: Column(
-                    children: [
-                      _buildBookingCard(),
+          body: Padding(
+            padding: EdgeInsets.all(16.w),
+            child: Column(
+              children: [
 
-                      SizedBox(height: 20.h),
+                ArrowWidgetCustomBar(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  title: S.of(context).terms_title,
+                ),
 
-                      /// Book Again Button
-                      BookingWidgets.buildActionButton(
-                        text: "احجز مرة أخرى",
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => BookingStep1Page(),
-                            ),
-                          );
-                        },
-                        backgroundColor: AppColor.primaryColor,
-                        height: 50,
-                        fontSize: 16,
+                SizedBox(height: 16.h),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Column(
+                        children: [
+                          _buildBookingCard(context, isRTL),
+
+                          SizedBox(height: 20.h),
+
+                          /// ⭐ Button: Book Again
+                          BookingWidgets.buildActionButton(
+                            text: S.of(context).booking_book_again,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => BookingStep1Page(),
+                                ),
+                              );
+                            },
+                            backgroundColor: AppColor.primaryColor,
+                            height: 50,
+                            fontSize: 16,
+                          ),
+
+                          SizedBox(height: 12.h),
+
+                          /// ⭐ Button: Go Home
+                          _buildOutlinedButton(
+                            text: S.of(context).booking_go_home,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const HomePage(),
+                                ),
+                              );
+                            },
+                          ),
+
+                          SizedBox(height: 40.h),
+                        ],
                       ),
-
-                      SizedBox(height: 12.h),
-
-                      /// Go to Home (White button with green border)
-                      _buildOutlinedButton(
-                        text: "الرئيسية",
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => HomePage(),
-                            ),
-                          );
-                        },
-                      ),
-                      SizedBox(height: 40.h),
-                    ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  /// HEADER BAR
-  Widget _buildHeader(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      child: Row(
-        spacing: 15,
-        children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              width: 34.w,
-              height: 34.w,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: AppColor.whiteColor,
-                borderRadius: BorderRadius.circular(10.r),
-                border: Border.all(
-                  color: AppColor.contanearGreyColor,
-                  width: 1,
-                ),
-              ),
-              child: CustomImageWidget(
-                imageUrl: AppImages.arrowIcon2,
-                width: 20.w,
-                height: 20.w,
-                isFlag: true,
-                color: AppColor.primaryColor,
-              ),
-            ),
-          ),
-          AppText(
-            text: "ملخص الحجز",
-            appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-              color: AppColor.textColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
-  /// BOOKING CARD
-  Widget _buildBookingCard() {
+  // ---------------------------------------------------------------------------
+  // BOOKING CARD
+  // ---------------------------------------------------------------------------
+
+  Widget _buildBookingCard(BuildContext context, bool isRTL) {
     return Container(
       padding: EdgeInsets.all(16.w),
       margin: EdgeInsets.only(bottom: 12.h),
@@ -144,12 +122,11 @@ class BookingSummaryScreen extends StatelessWidget {
         ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,   // ⭐ CENTER ALL CONTENT
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
           /// Title
           AppText(
-            text: "المنطقة 013",
+            text: S.of(context).zone013,
             appTextTheme: AppTextTheme.titleLargeTextStyle()
                 .copyWith(fontWeight: FontWeight.w700),
           ),
@@ -158,8 +135,8 @@ class BookingSummaryScreen extends StatelessWidget {
 
           /// Address
           AppText(
-            text: "طريق خريص، الرياض، المملكة العربية السعودية",
-            textAlign: TextAlign.center,                   // ⭐ CENTER TEXT
+            text: S.of(context).zone013KhuraisRoadRiyadhKingdomofSaudiArabia,
+            textAlign: TextAlign.center,
             appTextTheme: AppTextTheme.bodySmallTextStyle(),
           ),
 
@@ -173,15 +150,15 @@ class BookingSummaryScreen extends StatelessWidget {
           BookingWidgets.buildInfoRow(
             icon: AppImages.timerClock,
             iconColor: AppColor.textColor,
-            text: "الخميس 2025/10/30",
+            text: S.of(context).booking_date_example,
           ),
 
           SizedBox(height: 8.h),
 
           /// TIME
           BookingWidgets.buildTimeRow(
-            startTime: "08:00 ص",
-            endTime: "04:00 م",
+            startTime: S.of(context).booking_time_start_example,
+            endTime: S.of(context).booking_time_end_example,
           ),
 
           SizedBox(height: 8.h),
@@ -190,16 +167,16 @@ class BookingSummaryScreen extends StatelessWidget {
           BookingWidgets.buildInfoRow(
             icon: AppImages.car,
             iconColor: AppColor.textColor,
-            text: "نيسان / 2023 / أسود",
+            text: S.of(context).booking_car_details,
           ),
 
           SizedBox(height: 8.h),
 
-          /// TOTAL PRICE
+          /// PRICE
           BookingWidgets.buildInfoRow(
             icon: AppImages.realSu,
             iconColor: AppColor.textColor,
-            text: "إجمالي المدفوع  30 ر.س",
+            text: S.of(context).booking_amount_paid,
           ),
 
           SizedBox(height: 20.h),
@@ -208,9 +185,13 @@ class BookingSummaryScreen extends StatelessWidget {
           Center(
             child: TextButton.icon(
               onPressed: () {},
-              icon: Icon(Icons.download_for_offline_outlined, color: AppColor.primaryColor, size: 20),
+              icon: Icon(
+                Icons.download_for_offline_outlined,
+                color: AppColor.primaryColor,
+                size: 20,
+              ),
               label: AppText(
-                text: "تحميل الفاتورة",
+                text: S.of(context).booking_download_invoice,
                 appTextTheme: AppTextTheme.bodyMediumTextStyle()
                     .copyWith(color: AppColor.primaryColor),
               ),
@@ -221,8 +202,10 @@ class BookingSummaryScreen extends StatelessWidget {
     );
   }
 
+  // ---------------------------------------------------------------------------
+  // OUTLINED BUTTON
+  // ---------------------------------------------------------------------------
 
-  /// Outlined WHITE BUTTON
   Widget _buildOutlinedButton({
     required String text,
     required VoidCallback onTap,

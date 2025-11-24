@@ -33,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
 
         /// Dynamic RTL / LTR
         body: Directionality(
-          textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+          textDirection: Directionality.of(context),
           child: const _ProfileBody(),
         ),
       ),

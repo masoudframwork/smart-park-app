@@ -5,10 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
 import 'package:smart/features/booking/presentation/controller/timer_controller.dart';
-import 'package:smart/features/booking/presentation/widgets/time_circle_widget.dart' show TimerCircleWidget;
+import 'package:smart/features/booking/presentation/widgets/time_circle_widget.dart'
+    show TimerCircleWidget;
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../generated/l10n.dart';
 import 'booking_widgets.dart';
 
 class CurrentBookingCard extends ConsumerWidget {
@@ -52,7 +54,7 @@ class CurrentBookingCard extends ConsumerWidget {
               ],
             ),
             SizedBox(height: 16.h),
-            _buildActionButtons(),
+            _buildActionButtons(context),
           ],
         ),
       ),
@@ -124,7 +126,7 @@ class CurrentBookingCard extends ConsumerWidget {
           ),
         ),
         SizedBox(width: 8.w),
-       SvgPicture.asset(
+        SvgPicture.asset(
           AppImages.arrowIcon,
           color: AppColor.primaryColor,
         ),
@@ -160,12 +162,12 @@ class CurrentBookingCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildActionButtons() {
+  Widget _buildActionButtons(BuildContext context) {
     return Row(
       children: [
         Expanded(
           child: BookingWidgets.buildActionButton(
-            text: 'تمديد الحجز',
+            text: S.of(context).booking_extend,
             onTap: onExtend,
             backgroundColor: AppColor.primaryColor,
           ),
@@ -173,7 +175,7 @@ class CurrentBookingCard extends ConsumerWidget {
         SizedBox(width: 12.w),
         Expanded(
           child: BookingWidgets.buildActionButton(
-            text: 'إنهاء الحجز',
+            text: S.of(context).booking_end,
             onTap: onCancel,
             backgroundColor: AppColor.secondaryContainerColor,
           ),

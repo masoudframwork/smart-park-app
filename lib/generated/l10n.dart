@@ -1343,6 +1343,141 @@ class S {
       args: [],
     );
   }
+
+  /// `Extend Reservation`
+  String get booking_extend {
+    return Intl.message(
+      'Extend Reservation',
+      name: 'booking_extend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Reservation`
+  String get booking_end {
+    return Intl.message(
+      'End Reservation',
+      name: 'booking_end',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Bookings`
+  String get booking_current_tab {
+    return Intl.message(
+      'Current Bookings',
+      name: 'booking_current_tab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Previous Bookings`
+  String get booking_previous_tab {
+    return Intl.message(
+      'Previous Bookings',
+      name: 'booking_previous_tab',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Again`
+  String get booking_again {
+    return Intl.message(
+      'Book Again',
+      name: 'booking_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Booking Summary`
+  String get booking_summary {
+    return Intl.message(
+      'Booking Summary',
+      name: 'booking_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Book Again`
+  String get booking_book_again {
+    return Intl.message(
+      'Book Again',
+      name: 'booking_book_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get booking_go_home {
+    return Intl.message('Home', name: 'booking_go_home', desc: '', args: []);
+  }
+
+  /// `Download Invoice`
+  String get booking_download_invoice {
+    return Intl.message(
+      'Download Invoice',
+      name: 'booking_download_invoice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thursday 30/10/2025`
+  String get booking_date_example {
+    return Intl.message(
+      'Thursday 30/10/2025',
+      name: 'booking_date_example',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `08:00 AM`
+  String get booking_time_start_example {
+    return Intl.message(
+      '08:00 AM',
+      name: 'booking_time_start_example',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `04:00 PM`
+  String get booking_time_end_example {
+    return Intl.message(
+      '04:00 PM',
+      name: 'booking_time_end_example',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nissan / 2023 / Black`
+  String get booking_car_details {
+    return Intl.message(
+      'Nissan / 2023 / Black',
+      name: 'booking_car_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Paid 30 SAR`
+  String get booking_amount_paid {
+    return Intl.message(
+      'Total Paid 30 SAR',
+      name: 'booking_amount_paid',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -8,6 +8,7 @@ import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
 import 'booking_widgets.dart';
+import 'package:smart/generated/l10n.dart';
 
 class PreviousBookingCard extends StatelessWidget {
   final BookingModel reservation;
@@ -23,22 +24,25 @@ class PreviousBookingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(top: 22.h, bottom: 16.h),
         decoration: BookingWidgets.cardDecoration(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+          isRTL ? CrossAxisAlignment.start : CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-              child: _buildHeader(),
+              child: _buildHeader(context, isRTL),
             ),
             BookingWidgets.buildDivider(),
             Padding(
               padding: EdgeInsets.fromLTRB(16.w, 12.h, 16.w, 16.h),
-              child: _buildContent(context),
+              child: _buildContent(context, isRTL),
             ),
           ],
         ),
@@ -46,7 +50,7 @@ class PreviousBookingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context, bool isRTL) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -55,15 +59,17 @@ class PreviousBookingCard extends StatelessWidget {
           appTextTheme: AppTextTheme.titleLargeTextStyle()
               .copyWith(fontWeight: FontWeight.w600),
         ),
+
+        /// تاريخ الحجز ثابت في التصميم — يفضل استبداله لاحقاً بالقيمة الصحيحة
         AppText(
-          text: 'السبت 30/10/2023',
+          text: isRTL ? 'السبت 30/10/2023' : 'Sat 30/10/2023',
           appTextTheme: AppTextTheme.bodySmallTextStyle(),
         ),
       ],
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, bool isRTL) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -72,54 +78,57 @@ class PreviousBookingCard extends StatelessWidget {
           text: reservation.address,
         ),
         SizedBox(height: 8.h),
+
         BookingWidgets.buildTimeRow(
           startTime: reservation.startTime,
           endTime: reservation.endTime,
         ),
         SizedBox(height: 8.h),
+
         BookingWidgets.buildInfoRow(
           icon: AppImages.car,
           text: reservation.date,
         ),
         SizedBox(height: 8.h),
+
         BookingWidgets.buildPaymentRow(
           paymentStatus: reservation.paymentStatus,
           price: reservation.price,
         ),
+
         SizedBox(height: 16.h),
-        _buildActionButtons(context),
+        _buildActionButtons(context, isRTL),
       ],
     );
   }
 
-  Widget _buildActionButtons(BuildContext context) {
+  Widget _buildActionButtons(BuildContext context, bool isRTL) {
     return Row(
       children: [
+        /// "احجز مرة أخرى" / "Book Again"
         Expanded(
           child: BookingWidgets.buildActionButton(
-            text: 'احجز مرة أخرى',
+            text: S.of(context).booking_again,
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => BookingStep1Page(),
-                ),
+                MaterialPageRoute(builder: (_) => BookingStep1Page()),
               );
             },
             backgroundColor: AppColor.primaryColor,
           ),
         ),
+
         SizedBox(width: 12.w),
 
+        /// "ملخص الحجز" / "Booking Summary"
         Expanded(
           child: BookingWidgets.buildOutlinedButton(
-            text: 'ملخص الحجز',
+            text: S.of(context).booking_summary,
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (_) => BookingSummaryScreen(),
-                ),
+                MaterialPageRoute(builder: (_) => BookingSummaryScreen()),
               );
             },
           ),
@@ -128,3 +137,4 @@ class PreviousBookingCard extends StatelessWidget {
     );
   }
 }
+

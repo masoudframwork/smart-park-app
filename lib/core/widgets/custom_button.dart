@@ -96,7 +96,7 @@ class CustomButtonWidget extends StatelessWidget {
       return Center(
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          textDirection: TextDirection.rtl,
+          textDirection: Directionality.of(context),
           children: children,
         ),
       );
@@ -105,7 +105,7 @@ class CustomButtonWidget extends StatelessWidget {
     Widget buildCenterContent() {
       return Center(
         child: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: Directionality.of(context),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -166,7 +166,7 @@ class CustomButtonWidget extends StatelessWidget {
     Widget buildInlineWithNumberContent() {
       return Center(
         child: Directionality(
-          textDirection: TextDirection.ltr,
+          textDirection: Directionality.of(context),
           child: Row(
             spacing: 2.w,
             mainAxisSize: MainAxisSize.min,

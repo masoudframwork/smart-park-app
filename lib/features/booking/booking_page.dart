@@ -169,7 +169,7 @@ class BookingPage extends ConsumerWidget {
           ),
         ),
         body: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: Directionality.of(context),
           child: Column(
             children: [
               Expanded(

@@ -149,7 +149,6 @@
   "bookingconfirmation": "Booking confirmation",
   "cardendingin000": "Card ending in 0000",
   "newcard": "New card",
-  "settings_lang_en": "EN",
   "searchParkingHint": "Search for parking",
   "searchTooltip": "Search",
   "scanParkingCode": "Please scan the parking code",
@@ -170,7 +169,20 @@
   "terms_usage_5": "Ensuring compliance with local laws and regulations",
   "help_support_title": "Help and technical support",
   "help_contact_us": "Contact us",
-  "help_message_us": "Message us"
-
-
+  "help_message_us": "Message us",
+  "booking_extend": "Extend Reservation",
+  "booking_end": "End Reservation",
+  "booking_current_tab": "Current Bookings",
+  "booking_previous_tab": "Previous Bookings",
+  "booking_again": "Book Again",
+  "booking_summary": "Booking Summary",
+  "booking_book_again": "Book Again",
+  "booking_go_home": "Home",
+  "booking_download_invoice": "Download Invoice",
+  "booking_date_example": "Thursday 30/10/2025",
+  "booking_time_start_example": "08:00 AM",
+  "booking_time_end_example": "04:00 PM",
+  "booking_car_details": "Nissan / 2023 / Black",
+  "booking_amount_paid": "Total Paid 30 SAR"
 }
+

@@ -52,6 +52,38 @@ class MessageLookup extends MessageLookupByLibrary {
     "avatar": MessageLookupByLibrary.simpleMessage("Avatar"),
     "bookHere": MessageLookupByLibrary.simpleMessage("Book Here"),
     "bookingSummary": MessageLookupByLibrary.simpleMessage("Booking Summary"),
+    "booking_again": MessageLookupByLibrary.simpleMessage("Book Again"),
+    "booking_amount_paid": MessageLookupByLibrary.simpleMessage(
+      "Total Paid 30 SAR",
+    ),
+    "booking_book_again": MessageLookupByLibrary.simpleMessage("Book Again"),
+    "booking_car_details": MessageLookupByLibrary.simpleMessage(
+      "Nissan / 2023 / Black",
+    ),
+    "booking_current_tab": MessageLookupByLibrary.simpleMessage(
+      "Current Bookings",
+    ),
+    "booking_date_example": MessageLookupByLibrary.simpleMessage(
+      "Thursday 30/10/2025",
+    ),
+    "booking_download_invoice": MessageLookupByLibrary.simpleMessage(
+      "Download Invoice",
+    ),
+    "booking_end": MessageLookupByLibrary.simpleMessage("End Reservation"),
+    "booking_extend": MessageLookupByLibrary.simpleMessage(
+      "Extend Reservation",
+    ),
+    "booking_go_home": MessageLookupByLibrary.simpleMessage("Home"),
+    "booking_previous_tab": MessageLookupByLibrary.simpleMessage(
+      "Previous Bookings",
+    ),
+    "booking_summary": MessageLookupByLibrary.simpleMessage("Booking Summary"),
+    "booking_time_end_example": MessageLookupByLibrary.simpleMessage(
+      "04:00 PM",
+    ),
+    "booking_time_start_example": MessageLookupByLibrary.simpleMessage(
+      "08:00 AM",
+    ),
     "bookingconfirmation": MessageLookupByLibrary.simpleMessage(
       "Booking confirmation",
     ),
