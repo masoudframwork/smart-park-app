@@ -368,6 +368,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "terms_usage_5": MessageLookupByLibrary.simpleMessage(
       "Ensuring compliance with local laws and regulations",
     ),
+    "thepositionhasbeenbookedsuccessfully":
+        MessageLookupByLibrary.simpleMessage(
+          "The position has been booked successfully",
+        ),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "Toyota Corolla 2024 / Red",

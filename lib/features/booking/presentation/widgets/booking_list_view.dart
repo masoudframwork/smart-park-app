@@ -106,8 +106,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_card.dart'
     show CurrentBookingCard;
-import 'package:smart/features/booking/presentation/widgets/booking_details/booking_details_view.dart'
-    show BookingDetailView;
 import 'package:smart/features/booking/presentation/widgets/booking_tap.dart'
     show BookingTabBar;
 import '../../../../core/routing/navigation_service.dart';

@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
-import '../../../../generated/l10n.dart';
 import '../../data/models/place_location_model.dart';
 import 'voice_to_text_state.dart';
 
@@ -16,7 +16,6 @@ StateNotifierProvider.autoDispose<PlaceSearchController,
 
 class PlaceSearchController
     extends StateNotifier<AsyncValue<List<PlaceLocationModel>>> {
-
   PlaceSearchController(this._ref) : super(const AsyncValue.loading()) {
     _init();
   }
@@ -27,13 +26,14 @@ class PlaceSearchController
 
   final TextEditingController textCtrl = TextEditingController();
   Timer? _debounce;
-
   final stt.SpeechToText _stt = stt.SpeechToText();
   bool _speechInitialized = false;
 
-  /// 🔥 Mock data in BOTH Arabic + English
+  /// ------------------------------------------------------------
+  /// 🔥 Mock data in both Arabic & English
+  /// ------------------------------------------------------------
   static const List<PlaceLocationModel> _all = [
-    // Arabic
+    // 🇸🇦 Arabic
     PlaceLocationModel(
         title: 'بانوراما مول',
         subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
@@ -41,15 +41,16 @@ class PlaceSearchController
         title: 'مول المملكة',
         subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
 
-    // English
+    // 🇺🇸 English
     PlaceLocationModel(
-        title: 'Panorama Mall',
-        subtitle: 'Riyadh, Olaya, Saudi Arabia'),
+        title: 'Panorama Mall', subtitle: 'Riyadh, Olaya, Saudi Arabia'),
     PlaceLocationModel(
-        title: 'Kingdom Mall',
-        subtitle: 'Riyadh, Olaya, Saudi Arabia'),
+        title: 'Kingdom Mall', subtitle: 'Riyadh, Olaya, Saudi Arabia'),
   ];
 
+  /// ------------------------------------------------------------
+  /// INIT
+  /// ------------------------------------------------------------
   Future<void> _init() async {
     unawaited(_ensureSpeechReady());
     textCtrl.clear();
@@ -57,12 +58,16 @@ class PlaceSearchController
     state = const AsyncValue.data(_all);
   }
 
+  /// ------------------------------------------------------------
+  /// Initialize voice recognition
+  /// ------------------------------------------------------------
   Future<void> _ensureSpeechReady() async {
     if (_speechInitialized) return;
 
     final available = await _stt.initialize(
       onStatus: _onSpeechStatus,
       onError: _onSpeechError,
+      debugLogging: false,
     );
 
     _speechInitialized = true;
@@ -72,14 +77,16 @@ class PlaceSearchController
         voice.copyWith(isAvailable: available, error: null);
   }
 
+  /// ------------------------------------------------------------
+  /// SEARCH LOGIC
+  /// ------------------------------------------------------------
   void setQuery(String value) {
     _query = value;
   }
 
   Future<void> searchNow() async {
-    final locale = _ref.read(placeVoiceUiProvider).locale;
-
     final q = _query.trim().toLowerCase();
+
     if (q.isEmpty) {
       state = const AsyncValue.data(_all);
       return;
@@ -89,17 +96,12 @@ class PlaceSearchController
 
     await Future<void>.delayed(const Duration(milliseconds: 200));
 
-    try {
-      final results = _all.where((p) {
-        final t = p.title.toLowerCase();
-        final s = p.subtitle.toLowerCase();
-        return t.contains(q) || s.contains(q);
-      }).toList();
+    final results = _all.where((p) {
+      return p.title.toLowerCase().contains(q) ||
+          p.subtitle.toLowerCase().contains(q);
+    }).toList();
 
-      state = AsyncValue.data(results);
-    } catch (e, st) {
-      state = AsyncValue.error(e, st);
-    }
+    state = AsyncValue.data(results);
   }
 
   void searchWithDebounce({Duration delay = const Duration(milliseconds: 300)}) {
@@ -109,30 +111,31 @@ class PlaceSearchController
 
   void clear() {
     _debounce?.cancel();
-    _query = '';
     textCtrl.clear();
+    _query = '';
     state = const AsyncValue.data(_all);
   }
 
-  /// 🔥 Voice Recognition Supports Arabic + English Automatically
+  /// ------------------------------------------------------------
+  /// VOICE START — Supports AR + EN Automatically
+  /// ------------------------------------------------------------
   Future<void> startVoice(BuildContext context) async {
     await _ensureSpeechReady();
 
-    final uiState = _ref.read(placeVoiceUiProvider);
+    final ui = _ref.read(placeVoiceUiProvider);
 
-    if (!uiState.isAvailable) {
-      _ref.read(placeVoiceUiProvider.notifier).state = uiState.copyWith(
-        error: S.of(context).voice_not_available,
-      );
+    if (!ui.isAvailable) {
+      _ref.read(placeVoiceUiProvider.notifier).state =
+          ui.copyWith(error: "Speech recognition is not available.");
       return;
     }
 
-    // 🔥 Detect current app language
+    /// Detect current language from system
     final locale = Localizations.localeOf(context);
     final langCode = locale.languageCode == 'ar' ? 'ar_SA' : 'en_US';
 
     _ref.read(placeVoiceUiProvider.notifier).state =
-        uiState.copyWith(isListening: true, error: null);
+        ui.copyWith(isListening: true, error: null);
 
     await _stt.listen(
       localeId: langCode,
@@ -148,22 +151,28 @@ class PlaceSearchController
 
         setQuery(text);
         searchWithDebounce();
+
+        final v = _ref.read(placeVoiceUiProvider);
+        _ref.read(placeVoiceUiProvider.notifier).state =
+            v.copyWith(partialText: text);
       },
     );
   }
 
-
+  /// ------------------------------------------------------------
+  /// STOP / CANCEL VOICE
+  /// ------------------------------------------------------------
   Future<void> stopVoice({bool commitSearch = true}) async {
     if (_stt.isListening) await _stt.stop();
+
+    final v = _ref.read(placeVoiceUiProvider);
+    _ref.read(placeVoiceUiProvider.notifier).state =
+        v.copyWith(isListening: false);
 
     if (commitSearch) {
       setQuery(textCtrl.text);
       await searchNow();
     }
-
-    final v = _ref.read(placeVoiceUiProvider);
-    _ref.read(placeVoiceUiProvider.notifier).state =
-        v.copyWith(isListening: false);
   }
 
   Future<void> cancelVoice() async {
@@ -171,21 +180,24 @@ class PlaceSearchController
 
     final v = _ref.read(placeVoiceUiProvider);
     _ref.read(placeVoiceUiProvider.notifier).state =
-        v.copyWith(isListening: false);
+        v.copyWith(isListening: false, partialText: '');
   }
 
   Future<void> toggleVoice(BuildContext context) async {
     final v = _ref.read(placeVoiceUiProvider);
     if (v.isListening) {
-      await stopVoice();
+      await stopVoice(commitSearch: true);
     } else {
       await startVoice(context);
     }
   }
 
+  /// ------------------------------------------------------------
+  /// SPEECH STATUS HANDLERS
+  /// ------------------------------------------------------------
   void _onSpeechStatus(String status) {
-    if (status.toLowerCase().contains("notlistening") ||
-        status.toLowerCase().contains("done")) {
+    if (status.toLowerCase().contains("done") ||
+        status.toLowerCase().contains("notlistening")) {
       final v = _ref.read(placeVoiceUiProvider);
       _ref.read(placeVoiceUiProvider.notifier).state =
           v.copyWith(isListening: false);
@@ -193,11 +205,9 @@ class PlaceSearchController
   }
 
   void _onSpeechError(SpeechRecognitionError err) {
-    final voice = _ref.read(placeVoiceUiProvider);
-    _ref.read(placeVoiceUiProvider.notifier).state = voice.copyWith(
-      isListening: false,
-      error: err.errorMsg,
-    );
+    final v = _ref.read(placeVoiceUiProvider);
+    _ref.read(placeVoiceUiProvider.notifier).state =
+        v.copyWith(isListening: false, error: err.errorMsg);
   }
 
   @override
