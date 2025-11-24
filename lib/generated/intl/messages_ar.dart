@@ -354,6 +354,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "terms_usage_5": MessageLookupByLibrary.simpleMessage(
       "ضمان الامتثال للقوانين المحلية",
     ),
+    "thepositionhasbeenbookedsuccessfully":
+        MessageLookupByLibrary.simpleMessage("تم حجز الموقف بنجاح"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "تويوتا كورولا 2024 - أحمر",

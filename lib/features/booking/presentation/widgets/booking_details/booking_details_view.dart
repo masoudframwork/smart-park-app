@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/booking/presentation/controller/timer_controller.dart';
 import 'package:smart/features/booking/presentation/controller/booking_controller.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_details/booking_detail_action.dart';
+import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/theme/app_color.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/widgets/app_text.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/models/booking_model.dart';
 import 'booking_detail_header.dart';
@@ -33,12 +37,11 @@ class BookingDetailView extends ConsumerWidget {
           ),
         ),
       );
-
     }
 
     final timerState = ref.watch(timerControllerProvider(reservation.id));
     final timerController =
-    ref.read(timerControllerProvider(reservation.id).notifier);
+        ref.read(timerControllerProvider(reservation.id).notifier);
 
     return SafeArea(
       child: Scaffold(
@@ -46,45 +49,106 @@ class BookingDetailView extends ConsumerWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          //  const BookingDetailAppBar(),
+            //  const BookingDetailAppBar(),
 
             CloseButtonCircle(
-              onTap: (){
+              onTap: () {
                 NavigationService.pop(context);
               },
             ),
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: Column(
-                  children: [
-                    SizedBox(height: 12.h),
-                    BookingDetailHeader(
-                      startTime: reservation.startTime,
-                      endTime: reservation.endTime,
-                     // date: reservation.date,
-                      date: S.of(context).booking_detail_date_sample,
+            // Container(
+            //     width: 361.w,
+            //     height: 82.h,
+            //     padding: EdgeInsets.symmetric(
+            //         horizontal: 10.h, vertical: 10.h),
+            //     decoration: BoxDecoration(
+            //       color: AppColor.textColor,
+            //       borderRadius: BorderRadius.circular(10.r),
+            //     ),
+            //     child: Row(
+            //       spacing: 5.w,
+            //       children: [
+            //         SvgPicture.asset(
+            //           AppImages.trueChek,
+            //           width: 47.w,
+            //           height: 47.w,
+            //         ),
+            //         AppText(
+            //           //تم حجز الموقف بنجاح
+            //           text: S
+            //               .of(context)
+            //               .thepositionhasbeenbookedsuccessfully,
+            //           appTextTheme:
+            //           AppTextTheme.titleMSTextStyle().copyWith(
+            //               color: AppColor.whiteColor,
+            //               fontSize: 20.sp
+            //           ),
+            //         ),
+            //       ],
+            //     )),
 
-                    ),
+            SingleChildScrollView(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                children: [
+                  Container(
+                      width: 361.w,
+                      height: 82.h,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.h, vertical: 10.h),
+                      decoration: BoxDecoration(
+                        color: AppColor.textColor,
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      child: Row(
+                        spacing: 8.w,
+                        children: [
+                          SvgPicture.asset(
+                            AppImages.trueChek,
+                            width: 47.w,
+                            height: 47.w,
+                          ),
+                          Flexible(
+                            child: AppText(
+                              //تم حجز الموقف بنجاح
+                              text: S
+                                  .of(context)
+                                  .thepositionhasbeenbookedsuccessfully,
+                              appTextTheme:
+                              AppTextTheme.titleMSTextStyle().copyWith(
+                                  color: AppColor.whiteColor,
+
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
 
 
-                    SizedBox(height: 32.h),
-                    BookingDetailTimer(
-                      timerState: timerState,
-                      timerController: timerController,
-                    ),
-                    SizedBox(height: 32.h),
-                    BookingDetailInfo(reservation: reservation),
-                    SizedBox(height: 150.h),
-                    BookingDetailActions(
-                      onCancel: () =>
-                          _handleCancel(context, ref, reservation.id),
-                      onExtend: () =>
-                          _handleExtend(context, ref, reservation.id),
-                    ),
-                   // SizedBox(height: 24.h),
-                  ],
-                ),
+                  SizedBox(height: 20.h),
+                  BookingDetailHeader(
+                    startTime: reservation.startTime,
+                    endTime: reservation.endTime,
+                    // date: reservation.date,
+                    date: S.of(context).booking_detail_date_sample,
+                  ),
+
+                  SizedBox(height: 32.h),
+                  BookingDetailTimer(
+                    timerState: timerState,
+                    timerController: timerController,
+                  ),
+                  SizedBox(height: 32.h),
+                  BookingDetailInfo(reservation: reservation),
+                  SizedBox(height: 50.h),
+                  BookingDetailActions(
+                    onCancel: () =>
+                        _handleCancel(context, ref, reservation.id),
+                    onExtend: () =>
+                        _handleExtend(context, ref, reservation.id),
+                  ),
+                  // SizedBox(height: 24.h),
+                ],
               ),
             ),
           ],
@@ -95,17 +159,13 @@ class BookingDetailView extends ConsumerWidget {
 
   void _handleCancel(
       BuildContext context, WidgetRef ref, String reservationId) {
-    ref
-        .read(reservationController.notifier)
-        .cancelReservation(reservationId);
+    ref.read(reservationController.notifier).cancelReservation(reservationId);
     Navigator.pop(context);
   }
 
   void _handleExtend(
       BuildContext context, WidgetRef ref, String reservationId) {
-    ref
-        .read(reservationController.notifier)
-        .extendReservation(reservationId);
+    ref.read(reservationController.notifier).extendReservation(reservationId);
     Navigator.pop(context);
   }
 }

@@ -9,9 +9,7 @@ import 'package:smart/features/details_reserve_parking_spot/booking_step1/presen
 import 'package:smart/features/home/presentation/home_page.dart';
 import 'package:smart/generated/l10n.dart';
 import '../../../core/widgets/arrow_widget_custom_bar.dart';
-import '../../../core/widgets/custom_image_widget.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
-
 class BookingSummaryScreen extends StatelessWidget {
   const BookingSummaryScreen({super.key});
 

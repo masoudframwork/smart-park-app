@@ -1678,6 +1678,16 @@ class S {
       args: [],
     );
   }
+
+  /// `The position has been booked successfully`
+  String get thepositionhasbeenbookedsuccessfully {
+    return Intl.message(
+      'The position has been booked successfully',
+      name: 'thepositionhasbeenbookedsuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

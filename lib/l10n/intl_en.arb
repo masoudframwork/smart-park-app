@@ -204,5 +204,6 @@
   "green_parking_vehicle_info": "{name} | {spots}",
   "green_parking_time_range": "{start} → {end}",
   "green_parking_area_title": "Area {code}",
-  "voice_not_available": "Voice recognition is not available on this device"
+  "voice_not_available": "Voice recognition is not available on this device",
+  "thepositionhasbeenbookedsuccessfully": "The position has been booked successfully"
 }
