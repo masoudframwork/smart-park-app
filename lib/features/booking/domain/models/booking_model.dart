@@ -27,8 +27,14 @@ class BookingModel {
     this.paymentStatus,
   });
 
-  bool get isActive => status == 'active';
-  bool get isCompleted => status == 'completed';
+  bool get isActive {
+    return status.toLowerCase() == 'active' || status == 'نشط';
+  }
+
+  bool get isCompleted {
+    return status.toLowerCase() == 'completed' || status == 'منتهي';
+  }
+
 
   BookingModel copyWith({
     String? id,

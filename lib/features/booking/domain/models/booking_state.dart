@@ -31,8 +31,13 @@ class BookingState {
   List<BookingModel> get previousBookings =>
       reservations.where((r) => r.isCompleted).toList();
 
-  List<BookingModel> get displayedBookings =>
-      selectedTabIndex == 0 ? currentBookings : previousBookings;
+  List<BookingModel> get displayedBookings {
+    if (selectedTabIndex == 0) {
+      return reservations.where((r) => r.isActive).toList();
+    } else {
+      return reservations.where((r) => r.isCompleted).toList();
+    }
+  }
 
   BookingState copyWith({
     List<BookingModel>? reservations,
