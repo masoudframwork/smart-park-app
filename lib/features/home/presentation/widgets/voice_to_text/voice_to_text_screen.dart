@@ -193,7 +193,7 @@ class _SearchResultTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(AppImages.location2, width: 70.w),
+          SvgPicture.asset(AppImages.locationSearchIcon, width: 50.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
