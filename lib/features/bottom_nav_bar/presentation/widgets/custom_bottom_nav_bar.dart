@@ -28,7 +28,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
         ],
       ),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: Directionality.of(context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
