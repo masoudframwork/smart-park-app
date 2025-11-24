@@ -6,10 +6,9 @@ import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/settings/presentation/terms/help_support_screen.dart';
 import 'package:smart/features/settings/presentation/terms/terms_conditions_screen.dart';
-
 import '../../../core/theme/app_text_theme.dart';
 import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/custom_image_widget.dart';
+import '../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../generated/l10n.dart';
 import '../../../l10n/app_locale.dart';
@@ -29,75 +28,26 @@ class SettingsScreen extends StatelessWidget {
             size: 37,
           ),
         ),
-        body: Column(
-          children: [
-            const _SettingsHeader(),
-            SizedBox(height: 16.h),
-            const _SettingsList(),
-          ],
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+          child: Column(
+            children: [
+              ArrowWidgetCustomBar(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                title: S.of(context).settings_title,
+              ),
+              SizedBox(height: 16.h),
+              const _SettingsList(),
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-class _SettingsHeader extends StatelessWidget {
-  const _SettingsHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20.w),
-      child: Row(
-        spacing: 15.w,
-        children: [
-          _ArrowBackButton(
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          AppText(
-            text: S.of(context).settings_title,
-            appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-              color: AppColor.textColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ArrowBackButton extends StatelessWidget {
-  final VoidCallback onTap;
-
-  const _ArrowBackButton({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 34.w,
-        height: 34.w,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: AppColor.contanearGreyColor,
-            width: 1,
-          ),
-        ),
-        child: CustomImageWidget(
-          imageUrl: AppImages.arrowIcon2,
-          width: 20.w,
-          height: 20.w,
-          isFlag: true,
-          color: AppColor.primaryColor,
-        ),
-      ),
-    );
-  }
-}
 
 class _SettingsList extends StatelessWidget {
   const _SettingsList();
