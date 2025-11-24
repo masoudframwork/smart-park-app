@@ -1688,6 +1688,11 @@ class S {
       args: [],
     );
   }
+
+  /// `/ hour`
+  String get per_hour {
+    return Intl.message('/ hour', name: 'per_hour', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -240,6 +240,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "اركـــــن مركبتك\n بكل ســــــهولة!",
     ),
     "paymentConfirmation": MessageLookupByLibrary.simpleMessage("إتمام الدفع"),
+    "per_hour": MessageLookupByLibrary.simpleMessage("/ ساعة"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "platenumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
     "platetype": MessageLookupByLibrary.simpleMessage("نوع اللوحة"),

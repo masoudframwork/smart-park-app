@@ -203,5 +203,6 @@
   "green_parking_time_range": "{start} → {end}",
   "green_parking_area_title": "Area {code}",
   "voice_not_available": "التعرّف الصوتي غير متاح على هذا الجهاز",
-  "thepositionhasbeenbookedsuccessfully": "تم حجز الموقف بنجاح"
+  "thepositionhasbeenbookedsuccessfully": "تم حجز الموقف بنجاح",
+  "per_hour": "/ ساعة"
 }

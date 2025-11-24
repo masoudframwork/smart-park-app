@@ -254,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentConfirmation": MessageLookupByLibrary.simpleMessage(
       "Payment Confirmation",
     ),
+    "per_hour": MessageLookupByLibrary.simpleMessage("/ hour"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "platenumber": MessageLookupByLibrary.simpleMessage("Plate number"),
     "platetype": MessageLookupByLibrary.simpleMessage("Plate type"),
