@@ -170,7 +170,6 @@ class _SearchResultTile extends StatelessWidget {
   final VoidCallback? onTap;
 
   const _SearchResultTile({
-    super.key,
     required this.title,
     required this.subtitle,
     this.showSubtitle = true,
@@ -185,7 +184,11 @@ class _SearchResultTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SvgPicture.asset(AppImages.locationSearchIcon, width: 50.w),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(AppImages.locationSearchIcon, width: 50.w),
+          ),
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
