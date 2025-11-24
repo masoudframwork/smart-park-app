@@ -1344,6 +1344,41 @@ class S {
     );
   }
 
+  /// `A new code will be sent in`
+  String get anewcodewillbesentin {
+    return Intl.message(
+      'A new code will be sent in',
+      name: 'anewcodewillbesentin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `seconds`
+  String get secon {
+    return Intl.message('seconds', name: 'secon', desc: '', args: []);
+  }
+
+  /// `You can request a new code now`
+  String get youcanrequestanewcodenow {
+    return Intl.message(
+      'You can request a new code now',
+      name: 'youcanrequestanewcodenow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Will refresh in`
+  String get willrefreshin {
+    return Intl.message(
+      'Will refresh in',
+      name: 'willrefreshin',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Extend Reservation`
   String get booking_extend {
     return Intl.message(

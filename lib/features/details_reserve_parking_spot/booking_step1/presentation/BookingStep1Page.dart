@@ -23,8 +23,8 @@ import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../generated/l10n.dart';
 import '../domain/duration_states.dart';
 
-// ✅ نستخدم نظام اللغة اللي عندك
 import 'package:smart/l10n/app_locale.dart';
+
 class BookingStep1Page extends ConsumerWidget {
   const BookingStep1Page({super.key});
 
@@ -468,7 +468,7 @@ class _SummaryStepContent extends ConsumerWidget {
                 //'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                     color: AppColor.blackNumberSmallColor,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                     fontSize: 11.sp),
               ),
             ],

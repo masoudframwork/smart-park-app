@@ -27,6 +27,7 @@ class SendTheCodePage extends ConsumerWidget {
 
     final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
+    final timeStr = '$minutesStr:$secondsStr';
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
@@ -80,10 +81,11 @@ class SendTheCodePage extends ConsumerWidget {
                   },
                 ),
                 SizedBox(height: 32.h),
-                AppText(
+
+              AppText(
                   text: remainingSeconds > 0
-                      ? 'سيتم إرسال رمز جديد خلال $minutesStr:$secondsStr ثانية'
-                      : 'يمكنك طلب رمز جديد الآن',
+                      ? '${S.of(context).anewcodewillbesentin} $timeStr ${S.of(context).secon}'
+                      : S.of(context).youcanrequestanewcodenow,
                   textAlign: TextAlign.center,
                   appTextTheme: AppTextTheme.descriptionTextStyle().copyWith(
                     color: AppColor.whiteColor,

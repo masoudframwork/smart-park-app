@@ -128,35 +128,19 @@
 //     );
 //   }
 // }
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart/features/booking/presentation/controller/booking_controller.dart';
-import 'package:smart/features/booking/presentation/widgets/booking_details/booking_details_view.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_list_view.dart';
-
 import '../../../../core/theme/app_color.dart';
-
 import '../../core/constants/image_string.dart';
 import '../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
-import 'presentation/widgets/booking_components.dart';
 
 class BookingPage extends ConsumerWidget {
   const BookingPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final reservationState = ref.watch(reservationController);
-
-    final selectedReservation = reservationState.selectedReservationId != null
-        ? reservationState.reservations.firstWhere(
-            (r) => r.id == reservationState.selectedReservationId,
-            orElse: () => reservationState.reservations.first,
-          )
-        : null;
-
-    final bool inDetailsView = reservationState.selectedReservationId != null &&
-        selectedReservation != null;
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.settingsBackgroundColor,
@@ -170,15 +154,7 @@ class BookingPage extends ConsumerWidget {
         ),
         body: Directionality(
           textDirection: Directionality.of(context),
-          child: Column(
-            children: [
-              Expanded(
-                child: inDetailsView
-                    ? BookingDetailView(reservation: selectedReservation)
-                    : const BookingListView(),
-              ),
-            ],
-          ),
+          child: const BookingListView(),
         ),
       ),
     );

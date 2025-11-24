@@ -24,7 +24,7 @@ class NafathOtpScreen extends ConsumerWidget {
 
     final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
-    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+    final timeStr = '$minutesStr:$secondsStr';
 
     return SafeArea(
       child: Scaffold(
@@ -72,7 +72,10 @@ class NafathOtpScreen extends ConsumerWidget {
                   ),
                 ),
                 AppText(
-                  text: 'سيتم التحديث خلال $minutesStr:$secondsStr ثانية',
+                  text: remainingSeconds > 0
+                      ? '${S.of(context).willrefreshin} $timeStr ${S.of(context).secon}'
+                      : S.of(context).youcanrequestanewcodenow,
+                  textAlign: TextAlign.center,
                   appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                   ),

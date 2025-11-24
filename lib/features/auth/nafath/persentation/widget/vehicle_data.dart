@@ -11,6 +11,7 @@ import '../../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/arrow_widget_custom_bar.dart';
+import '../../../../../core/widgets/required_field_label.dart';
 import '../../../../../generated/l10n.dart';
 
 class VehicleDataScreen extends ConsumerWidget {
@@ -78,7 +79,14 @@ class VehicleDataScreen extends ConsumerWidget {
                 SizedBox(height: 24.h),
                 if (state.isSaudi) ...[
                   //نوع اللوحة
-                  _LabelWithStar(text: S.of(context).platetype),
+
+                  RequiredFieldLabel(
+                    text: S.of(context).platetype,
+                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+
                   SizedBox(height: 8.h),
                   _PlateTypeDropdown(
                     value: state.plateType,
@@ -87,7 +95,14 @@ class VehicleDataScreen extends ConsumerWidget {
                   ),
                   SizedBox(height: 16.h),
                   //رقم للوحة
-                  _LabelWithStar(text: S.of(context).platenumber),
+
+                  RequiredFieldLabel(
+                    text: S.of(context).platenumber,
+                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+
                   SizedBox(height: 8.h),
                   Row(
                     children: [
@@ -121,7 +136,12 @@ class VehicleDataScreen extends ConsumerWidget {
                     ],
                   ),
                 ] else ...[
-                  _LabelWithStar(text: S.of(context).platenumber),
+                  RequiredFieldLabel(
+                    text: S.of(context).platenumber,
+                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                   SizedBox(height: 8.h),
                   _PlateTextField(
                     hintText: '',
@@ -138,7 +158,14 @@ class VehicleDataScreen extends ConsumerWidget {
                 ],
                 SizedBox(height: 16.h),
                 //لون المركبة
-                _LabelWithStar(text: S.of(context).vehiclecolor),
+
+                RequiredFieldLabel(
+                  text: S.of(context).vehiclecolor,
+                  appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+
                 SizedBox(height: 8.h),
                 _VehicleColorDropdown(
                   value: state.vehicleColor,
@@ -174,6 +201,7 @@ class _VehicleTypeTabs extends StatelessWidget {
   final ValueChanged<VehicleType> onChanged;
 
   const _VehicleTypeTabs({
+    super.key,
     required this.selected,
     required this.onChanged,
   });
@@ -181,27 +209,6 @@ class _VehicleTypeTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isSaudi = selected == VehicleType.saudi;
-
-    BorderRadius buildRadius({
-      required bool isLeft,
-      required bool active,
-    }) {
-      if (isLeft) {
-        return BorderRadius.only(
-          topLeft: Radius.circular(0),
-          bottomLeft: Radius.circular(0),
-          bottomRight: Radius.circular(0),
-          topRight: Radius.circular((active ? 4 : 6).r),
-        );
-      } else {
-        return BorderRadius.only(
-          topLeft: Radius.circular((active ? 4 : 6).r),
-          bottomLeft: Radius.circular((active ? 4 : 6).r),
-          topRight: const Radius.circular(0),
-          bottomRight: const Radius.circular(0),
-        );
-      }
-    }
 
     Widget buildTab({
       required String text,
@@ -216,8 +223,14 @@ class _VehicleTypeTabs extends StatelessWidget {
             height: 32.h,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: active ? AppColor.secondaryColor : Colors.white,
-              borderRadius: buildRadius(isLeft: isLeft, active: active),
+              color: active ? AppColor.secondaryColor : AppColor.whiteColor,
+              borderRadius: isLeft
+                  ? BorderRadius.horizontal(
+                left: Radius.circular(0.r),
+              )
+                  : BorderRadius.horizontal(
+                right: Radius.circular(0.r),
+              ),
             ),
             child: AppText(
               text: text,
@@ -230,47 +243,30 @@ class _VehicleTypeTabs extends StatelessWidget {
       );
     }
 
-    return Row(
-      children: [
-        buildTab(
-          //مركبة سعودية
-          text: S.of(context).saudivehicle,
-          active: isSaudi,
-          isLeft: true,
-          onTap: () => onChanged(VehicleType.saudi),
+    return SizedBox(
+      width: 354.w,
+      height: 32.h,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6.r),
+        child: Row(
+          children: [
+            // مركبة سعودية
+            buildTab(
+              text: S.of(context).saudivehicle,
+              active: isSaudi,
+              isLeft: true,
+              onTap: () => onChanged(VehicleType.saudi),
+            ),
+            // مركبة غير سعودية
+            buildTab(
+              text: S.of(context).nonsaudivehicle,
+              active: !isSaudi,
+              isLeft: false,
+              onTap: () => onChanged(VehicleType.nonSaudi),
+            ),
+          ],
         ),
-        buildTab(
-          //مركبة غير  سعودية
-          text: S.of(context).nonsaudivehicle,
-          active: !isSaudi,
-          isLeft: false,
-          onTap: () => onChanged(VehicleType.nonSaudi),
-        ),
-      ],
-    );
-  }
-}
-
-class _LabelWithStar extends StatelessWidget {
-  final String text;
-  const _LabelWithStar({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        AppText(
-          text: text,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        const SizedBox(width: 2),
-        const Text(
-          '*',
-          style: TextStyle(color: Colors.red),
-        ),
-      ],
+      ),
     );
   }
 }

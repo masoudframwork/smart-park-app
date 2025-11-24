@@ -382,85 +382,85 @@ class _AnotherVehicleBottomSheetState
   }
 }
 
-class _VehicleTypeTabs extends StatelessWidget {
-  final VehicleType selected;
-  final ValueChanged<VehicleType> onChanged;
-
-  const _VehicleTypeTabs({
-    required this.selected,
-    required this.onChanged,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isSaudi = selected == VehicleType.saudi;
-
-    BorderRadius buildRadius({
-      required bool isLeft,
-      required bool active,
-    }) {
-      if (isLeft) {
-        return BorderRadius.only(
-          topLeft: Radius.circular((active ? 4 : 6).r),
-          bottomLeft: Radius.circular(0),
-          topRight: Radius.circular((active ? 4 : 6).r),
-          bottomRight: Radius.circular(0),
-        );
-      } else {
-        return BorderRadius.only(
-          topLeft: Radius.circular((active ? 4 : 6).r),
-          bottomLeft: Radius.circular((active ? 4 : 6).r),
-          topRight: const Radius.circular(0),
-          bottomRight: const Radius.circular(0),
-        );
-      }
-    }
-
-    Widget buildTab({
-      required String text,
-      required bool active,
-      required bool isLeft,
-      required VoidCallback onTap,
-    }) {
-      return Expanded(
-        child: GestureDetector(
-          onTap: onTap,
-          child: Container(
-            height: 32.h,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: active ? AppColor.secondaryColor : Colors.white,
-              borderRadius: buildRadius(isLeft: isLeft, active: active),
-            ),
-            child: AppText(
-              text: text,
-              appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                color: active ? AppColor.whiteColor : AppColor.blackColor,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
-    return Row(
-      children: [
-        buildTab(
-          text: S.of(context).saudivehicle,
-          active: isSaudi,
-          isLeft: true,
-          onTap: () => onChanged(VehicleType.saudi),
-        ),
-        buildTab(
-          text: S.of(context).nonsaudivehicle,
-          active: !isSaudi,
-          isLeft: false,
-          onTap: () => onChanged(VehicleType.nonSaudi),
-        ),
-      ],
-    );
-  }
-}
+// class _VehicleTypeTabs extends StatelessWidget {
+//   final VehicleType selected;
+//   final ValueChanged<VehicleType> onChanged;
+//
+//   const _VehicleTypeTabs({
+//     required this.selected,
+//     required this.onChanged,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final bool isSaudi = selected == VehicleType.saudi;
+//
+//     BorderRadius buildRadius({
+//       required bool isLeft,
+//       required bool active,
+//     }) {
+//       if (isLeft) {
+//         return BorderRadius.only(
+//           topLeft: Radius.circular((active ? 4 : 6).r),
+//           bottomLeft: Radius.circular(0),
+//           topRight: Radius.circular((active ? 4 : 6).r),
+//           bottomRight: Radius.circular(0),
+//         );
+//       } else {
+//         return BorderRadius.only(
+//           topLeft: Radius.circular((active ? 4 : 6).r),
+//           bottomLeft: Radius.circular((active ? 4 : 6).r),
+//           topRight: const Radius.circular(0),
+//           bottomRight: const Radius.circular(0),
+//         );
+//       }
+//     }
+//
+//     Widget buildTab({
+//       required String text,
+//       required bool active,
+//       required bool isLeft,
+//       required VoidCallback onTap,
+//     }) {
+//       return Expanded(
+//         child: GestureDetector(
+//           onTap: onTap,
+//           child: Container(
+//             height: 32.h,
+//             alignment: Alignment.center,
+//             decoration: BoxDecoration(
+//               color: active ? AppColor.secondaryColor : Colors.white,
+//               borderRadius: buildRadius(isLeft: isLeft, active: active),
+//             ),
+//             child: AppText(
+//               text: text,
+//               appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+//                 color: active ? AppColor.whiteColor : AppColor.blackColor,
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     }
+//
+//     return Row(
+//       children: [
+//         buildTab(
+//           text: S.of(context).saudivehicle,
+//           active: isSaudi,
+//           isLeft: true,
+//           onTap: () => onChanged(VehicleType.saudi),
+//         ),
+//         buildTab(
+//           text: S.of(context).nonsaudivehicle,
+//           active: !isSaudi,
+//           isLeft: false,
+//           onTap: () => onChanged(VehicleType.nonSaudi),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 class _LabelWithStar extends StatelessWidget {
   final String text;
@@ -545,6 +545,80 @@ class _PlateTypeDropdown extends StatelessWidget {
       onChanged: onChanged,
       items: items,
       errorText: errorText,
+    );
+  }
+}
+class _VehicleTypeTabs extends StatelessWidget {
+  final VehicleType selected;
+  final ValueChanged<VehicleType> onChanged;
+
+  const _VehicleTypeTabs({
+    super.key,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isSaudi = selected == VehicleType.saudi;
+
+    Widget buildTab({
+      required String text,
+      required bool active,
+      required bool isLeft,
+      required VoidCallback onTap,
+    }) {
+      return Expanded(
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            height: 32.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: active ? AppColor.secondaryColor : AppColor.whiteColor,
+              borderRadius: isLeft
+                  ? BorderRadius.horizontal(
+                left: Radius.circular(0.r),
+              )
+                  : BorderRadius.horizontal(
+                right: Radius.circular(0.r),
+              ),
+            ),
+            child: AppText(
+              text: text,
+              appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                color: active ? AppColor.whiteColor : AppColor.blackColor,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(
+      width: 354.w,
+      height: 32.h,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6.r),
+        child: Row(
+          children: [
+            // مركبة سعودية
+            buildTab(
+              text: S.of(context).saudivehicle,
+              active: isSaudi,
+              isLeft: true,
+              onTap: () => onChanged(VehicleType.saudi),
+            ),
+            // مركبة غير سعودية
+            buildTab(
+              text: S.of(context).nonsaudivehicle,
+              active: !isSaudi,
+              isLeft: false,
+              onTap: () => onChanged(VehicleType.nonSaudi),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

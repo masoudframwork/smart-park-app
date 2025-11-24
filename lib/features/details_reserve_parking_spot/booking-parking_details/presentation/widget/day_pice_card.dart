@@ -122,7 +122,7 @@ class _PriceRow extends StatelessWidget {
         ),
         SizedBox(width: 17.w),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppText(

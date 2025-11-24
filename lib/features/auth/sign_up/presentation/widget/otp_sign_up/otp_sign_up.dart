@@ -29,6 +29,7 @@ class OtpSignUpPage extends ConsumerWidget {
 
     final minutesStr = (remainingSeconds ~/ 60).toString().padLeft(2, '0');
     final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
+    final timeStr = '$minutesStr:$secondsStr';
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
@@ -68,9 +69,7 @@ class OtpSignUpPage extends ConsumerWidget {
                     fontWeight: FontWeight.w600,
                     fontSize: 22,
                   ),
-                  onDone: (code) {
-
-                  },
+                  onDone: (code) {},
                 ),
                 SizedBox(height: 32.h),
                 CustomButtonWidget(
@@ -87,7 +86,9 @@ class OtpSignUpPage extends ConsumerWidget {
                             width: 47.w,
                             height: 47.w,
                           ),
-                          message: S.of(context).youraccounthasbeencreatedsuccessfully,
+                          message: S
+                              .of(context)
+                              .youraccounthasbeencreatedsuccessfully,
                           buttonText: S.of(context).continu_e,
                           onButtonPressed: () {
                             NavigationService.go(RoutePaths.nafathPageLogin);
@@ -100,8 +101,8 @@ class OtpSignUpPage extends ConsumerWidget {
                 SizedBox(height: 32.h),
                 AppText(
                   text: remainingSeconds > 0
-                      ? 'سيتم إرسال رمز جديد خلال $minutesStr:$secondsStr ثانية'
-                      : 'يمكنك طلب رمز جديد الآن',
+                      ? '${S.of(context).anewcodewillbesentin} $timeStr ${S.of(context).secon}'
+                      : S.of(context).youcanrequestanewcodenow,
                   textAlign: TextAlign.center,
                   appTextTheme: AppTextTheme.descriptionTextStyle().copyWith(
                     color: AppColor.whiteColor,
