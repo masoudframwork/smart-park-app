@@ -8,6 +8,7 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_result_dialog.dart';
+import '../../../../../core/widgets/arraw_widget_screen.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
 
@@ -35,32 +36,9 @@ class NafathOtpScreen extends ConsumerWidget {
               spacing: 30,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Align(
-                  alignment:
-                  isRtl ? Alignment.centerRight : Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      NavigationService.pop();
-                    },
-                    child: Container(
-                      width: 34.w,
-                      height: 34.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.whiteColor,
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: AppColor.contanearGreyColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: SvgPicture.asset(
-                        isRtl ? AppImages.arrowIcon2 : AppImages.arrowIcon,
-                        color: AppColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                ),
+                ArrawWidgetCustomeBar(onTap: () {
+                  NavigationService.pop();
+                }),
                 Center(
                   child: ClipOval(
                     child: CustomImageWidget(
@@ -78,7 +56,9 @@ class NafathOtpScreen extends ConsumerWidget {
                   ),
                 ),
                 AppText(
-                  text: S.of(context).pleaselogintoNafathappandselectthefollowingnumber,
+                  text: S
+                      .of(context)
+                      .pleaselogintoNafathappandselectthefollowingnumber,
                   appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     fontWeight: FontWeight.w500,
                     fontSize: 16,
@@ -106,7 +86,8 @@ class NafathOtpScreen extends ConsumerWidget {
                       context: context,
                       barrierDismissible: false,
                       builder: (_) => AppResultDialog(
-                        message: S.of(context).youraccountisnowconnectedwithNafath,
+                        message:
+                            S.of(context).youraccountisnowconnectedwithNafath,
                         buttonText: S.of(context).continu_e,
                         onButtonPressed: () {
                           NavigationService.push(

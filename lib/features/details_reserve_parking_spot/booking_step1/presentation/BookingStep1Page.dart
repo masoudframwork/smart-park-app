@@ -25,7 +25,6 @@ import '../domain/duration_states.dart';
 
 // ✅ نستخدم نظام اللغة اللي عندك
 import 'package:smart/l10n/app_locale.dart';
-
 class BookingStep1Page extends ConsumerWidget {
   const BookingStep1Page({super.key});
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/domain/vehicle_form_state.dart';
 import 'package:smart/features/details_reserve_parking_spot/booking_step1/presentation/controller/another_vehicle_controller.dart';
 import '../../../../../../core/theme/app_color.dart';
@@ -9,11 +8,10 @@ import '../../../../../../core/theme/app_text_theme.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custome_text_field_widget.dart';
-import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/widgets/arraw_widget_screen.dart';
 import '../../../../../generated/l10n.dart';
-
 
 class VehicleDataScreen extends ConsumerWidget {
   const VehicleDataScreen({super.key});
@@ -62,45 +60,15 @@ class VehicleDataScreen extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.all(20.0),
             child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 50.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 15.w,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        width: 34.w,
-                        height: 34.h,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: AppColor.whiteColor,
-                          borderRadius: BorderRadius.circular(10.r),
-                          border: Border.all(
-                            color: AppColor.contanearGreyColor,
-                            width: 1,
-                          ),
-                        ),
-                        child: SvgPicture.asset(
-                          Directionality.of(context) == TextDirection.rtl
-                              ? AppImages.arrowIcon2
-                              : AppImages.arrowIcon,
-                          color: AppColor.primaryColor,
-                        ),
-                      ),
-                    ),
-                    AppText(
-                      text: S.of(context).enteryourvehicleinfo,
-                      appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                        color: AppColor.textColor,
-                      ),
-                    ),
-                  ],
+
+                ArrawWidgetCustomeBar(
+                  onTap: () {
+                    NavigationService.pop();
+                  },
+                  title: S.of(context).enteryourvehicleinfo,
                 ),
                 SizedBox(height: 50.h),
                 _VehicleTypeTabs(
@@ -109,8 +77,8 @@ class VehicleDataScreen extends ConsumerWidget {
                 ),
                 SizedBox(height: 24.h),
                 if (state.isSaudi) ...[
-                  //نوع اللوحة 
-                   _LabelWithStar(text: S.of(context).platetype),
+                  //نوع اللوحة
+                  _LabelWithStar(text: S.of(context).platetype),
                   SizedBox(height: 8.h),
                   _PlateTypeDropdown(
                     value: state.plateType,
@@ -118,8 +86,8 @@ class VehicleDataScreen extends ConsumerWidget {
                     showError: state.showErrors && (state.plateType == null),
                   ),
                   SizedBox(height: 16.h),
-                   //رقم للوحة
-                   _LabelWithStar(text: S.of(context).platenumber),
+                  //رقم للوحة
+                  _LabelWithStar(text: S.of(context).platenumber),
                   SizedBox(height: 8.h),
                   Row(
                     children: [
@@ -153,7 +121,7 @@ class VehicleDataScreen extends ConsumerWidget {
                     ],
                   ),
                 ] else ...[
-                   _LabelWithStar(text: S.of(context).platenumber),
+                  _LabelWithStar(text: S.of(context).platenumber),
                   SizedBox(height: 8.h),
                   _PlateTextField(
                     hintText: '',
@@ -169,8 +137,8 @@ class VehicleDataScreen extends ConsumerWidget {
                   ),
                 ],
                 SizedBox(height: 16.h),
-                 //لون المركبة
-                 _LabelWithStar(text: S.of(context).vehiclecolor),
+                //لون المركبة
+                _LabelWithStar(text: S.of(context).vehiclecolor),
                 SizedBox(height: 8.h),
                 _VehicleColorDropdown(
                   value: state.vehicleColor,
@@ -223,9 +191,7 @@ class _VehicleTypeTabs extends StatelessWidget {
           topLeft: Radius.circular(0),
           bottomLeft: Radius.circular(0),
           bottomRight: Radius.circular(0),
-
           topRight: Radius.circular((active ? 4 : 6).r),
-
         );
       } else {
         return BorderRadius.only(
@@ -275,7 +241,7 @@ class _VehicleTypeTabs extends StatelessWidget {
         ),
         buildTab(
           //مركبة غير  سعودية
-        text: S.of(context).nonsaudivehicle,
+          text: S.of(context).nonsaudivehicle,
           active: !isSaudi,
           isLeft: false,
           onTap: () => onChanged(VehicleType.nonSaudi),

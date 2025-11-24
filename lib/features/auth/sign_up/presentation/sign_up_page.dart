@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/button_widget.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/text_field_widget.dart';
@@ -8,6 +7,8 @@ import 'package:smart/features/auth/sign_up/presentation/widget/titel_desc_widge
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
+import '../../../../core/theme/app_text_theme.dart';
+import '../../../../core/widgets/arraw_widget_screen.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -27,32 +28,9 @@ class SignUpPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 31.h,
               children: [
-                Align(
-                  alignment:
-                      isRtl ? Alignment.centerRight : Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      NavigationService.go(RoutePaths.loginPage);
-                    },
-                    child: Container(
-                      width: 34.w,
-                      height: 34.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.whiteColor,
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: AppColor.contanearGreyColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: SvgPicture.asset(
-                        isRtl ? AppImages.arrowIcon2 : AppImages.arrowIcon,
-                        color: AppColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                ),
+                ArrawWidgetCustomeBar(onTap: () {
+                  NavigationService.go(RoutePaths.loginPage);
+                }),
                 Center(
                   child: ClipOval(
                     child: CustomImageWidget(
