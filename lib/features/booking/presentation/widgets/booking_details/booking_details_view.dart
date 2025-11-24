@@ -6,6 +6,7 @@ import 'package:smart/features/booking/presentation/controller/booking_controlle
 import 'package:smart/features/booking/presentation/widgets/booking_details/booking_detail_action.dart';
 import 'package:smart/features/booking/presentation/widgets/booking_details/booking_detail_appbar.dart';
 import '../../../../../core/theme/app_color.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/models/booking_model.dart';
 import 'booking_detail_header.dart';
 import 'booking_detail_info.dart';
@@ -40,7 +41,7 @@ class BookingDetailView extends ConsumerWidget {
                   BookingDetailHeader(
                     startTime: reservation.startTime,
                     endTime: reservation.endTime,
-                    date: 'السبت 30/10/2023',
+                    date: S.of(context).booking_detail_date_sample,
                   ),
                   SizedBox(height: 32.h),
                   BookingDetailTimer(

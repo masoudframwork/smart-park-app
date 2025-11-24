@@ -22,19 +22,20 @@ class BookingDetailHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _buildTimeHeader(),
+        _buildTimeHeader(context),
         SizedBox(height: 12.h),
         _buildDateHeader(),
       ],
     );
   }
 
-  Widget _buildTimeHeader() {
+  Widget _buildTimeHeader(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AppText(
-          text: endTime,
+          text: startTime,
           appTextTheme: AppTextTheme.bodyLargeTextStyle().copyWith(
             fontWeight: FontWeight.w600,
             fontSize: 18.sp,
@@ -42,7 +43,9 @@ class BookingDetailHeader extends StatelessWidget {
         ),
         SizedBox(width: 16.w),
         CustomImageWidget(
-          imageUrl: AppImages.arrowIcon,
+          imageUrl: isRTL
+              ? AppImages.arrowIcon      // Arabic → arrow points left
+              : AppImages.arrowIcon2,    // English → arrow points right
           width: 16.w,
           height: 16.w,
           color: AppColor.primaryColor,
@@ -50,7 +53,7 @@ class BookingDetailHeader extends StatelessWidget {
         ),
         SizedBox(width: 16.w),
         AppText(
-          text: startTime,
+          text: endTime,
           appTextTheme: AppTextTheme.bodyLargeTextStyle().copyWith(
             fontWeight: FontWeight.w600,
             fontSize: 18.sp,

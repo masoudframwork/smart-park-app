@@ -45,7 +45,7 @@ class CurrentBookingCard extends ConsumerWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: _buildBookingInfo()),
+                Expanded(child: _buildBookingInfo(context)),
                 SizedBox(width: 16.w),
                 TimerCircleWidget(
                   timerState: timerState,
@@ -61,13 +61,13 @@ class CurrentBookingCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildBookingInfo() {
+  Widget _buildBookingInfo(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildLocationSection(),
         SizedBox(height: 8.h),
-        _buildTimeRow(),
+        _buildTimeRow(context),
         SizedBox(height: 8.h),
         _buildDateRow(),
       ],
@@ -109,7 +109,9 @@ class CurrentBookingCard extends ConsumerWidget {
     );
   }
 
-  Widget _buildTimeRow() {
+  Widget _buildTimeRow(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Row(
       children: [
         Icon(
@@ -127,7 +129,7 @@ class CurrentBookingCard extends ConsumerWidget {
         ),
         SizedBox(width: 8.w),
         SvgPicture.asset(
-          AppImages.arrowIcon,
+          isRTL ? AppImages.arrowIcon : AppImages.arrowIcon2,
           color: AppColor.primaryColor,
         ),
         SizedBox(width: 8.w),

@@ -7,6 +7,7 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
+import '../../../../../generated/l10n.dart';
 
 class BookingDetailInfo extends StatelessWidget {
   final BookingModel reservation;
@@ -23,7 +24,7 @@ class BookingDetailInfo extends StatelessWidget {
       children: [
         _buildLocationInfo(),
         SizedBox(height: 16.h),
-        _buildCarInfo(),
+        _buildCarInfo(context),
         SizedBox(height: 16.h),
         _buildPaymentRow(),
       ],
@@ -48,11 +49,14 @@ class BookingDetailInfo extends StatelessWidget {
     );
   }
 
-  Widget _buildCarInfo() {
+  Widget _buildCarInfo(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return _buildInfoRow(
       icon: AppImages.car,
-      title: 'نيسان بالعطيل، 2023 / ايتود',
+      title: S.of(context).car_info_title,
       subtitle: null,
+      // textAlign: isRTL ? TextAlign.right : TextAlign.left,
     );
   }
 

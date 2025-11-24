@@ -34,12 +34,14 @@ class BookingWidgets {
     );
   }
 
-  static Widget buildTimeRow({
+  static Widget buildTimeRow(
+    BuildContext context, {
     required String startTime,
     required String endTime,
     double fontSize = 14,
     double iconSize = 12,
   }) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
     return Row(
       children: [
         CustomImageWidget(
@@ -52,12 +54,14 @@ class BookingWidgets {
         SizedBox(width: 8.w),
         AppText(
           text: startTime,
-          appTextTheme: AppTextTheme.font18SimiBoldBlack()
-              .copyWith(fontSize: fontSize),
+          appTextTheme:
+              AppTextTheme.font18SimiBoldBlack().copyWith(fontSize: fontSize),
         ),
         SizedBox(width: 12.w),
         CustomImageWidget(
-          imageUrl: AppImages.arrowIcon,
+          imageUrl: isRTL
+              ? AppImages.arrowIcon // Arabic → arrow points left
+              : AppImages.arrowIcon2,
           width: iconSize.w,
           height: iconSize.w,
           color: AppColor.primaryColor,
@@ -66,8 +70,8 @@ class BookingWidgets {
         SizedBox(width: 12.w),
         AppText(
           text: endTime,
-          appTextTheme: AppTextTheme.font18SimiBoldBlack()
-              .copyWith(fontSize: fontSize),
+          appTextTheme:
+              AppTextTheme.font18SimiBoldBlack().copyWith(fontSize: fontSize),
         ),
       ],
     );
@@ -139,7 +143,6 @@ class BookingWidgets {
     );
   }
 
-
   /// Build out lined Button
   static Widget buildOutlinedButton({
     required String text,
@@ -154,17 +157,17 @@ class BookingWidgets {
         height: height.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white,                     // WHITE BACKGROUND
+          color: Colors.white, // WHITE BACKGROUND
           borderRadius: BorderRadius.circular(6.r),
           border: Border.all(
-            color: borderColor,                    // GREEN BORDER
+            color: borderColor, // GREEN BORDER
             width: 1.5,
           ),
         ),
         child: AppText(
           text: text,
           appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            color: borderColor,                    // GREEN TEXT
+            color: borderColor, // GREEN TEXT
             fontWeight: FontWeight.w600,
             fontSize: fontSize.sp,
           ),

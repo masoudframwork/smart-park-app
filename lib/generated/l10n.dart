@@ -1478,6 +1478,46 @@ class S {
       args: [],
     );
   }
+
+  /// `End Reservation`
+  String get booking_end_reservation {
+    return Intl.message(
+      'End Reservation',
+      name: 'booking_end_reservation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Extend Reservation`
+  String get booking_extend_reservation {
+    return Intl.message(
+      'Extend Reservation',
+      name: 'booking_extend_reservation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nissan / 2023 / Black`
+  String get car_info_title {
+    return Intl.message(
+      'Nissan / 2023 / Black',
+      name: 'car_info_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sat 30/10/2023`
+  String get booking_detail_date_sample {
+    return Intl.message(
+      'Sat 30/10/2023',
+      name: 'booking_detail_date_sample',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

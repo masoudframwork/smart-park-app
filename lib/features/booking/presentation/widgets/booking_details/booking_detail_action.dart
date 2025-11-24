@@ -4,6 +4,7 @@ import 'package:smart/features/booking/presentation/widgets/booking_details/book
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class BookingDetailActions extends StatelessWidget {
   final VoidCallback onCancel;
@@ -17,27 +18,62 @@ class BookingDetailActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Row(
-      children: [
-        Expanded(
-          child: _buildActionButton(
-            text: 'إنهاء الحجز',
-            backgroundColor: AppColor.secondaryContainerColor,
-            onTap: () => _showCancelDialog(context),
-          ),
-        ),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: _buildActionButton(
-            text: 'تمديد الحجز',
-            backgroundColor: AppColor.primaryColor,
-            onTap: () => _showExtendDialog(context),
-          ),
-        ),
-      ],
+      children: isRTL
+          ? _buildArabicOrder(context)
+          : _buildEnglishOrder(context),
     );
   }
 
+  /// ---------------------------
+  /// ARABIC ORDER  ( RTL )
+  /// ---------------------------
+  List<Widget> _buildArabicOrder(BuildContext context) {
+    return [
+      Expanded(
+        child: _buildActionButton(
+          text: S.of(context).booking_end_reservation,
+          backgroundColor: AppColor.secondaryContainerColor,
+          onTap: () => _showCancelDialog(context),
+        ),
+      ),
+      SizedBox(width: 12.w),
+      Expanded(
+        child: _buildActionButton(
+          text: S.of(context).booking_extend_reservation,
+          backgroundColor: AppColor.primaryColor,
+          onTap: () => _showExtendDialog(context),
+        ),
+      ),
+    ];
+  }
+
+  /// ---------------------------
+  /// ENGLISH ORDER  ( LTR )
+  /// ---------------------------
+  List<Widget> _buildEnglishOrder(BuildContext context) {
+    return [
+      Expanded(
+        child: _buildActionButton(
+          text: S.of(context).booking_extend_reservation,
+          backgroundColor: AppColor.primaryColor,
+          onTap: () => _showExtendDialog(context),
+        ),
+      ),
+      SizedBox(width: 12.w),
+      Expanded(
+        child: _buildActionButton(
+          text: S.of(context).booking_end_reservation,
+          backgroundColor: AppColor.secondaryContainerColor,
+          onTap: () => _showCancelDialog(context),
+        ),
+      ),
+    ];
+  }
+
+  /// SHOW CANCEL DIALOG
   void _showCancelDialog(BuildContext context) {
     BookingConfirmationDialog.showExtendConfirmation(
       context: context,
@@ -45,6 +81,7 @@ class BookingDetailActions extends StatelessWidget {
     );
   }
 
+  /// SHOW EXTEND DIALOG
   void _showExtendDialog(BuildContext context) {
     BookingConfirmationDialog.showExtendReservationConfirmation(
       context: context,
@@ -52,6 +89,7 @@ class BookingDetailActions extends StatelessWidget {
     );
   }
 
+  /// BUTTON WIDGET
   Widget _buildActionButton({
     required String text,
     required Color backgroundColor,

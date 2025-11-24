@@ -183,6 +183,12 @@
   "booking_time_start_example": "08:00 AM",
   "booking_time_end_example": "04:00 PM",
   "booking_car_details": "Nissan / 2023 / Black",
-  "booking_amount_paid": "Total Paid 30 SAR"
+  "booking_amount_paid": "Total Paid 30 SAR",
+  "booking_end_reservation": "End Reservation",
+  "booking_extend_reservation": "Extend Reservation",
+  "car_info_title": "Nissan / 2023 / Black",
+  "booking_detail_date_sample": "Sat 30/10/2023"
+
+
 }
 

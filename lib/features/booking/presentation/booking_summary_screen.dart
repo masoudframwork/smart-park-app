@@ -157,6 +157,7 @@ class BookingSummaryScreen extends StatelessWidget {
 
           /// TIME
           BookingWidgets.buildTimeRow(
+            context,
             startTime: S.of(context).booking_time_start_example,
             endTime: S.of(context).booking_time_end_example,
           ),

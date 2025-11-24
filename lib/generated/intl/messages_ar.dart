@@ -66,11 +66,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "booking_date_example": MessageLookupByLibrary.simpleMessage(
       "الخميس 2025/10/30",
     ),
+    "booking_detail_date_sample": MessageLookupByLibrary.simpleMessage(
+      "السبت 30/10/2023",
+    ),
     "booking_download_invoice": MessageLookupByLibrary.simpleMessage(
       "تحميل الفاتورة",
     ),
     "booking_end": MessageLookupByLibrary.simpleMessage("إنهاء الحجز"),
+    "booking_end_reservation": MessageLookupByLibrary.simpleMessage(
+      "إنهاء الحجز",
+    ),
     "booking_extend": MessageLookupByLibrary.simpleMessage("تمديد الحجز"),
+    "booking_extend_reservation": MessageLookupByLibrary.simpleMessage(
+      "تمديد الحجز",
+    ),
     "booking_go_home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "booking_previous_tab": MessageLookupByLibrary.simpleMessage(
       "الحجوزات السابقة",
@@ -82,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "bookingconfirmation": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
     "bookings": MessageLookupByLibrary.simpleMessage("الحجوزات"),
+    "car_info_title": MessageLookupByLibrary.simpleMessage(
+      "نيسان / 2023 / أسود",
+    ),
     "cardendingin000": MessageLookupByLibrary.simpleMessage(
       "البطاقة المنتهية بـ 0000",
     ),

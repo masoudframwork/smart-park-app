@@ -80,6 +80,7 @@ class PreviousBookingCard extends StatelessWidget {
         SizedBox(height: 8.h),
 
         BookingWidgets.buildTimeRow(
+          context,
           startTime: reservation.startTime,
           endTime: reservation.endTime,
         ),

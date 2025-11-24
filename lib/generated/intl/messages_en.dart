@@ -66,11 +66,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "booking_date_example": MessageLookupByLibrary.simpleMessage(
       "Thursday 30/10/2025",
     ),
+    "booking_detail_date_sample": MessageLookupByLibrary.simpleMessage(
+      "Sat 30/10/2023",
+    ),
     "booking_download_invoice": MessageLookupByLibrary.simpleMessage(
       "Download Invoice",
     ),
     "booking_end": MessageLookupByLibrary.simpleMessage("End Reservation"),
+    "booking_end_reservation": MessageLookupByLibrary.simpleMessage(
+      "End Reservation",
+    ),
     "booking_extend": MessageLookupByLibrary.simpleMessage(
+      "Extend Reservation",
+    ),
+    "booking_extend_reservation": MessageLookupByLibrary.simpleMessage(
       "Extend Reservation",
     ),
     "booking_go_home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -88,6 +97,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Booking confirmation",
     ),
     "bookings": MessageLookupByLibrary.simpleMessage("Bookings"),
+    "car_info_title": MessageLookupByLibrary.simpleMessage(
+      "Nissan / 2023 / Black",
+    ),
     "cardendingin000": MessageLookupByLibrary.simpleMessage(
       "Card ending in 0000",
     ),

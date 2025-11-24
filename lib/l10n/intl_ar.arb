@@ -181,6 +181,11 @@
   "booking_time_start_example": "08:00 ص",
   "booking_time_end_example": "04:00 م",
   "booking_car_details": "نيسان / 2023 / أسود",
-  "booking_amount_paid": "إجمالي المدفوع 30 ر.س"
+  "booking_amount_paid": "إجمالي المدفوع 30 ر.س",
+  "booking_end_reservation": "إنهاء الحجز",
+  "booking_extend_reservation": "تمديد الحجز",
+  "car_info_title": "نيسان / 2023 / أسود",
+  "booking_detail_date_sample": "السبت 30/10/2023"
+
 
 }
