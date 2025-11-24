@@ -1583,6 +1583,56 @@ class S {
   String get dialog_cancel {
     return Intl.message('Cancel', name: 'dialog_cancel', desc: '', args: []);
   }
+
+  /// `Area {code}`
+  String green_parking_area(Object code) {
+    return Intl.message(
+      'Area $code',
+      name: 'green_parking_area',
+      desc: '',
+      args: [code],
+    );
+  }
+
+  /// `Booking Details`
+  String get green_parking_details {
+    return Intl.message(
+      'Booking Details',
+      name: 'green_parking_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{name} | {spots}`
+  String green_parking_vehicle_info(Object name, Object spots) {
+    return Intl.message(
+      '$name | $spots',
+      name: 'green_parking_vehicle_info',
+      desc: '',
+      args: [name, spots],
+    );
+  }
+
+  /// `{start} → {end}`
+  String green_parking_time_range(Object start, Object end) {
+    return Intl.message(
+      '$start → $end',
+      name: 'green_parking_time_range',
+      desc: '',
+      args: [start, end],
+    );
+  }
+
+  /// `Area {code}`
+  String green_parking_area_title(Object code) {
+    return Intl.message(
+      'Area $code',
+      name: 'green_parking_area_title',
+      desc: '',
+      args: [code],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

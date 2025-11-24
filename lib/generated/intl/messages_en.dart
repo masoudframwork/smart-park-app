@@ -20,6 +20,14 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(code) => "Area ${code}";
+
+  static String m1(code) => "Area ${code}";
+
+  static String m2(start, end) => "${start} → ${end}";
+
+  static String m3(name, spots) => "${name} | ${spots}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Iagreetothetermsandconditions": MessageLookupByLibrary.simpleMessage(
@@ -189,6 +197,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "free": MessageLookupByLibrary.simpleMessage("Free"),
     "freeWifi": MessageLookupByLibrary.simpleMessage("Free Wi-Fi"),
     "full_name": MessageLookupByLibrary.simpleMessage("Full name "),
+    "green_parking_area": m0,
+    "green_parking_area_title": m1,
+    "green_parking_details": MessageLookupByLibrary.simpleMessage(
+      "Booking Details",
+    ),
+    "green_parking_time_range": m2,
+    "green_parking_vehicle_info": m3,
     "help_contact_us": MessageLookupByLibrary.simpleMessage("Contact us"),
     "help_message_us": MessageLookupByLibrary.simpleMessage("Message us"),
     "help_support_title": MessageLookupByLibrary.simpleMessage(

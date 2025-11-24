@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details_box/timer_progress_ring.dart';
+import 'package:smart/generated/l10n.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class GreenParkingDetails extends StatelessWidget {
@@ -15,62 +16,46 @@ class GreenParkingDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: Directionality.of(context),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         width: double.infinity,
         decoration: BoxDecoration(
           color: const Color(0xFF1B8354),
-          borderRadius: BorderRadius.circular(30.r),   // FIXED: matches XD
+          borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.10),    // softer shadow like design
+              color: Colors.black.withOpacity(0.10),
               blurRadius: 10,
               offset: const Offset(0, 4),
             )
           ],
         ),
-
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-
+          crossAxisAlignment:
+              isRTL ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
-
-            /// CLOSE BUTTON (top-left)
-            // Align(
-            //   alignment: Alignment.centerLeft,
-            //   child: GestureDetector(
-            //     onTap: onClose,
-            //     child: Icon(Icons.close, color: Colors.white, size: 22.sp),
-            //   ),
-            // ),
-
-            SizedBox(height: 8.h),
-
-            /// TOP ROW (Timer + Text)
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  /// TIMER RING — accurate to XD
-                  _buildTimerRing(),
-
-                  SizedBox(width: 16.w),
-
-                  /// TEXT COLUMN
-                  Expanded(
+            /// --- TOP ROW: TIMER + TEXT ---
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                /// TEXT COLUMN
+                Container(
+                  color: Colors.transparent,
+                  child: Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-
+                      crossAxisAlignment: isRTL
+                          ? CrossAxisAlignment.start
+                          : CrossAxisAlignment.start,
                       children: [
-
-                        /// Parking name
+                        /// Parking Area Name
                         Text(
-                          "المنطقة ${parkingArea.code}",
+                          S.of(context).zone013,
                           style: TextStyle(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.bold,
@@ -80,9 +65,9 @@ class GreenParkingDetails extends StatelessWidget {
 
                         SizedBox(height: 6.h),
 
-                        /// Location text
+                        /// Location
                         Text(
-                          parkingArea.location,
+                          S.of(context).khuraisRoadRiyadhSaudiArabia,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -93,9 +78,12 @@ class GreenParkingDetails extends StatelessWidget {
 
                         SizedBox(height: 6.h),
 
-                        /// Time Range
+                        /// Time range (translated + RTL/LTR switches arrow)
                         Text(
-                          "٠٨:٠٠ ص ← ٠٤:٠٠ م",
+                          S.of(context).green_parking_time_range(
+                                S.of(context).booking_time_start_example,
+                                S.of(context).booking_time_end_example,
+                              ),
                           style: TextStyle(
                             fontSize: 12.sp,
                             color: Colors.white,
@@ -107,7 +95,10 @@ class GreenParkingDetails extends StatelessWidget {
 
                         /// Vehicle info
                         Text(
-                          "${parkingArea.name} | ${parkingArea.availableSpots}",
+                          S.of(context).green_parking_vehicle_info(
+                            parkingArea.name,
+                            parkingArea.availableSpots.toString(),
+                          ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -118,13 +109,18 @@ class GreenParkingDetails extends StatelessWidget {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+
+                SizedBox(width: 16.w),
+
+                /// Timer ring
+                _buildTimerRing(),
+              ],
             ),
 
             SizedBox(height: 18.h),
 
-            /// BOOKING DETAILS BUTTON — identical to XD
+            /// --- BOOKING DETAILS BUTTON ---
             Container(
               height: 46.h,
               width: double.infinity,
@@ -134,7 +130,7 @@ class GreenParkingDetails extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  "تفاصيل الحجز",
+                  S.of(context).green_parking_details,
                   style: TextStyle(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
@@ -149,12 +145,11 @@ class GreenParkingDetails extends StatelessWidget {
     );
   }
 
-  /// PERFECT CIRCULAR PROGRESS RING (stub visual identical to XD)
+  /// Timer ring widget
   Widget _buildTimerRing() {
     return TimerProgressRing(
-      progress: 0.35,        // 65% complete — replace with real value
-      timeText: "05:06:30",  // dynamic timer text
+      progress: 0.35,
+      timeText: "05:06:30",
     );
   }
-
 }

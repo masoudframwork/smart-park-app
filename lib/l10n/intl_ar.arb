@@ -192,7 +192,11 @@
   "dialog_extend_title": "هل تريد تمديد الحجز؟",
   "dialog_extend_message": "بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة",
   "dialog_extend": "تمديد الحجز",
-  "dialog_cancel": "عودة"
-
+  "dialog_cancel": "عودة",
+  "green_parking_area": "المنطقة {code}",
+  "green_parking_details": "تفاصيل الحجز",
+  "green_parking_vehicle_info": "{name} | {spots}",
+  "green_parking_time_range": "{start} → {end}",
+  "green_parking_area_title": "Area {code}"
 
 }
