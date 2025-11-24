@@ -48,7 +48,7 @@ class PrePreservedVehicles extends StatelessWidget {
                         ),
                       ),
                       child: CustomImageWidget(
-                        imageUrl: AppImages.arrowRightIcon,
+                        imageUrl: AppImages.arrowIcon2,
                         width: 20.w,
                         height: 20.w,
                         isFlag: true,

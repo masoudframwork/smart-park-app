@@ -5,7 +5,7 @@ import '../../../../core/constants/image_string.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/custom_image_widget.dart';
+import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../l10n/app_locale.dart';
@@ -40,7 +40,13 @@ class TermsScreen extends StatelessWidget {
               padding: EdgeInsets.all(16.w),
               child: Column(
                 children: [
-                  const _TermsHeader(),
+                  ArrowWidgetCustomBar(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    title: S.of(context).terms_title,
+                  ),
+
                   SizedBox(height: 16.h),
                   Expanded(
                       child: ListView(
@@ -128,64 +134,6 @@ class TermsScreen extends StatelessWidget {
           ),
         ),
         children: children ?? [],
-      ),
-    );
-  }
-}
-
-class _TermsHeader extends StatelessWidget {
-  const _TermsHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(10.w),
-      child: Row(
-        spacing: 15.w,
-        children: [
-          _ArrowBackButton(
-            onTap: () => Navigator.of(context).pop(),
-          ),
-          AppText(
-            text: S.of(context).terms_title,
-            appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-              color: AppColor.textColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ArrowBackButton extends StatelessWidget {
-  final VoidCallback onTap;
-
-  const _ArrowBackButton({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 34.w,
-        height: 34.w,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: AppColor.contanearGreyColor,
-            width: 1,
-          ),
-        ),
-        child: CustomImageWidget(
-          imageUrl: AppImages.arrowRightIcon,
-          width: 20.w,
-          height: 20.w,
-          isFlag: true,
-          color: AppColor.primaryColor,
-        ),
       ),
     );
   }

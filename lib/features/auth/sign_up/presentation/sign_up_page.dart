@@ -7,15 +7,20 @@ import 'package:smart/features/auth/sign_up/presentation/widget/titel_desc_widge
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
+import '../../../../core/theme/app_text_theme.dart';
+import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
+
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.backgroundColor,
-
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.w),
@@ -23,31 +28,9 @@ class SignUpPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 31.h,
               children: [
-                GestureDetector(
-                  onTap: (){
-                    NavigationService.go(RoutePaths.loginPage);
-                  },
-                  child: Container(
-                    width: 34.w,
-                    height: 34.w,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: AppColor.whiteColor,
-                      borderRadius: BorderRadius.circular(10.r),
-                      border: Border.all(
-                        color:AppColor.contanearGreyColor,
-                        width: 1,
-                      ),
-                    ),
-                    child:CustomImageWidget(imageUrl:
-                    AppImages.arrowRightIcon,
-                      width: 20.w,
-                      height: 20.w,
-                      isFlag: true,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                ),
+                ArrowWidgetCustomBar(onTap: () {
+                  NavigationService.go(RoutePaths.loginPage);
+                }),
                 Center(
                   child: ClipOval(
                     child: CustomImageWidget(
@@ -58,12 +41,9 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                TitelDescrpationWidget(),
-
-                TextFieldWidget(),
-
-                ButtonWidget(),
+                const TitelDescrpationWidget(),
+                const TextFieldWidget(),
+                const ButtonWidget(),
               ],
             ),
           ),

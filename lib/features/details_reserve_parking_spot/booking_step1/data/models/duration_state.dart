@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class DurationState {
@@ -11,9 +12,9 @@ class DurationState {
 
   const DurationState({
     this.activeStep = 1,
-    this.hours = 6.0,
-    this.start = const TimeOfDay(hour: 15, minute: 0),
-    this.end = const TimeOfDay(hour: 21, minute: 0),
+    this.hours = 0.0,
+    this.start = const TimeOfDay(hour: 0, minute: 0),
+    this.end = const TimeOfDay(hour: 0, minute: 0),
     this.hourlyPrice = 5,
     this.capacityUsed = 13,
     this.capacityTotal = 70,

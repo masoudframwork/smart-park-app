@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
-import '../../../../../core/widgets/custom_image_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../controler/zone_image_controller.dart';
 
@@ -16,12 +17,14 @@ class ZoneImageCard extends ConsumerWidget {
     super.key,
     this.isAvailable = true,
   });
+
   final bool isAvailable;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pageController = ref.watch(zonePageControllerProvider);
     final images = ref.watch(zoneImagesProvider);
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return AspectRatio(
       aspectRatio: 22 / 9,
@@ -39,7 +42,7 @@ class ZoneImageCard extends ConsumerWidget {
             },
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: isRtl ? Alignment.topLeft : Alignment.topRight,
             child: Padding(
               padding: EdgeInsets.all(17.h),
               child: _NextArrowButton(
@@ -82,6 +85,8 @@ class _ImageWithStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     final Color statusColor =
         isAvailable ? AppColor.greenTextColor : AppColor.primaryColor;
     final String statusText =
@@ -99,7 +104,8 @@ class _ImageWithStatusBadge extends StatelessWidget {
         ),
         Positioned(
           bottom: 8.h,
-          right: 8.w,
+          right: isRtl ? 8.w : null,
+          left: isRtl ? null : 8.w,
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: 12.w,
@@ -140,32 +146,38 @@ class _ImageWithStatusBadge extends StatelessWidget {
 }
 
 class _NextArrowButton extends StatelessWidget {
-  const _NextArrowButton({required this.onTap});
+  const _NextArrowButton({
+    required this.onTap,
+  });
 
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 34.w,
-        height: 34.w,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColor.whiteColor,
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(
-            color: AppColor.contanearGreyColor,
-            width: 1,
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
+    return Align(
+      alignment: isRtl ? Alignment.topRight : Alignment.topLeft,
+      child: GestureDetector(
+        onTap: () {
+          NavigationService.pop();
+        },
+        child: Container(
+          width: 34.w,
+          height: 34.w,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppColor.whiteColor,
+            borderRadius: BorderRadius.circular(10.r),
+            border: Border.all(
+              color: AppColor.contanearGreyColor,
+              width: 1,
+            ),
           ),
-        ),
-        child: CustomImageWidget(
-          isFlag: true,
-          imageUrl: AppImages.arrowRightIcon,
-          width: 20.w,
-          height: 20.w,
-          color: AppColor.primaryColor,
+          child: SvgPicture.asset(
+            isRtl ? AppImages.arrowIcon2 : AppImages.arrowIcon,
+            color: AppColor.primaryColor,
+          ),
         ),
       ),
     );

@@ -27,8 +27,10 @@ class AppImages {
   //static const String visaImage = 'assets/images/visa2.png';
 
   // arraw icons
-  static const String arrowIcon = 'assets/images/left-arrow (1).png';
-  static const String arrowRightIcon = 'assets/images/right-arrow.png';
+  //يمين
+  static const String arrowIcon = 'assets/images/svgs/arrowIcon.svg';
+  //شمال
+  static const String arrowIcon2 = 'assets/images/svgs/arrowicon2.svg';
 
   static const String timerClock = 'assets/images/svgs/clock.svg';
   static const String location = 'assets/images/svgs/location.svg';

@@ -23,20 +23,23 @@ import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../generated/l10n.dart';
 import '../domain/duration_states.dart';
 
+// ✅ نستخدم نظام اللغة اللي عندك
+import 'package:smart/l10n/app_locale.dart';
 class BookingStep1Page extends ConsumerWidget {
   const BookingStep1Page({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bookingFlowControllerProvider);
     final controller = ref.read(bookingFlowControllerProvider.notifier);
     final BookingModel reservation;
-
     final durationState = ref.watch(durationControllerProvider);
-
     final bool canContinue = state.hasVehicle &&
         state.hasDuration &&
         durationState.hours > 0 &&
         state.currentStep >= 3;
+
+    final bool isArabic = AppLocale.shared.isArabic();
 
     return SafeArea(
       child: Scaffold(
@@ -51,7 +54,7 @@ class BookingStep1Page extends ConsumerWidget {
           child: Padding(
             padding: EdgeInsets.all(15.h),
             child: Column(
-              textDirection: TextDirection.rtl,
+              textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const HeaderSection(),
@@ -87,7 +90,6 @@ class BookingStep1Page extends ConsumerWidget {
                       borderRadius: 10.r,
                       //الاستمرار للدفع
                       text: S.of(context).continuetopay,
-
                       textStyle: AppTextTheme.mainButtonTextStyle(),
                       onPressed: () {
                         showBlurBottomSheet(
@@ -128,8 +130,10 @@ class _StepRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isEnabled = state.currentStep >= index;
 
+    final bool isArabic = AppLocale.shared.isArabic();
+
     return Row(
-      textDirection: TextDirection.rtl,
+      textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _StepIndicator(
@@ -137,9 +141,7 @@ class _StepRow extends StatelessWidget {
           currentStep: state.currentStep,
           totalSteps: totalSteps,
         ),
-        SizedBox(
-          width: 5.w,
-        ),
+        SizedBox(width: 5.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,6 +151,7 @@ class _StepRow extends StatelessWidget {
                 appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                   fontWeight: FontWeight.w600,
                   color: AppColor.textColor,
+                  fontSize: 20.sp,
                 ),
               ),
               IgnorePointer(
@@ -180,6 +183,7 @@ class _StepIndicator extends StatelessWidget {
 
   bool get _showTopLine => index != 1;
   bool get _showBottomLine => index != totalSteps;
+
   double _topSegmentHeight() {
     if (!_showTopLine) return 0;
     return 0;
@@ -280,9 +284,7 @@ class _VehiclesStepContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: 12,
-        ),
+        SizedBox(height: 12),
         TheVehicleTile(
           //نيسان باتلفايندر 2023 - أسود
           title: S.of(context).nissanPathfinderBlack,
