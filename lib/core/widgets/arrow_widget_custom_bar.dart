@@ -7,7 +7,7 @@ import '../theme/app_color.dart';
 import '../theme/app_text_theme.dart';
 import '../widgets/app_text.dart';
 
-class ArrawWidgetCustomeBar extends StatelessWidget {
+class ArrowWidgetCustomBar extends StatelessWidget {
   final void Function()? onTap;
 
   String? title;
@@ -16,7 +16,7 @@ class ArrawWidgetCustomeBar extends StatelessWidget {
 
   final double spacing;
 
-  ArrawWidgetCustomeBar({
+  ArrowWidgetCustomBar({
     super.key,
     this.onTap,
     this.title,

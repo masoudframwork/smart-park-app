@@ -259,10 +259,10 @@ class S {
     return Intl.message('Wallet', name: 'profile_wallet', desc: '', args: []);
   }
 
-  /// `Saved Information`
+  /// `Previously Saved Info`
   String get profile_savedInfo {
     return Intl.message(
-      'Saved Information',
+      'Previously Saved Info',
       name: 'profile_savedInfo',
       desc: '',
       args: [],

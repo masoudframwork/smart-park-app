@@ -10,7 +10,7 @@ import '../../../../../../core/widgets/custom_button.dart';
 import '../../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/widgets/arraw_widget_screen.dart';
+import '../../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../../generated/l10n.dart';
 
 class VehicleDataScreen extends ConsumerWidget {
@@ -64,7 +64,7 @@ class VehicleDataScreen extends ConsumerWidget {
               children: [
                 SizedBox(height: 50.h),
 
-                ArrawWidgetCustomeBar(
+                ArrowWidgetCustomBar(
                   onTap: () {
                     NavigationService.pop();
                   },

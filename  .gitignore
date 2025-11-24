@@ -76,3 +76,12 @@ google-services.json
 GoogleService-Info.plist
 .env
 .env*
+
+# Ignore localization generated files
+lib/generated/l10n.dart
+lib/generated/intl/messages_ar.dart
+lib/generated/intl/messages_en.dart
+
+# Ignore pubspec lock file for Flutter packages
+pubspec.lock
+

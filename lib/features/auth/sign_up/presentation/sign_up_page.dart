@@ -8,7 +8,7 @@ import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/arraw_widget_screen.dart';
+import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 31.h,
               children: [
-                ArrawWidgetCustomeBar(onTap: () {
+                ArrowWidgetCustomBar(onTap: () {
                   NavigationService.go(RoutePaths.loginPage);
                 }),
                 Center(

@@ -8,7 +8,7 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_result_dialog.dart';
-import '../../../../../core/widgets/arraw_widget_screen.dart';
+import '../../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_image_widget.dart';
 
@@ -36,7 +36,7 @@ class NafathOtpScreen extends ConsumerWidget {
               spacing: 30,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ArrawWidgetCustomeBar(onTap: () {
+                ArrowWidgetCustomBar(onTap: () {
                   NavigationService.pop();
                 }),
                 Center(

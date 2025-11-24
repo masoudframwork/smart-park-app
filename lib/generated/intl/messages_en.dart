@@ -203,7 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile_phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "profile_savedInfo": MessageLookupByLibrary.simpleMessage(
-      "Saved Information",
+      "Previously Saved Info",
     ),
     "profile_settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "profile_soon": MessageLookupByLibrary.simpleMessage("Soon"),
@@ -222,9 +222,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
       "Save the vehicle for later use.",
     ),
-    "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
-    "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
-    "settheduration": MessageLookupByLibrary.simpleMessage("Set the duration"),
     "scanParkingCode": MessageLookupByLibrary.simpleMessage(
       "Please scan the parking code",
     ),
@@ -232,6 +229,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search for parking",
     ),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
+    "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
+    "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
+    "settheduration": MessageLookupByLibrary.simpleMessage("Set the duration"),
     "settings_dark_mode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
     "settings_faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "settings_lang_ar": MessageLookupByLibrary.simpleMessage("AR"),
@@ -252,10 +252,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "terms_and_conditions": MessageLookupByLibrary.simpleMessage(
       "Terms and Conditions",
-    ),
-    "total": MessageLookupByLibrary.simpleMessage("Total"),
-    "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
-      "Toyota Corolla 2024 / Red",
     ),
     "terms_section_1": MessageLookupByLibrary.simpleMessage(
       "The information we collect",
@@ -291,6 +287,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "terms_usage_5": MessageLookupByLibrary.simpleMessage(
       "Ensuring compliance with local laws and regulations",
+    ),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
+      "Toyota Corolla 2024 / Red",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",

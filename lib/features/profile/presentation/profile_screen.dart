@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
-import 'package:smart/features/profile/presentation/widget/electronic_payment_cards.dart'
-    show ElectronicPaymentCards;
+import 'package:smart/features/profile/presentation/widget/electronic_payment_cards.dart';
 import 'package:smart/features/profile/presentation/widget/pre_preserved_vehicles.dart';
-import '../../../core/routing/navigation_service.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../generated/l10n.dart';
@@ -20,6 +17,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Directionality.of(context) == TextDirection.rtl;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColor.settingsBackgroundColor,
@@ -31,9 +30,11 @@ class ProfileScreen extends StatelessWidget {
             size: 37,
           ),
         ),
-        body: const Directionality(
-          textDirection: TextDirection.rtl,
-          child: _ProfileBody(),
+
+        /// Dynamic RTL / LTR
+        body: Directionality(
+          textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+          child: const _ProfileBody(),
         ),
       ),
     );
@@ -52,92 +53,57 @@ class _ProfileBody extends StatelessWidget {
         children: [
           const _ProfileHeaderCard(),
           const SizedBox(height: 24),
-          _SectionTitle(
-            text: S.of(context).profile_additionalInfo,
-          ),
+
+          /// Additional Info
+          _SectionTitle(text: S.of(context).profile_additionalInfo),
           const SizedBox(height: 12),
+
           _AdditionalInfoTile(
             title: S.of(context).profile_fines,
-            hint:  S.of(context).profile_soon,
-            icon: SvgPicture.asset(
-              AppImages.userProfileTickets,
-              width: 20,
-              height: 20,
-            ),
+            hint: S.of(context).profile_soon,
+            icon: SvgPicture.asset(AppImages.userProfileTickets, width: 20, height: 20),
           ),
           const SizedBox(height: 12),
+
           _AdditionalInfoTile(
             title: S.of(context).wallet,
-            hint:  S.of(context).profile_soon,
-            icon: SvgPicture.asset(
-              AppImages.userProfileWallet,
-              width: 20,
-              height: 20,
-            ),
+            hint: S.of(context).profile_soon,
+            icon: SvgPicture.asset(AppImages.userProfileWallet, width: 20, height: 20),
           ),
+
           const SizedBox(height: 24),
-          _SectionTitle(
-            text: S.of(context).profile_savedInfo,
-          ),
+
+          /// Saved Info
+          _SectionTitle(text: S.of(context).profile_savedInfo),
           const SizedBox(height: 12),
+
           _StoredInfoTile(
             title: S.of(context).profile_vehicles,
-            icon: SvgPicture.asset(
-              AppImages.userProfileCarLeft,
-              width: 20,
-              height: 20,
-            ),
-            // icon: Icons.directions_car,
+            icon: SvgPicture.asset(AppImages.userProfileCarLeft, width: 20, height: 20),
             onTap: () {
-              final container =
-                  ProviderScope.containerOf(context, listen: false);
-              // container
-              //     .read(bottomNavBarController)
-              //     .changeIndex(BottomNavBarController.profileIndex);
-
-              //NavigationService.push('/prePreservedVehicles');
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const PrePreservedVehicles(),
-                ),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const PrePreservedVehicles()));
             },
           ),
           const SizedBox(height: 12),
+
           _StoredInfoTile(
             title: S.of(context).profile_paymentCards,
-            icon: SvgPicture.asset(
-              AppImages.userProfileElectronicPayment,
-              width: 20,
-              height: 20,
-            ),
+            icon: SvgPicture.asset(AppImages.userProfileElectronicPayment, width: 20, height: 20),
             showStatusDot: true,
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const ElectronicPaymentCards(),
-                ),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const ElectronicPaymentCards()));
             },
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 48),
+
           _StoredInfoTile(
             title: S.of(context).profile_settings,
-            icon: SvgPicture.asset(
-              AppImages.userProfileSettings,
-              width: 20,
-              height: 20,
-            ),
+            icon: SvgPicture.asset(AppImages.userProfileSettings, width: 20, height: 20),
             onTap: () {
-              //  NavigationService.push('/settingsScreen');
-
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SettingsScreen(),
-                ),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen()));
             },
           ),
+
           const SizedBox(height: 32),
           const _LogoutButton(),
           const SizedBox(height: 16),
@@ -167,7 +133,7 @@ class _ProfileHeaderCard extends StatelessWidget {
       child: Column(
         children: [
           _ProfileHeaderTop(),
-          const Divider(height: 0, thickness: 0.0),
+          const Divider(height: 0),
           const _ProfileDetails(),
           const SizedBox(height: 16),
           const _NafathButton(),
@@ -202,25 +168,16 @@ class _ProfileHeaderTop extends StatelessWidget {
               color: Colors.white,
             ),
             alignment: Alignment.center,
-            child: Icon(
-              Icons.person,
-              size: 20,
-              color: AppColor.textColor,
-            ),
+            child: Icon(Icons.person, size: 20, color: AppColor.textColor),
           ),
           const SizedBox(width: 12),
           AppText(
-            text:S.of(context).profile_test_name,
-            appTextTheme: AppTextTheme.secondaryButtonTextStyle().copyWith(
-              fontWeight: FontWeight.w400,
-            ),
+            text: S.of(context).profile_test_name,
+            appTextTheme: AppTextTheme.secondaryButtonTextStyle()
+                .copyWith(fontWeight: FontWeight.w400),
           ),
           const Spacer(),
-          Icon(
-            Icons.verified,
-            size: 25,
-            color: AppColor.whiteColor,
-          ),
+          Icon(Icons.verified, size: 25, color: AppColor.whiteColor),
         ],
       ),
     );
@@ -242,15 +199,17 @@ class _ProfileDetails extends StatelessWidget {
             value: '+966 11 234 5678',
           ),
           const SizedBox(height: 12),
-          const Divider(height: 0),
+          const Divider(),
           const SizedBox(height: 12),
+
           _ProfileDetailItem(
             label: S.of(context).profile_date_of_birth,
             value: '1998/5/12',
           ),
           const SizedBox(height: 12),
-          const Divider(height: 0),
+          const Divider(),
           const SizedBox(height: 12),
+
           _ProfileDetailItem(
             label: S.of(context).profile_nationalId,
             value: 'ABCD1234',
@@ -265,23 +224,23 @@ class _ProfileDetailItem extends StatelessWidget {
   final String label;
   final String value;
 
-  const _ProfileDetailItem({
-    required this.label,
-    required this.value,
-  });
+  const _ProfileDetailItem({required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Directionality.of(context) == TextDirection.rtl;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppText(
           text: label,
-          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-            color: AppColor.blackColor,
-          ),
+          appTextTheme: AppTextTheme.bodySmallTextStyle()
+              .copyWith(color: AppColor.blackColor),
         ),
         const SizedBox(height: 4),
+
+        /// Value always shown LTR (phone/date/ID)
         Directionality(
           textDirection: TextDirection.ltr,
           child: AppText(
@@ -291,7 +250,7 @@ class _ProfileDetailItem extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -306,11 +265,7 @@ class _NafathButton extends StatelessWidget {
       backgroundColor: AppColor.primaryCard,
       text: S.of(context).profile_connect_with_nafath,
       width: 315,
-      onPressed: () {
-        NavigationService.push(
-          '/nafathPageLogin',
-        );
-      },
+      onPressed: () {},
     );
   }
 }
@@ -322,8 +277,10 @@ class _SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Directionality.of(context) == TextDirection.rtl;
+
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: isArabic ? Alignment.centerRight : Alignment.centerLeft,
       child: AppText(
         text: text,
         appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
@@ -337,7 +294,6 @@ class _SectionTitle extends StatelessWidget {
 
 class _AdditionalTileContainer extends StatelessWidget {
   final Widget child;
-
   const _AdditionalTileContainer({required this.child});
 
   @override
@@ -347,13 +303,10 @@ class _AdditionalTileContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(
-          color: AppColor.greyDividerColor,
-          width: 1,
-        ),
+        border: Border.all(color: AppColor.greyDividerColor, width: 1),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withOpacity(.03),
             blurRadius: 6,
             offset: const Offset(0, 2),
           ),
@@ -377,28 +330,16 @@ class _AdditionalInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Directionality.of(context) == TextDirection.rtl;
+
     return _AdditionalTileContainer(
       child: Row(
         children: [
-          SizedBox(
-            width: 20,
-            height: 20,
-            child: icon,
-          ),
+          SizedBox(width: 20, height: 20, child: icon),
           const SizedBox(width: 8),
-          AppText(
-            text: title,
-            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-              color: Colors.grey.shade400,
-            ),
-          ),
+          AppText(text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
           const Spacer(),
-          AppText(
-            text: hint,
-            appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-              color: Colors.grey.shade400,
-            ),
-          ),
+          AppText(text: hint, appTextTheme: AppTextTheme.bodySmallTextStyle()),
         ],
       ),
     );
@@ -422,20 +363,12 @@ class _StoredInfoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      behavior: HitTestBehavior.opaque,
       child: _ProfileTileContainer(
         child: Row(
           children: [
-            SizedBox(
-              width: 22,
-              height: 22,
-              child: icon,
-            ),
+            SizedBox(width: 22, height: 22, child: icon),
             const SizedBox(width: 8),
-            AppText(
-              text: title,
-              appTextTheme: AppTextTheme.titleMediumTextStyle(),
-            ),
+            AppText(text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
             const Spacer(),
             if (showStatusDot)
               Container(
@@ -464,10 +397,7 @@ class _LogoutButton extends StatelessWidget {
       width: 315,
       borderRadius: 10.r,
       iconLayout: ButtonIconLayout.center,
-      icon: const Icon(
-        Icons.power_settings_new,
-        color: Colors.white,
-      ),
+      icon: const Icon(Icons.power_settings_new, color: Colors.white),
       onPressed: () {},
     );
   }
@@ -485,10 +415,7 @@ class _ProfileTileContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(
-          color: AppColor.greyDividerColor,
-          width: 1,
-        ),
+        border: Border.all(color: AppColor.greyDividerColor, width: 1),
       ),
       child: child,
     );
