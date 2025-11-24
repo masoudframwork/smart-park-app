@@ -170,7 +170,9 @@
   "terms_usage_5": "Ensuring compliance with local laws and regulations",
   "help_support_title": "Help and technical support",
   "help_contact_us": "Contact us",
-  "help_message_us": "Message us"
-
-
+  "help_message_us": "Message us",
+  "anewcodewillbesentin": "A new code will be sent in",
+  "secon": "seconds",
+  "youcanrequestanewcodenow": "You can request a new code now",
+  "willrefreshin": "Will refresh in"
 }

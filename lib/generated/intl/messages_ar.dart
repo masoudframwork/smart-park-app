@@ -45,6 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "anew_code_will_be_sent_in": MessageLookupByLibrary.simpleMessage(
       "سيتم إرسال رمز جديد خلال",
     ),
+    "anewcodewillbesentin": MessageLookupByLibrary.simpleMessage(
+      "سيتم إرسال رمز جديد خلال",
+    ),
     "availablenow": MessageLookupByLibrary.simpleMessage("متاح الآن"),
     "availableparking": MessageLookupByLibrary.simpleMessage(
       "المواقف المتاحة 70/13",
@@ -221,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
+    "secon": MessageLookupByLibrary.simpleMessage("ثانية"),
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("تحديد المدة"),
@@ -298,9 +302,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcometoourparkingapp": MessageLookupByLibrary.simpleMessage(
       "أهلاً بك في تطبيق المواقف",
     ),
+    "willrefreshin": MessageLookupByLibrary.simpleMessage("سيتم التحديث خلال"),
     "you_can": MessageLookupByLibrary.simpleMessage("بإمكانك"),
     "you_dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "لا تملك حساباً؟",
+    ),
+    "youcanrequestanewcodenow": MessageLookupByLibrary.simpleMessage(
+      "يمكنك طلب رمز جديد الآن",
     ),
     "youraccounthasbeencreatedsuccessfully":
         MessageLookupByLibrary.simpleMessage("لقد تم إنشاء حسابك بنجاح!"),

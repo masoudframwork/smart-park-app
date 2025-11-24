@@ -45,6 +45,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "anew_code_will_be_sent_in": MessageLookupByLibrary.simpleMessage(
       "A new code will be sent in",
     ),
+    "anewcodewillbesentin": MessageLookupByLibrary.simpleMessage(
+      "A new code will be sent in",
+    ),
     "availablenow": MessageLookupByLibrary.simpleMessage("Available now"),
     "availableparking": MessageLookupByLibrary.simpleMessage(
       "Available parking 70/13",
@@ -229,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search for parking",
     ),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
+    "secon": MessageLookupByLibrary.simpleMessage("seconds"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
     "settheduration": MessageLookupByLibrary.simpleMessage("Set the duration"),
@@ -306,9 +310,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcometoourparkingapp": MessageLookupByLibrary.simpleMessage(
       "Welcome to our parking app",
     ),
+    "willrefreshin": MessageLookupByLibrary.simpleMessage("Will refresh in"),
     "you_can": MessageLookupByLibrary.simpleMessage("You can "),
     "you_dont_have_an_account": MessageLookupByLibrary.simpleMessage(
       "You don\'t have an account?",
+    ),
+    "youcanrequestanewcodenow": MessageLookupByLibrary.simpleMessage(
+      "You can request a new code now",
     ),
     "youraccounthasbeencreatedsuccessfully":
         MessageLookupByLibrary.simpleMessage(

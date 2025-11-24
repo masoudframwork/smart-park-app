@@ -11,8 +11,13 @@ import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/core/widgets/custom_image_widget.dart';
 import 'package:smart/core/widgets/custome_text_field_widget.dart';
 
+import '../../../../../../core/routing/navigation_service.dart';
+import '../../../../../../core/routing/routes.dart';
+import '../../../../../../core/widgets/required_field_label.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../booking/domain/models/booking_model.dart';
+import '../../../../../booking/presentation/controller/booking_controller.dart';
+import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/duration_states.dart';
 
 enum CardSelection {
@@ -30,7 +35,8 @@ final cardSelectionProvider =
 late final Function(int) onTabChanged;
 
 final cardBrandProvider = StateProvider<CardBrand>((ref) => CardBrand.mada);
-late final BookingModel reservation;
+
+final saveCardForLaterProvider = StateProvider<bool>((ref) => false);
 
 class ContinuePayingMethodBottomSheet extends ConsumerWidget {
   const ContinuePayingMethodBottomSheet({super.key});
@@ -38,9 +44,8 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selected = ref.watch(cardSelectionProvider);
-
     return AppBottomSheet(
-      maxHeightFactor: selected == CardSelection.saved ? 0.56 : 0.80,
+      maxHeightFactor: selected == CardSelection.saved ? 0.52 : 0.80,
       title: S.of(context).paymentConfirmation,
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
@@ -63,16 +68,28 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                   text: S.of(context).bookingconfirmation,
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) => BookingDetailView(
-                    //
-                    //     ),
-                    //   ),
-                    // );
+                    final bookingState = ref.read(reservationController);
+
+                    if (bookingState.reservations.isEmpty) {
+                      Navigator.pop(context);
+                      return;
+                    }
+
+
+                    final reservation = bookingState.reservations.last;
+
+                    ref
+                        .read(reservationController.notifier)
+                        .selectReservation(reservation.id);
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BookingDetailView(),
+                      ),
+                    );
                   }),
-              SizedBox(height: 8.h),
+              // SizedBox(height: 8.h),
             ],
           ),
         ),
@@ -235,10 +252,13 @@ class _NewCardForm extends ConsumerWidget {
           ],
         ),
         SizedBox(height: 16.h),
-        _LabelWithStar(
-          text:
-              //'رقم البطاقة'
-              S.of(context).cardnumber,
+        RequiredFieldLabel(
+          //'رقم البطاقة'
+          text: S.of(context).cardnumber,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            color: AppColor.blackNumberSmallColor,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         SizedBox(height: 6.h),
         CustomTextFormField(
@@ -254,9 +274,12 @@ class _NewCardForm extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        _LabelWithStar(
-          //   text: 'الاسم'
+        RequiredFieldLabel(
           text: S.of(context).name,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            color: AppColor.blackNumberSmallColor,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         SizedBox(height: 6.h),
         CustomTextFormField(
@@ -277,9 +300,12 @@ class _NewCardForm extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _LabelWithStar(
-                    //  text: 'تاريخ الانتهاء'
+                  RequiredFieldLabel(
                     text: S.of(context).expirydate,
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   SizedBox(height: 6.h),
                   CustomTextFormField(
@@ -305,7 +331,15 @@ class _NewCardForm extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const _LabelWithStar(text: 'CVV'),
+                  //  _LabelWithStar(text: 'CVV'),
+                  RequiredFieldLabel(
+                    text: 'CVV',
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+
                   SizedBox(height: 6.h),
                   CustomTextFormField(
                     width: double.infinity,
@@ -327,11 +361,39 @@ class _NewCardForm extends ConsumerWidget {
           ],
         ),
         SizedBox(height: 16.h),
+        NewCardForm(),
+      ],
+    );
+  }
+}
+
+class NewCardForm extends ConsumerWidget {
+  const NewCardForm({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final saveForLater = ref.watch(saveCardForLaterProvider);
+    final saveForLaterNotifier = ref.read(saveCardForLaterProvider.notifier);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText(
+          //نوع البطاقة
+          text: S.of(context).cardtype,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            color: AppColor.blackNumberSmallColor,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        SizedBox(height: 16.h),
         Row(
           children: [
             Switch(
-              value: true,
-              onChanged: (_) {},
+              value: saveForLater,
+              onChanged: (value) {
+                saveForLaterNotifier.state = value;
+              },
               overlayColor: WidgetStateProperty.all(Colors.transparent),
               activeColor: AppColor.primaryColor,
               trackColor: WidgetStateProperty.resolveWith((states) {
@@ -345,13 +407,16 @@ class _NewCardForm extends ConsumerWidget {
               thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            AppText(
-              text: S.of(context).savethevehicleforlateruse,
-
-              //'احفظ البطاقة للاستخدام لاحقاً',
-              appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                color: AppColor.blackNumberSmallColor,
-                fontWeight: FontWeight.w500,
+            GestureDetector(
+              onTap: () {
+                saveForLaterNotifier.state = !saveForLater;
+              },
+              child: AppText(
+                text: S.of(context).savethevehicleforlateruse,
+                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                  color: AppColor.blackNumberSmallColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
@@ -395,35 +460,6 @@ class _BrandOption extends StatelessWidget {
   }
 }
 
-class _LabelWithStar extends StatelessWidget {
-  final String text;
-
-  const _LabelWithStar({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      textDirection: TextDirection.rtl,
-      children: [
-        AppText(
-          text: text,
-          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-            color: AppColor.blackNumberSmallColor,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        AppText(
-          text: ' *',
-          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-            color: Colors.red,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
 class _PaymentSummaryVisaCard extends ConsumerWidget {
   const _PaymentSummaryVisaCard({super.key});
 
@@ -433,6 +469,7 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
     final double hours = durationState.hours;
     const double pricePerHour = 5;
     final double totalPrice = hours * pricePerHour;
+
     String durationLabel(double hours) {
       if (hours == 0.5) return S.of(context).minute30;
       if (hours == 1) return S.of(context).hours;
@@ -443,108 +480,114 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
       return '${hours.toStringAsFixed(1)} ${S.of(context).hours}';
     }
 
-    return Container(
-      width: 361,
-      height: 185,
-      padding: EdgeInsets.all(6.h),
-      decoration: BoxDecoration(
-        color: AppColor.whiteColor,
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: Column(
-        spacing: 12.h,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 361.w,
+        ),
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: 18.w,
+            vertical: 16.h,
+          ),
+          decoration: BoxDecoration(
+            color: AppColor.whiteColor,
+            borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppText(
-                text: S.of(context).total,
-
-                //  text: 'الإجمالي',
-                appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                    color: AppColor.textColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 22),
-              ),
               Row(
-                spacing: 5.w,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppText(
-                    text: totalPrice.toStringAsFixed(0),
-                    appTextTheme: AppTextTheme.numberLargeTextStyle().copyWith(
+                    text: S.of(context).total,
+                    appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                       color: AppColor.textColor,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 38,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 22.sp,
                     ),
                   ),
-                  SvgPicture.asset(
-                    AppImages.realSu,
-                    color: AppColor.textColor,
+                  Row(
+                    children: [
+                      AppText(
+                        text: totalPrice.toStringAsFixed(0),
+                        appTextTheme:
+                            AppTextTheme.numberLargeTextStyle().copyWith(
+                          color: AppColor.textColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 38.sp,
+                        ),
+                      ),
+                      SizedBox(width: 4.w),
+                      SvgPicture.asset(
+                        AppImages.realSu,
+                        color: AppColor.textColor,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 12.h),
+              Row(
+                spacing: 5.w,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SvgPicture.asset(AppImages.pinMap),
+                  AppText(
+                    text: S
+                        .of(context)
+                        .zone013KhuraisRoadRiyadhKingdomofSaudiArabia,
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10.sp,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  SvgPicture.asset(AppImages.timer),
+                  SizedBox(width: 6.w),
+                  AppText(
+                    text: durationLabel(hours),
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 8.h),
+              Row(
+                children: [
+                  SvgPicture.asset(AppImages.payments),
+                  SizedBox(width: 6.w),
+                  AppText(
+                    text: pricePerHour.toStringAsFixed(0),
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(width: 4.w),
+                  SvgPicture.asset(AppImages.realSu),
+                  SizedBox(width: 4.w),
+                  AppText(
+                    text: S.of(context).hour,
+                    appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                      color: AppColor.blackNumberSmallColor,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
-          Row(
-            spacing: 5.w,
-            children: [
-              SvgPicture.asset(
-                AppImages.pinMap,
-              ),
-              AppText(
-                text:
-                    S.of(context).zone013KhuraisRoadRiyadhKingdomofSaudiArabia,
-                // text: 'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                    color: AppColor.blackNumberSmallColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12),
-              ),
-            ],
-          ),
-          Row(
-            textDirection: TextDirection.rtl,
-            children: [
-              SvgPicture.asset(
-                AppImages.timer,
-              ),
-              SizedBox(width: 6.w),
-              AppText(
-                text: durationLabel(hours),
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            textDirection: TextDirection.rtl,
-            children: [
-              SvgPicture.asset(
-                AppImages.payments,
-              ),
-              SizedBox(width: 6.w),
-              AppText(
-                text: '${pricePerHour.toStringAsFixed(0)} ',
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SvgPicture.asset(
-                AppImages.realSu,
-              ),
-              AppText(
-                text: '/ساعة ',
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  color: AppColor.blackNumberSmallColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

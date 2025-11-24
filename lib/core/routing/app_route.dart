@@ -13,6 +13,7 @@ import '../../features/auth/nafath/persentation/widget/nafath_otp_widget.dart';
 import '../../features/auth/send_the_code/presentation/send_the_code_page.dart';
 import '../../features/auth/sign_up/presentation/sign_up_page.dart';
 import '../../features/auth/sign_up/presentation/widget/otp_sign_up/otp_sign_up.dart';
+import '../../features/booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../features/details_reserve_parking_spot/booking-parking_details/presentation/booking_parking_details_page.dart';
 import '../../features/details_reserve_parking_spot/booking_step1/presentation/BookingStep1Page.dart';
@@ -22,12 +23,13 @@ import '../../features/profile/presentation/widget/pre_preserved_vehicles.dart';
 import '../../features/qr_scanner/scan_code_screen.dart';
 import '../../features/settings/presentation/settings_screen.dart';
 import '../helpers/soft_transition_page.dart';
+
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+
 class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
     initialLocation: RoutePaths.splashScreen,
-
     routes: [
       GoRoute(
         path: RoutePaths.splashScreen,
@@ -189,6 +191,15 @@ class AppRouter {
           );
         },
       ),
+
+      GoRoute(
+        path: RoutePaths.bookingDetailView,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: BookingDetailView(),
+          );
+        },
+      ),
     ],
     errorPageBuilder: (context, state) {
       return softTransitionPage(
@@ -203,4 +214,3 @@ class AppRouter {
     NavigationService.initialize(router);
   }
 }
-

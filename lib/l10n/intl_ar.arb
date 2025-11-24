@@ -168,6 +168,9 @@
   "terms_usage_5": "ضمان الامتثال للقوانين المحلية",
   "help_support_title": "المساعدة و الدعم الفني",
   "help_contact_us": "اتصل بنا",
-  "help_message_us": "راسلنا"
-
+  "help_message_us": "راسلنا",
+  "anewcodewillbesentin": "سيتم إرسال رمز جديد خلال",
+  "secon": "ثانية",
+  "youcanrequestanewcodenow": "يمكنك طلب رمز جديد الآن",
+  "willrefreshin": "سيتم التحديث خلال"
 }

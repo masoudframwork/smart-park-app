@@ -7,7 +7,6 @@ import 'package:smart/features/auth/sign_up/presentation/widget/titel_desc_widge
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
-import '../../../../core/theme/app_text_theme.dart';
 import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 
