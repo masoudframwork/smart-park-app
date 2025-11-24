@@ -128,10 +128,11 @@ class _CardSelectionRow extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  AppImages.add,
+                CustomImageWidget(
+                  imageUrl: AppImages.add,
                   width: 21.w,
                   height: 21.h,
+                  isFlag: true,
                   color: selected == CardSelection.newCard
                       ? AppColor.whiteColor
                       : AppColor.primaryColor,
@@ -224,8 +225,9 @@ class _NewCardForm extends ConsumerWidget {
             _BrandOption(
               isSelected: brand == CardBrand.visa,
               onTap: () => brandNotifier.state = CardBrand.visa,
-              child: Image.asset(
-                AppImages.visaImage,
+              child: CustomImageWidget(
+                imageUrl: AppImages.visaImage,
+                isFlag: true,
                 width: 40.w,
                 height: 28.h,
               ),
@@ -425,22 +427,21 @@ class _LabelWithStar extends StatelessWidget {
 class _PaymentSummaryVisaCard extends ConsumerWidget {
   const _PaymentSummaryVisaCard({super.key});
 
-  String _durationLabel(double hours) {
-    if (hours == 0.5) return '30 دقيقة';
-    if (hours == 1) return 'ساعة';
-    if (hours == 2) return 'ساعتين';
-    if (hours == 3) return '3 ساعات';
-    if (hours == 4) return '4 ساعات';
-    if (hours == 6) return '6 ساعات';
-    return '${hours.toStringAsFixed(1)} ساعة';
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final durationState = ref.watch(durationControllerProvider);
     final double hours = durationState.hours;
     const double pricePerHour = 5;
     final double totalPrice = hours * pricePerHour;
+    String durationLabel(double hours) {
+      if (hours == 0.5) return S.of(context).minute30;
+      if (hours == 1) return S.of(context).hours;
+      if (hours == 2) return S.of(context).hour2;
+      if (hours == 3) return S.of(context).hour3;
+      if (hours == 4) return S.of(context).hour4;
+      if (hours == 6) return S.of(context).hour6;
+      return '${hours.toStringAsFixed(1)} ${S.of(context).hours}';
+    }
 
     return Container(
       width: 361,
@@ -457,7 +458,9 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppText(
-                text: 'الإجمالي',
+                text: S.of(context).total,
+
+                //  text: 'الإجمالي',
                 appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                     color: AppColor.textColor,
                     fontWeight: FontWeight.w500,
@@ -490,11 +493,12 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
               ),
               AppText(
                 text:
-                    'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
+                    S.of(context).zone013KhuraisRoadRiyadhKingdomofSaudiArabia,
+                // text: 'المنطقة 013 - طريق خريص، الرياض، المملكة العربية السعودية',
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                     color: AppColor.blackNumberSmallColor,
                     fontWeight: FontWeight.w400,
-                    fontSize: 12.sp),
+                    fontSize: 12),
               ),
             ],
           ),
@@ -506,7 +510,7 @@ class _PaymentSummaryVisaCard extends ConsumerWidget {
               ),
               SizedBox(width: 6.w),
               AppText(
-                text: _durationLabel(hours),
+                text: durationLabel(hours),
                 appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                   color: AppColor.blackNumberSmallColor,
                   fontWeight: FontWeight.w600,
