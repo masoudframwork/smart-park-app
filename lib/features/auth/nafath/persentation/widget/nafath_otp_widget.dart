@@ -87,22 +87,17 @@ class NafathOtpScreen extends ConsumerWidget {
                   onPressed: () {
                     showDialog(
                       context: context,
-                      barrierDismissible: false,
                       builder: (_) => AppResultDialog(
                         message:
-                            S.of(context).youraccountisnowconnectedwithNafath,
-                        buttonText: S.of(context).continu_e,
-                        onButtonPressed: () {
+                        S.of(context).youraccountisnowconnectedwithNafath,
+                        subMessage: S.of(context).help_support_title,
+                        mainButtonText: S.of(context).continu_e,
+                        onMainPressed: () => (){
                           NavigationService.push(
                             '/bankCardDataPage',
                             context: context,
                           );
                         },
-                        headerWidget: SvgPicture.asset(
-                          AppImages.trueChek,
-                          width: 47.w,
-                          height: 47.w,
-                        ),
                       ),
                     );
                   },

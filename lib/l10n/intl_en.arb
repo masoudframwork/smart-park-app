@@ -229,5 +229,8 @@
   "expiry_date": "Expiry date",
   "save_card": "Save the card",
   "card_type": "Card type",
-  "card_number": "Card number"
+  "card_number": "Card number",
+  "ok": "ok"
+
+
 }

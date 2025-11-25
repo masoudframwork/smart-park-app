@@ -176,7 +176,8 @@ class _NightModeTrailing extends StatelessWidget {
       spacing: 8.w,
       children: [
         Switch(
-          value: isDark,
+          // value: isDark,
+          value: true,
           onChanged: (_) {},
           overlayColor: WidgetStateProperty.all(Colors.transparent),
           trackColor: WidgetStateProperty.resolveWith((states) {
@@ -253,7 +254,7 @@ class _LanguageTrailing extends StatelessWidget {
               ),
             ),
             Switch(
-              value: isArabic,
+              value: true,
               onChanged: (_) async {
                 await localeModel.changeLanguage();
               },

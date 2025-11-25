@@ -238,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "nonsaudivehicle": MessageLookupByLibrary.simpleMessage("مركبة غير سعودية"),
     "notavailable": MessageLookupByLibrary.simpleMessage("غير متاح"),
+    "ok": MessageLookupByLibrary.simpleMessage("موافق"),
     "openNafathApp": MessageLookupByLibrary.simpleMessage("افتح تطبيق نفاذ"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
     "parachute": MessageLookupByLibrary.simpleMessage("مظلّة"),

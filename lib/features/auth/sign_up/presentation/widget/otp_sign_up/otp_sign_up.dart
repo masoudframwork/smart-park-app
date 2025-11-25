@@ -78,23 +78,15 @@ class OtpSignUpPage extends ConsumerWidget {
                   onPressed: () {
                     showDialog(
                       context: context,
-                      barrierDismissible: false,
-                      builder: (context) {
-                        return AppResultDialog(
-                          headerWidget: SvgPicture.asset(
-                            AppImages.trueChek,
-                            width: 47.w,
-                            height: 47.w,
-                          ),
-                          message: S
-                              .of(context)
-                              .youraccounthasbeencreatedsuccessfully,
-                          buttonText: S.of(context).continu_e,
-                          onButtonPressed: () {
-                            NavigationService.go(RoutePaths.nafathPageLogin);
-                          },
-                        );
-                      },
+                      builder: (_) => AppResultDialog(
+                        message:
+                            S.of(context).youraccounthasbeencreatedsuccessfully,
+                        subMessage: S.of(context).help_support_title,
+                        mainButtonText: S.of(context).continu_e,
+                        onMainPressed: () => () {
+                          NavigationService.go(RoutePaths.nafathPageLogin);
+                        },
+                      ),
                     );
                   },
                 ),

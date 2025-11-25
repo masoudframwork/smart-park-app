@@ -1893,6 +1893,11 @@ class S {
   String get card_number {
     return Intl.message('Card number', name: 'card_number', desc: '', args: []);
   }
+
+  /// `ok`
+  String get ok {
+    return Intl.message('ok', name: 'ok', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

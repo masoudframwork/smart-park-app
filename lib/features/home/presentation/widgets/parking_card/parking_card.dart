@@ -171,29 +171,29 @@ class ParkingCard extends StatelessWidget {
                       /// ARROW
                       GestureDetector(
                         onTap: () {
-                          // NavigationService.push(
-                          //   '/bookingParkingDetailsPage',
-                          //   context: context,
-                          // );
-
-                          showDialog(
+                          NavigationService.push(
+                            '/bookingParkingDetailsPage',
                             context: context,
-                            builder: (_) => AppResultDialog(
-                              message: S.of(context).help_support_title,
-                              subMessage: S.of(context).booking_summary,
-                              mainButtonText: S.of(context).booking_summary,
-                              onMainPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pushNamed(context, "/bookingSummary");
-                              },
-
-                              secondaryButtonText: S.of(context).home,
-                              onSecondaryPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pushNamed(context, "/home");
-                              },
-                            ),
                           );
+
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (_) => AppResultDialog(
+                          //     message: S.of(context).help_support_title,
+                          //     subMessage: S.of(context).booking_summary,
+                          //     mainButtonText: S.of(context).booking_summary,
+                          //     onMainPressed: () {
+                          //       Navigator.pop(context);
+                          //       Navigator.pushNamed(context, "/bookingSummary");
+                          //     },
+                          //
+                          //     secondaryButtonText: S.of(context).home,
+                          //     onSecondaryPressed: () {
+                          //       Navigator.pop(context);
+                          //       Navigator.pushNamed(context, "/home");
+                          //     },
+                          //   ),
+                          // );
 
 
                         },
