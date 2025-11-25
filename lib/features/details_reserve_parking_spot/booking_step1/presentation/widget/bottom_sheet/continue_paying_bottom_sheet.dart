@@ -18,7 +18,8 @@ import '../../../../../../generated/l10n.dart';
 import '../../../../../booking/domain/models/booking_model.dart';
 import '../../../../../booking/presentation/controller/booking_controller.dart';
 import '../../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
-import '../../../domain/duration_states.dart';
+import '../../../domain/duration_controller.dart';
+import '../../controller/duration_controller.dart';
 
 enum CardSelection {
   saved,

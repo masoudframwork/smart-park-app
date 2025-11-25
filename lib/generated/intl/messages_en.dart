@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "An OTP has been sent to the number ending in 000",
         ),
+    "and": MessageLookupByLibrary.simpleMessage("and"),
     "anew_code_will_be_sent_in": MessageLookupByLibrary.simpleMessage(
       "A new code will be sent in",
     ),

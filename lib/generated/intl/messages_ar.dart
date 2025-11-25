@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "لقد تم إرسال الرمز إلى الرقم المنتهي ب 000\nدخل الرمز لإتمام عملية الدخول",
         ),
+    "and": MessageLookupByLibrary.simpleMessage("و"),
     "anew_code_will_be_sent_in": MessageLookupByLibrary.simpleMessage(
       "سيتم إرسال رمز جديد خلال",
     ),
