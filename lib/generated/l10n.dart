@@ -1693,6 +1693,131 @@ class S {
   String get and {
     return Intl.message('and', name: 'and', desc: '', args: []);
   }
+
+  /// `/ hour`
+  String get per_hour {
+    return Intl.message('/ hour', name: 'per_hour', desc: '', args: []);
+  }
+
+  /// `Panorama Mall`
+  String get place_location_title_1 {
+    return Intl.message(
+      'Panorama Mall',
+      name: 'place_location_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers`
+  String get place_location_subtitle_title_1 {
+    return Intl.message(
+      'Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers',
+      name: 'place_location_subtitle_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kingdom Mall`
+  String get place_location_title_2 {
+    return Intl.message(
+      'Kingdom Mall',
+      name: 'place_location_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia`
+  String get place_location_subtitle_title_2 {
+    return Intl.message(
+      'King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia',
+      name: 'place_location_subtitle_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Panorama Mall`
+  String get place_location_title_3 {
+    return Intl.message(
+      'Panorama Mall',
+      name: 'place_location_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers`
+  String get place_location_subtitle_title_3 {
+    return Intl.message(
+      'Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers',
+      name: 'place_location_subtitle_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kingdom Mall`
+  String get place_location_title_4 {
+    return Intl.message(
+      'Kingdom Mall',
+      name: 'place_location_title_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia`
+  String get place_location_subtitle_title_4 {
+    return Intl.message(
+      'King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia',
+      name: 'place_location_subtitle_title_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `listening now': Find the place`
+  String get search_listening_find_place {
+    return Intl.message(
+      'listening now\': Find the place',
+      name: 'search_listening_find_place',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred. Please try again.`
+  String get search_an_error_occurred_try_again {
+    return Intl.message(
+      'An error occurred. Please try again.',
+      name: 'search_an_error_occurred_try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listening now… Speak up`
+  String get search_listening_now_speak {
+    return Intl.message(
+      'Listening now… Speak up',
+      name: 'search_listening_now_speak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try talking again`
+  String get try_talking_again {
+    return Intl.message(
+      'Try talking again',
+      name: 'try_talking_again',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

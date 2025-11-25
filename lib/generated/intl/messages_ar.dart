@@ -241,7 +241,32 @@ class MessageLookup extends MessageLookupByLibrary {
       "اركـــــن مركبتك\n بكل ســــــهولة!",
     ),
     "paymentConfirmation": MessageLookupByLibrary.simpleMessage("إتمام الدفع"),
+    "per_hour": MessageLookupByLibrary.simpleMessage("/ ساعة"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "place_location_subtitle_title_1": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_2": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_3": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_4": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_title_1": MessageLookupByLibrary.simpleMessage(
+      "بانوراما مول",
+    ),
+    "place_location_title_2": MessageLookupByLibrary.simpleMessage(
+      "مول المملكة",
+    ),
+    "place_location_title_3": MessageLookupByLibrary.simpleMessage(
+      "بانوراما مول",
+    ),
+    "place_location_title_4": MessageLookupByLibrary.simpleMessage(
+      "مول المملكة",
+    ),
     "platenumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
     "platetype": MessageLookupByLibrary.simpleMessage("نوع اللوحة"),
     "pleaselogintoNafathappandselectthefollowingnumber":
@@ -295,6 +320,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
+    "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ. يُرجى المحاولة مرة أخرى.",
+    ),
+    "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
+      "listening now\': Find the place",
+    ),
+    "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
+      " جاري الاستماع… تكلم الآن",
+    ),
     "secon": MessageLookupByLibrary.simpleMessage("ثانية"),
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
@@ -360,6 +394,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "تويوتا كورولا 2024 - أحمر",
+    ),
+    "try_talking_again": MessageLookupByLibrary.simpleMessage(
+      "حاول التحدث مرة أخرى",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",

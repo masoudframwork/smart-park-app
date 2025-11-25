@@ -255,7 +255,32 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentConfirmation": MessageLookupByLibrary.simpleMessage(
       "Payment Confirmation",
     ),
+    "per_hour": MessageLookupByLibrary.simpleMessage("/ hour"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "place_location_subtitle_title_1": MessageLookupByLibrary.simpleMessage(
+      "Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers",
+    ),
+    "place_location_subtitle_title_2": MessageLookupByLibrary.simpleMessage(
+      "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia",
+    ),
+    "place_location_subtitle_title_3": MessageLookupByLibrary.simpleMessage(
+      "Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers",
+    ),
+    "place_location_subtitle_title_4": MessageLookupByLibrary.simpleMessage(
+      "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia",
+    ),
+    "place_location_title_1": MessageLookupByLibrary.simpleMessage(
+      "Panorama Mall",
+    ),
+    "place_location_title_2": MessageLookupByLibrary.simpleMessage(
+      "Kingdom Mall",
+    ),
+    "place_location_title_3": MessageLookupByLibrary.simpleMessage(
+      "Panorama Mall",
+    ),
+    "place_location_title_4": MessageLookupByLibrary.simpleMessage(
+      "Kingdom Mall",
+    ),
     "platenumber": MessageLookupByLibrary.simpleMessage("Plate number"),
     "platetype": MessageLookupByLibrary.simpleMessage("Plate type"),
     "pleaselogintoNafathappandselectthefollowingnumber":
@@ -309,6 +334,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search for parking",
     ),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
+    "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
+      "An error occurred. Please try again.",
+    ),
+    "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
+      "listening now\': Find the place",
+    ),
+    "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
+      "Listening now… Speak up",
+    ),
     "secon": MessageLookupByLibrary.simpleMessage("seconds"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
@@ -376,6 +410,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "Toyota Corolla 2024 / Red",
+    ),
+    "try_talking_again": MessageLookupByLibrary.simpleMessage(
+      "Try talking again",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",

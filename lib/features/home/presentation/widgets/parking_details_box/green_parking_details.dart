@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details_box/timer_progress_ring.dart';
 import 'package:smart/generated/l10n.dart';
+import '../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class GreenParkingDetails extends StatelessWidget {
@@ -121,20 +122,30 @@ class GreenParkingDetails extends StatelessWidget {
             SizedBox(height: 18.h),
 
             /// --- BOOKING DETAILS BUTTON ---
-            Container(
-              height: 46.h,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.r),
-                border: Border.all(color: Colors.white, width: 1.5),
-              ),
-              child: Center(
-                child: Text(
-                  S.of(context).green_parking_details,
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BookingDetailView(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 46.h,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.r),
+                  border: Border.all(color: Colors.white, width: 1.5),
+                ),
+                child: Center(
+                  child: Text(
+                    S.of(context).green_parking_details,
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

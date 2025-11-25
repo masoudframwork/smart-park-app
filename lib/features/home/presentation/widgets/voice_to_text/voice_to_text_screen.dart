@@ -10,6 +10,7 @@ import '../../../../../core/widgets/app_text.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../../core/widgets/divider_widget.dart';
+import '../../../../../generated/l10n.dart';
 import '../../controller/place_location_search_controller.dart';
 import '../../controller/voice_to_text_state.dart';
 
@@ -62,7 +63,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 onFieldSubmitted: (_) => controller.searchNow(),
                 suffixIcon: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: isAvailable ? () => controller.toggleVoice(context) : null,
+                  onTap: isAvailable ? () => controller.toggleVoice() : null,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -97,7 +98,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 padding: EdgeInsetsDirectional.only(
                     start: 20.w, end: 20.w, bottom: 6.h),
                 child: AppText(
-                  text: 'حدث خطأ. يُرجى المحاولة مرة أخرى.',
+                  text: S.of(context).search_an_error_occurred_try_again,
                   appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                     fontSize: 12,
                     color: Colors.red,
@@ -109,7 +110,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 padding: EdgeInsetsDirectional.only(
                     start: 20.w, end: 20.w, bottom: 6.h),
                 child: AppText(
-                  text: '🎙️ جاري الاستماع… تكلم الآن',
+                  text: S.of(context).search_listening_now_speak,
                   appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                     fontSize: 12,
                     color: AppColor.primaryColor,
@@ -158,7 +159,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 ),
                 error: (e, _) => Center(
                   child: AppText(
-                    text: 'حاول التحدث مرة أخرى',
+                    text: S.of(context).search_listening_now_speak,
                     appTextTheme: AppTextTheme.titleMediumTextStyle(),
                   ),
                 ),

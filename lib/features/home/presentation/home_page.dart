@@ -207,7 +207,7 @@ class _TopControls extends StatelessWidget {
           controller: searchController,
           focusNode: searchFocus,
           hintText: S.of(context).searchParkingHint,
-          trailingIcon: SvgPicture.asset(AppImages.mice),
+          trailingIcon: SvgPicture.asset(AppImages.searchIcon),
           onSubmitted: onSearchSubmit,
           onSuffixTap: onSuffixTap,
           onTap: onSearchTap,

@@ -205,4 +205,18 @@
   "voice_not_available": "التعرّف الصوتي غير متاح على هذا الجهاز",
   "thepositionhasbeenbookedsuccessfully": "تم حجز الموقف بنجاح",
   "and": "و"
+  "thepositionhasbeenbookedsuccessfully": "تم حجز الموقف بنجاح",
+  "per_hour": "/ ساعة",
+  "place_location_title_1": "بانوراما مول",
+  "place_location_subtitle_title_1": "الرياض، العليا، المملكة العربية السعودية",
+  "place_location_title_2": "مول المملكة",
+  "place_location_subtitle_title_2": "الرياض، العليا، المملكة العربية السعودية",
+  "place_location_title_3": "بانوراما مول",
+  "place_location_subtitle_title_3": "الرياض، العليا، المملكة العربية السعودية",
+  "place_location_title_4": "مول المملكة",
+  "place_location_subtitle_title_4": "الرياض، العليا، المملكة العربية السعودية",
+  "search_listening_find_place": "listening now': Find the place",
+  "search_an_error_occurred_try_again": "حدث خطأ. يُرجى المحاولة مرة أخرى.",
+  "search_listening_now_speak": " جاري الاستماع… تكلم الآن",
+  "try_talking_again": "حاول التحدث مرة أخرى"
 }
