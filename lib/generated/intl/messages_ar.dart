@@ -242,6 +242,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentConfirmation": MessageLookupByLibrary.simpleMessage("إتمام الدفع"),
     "per_hour": MessageLookupByLibrary.simpleMessage("/ ساعة"),
     "phone_number": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "place_location_subtitle_title_1": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_2": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_3": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_subtitle_title_4": MessageLookupByLibrary.simpleMessage(
+      "الرياض، العليا، المملكة العربية السعودية",
+    ),
+    "place_location_title_1": MessageLookupByLibrary.simpleMessage(
+      "بانوراما مول",
+    ),
+    "place_location_title_2": MessageLookupByLibrary.simpleMessage(
+      "مول المملكة",
+    ),
+    "place_location_title_3": MessageLookupByLibrary.simpleMessage(
+      "بانوراما مول",
+    ),
+    "place_location_title_4": MessageLookupByLibrary.simpleMessage(
+      "مول المملكة",
+    ),
     "platenumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
     "platetype": MessageLookupByLibrary.simpleMessage("نوع اللوحة"),
     "pleaselogintoNafathappandselectthefollowingnumber":

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -8,9 +7,8 @@ import 'package:speech_to_text/speech_to_text.dart' as stt;
 import '../../data/models/place_location_model.dart';
 import 'voice_to_text_state.dart';
 
-final placeSearchControllerProvider =
-StateNotifierProvider.autoDispose<PlaceSearchController,
-    AsyncValue<List<PlaceLocationModel>>>(
+final placeSearchControllerProvider = StateNotifierProvider.autoDispose<
+    PlaceSearchController, AsyncValue<List<PlaceLocationModel>>>(
       (ref) => PlaceSearchController(ref),
 );
 
@@ -19,38 +17,28 @@ class PlaceSearchController
   PlaceSearchController(this._ref) : super(const AsyncValue.loading()) {
     _init();
   }
-
   final Ref _ref;
   String _query = '';
   String get query => _query;
-
   final TextEditingController textCtrl = TextEditingController();
   Timer? _debounce;
   final stt.SpeechToText _stt = stt.SpeechToText();
   bool _speechInitialized = false;
-
-  /// ------------------------------------------------------------
-  /// 🔥 Mock data in both Arabic & English
-  /// ------------------------------------------------------------
   static const List<PlaceLocationModel> _all = [
-    // 🇸🇦 Arabic
     PlaceLocationModel(
         title: 'بانوراما مول',
         subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
     PlaceLocationModel(
         title: 'مول المملكة',
         subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
-
-    // 🇺🇸 English
     PlaceLocationModel(
-        title: 'Panorama Mall', subtitle: 'Riyadh, Olaya, Saudi Arabia'),
+        title: 'بانوراما مول',
+        subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
     PlaceLocationModel(
-        title: 'Kingdom Mall', subtitle: 'Riyadh, Olaya, Saudi Arabia'),
+        title: 'مول المملكة',
+        subtitle: 'الرياض، العليا، المملكة العربية السعودية'),
   ];
 
-  /// ------------------------------------------------------------
-  /// INIT
-  /// ------------------------------------------------------------
   Future<void> _init() async {
     unawaited(_ensureSpeechReady());
     textCtrl.clear();
@@ -58,18 +46,13 @@ class PlaceSearchController
     state = const AsyncValue.data(_all);
   }
 
-  /// ------------------------------------------------------------
-  /// Initialize voice recognition
-  /// ------------------------------------------------------------
   Future<void> _ensureSpeechReady() async {
     if (_speechInitialized) return;
-
     final available = await _stt.initialize(
       onStatus: _onSpeechStatus,
       onError: _onSpeechError,
       debugLogging: false,
     );
-
     _speechInitialized = true;
 
     final voice = _ref.read(placeVoiceUiProvider);
@@ -77,94 +60,85 @@ class PlaceSearchController
         voice.copyWith(isAvailable: available, error: null);
   }
 
-  /// ------------------------------------------------------------
-  /// SEARCH LOGIC
-  /// ------------------------------------------------------------
   void setQuery(String value) {
     _query = value;
   }
 
   Future<void> searchNow() async {
     final q = _query.trim().toLowerCase();
-
     if (q.isEmpty) {
+      state = const AsyncValue.loading();
+      await Future<void>.delayed(const Duration(milliseconds: 100));
       state = const AsyncValue.data(_all);
       return;
     }
 
     state = const AsyncValue.loading();
-
-    await Future<void>.delayed(const Duration(milliseconds: 200));
-
-    final results = _all.where((p) {
-      return p.title.toLowerCase().contains(q) ||
-          p.subtitle.toLowerCase().contains(q);
-    }).toList();
-
-    state = AsyncValue.data(results);
+    try {
+      await Future<void>.delayed(const Duration(milliseconds: 250));
+      final results = _all.where((p) {
+        final t = p.title.toLowerCase();
+        final s = p.subtitle.toLowerCase();
+        return t.contains(q) || s.contains(q);
+      }).toList();
+      state = AsyncValue.data(results);
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
   }
 
-  void searchWithDebounce({Duration delay = const Duration(milliseconds: 300)}) {
+  void searchWithDebounce(
+      {Duration delay = const Duration(milliseconds: 300)}) {
     _debounce?.cancel();
     _debounce = Timer(delay, searchNow);
   }
 
   void clear() {
     _debounce?.cancel();
-    textCtrl.clear();
     _query = '';
+    textCtrl.clear();
     state = const AsyncValue.data(_all);
   }
 
-  /// ------------------------------------------------------------
-  /// VOICE START — Supports AR + EN Automatically
-  /// ------------------------------------------------------------
-  Future<void> startVoice(BuildContext context) async {
+  Future<void> startVoice({String localeId = 'ar_SA'}) async {
     await _ensureSpeechReady();
+    final voice = _ref.read(placeVoiceUiProvider);
 
-    final ui = _ref.read(placeVoiceUiProvider);
-
-    if (!ui.isAvailable) {
+    if (!voice.isAvailable) {
       _ref.read(placeVoiceUiProvider.notifier).state =
-          ui.copyWith(error: "Speech recognition is not available.");
+          voice.copyWith(error: 'التعرّف الصوتي غير متاح على هذا الجهاز.');
       return;
     }
 
-    /// Detect current language from system
-    final locale = Localizations.localeOf(context);
-    final langCode = locale.languageCode == 'ar' ? 'ar_SA' : 'en_US';
-
     _ref.read(placeVoiceUiProvider.notifier).state =
-        ui.copyWith(isListening: true, error: null);
+        voice.copyWith(isListening: true, partialText: '', error: null);
 
     await _stt.listen(
-      localeId: langCode,
+      localeId: localeId,
       listenMode: stt.ListenMode.search,
       partialResults: true,
       onResult: (result) {
-        final text = result.recognizedWords;
-
+        final words = result.recognizedWords;
         textCtrl.value = TextEditingValue(
-          text: text,
-          selection: TextSelection.collapsed(offset: text.length),
+          text: words,
+          selection: TextSelection.collapsed(offset: words.length),
         );
-
-        setQuery(text);
+        setQuery(words);
         searchWithDebounce();
 
         final v = _ref.read(placeVoiceUiProvider);
         _ref.read(placeVoiceUiProvider.notifier).state =
-            v.copyWith(partialText: text);
+            v.copyWith(partialText: words);
       },
+      pauseFor: const Duration(seconds: 5),
+      listenFor: const Duration(seconds: 15),
     );
   }
 
-  /// ------------------------------------------------------------
-  /// STOP / CANCEL VOICE
-  /// ------------------------------------------------------------
   Future<void> stopVoice({bool commitSearch = true}) async {
-    if (_stt.isListening) await _stt.stop();
-
+    if (_stt.isListening) {
+      await _stt.stop();
+    }
     final v = _ref.read(placeVoiceUiProvider);
     _ref.read(placeVoiceUiProvider.notifier).state =
         v.copyWith(isListening: false);
@@ -176,28 +150,26 @@ class PlaceSearchController
   }
 
   Future<void> cancelVoice() async {
-    if (_stt.isListening) await _stt.cancel();
-
+    if (_stt.isListening) {
+      await _stt.cancel();
+    }
     final v = _ref.read(placeVoiceUiProvider);
     _ref.read(placeVoiceUiProvider.notifier).state =
         v.copyWith(isListening: false, partialText: '');
   }
 
-  Future<void> toggleVoice(BuildContext context) async {
+  Future<void> toggleVoice() async {
     final v = _ref.read(placeVoiceUiProvider);
     if (v.isListening) {
       await stopVoice(commitSearch: true);
     } else {
-      await startVoice(context);
+      await startVoice(localeId: 'ar_SA');
     }
   }
 
-  /// ------------------------------------------------------------
-  /// SPEECH STATUS HANDLERS
-  /// ------------------------------------------------------------
   void _onSpeechStatus(String status) {
-    if (status.toLowerCase().contains("done") ||
-        status.toLowerCase().contains("notlistening")) {
+    if (status.toLowerCase().contains('notlistening') ||
+        status.toLowerCase().contains('done')) {
       final v = _ref.read(placeVoiceUiProvider);
       _ref.read(placeVoiceUiProvider.notifier).state =
           v.copyWith(isListening: false);

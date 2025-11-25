@@ -256,6 +256,30 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "per_hour": MessageLookupByLibrary.simpleMessage("/ hour"),
     "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "place_location_subtitle_title_1": MessageLookupByLibrary.simpleMessage(
+      "Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers",
+    ),
+    "place_location_subtitle_title_2": MessageLookupByLibrary.simpleMessage(
+      "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia",
+    ),
+    "place_location_subtitle_title_3": MessageLookupByLibrary.simpleMessage(
+      "Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers",
+    ),
+    "place_location_subtitle_title_4": MessageLookupByLibrary.simpleMessage(
+      "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia",
+    ),
+    "place_location_title_1": MessageLookupByLibrary.simpleMessage(
+      "Panorama Mall",
+    ),
+    "place_location_title_2": MessageLookupByLibrary.simpleMessage(
+      "Kingdom Mall",
+    ),
+    "place_location_title_3": MessageLookupByLibrary.simpleMessage(
+      "Panorama Mall",
+    ),
+    "place_location_title_4": MessageLookupByLibrary.simpleMessage(
+      "Kingdom Mall",
+    ),
     "platenumber": MessageLookupByLibrary.simpleMessage("Plate number"),
     "platetype": MessageLookupByLibrary.simpleMessage("Plate type"),
     "pleaselogintoNafathappandselectthefollowingnumber":

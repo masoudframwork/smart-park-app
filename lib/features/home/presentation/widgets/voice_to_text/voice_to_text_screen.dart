@@ -27,8 +27,16 @@ class VoiceToTextScreen extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
+        backgroundColor: AppColor.whiteColor,
         appBar: CustomAppBar(
+          leading: SquareButton(
+            onTap: () => Navigator.pop(context),
+            icon: Icon(
+              Icons.menu,
+              size: 24.w,
+              color: AppColor.blackColor,
+            ),
+          ),
           trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
         ),
         body: Column(
@@ -41,7 +49,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 hintText: isListening ? '...جاري الاستماع' : 'ابحث عن المكان',
                 enableShadow: true,
                 shadowTextFieldColor:
-                    AppColor.contanearGreyColor.withOpacity(0.25),
+                AppColor.contanearGreyColor.withOpacity(0.25),
                 shadowOffset: const Offset(0, 8),
                 shadowBlur: 12,
                 shadowSpread: 0,
@@ -54,7 +62,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                 onFieldSubmitted: (_) => controller.searchNow(),
                 suffixIcon: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-                  onTap: isAvailable ? () => controller.toggleVoice(context) : null,
+                  onTap: isAvailable ? () => controller.toggleVoice() : null,
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -62,19 +70,19 @@ class VoiceToTextScreen extends ConsumerWidget {
                       shape: BoxShape.circle,
                       boxShadow: isListening
                           ? [
-                              BoxShadow(
-                                color: AppColor.primaryColor.withOpacity(0.35),
-                                blurRadius: 16,
-                                spreadRadius: 2,
-                              ),
-                            ]
+                        BoxShadow(
+                          color: AppColor.primaryColor.withOpacity(0.35),
+                          blurRadius: 16,
+                          spreadRadius: 2,
+                        ),
+                      ]
                           : [],
                     ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          AppImages.searchIcon,
+                          AppImages.mice,
                           width: 16.w,
                           height: 19.h,
                         ),
@@ -170,6 +178,7 @@ class _SearchResultTile extends StatelessWidget {
   final VoidCallback? onTap;
 
   const _SearchResultTile({
+    super.key,
     required this.title,
     required this.subtitle,
     this.showSubtitle = true,
@@ -184,11 +193,7 @@ class _SearchResultTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset(AppImages.locationSearchIcon, width: 50.w),
-          ),
-
+          SvgPicture.asset(AppImages.location2, width: 70.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

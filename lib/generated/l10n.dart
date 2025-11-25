@@ -1693,6 +1693,86 @@ class S {
   String get per_hour {
     return Intl.message('/ hour', name: 'per_hour', desc: '', args: []);
   }
+
+  /// `Panorama Mall`
+  String get place_location_title_1 {
+    return Intl.message(
+      'Panorama Mall',
+      name: 'place_location_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers`
+  String get place_location_subtitle_title_1 {
+    return Intl.message(
+      'Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers',
+      name: 'place_location_subtitle_title_1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kingdom Mall`
+  String get place_location_title_2 {
+    return Intl.message(
+      'Kingdom Mall',
+      name: 'place_location_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia`
+  String get place_location_subtitle_title_2 {
+    return Intl.message(
+      'King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia',
+      name: 'place_location_subtitle_title_2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Panorama Mall`
+  String get place_location_title_3 {
+    return Intl.message(
+      'Panorama Mall',
+      name: 'place_location_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers`
+  String get place_location_subtitle_title_3 {
+    return Intl.message(
+      'Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers',
+      name: 'place_location_subtitle_title_3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kingdom Mall`
+  String get place_location_title_4 {
+    return Intl.message(
+      'Kingdom Mall',
+      name: 'place_location_title_4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia`
+  String get place_location_subtitle_title_4 {
+    return Intl.message(
+      'King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia',
+      name: 'place_location_subtitle_title_4',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
