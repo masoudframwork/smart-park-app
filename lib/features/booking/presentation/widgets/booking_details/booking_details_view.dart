@@ -15,15 +15,12 @@ import '../../../domain/models/booking_model.dart';
 import 'booking_detail_header.dart';
 import 'booking_detail_info.dart';
 import 'booking_detail_timer.dart';
-
 class BookingDetailView extends ConsumerWidget {
   const BookingDetailView({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bookingState = ref.watch(reservationController);
     final BookingModel? reservation = bookingState.selectedReservation;
-
     if (reservation == null) {
       return Scaffold(
         backgroundColor: AppColor.lightBackgroundColor,

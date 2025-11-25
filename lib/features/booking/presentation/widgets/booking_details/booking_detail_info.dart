@@ -41,7 +41,7 @@ class BookingDetailInfo extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         _buildInfoRow(
-          icon: AppImages.location3,
+          icon: AppImages.iconsMaps,
           title: "",
           subtitle: reservation.address,
         ),
@@ -53,7 +53,7 @@ class BookingDetailInfo extends StatelessWidget {
     bool isRTL = Directionality.of(context) == TextDirection.rtl;
 
     return _buildInfoRow(
-      icon: AppImages.car,
+      icon: AppImages.iconsCars,
       title: S.of(context).car_info_title,
       subtitle: null,
       // textAlign: isRTL ? TextAlign.right : TextAlign.left,
@@ -67,10 +67,8 @@ class BookingDetailInfo extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: AppColor.greyContainerColor),
           ),
-          child: Image.asset(
-            AppImages.visaImage,
-            width: 22.w,
-            height: 20.h,
+          child: SvgPicture.asset(
+            AppImages.payments
           ),
         ),
         SizedBox(width: 8.w),
@@ -100,12 +98,10 @@ class BookingDetailInfo extends StatelessWidget {
   }) {
     return Row(
       children: [
-        CustomImageWidget(
-          imageUrl: icon,
-          width: 20.w,
-          height: 20.w,
-          color: AppColor.primaryColor,
-          isFlag: true,
+
+        SvgPicture.asset(
+          icon,
+          color: AppColor.textColor,
         ),
         SizedBox(width: 12.w),
         AppText(

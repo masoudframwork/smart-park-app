@@ -29,7 +29,7 @@ class BookingDetailTimer extends StatelessWidget {
             imageUrl: AppImages.timerClock,
             width: 240.w,
             height: 240.w,
-            color: AppColor.greyContainerColor.withOpacity(0.3),
+           color: AppColor.whiteColor,
             isFlag: true,
           ),
           Positioned.fill(
@@ -40,7 +40,7 @@ class BookingDetailTimer extends StatelessWidget {
                 strokeWidth: 16.w,
                 backgroundColor: Colors.transparent,
                 valueColor:
-                    AlwaysStoppedAnimation(AppColor.yellowContainerColor),
+                    AlwaysStoppedAnimation(AppColor.primaryColor),
                 strokeCap: StrokeCap.round,
               ),
             ),
