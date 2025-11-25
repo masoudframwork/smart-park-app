@@ -107,6 +107,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "car_info_title": MessageLookupByLibrary.simpleMessage(
       "نيسان / 2023 / أسود",
     ),
+    "card_number": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
+    "card_type": MessageLookupByLibrary.simpleMessage("نوع البطاقة"),
     "cardendingin000": MessageLookupByLibrary.simpleMessage(
       "البطاقة المنتهية بـ 0000",
     ),
@@ -181,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "بيانات المركبة",
     ),
     "evcharging": MessageLookupByLibrary.simpleMessage("شحن EV"),
+    "expiry_date": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
     "expirydate": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
     "explore_the_map_and_find_the_nearest": MessageLookupByLibrary.simpleMessage(
       "اســـــــتكـشــــــــــــــــف الخريطة \nواحصل على أقرب موقف\n في أي وقت ومن أي مكان",
@@ -221,6 +224,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minute30": MessageLookupByLibrary.simpleMessage("30 دقيقة"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "newVehicle": MessageLookupByLibrary.simpleMessage("مركبة جديدة"),
+    "new_card": MessageLookupByLibrary.simpleMessage("بطاقة جديدة"),
     "newcard": MessageLookupByLibrary.simpleMessage("بطاقة جديدة"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("مركبة أخرى"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
@@ -280,6 +284,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pre_preserved_vehicles": MessageLookupByLibrary.simpleMessage(
       "المركبات المحفوظة مسبقاً",
     ),
+    "pre_saved_cards": MessageLookupByLibrary.simpleMessage(
+      "البطاقات المحفوظة مسبقا",
+    ),
     "pricethroughouttheday": MessageLookupByLibrary.simpleMessage(
       "السعر على مدار اليوم",
     ),
@@ -319,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saudivehicle": MessageLookupByLibrary.simpleMessage("مركبة سعودية"),
     "saveCard": MessageLookupByLibrary.simpleMessage("حفظ البطاقة"),
     "saveVehicle": MessageLookupByLibrary.simpleMessage("حفظ المركبة"),
+    "save_card": MessageLookupByLibrary.simpleMessage("حفظ البطاقة"),
     "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
       "احفظ المركبة للاستخدام لاحقاً",
     ),

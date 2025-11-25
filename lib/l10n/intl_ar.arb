@@ -221,6 +221,11 @@
   "pre_preserved_vehicles": "المركبات المحفوظة مسبقاً",
   "nissan_car": "نيسان باتلفايندر 2023 - أسود",
   "toyota_car": "تويوتا كورولا 2024 - أحمر",
-  "another_car": "Another vehicle"
-
+  "another_car": "Another vehicle",
+  "pre_saved_cards": "البطاقات المحفوظة مسبقا",
+  "new_card": "بطاقة جديدة",
+  "expiry_date": "تاريخ الانتهاء",
+  "save_card": "حفظ البطاقة",
+  "card_type": "نوع البطاقة",
+  "card_number": "رقم البطاقة"
 }

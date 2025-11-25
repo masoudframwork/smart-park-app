@@ -223,5 +223,11 @@
   "pre_preserved_vehicles": "Pre-preserved vehicles",
   "nissan_car": "2023 Nissan Battlefinder - Black",
   "toyota_car": "Toyota Corolla 2024 - Red",
-  "another_car": "Another vehicle"
+  "another_car": "Another vehicle",
+  "pre_saved_cards": "Pre-saved cards",
+  "new_card": "New card",
+  "expiry_date": "Expiry date",
+  "save_card": "Save the card",
+  "card_type": "Card type",
+  "card_number": "Card number"
 }

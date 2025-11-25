@@ -113,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "car_info_title": MessageLookupByLibrary.simpleMessage(
       "Nissan / 2023 / Black",
     ),
+    "card_number": MessageLookupByLibrary.simpleMessage("Card number"),
+    "card_type": MessageLookupByLibrary.simpleMessage("Card type"),
     "cardendingin000": MessageLookupByLibrary.simpleMessage(
       "Card ending in 0000",
     ),
@@ -191,6 +193,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter your vehicle info",
     ),
     "evcharging": MessageLookupByLibrary.simpleMessage("EV charging"),
+    "expiry_date": MessageLookupByLibrary.simpleMessage("Expiry date"),
     "expirydate": MessageLookupByLibrary.simpleMessage("Expiry date"),
     "explore_the_map_and_find_the_nearest":
         MessageLookupByLibrary.simpleMessage(
@@ -231,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minute30": MessageLookupByLibrary.simpleMessage("30 minute"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "newVehicle": MessageLookupByLibrary.simpleMessage("New Vehicle"),
+    "new_card": MessageLookupByLibrary.simpleMessage("New card"),
     "newcard": MessageLookupByLibrary.simpleMessage("New card"),
     "newvehicle": MessageLookupByLibrary.simpleMessage("New vehicle"),
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
@@ -294,6 +298,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pre_preserved_vehicles": MessageLookupByLibrary.simpleMessage(
       "Pre-preserved vehicles",
     ),
+    "pre_saved_cards": MessageLookupByLibrary.simpleMessage("Pre-saved cards"),
     "pricethroughouttheday": MessageLookupByLibrary.simpleMessage(
       "Price throughout the day",
     ),
@@ -331,6 +336,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saudivehicle": MessageLookupByLibrary.simpleMessage("Saudi vehicle"),
     "saveCard": MessageLookupByLibrary.simpleMessage("Save Card"),
     "saveVehicle": MessageLookupByLibrary.simpleMessage("Save Vehicle"),
+    "save_card": MessageLookupByLibrary.simpleMessage("Save the card"),
     "savethevehicleforlateruse": MessageLookupByLibrary.simpleMessage(
       "Save the vehicle for later use.",
     ),

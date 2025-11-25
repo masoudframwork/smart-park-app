@@ -13,6 +13,7 @@ import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../core/widgets/required_field_label.dart';
+import '../../../../generated/l10n.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/continue_paying_bottom_sheet.dart';
 
 class ElectronicPaymentCards extends StatelessWidget {
@@ -64,7 +65,7 @@ class ElectronicPaymentCards extends StatelessWidget {
                     ),
                   ),
                   AppText(
-                    text: 'البطاقات المحفوظة مسبقاً',
+                    text: S.of(context).pre_saved_cards,
                     appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
                       color: AppColor.textColor,
                     ),
@@ -95,7 +96,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTiles(
-          title: 'بطاقة جديدة',
+          title:  S.of(context).new_card,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.whiteColor,
           carIcon: const SizedBox.shrink(),
@@ -194,7 +195,7 @@ class SavedCardTile extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           AppText(
-                            text: 'تاريخ الانتهاء',
+                            text: S.of(context).expiry_date,
                             appTextTheme: AppTextTheme.bodySmallTextStyle()
                                 .copyWith(color: AppColor.greyCard),
                           ),
@@ -364,7 +365,7 @@ class NewCardBottomSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBottomSheet(
       maxHeightFactor: 0.62,
-      title: 'بطاقة جديدة',
+      title: S.of(context).new_card,
       headerStyle: SheetHeaderStyle.spacedTitleWithCloseOnRight,
       body: Material(
         color: AppColor.settingsBackgroundColor,
@@ -379,7 +380,7 @@ class NewCardBottomSheet extends ConsumerWidget {
                 CustomButtonWidget(
                   type: ButtonType.elevated,
                   borderRadius: 10.r,
-                  text: 'حفظ البطاقة',
+                  text:S.of(context).saveCard,
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -407,7 +408,7 @@ class _NewCardForm extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         RequiredFieldLabel(
-          text: 'نوع البطاقة ',
+          text: S.of(context).card_type,
           textColor: AppColor.blackColor,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,
@@ -441,7 +442,7 @@ class _NewCardForm extends ConsumerWidget {
         ),
         SizedBox(height: 16.h),
         RequiredFieldLabel(
-          text: 'رقم البطاقة',
+          text: S.of(context).card_number,
           textColor: AppColor.blackColor,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,
@@ -463,7 +464,7 @@ class _NewCardForm extends ConsumerWidget {
         ),
         SizedBox(height: 12.h),
         RequiredFieldLabel(
-          text: 'الاسم',
+          text:  S.of(context).name,
           textColor: AppColor.blackColor,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,
@@ -490,7 +491,7 @@ class _NewCardForm extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RequiredFieldLabel(
-                    text: 'تاريخ الانتهاء',
+                    text: S.of(context).expiry_date,
                     textColor: AppColor.blackColor,
                     appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
                       color: AppColor.blackNumberSmallColor,
