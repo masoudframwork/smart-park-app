@@ -7,7 +7,6 @@ import 'package:smart/features/home/presentation/widgets/parking_details_box/tim
 import 'package:smart/generated/l10n.dart';
 import '../../../../../core/routing/navigation_service.dart';
 import '../../../../booking/presentation/controller/booking_controller.dart';
-import '../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class GreenParkingDetails extends ConsumerWidget {
