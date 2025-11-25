@@ -43,6 +43,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "Additional services",
     ),
     "addvehicle": MessageLookupByLibrary.simpleMessage(" Add Vehicle"),
+    "alert_booking_successfully_completed_desc":
+        MessageLookupByLibrary.simpleMessage(
+          "Would you like to see a booking summary?",
+        ),
+    "alert_booking_successfully_completed_title":
+        MessageLookupByLibrary.simpleMessage(
+          "The booking was successfully completed",
+        ),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account ?",
     ),
@@ -110,6 +118,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Booking confirmation",
     ),
     "bookings": MessageLookupByLibrary.simpleMessage("Bookings"),
+    "button_booking_summary": MessageLookupByLibrary.simpleMessage(
+      "Booking Summary",
+    ),
+    "button_home": MessageLookupByLibrary.simpleMessage("Home"),
     "car_info_title": MessageLookupByLibrary.simpleMessage(
       "Nissan / 2023 / Black",
     ),

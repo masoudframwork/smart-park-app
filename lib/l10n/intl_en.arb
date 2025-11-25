@@ -232,7 +232,9 @@
   "save_card": "Save the card",
   "card_type": "Card type",
   "card_number": "Card number",
-  "ok": "ok"
-
-
+  "ok": "ok",
+  "alert_booking_successfully_completed_title": "The booking was successfully completed",
+  "alert_booking_successfully_completed_desc": "Would you like to see a booking summary?",
+  "button_booking_summary": "Booking Summary",
+  "button_home": "Home"
 }

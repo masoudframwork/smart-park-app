@@ -23,6 +23,9 @@ class RoutePaths {
   static const String prePreservedVehicles = '/prePreservedVehicles';
   static const String scanCodeScreen = '/ScanCodeScreen';
   static const String   bookingDetailView = '/bookingDetailView';
+  static const String   bookingSummaryScreen = '/BookingSummaryScreen';
+
+
 
 
 

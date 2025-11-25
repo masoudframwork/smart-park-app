@@ -43,6 +43,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "الخدمات الإضافية",
     ),
     "addvehicle": MessageLookupByLibrary.simpleMessage("إضافة المركبة"),
+    "alert_booking_successfully_completed_desc":
+        MessageLookupByLibrary.simpleMessage(
+          "هل ترغب بالاطلاع على ملخص الحجز؟",
+        ),
+    "alert_booking_successfully_completed_title":
+        MessageLookupByLibrary.simpleMessage("تم إنهاء الحجز بنجاح"),
     "already_have_an_account": MessageLookupByLibrary.simpleMessage(
       "لديك حساب ؟",
     ),
@@ -104,6 +110,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "bookingconfirmation": MessageLookupByLibrary.simpleMessage("تأكيد الحجز"),
     "bookings": MessageLookupByLibrary.simpleMessage("الحجوزات"),
+    "button_booking_summary": MessageLookupByLibrary.simpleMessage(
+      "ملخص الحجز",
+    ),
+    "button_home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "car_info_title": MessageLookupByLibrary.simpleMessage(
       "نيسان / 2023 / أسود",
     ),

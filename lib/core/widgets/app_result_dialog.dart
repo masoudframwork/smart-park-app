@@ -135,23 +135,26 @@ class AppResultDialog extends StatelessWidget {
           child: CustomButtonWidget(
             width: 130.w,
             height: 40.h,
-            onPressed: onSecondaryPressed!,
-            text: secondaryButtonText!,
-            type: ButtonType.outlined,
-            borderRadius: 6.r,
-          ),
-        ),
-
-        SizedBox(width: 10.h),
-
-        Expanded(
-          child: CustomButtonWidget(
-            width: 130.w,
-            height: 40.h,
             onPressed: onMainPressed,
             text: mainButtonText,
             type: ButtonType.elevated,
             borderRadius: 6.r,
+            fontSize: 14,
+          ),
+        ),
+        SizedBox(width: 10.h),
+        Expanded(
+          child: CustomButtonWidget(
+            width: 130.w,
+            height: 40.h,
+            onPressed: onSecondaryPressed!,
+            text: secondaryButtonText!,
+            type: ButtonType.outlined,
+            borderRadius: 6.r,
+            fontSize: 14,
+            textStyle: TextStyle(
+              color: AppColor.primaryColor,
+            ),
           ),
         ),
       ],

@@ -230,5 +230,9 @@
   "save_card": "حفظ البطاقة",
   "card_type": "نوع البطاقة",
   "card_number": "رقم البطاقة",
-  "ok": "موافق"
+  "ok": "موافق",
+  "alert_booking_successfully_completed_title": "تم إنهاء الحجز بنجاح",
+  "alert_booking_successfully_completed_desc": "هل ترغب بالاطلاع على ملخص الحجز؟",
+  "button_booking_summary": "ملخص الحجز",
+  "button_home": "الرئيسية"
 }

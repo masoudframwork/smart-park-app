@@ -13,6 +13,7 @@ import '../../features/auth/nafath/persentation/widget/nafath_otp_widget.dart';
 import '../../features/auth/send_the_code/presentation/send_the_code_page.dart';
 import '../../features/auth/sign_up/presentation/sign_up_page.dart';
 import '../../features/auth/sign_up/presentation/widget/otp_sign_up/otp_sign_up.dart';
+import '../../features/booking/presentation/booking_summary_screen.dart';
 import '../../features/booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../features/details_reserve_parking_spot/booking-parking_details/presentation/booking_parking_details_page.dart';
@@ -197,6 +198,14 @@ class AppRouter {
         pageBuilder: (context, state) {
           return softTransitionPage(
             child: BookingDetailView(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RoutePaths.bookingSummaryScreen,
+        pageBuilder: (context, state) {
+          return softTransitionPage(
+            child: BookingSummaryScreen(),
           );
         },
       ),
