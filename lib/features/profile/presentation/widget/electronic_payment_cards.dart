@@ -8,6 +8,7 @@ import '../../../../core/constants/image_string.dart';
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/app_bottom_sheet.dart';
+import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/custome_text_field_widget.dart';
@@ -32,46 +33,18 @@ class ElectronicPaymentCards extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(20.h),
+          padding: EdgeInsets.all(16.h),
           child: Column(
             spacing: 18.h,
             children: [
-              Row(
-                spacing: 15,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
-                      width: 34.w,
-                      height: 34.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.whiteColor,
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: AppColor.contanearGreyColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: CustomImageWidget(
-                        imageUrl: AppImages.arrowIcon2,
-                        width: 20.w,
-                        height: 20.w,
-                        isFlag: true,
-                        color: AppColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  AppText(
-                    text: S.of(context).pre_saved_cards,
-                    appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                      color: AppColor.textColor,
-                    ),
-                  ),
-                ],
+              ArrowWidgetCustomBar(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                title: S.of(context).pre_saved_cards,
               ),
+
+              SizedBox(height: 16.h),
               _VehiclesStepContent(),
             ],
           ),
