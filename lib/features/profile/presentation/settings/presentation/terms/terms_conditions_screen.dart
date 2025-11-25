@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../../../../core/constants/image_string.dart';
-import '../../../../core/theme/app_color.dart';
-import '../../../../core/theme/app_text_theme.dart';
-import '../../../../core/widgets/app_text.dart';
-import '../../../../core/widgets/arrow_widget_custom_bar.dart';
-import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../l10n/app_locale.dart';
+
+import '../../../../../../core/constants/image_string.dart';
+import '../../../../../../core/theme/app_color.dart';
+import '../../../../../../core/theme/app_text_theme.dart';
+import '../../../../../../core/widgets/app_text.dart';
+import '../../../../../../core/widgets/arrow_widget_custom_bar.dart';
+import '../../../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../../l10n/app_locale.dart';
 
 class TermsScreen extends StatelessWidget {
   const TermsScreen({super.key});

@@ -5,12 +5,12 @@ import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
+import 'package:smart/features/profile/presentation/settings/presentation/settings_screen.dart';
 import 'package:smart/features/profile/presentation/widget/electronic_payment_cards.dart';
 import 'package:smart/features/profile/presentation/widget/pre_preserved_vehicles.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../generated/l10n.dart';
-import '../../settings/presentation/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
