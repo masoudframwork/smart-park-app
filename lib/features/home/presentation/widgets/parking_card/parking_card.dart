@@ -3,6 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
+import '../../../../../core/routing/routes.dart';
+import '../../../../../core/widgets/app_result_dialog.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCard extends StatelessWidget {
@@ -59,8 +62,9 @@ class ParkingCard extends StatelessWidget {
             /// TEXT SECTION
             Expanded(
               child: Column(
-                crossAxisAlignment:
-                isArabic ? CrossAxisAlignment.start : CrossAxisAlignment.start,
+                crossAxisAlignment: isArabic
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   /// TITLE
@@ -96,12 +100,13 @@ class ParkingCard extends StatelessWidget {
 
                   /// BOTTOM ROW
                   Row(
-                    textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+                    textDirection:
+                        isArabic ? TextDirection.rtl : TextDirection.ltr,
                     children: [
                       Expanded(
                         child: Row(
                           textDirection:
-                          isArabic ? TextDirection.rtl : TextDirection.ltr,
+                              isArabic ? TextDirection.rtl : TextDirection.ltr,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             /// PRICE
@@ -127,7 +132,7 @@ class ParkingCard extends StatelessWidget {
                                   isArabic ? "/ ساعة" : "/ hour",
                                   style: TextStyle(
                                     fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w300,
                                     color: Colors.black87,
                                   ),
                                 ),
@@ -149,10 +154,10 @@ class ParkingCard extends StatelessWidget {
                                 parkingArea.formattedAvailability,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign:
-                                isArabic ? TextAlign.right : TextAlign.left,
+                                    isArabic ? TextAlign.right : TextAlign.left,
                                 style: TextStyle(
                                   fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w300,
                                   color: Colors.black87,
                                 ),
                               ),
@@ -166,10 +171,31 @@ class ParkingCard extends StatelessWidget {
                       /// ARROW
                       GestureDetector(
                         onTap: () {
-                          NavigationService.push(
-                            '/bookingParkingDetailsPage',
+                          // NavigationService.push(
+                          //   '/bookingParkingDetailsPage',
+                          //   context: context,
+                          // );
+
+                          showDialog(
                             context: context,
+                            builder: (_) => AppResultDialog(
+                              message: S.of(context).help_support_title,
+                              subMessage: S.of(context).booking_summary,
+                              mainButtonText: S.of(context).booking_summary,
+                              onMainPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pushNamed(context, "/bookingSummary");
+                              },
+
+                              secondaryButtonText: S.of(context).home,
+                              onSecondaryPressed: () {
+                                Navigator.pop(context);
+                                Navigator.pushNamed(context, "/home");
+                              },
+                            ),
                           );
+
+
                         },
                         child: Container(
                           width: 32.w,

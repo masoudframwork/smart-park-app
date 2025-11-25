@@ -12,7 +12,7 @@ class ParkingArea {
   final String? imageUrl;
   final double latitude;
   final double longitude;
-  final double pricePerHour;
+  final int pricePerHour;
   final bool isActive;
 
   ParkingArea({
@@ -52,7 +52,7 @@ class ParkingArea {
     String? imageUrl,
     double? latitude,
     double? longitude,
-    double? pricePerHour,
+    int? pricePerHour,
     bool? isActive,
   }) {
     return ParkingArea(
