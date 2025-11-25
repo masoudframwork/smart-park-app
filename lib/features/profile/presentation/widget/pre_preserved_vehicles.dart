@@ -6,8 +6,10 @@ import 'package:smart/core/widgets/app_text.dart';
 import '../../../../core/constants/image_string.dart';
 import '../../../../core/helpers/show_change_vehicle_dialog.dart';
 import '../../../../core/theme/app_color.dart';
+import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../../../../generated/l10n.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
 class PrePreservedVehicles extends StatelessWidget {
   const PrePreservedVehicles({super.key});
@@ -24,46 +26,18 @@ class PrePreservedVehicles extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(20.h),
+          padding: EdgeInsets.all(16.h),
           child: Column(
             spacing: 18.h,
             children: [
-              Row(
-                spacing: 15,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
-                      width: 34.w,
-                      height: 34.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColor.whiteColor,
-                        borderRadius: BorderRadius.circular(10.r),
-                        border: Border.all(
-                          color: AppColor.contanearGreyColor,
-                          width: 1,
-                        ),
-                      ),
-                      child: CustomImageWidget(
-                        imageUrl: AppImages.arrowIcon2,
-                        width: 20.w,
-                        height: 20.w,
-                        isFlag: true,
-                        color: AppColor.primaryColor,
-                      ),
-                    ),
-                  ),
-                  AppText(
-                    text: 'المركبات المحفوظة مسبقاً',
-                    appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                      color: AppColor.textColor,
-                    ),
-                  ),
-                ],
+              ArrowWidgetCustomBar(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                title: S.of(context).pre_preserved_vehicles,
               ),
+
+              SizedBox(height: 16.h),
               _VehiclesStepContent(),
 
             ],
@@ -83,7 +57,7 @@ class _VehiclesStepContent extends StatelessWidget {
           height: 12,
         ),
         TheVehicleTiles(
-          title: 'نيسان باتلفايندر 2023 - أسود',
+          title:  S.of(context).nissan_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -95,7 +69,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTiles(
-          title: 'تويوتا كورولا 2024 - أحمر',
+          title:  S.of(context).toyota_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -107,7 +81,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTiles(
-          title: 'مركبة أخرى',
+          title: S.of(context).another_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.whiteColor,
 

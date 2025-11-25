@@ -1818,6 +1818,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Pre-preserved vehicles`
+  String get pre_preserved_vehicles {
+    return Intl.message(
+      'Pre-preserved vehicles',
+      name: 'pre_preserved_vehicles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `2023 Nissan Battlefinder - Black`
+  String get nissan_car {
+    return Intl.message(
+      '2023 Nissan Battlefinder - Black',
+      name: 'nissan_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Toyota Corolla 2024 - Red`
+  String get toyota_car {
+    return Intl.message(
+      'Toyota Corolla 2024 - Red',
+      name: 'toyota_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Another vehicle`
+  String get another_car {
+    return Intl.message(
+      'Another vehicle',
+      name: 'another_car',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

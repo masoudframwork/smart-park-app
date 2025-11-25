@@ -217,5 +217,10 @@
   "search_listening_find_place": "listening now': Find the place",
   "search_an_error_occurred_try_again": "حدث خطأ. يُرجى المحاولة مرة أخرى.",
   "search_listening_now_speak": " جاري الاستماع… تكلم الآن",
-  "try_talking_again": "حاول التحدث مرة أخرى"
+  "try_talking_again": "حاول التحدث مرة أخرى",
+  "pre_preserved_vehicles": "المركبات المحفوظة مسبقاً",
+  "nissan_car": "نيسان باتلفايندر 2023 - أسود",
+  "toyota_car": "تويوتا كورولا 2024 - أحمر",
+  "another_car": "Another vehicle"
+
 }

@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anewcodewillbesentin": MessageLookupByLibrary.simpleMessage(
       "سيتم إرسال رمز جديد خلال",
     ),
+    "another_car": MessageLookupByLibrary.simpleMessage("Another vehicle"),
     "availablenow": MessageLookupByLibrary.simpleMessage("متاح الآن"),
     "availableparking": MessageLookupByLibrary.simpleMessage(
       "المواقف المتاحة 70/13",
@@ -225,6 +226,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
       "نيسان باتلفايندر 2023 - أسود",
     ),
+    "nissan_car": MessageLookupByLibrary.simpleMessage(
+      "نيسان باتلفايندر 2023 - أسود",
+    ),
     "no_more_searching_or_hassle": MessageLookupByLibrary.simpleMessage(
       "لا مزيد من \nالبحث والتعب",
     ),
@@ -273,6 +277,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "يرجى تسجيل الدخول عبر تطبيق نفاذ و اختيار الرقم أدناه",
         ),
+    "pre_preserved_vehicles": MessageLookupByLibrary.simpleMessage(
+      "المركبات المحفوظة مسبقاً",
+    ),
     "pricethroughouttheday": MessageLookupByLibrary.simpleMessage(
       "السعر على مدار اليوم",
     ),
@@ -393,6 +400,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("تم حجز الموقف بنجاح"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
+      "تويوتا كورولا 2024 - أحمر",
+    ),
+    "toyota_car": MessageLookupByLibrary.simpleMessage(
       "تويوتا كورولا 2024 - أحمر",
     ),
     "try_talking_again": MessageLookupByLibrary.simpleMessage(

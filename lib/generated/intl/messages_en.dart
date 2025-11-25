@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "anewcodewillbesentin": MessageLookupByLibrary.simpleMessage(
       "A new code will be sent in",
     ),
+    "another_car": MessageLookupByLibrary.simpleMessage("Another vehicle"),
     "availablenow": MessageLookupByLibrary.simpleMessage("Available now"),
     "availableparking": MessageLookupByLibrary.simpleMessage(
       "Available parking 70/13",
@@ -235,6 +236,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "nissanPathfinderBlack": MessageLookupByLibrary.simpleMessage(
       "Nissan Pathfinder 2023 / Black",
     ),
+    "nissan_car": MessageLookupByLibrary.simpleMessage(
+      "2023 Nissan Battlefinder - Black",
+    ),
     "no_more_searching_or_hassle": MessageLookupByLibrary.simpleMessage(
       "No more searching or hassle",
     ),
@@ -287,6 +291,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "Please login to Nafath app and select the following number",
         ),
+    "pre_preserved_vehicles": MessageLookupByLibrary.simpleMessage(
+      "Pre-preserved vehicles",
+    ),
     "pricethroughouttheday": MessageLookupByLibrary.simpleMessage(
       "Price throughout the day",
     ),
@@ -410,6 +417,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "Toyota Corolla 2024 / Red",
+    ),
+    "toyota_car": MessageLookupByLibrary.simpleMessage(
+      "Toyota Corolla 2024 - Red",
     ),
     "try_talking_again": MessageLookupByLibrary.simpleMessage(
       "Try talking again",

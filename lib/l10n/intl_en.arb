@@ -219,6 +219,9 @@
   "search_listening_find_place": "listening now': Find the place",
   "search_an_error_occurred_try_again": "An error occurred. Please try again.",
   "search_listening_now_speak": "Listening now… Speak up",
-  "try_talking_again": "Try talking again"
-
+  "try_talking_again": "Try talking again",
+  "pre_preserved_vehicles": "Pre-preserved vehicles",
+  "nissan_car": "2023 Nissan Battlefinder - Black",
+  "toyota_car": "Toyota Corolla 2024 - Red",
+  "another_car": "Another vehicle"
 }
