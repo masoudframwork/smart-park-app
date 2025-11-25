@@ -197,53 +197,14 @@ class _NightModeTrailing extends StatelessWidget {
   }
 }
 
-// class _LanguageTrailing extends StatelessWidget {
-//   const _LanguageTrailing();
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     const bool isArabic = true;
-//
-//     return Row(
-//       spacing: 8.w,
-//       children: [
-//         AppText(
-//           text: 'En',
-//           appTextTheme: AppTextTheme.titleMediumTextStyle()
-//               .copyWith(color: AppColor.blackColor),
-//         ),
-//         Switch(
-//           value: true,
-//           onChanged: (_) {},
-//           overlayColor: WidgetStateProperty.all(Colors.transparent),
-//           trackColor: WidgetStateProperty.resolveWith((states) {
-//             final isOn = states.contains(WidgetState.selected);
-//             return isOn ? AppColor.primaryColor : AppColor.greyColor;
-//           }),
-//           trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-//           trackOutlineWidth: WidgetStateProperty.all(0),
-//           thumbColor: WidgetStateProperty.all(AppColor.whiteColor),
-//           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-//         ),
-//         AppText(
-//           text: 'عر',
-//           appTextTheme: AppTextTheme.titleMediumTextStyle()
-//               .copyWith(color: AppColor.blackColor),
-//         ),
-//       ],
-//     );
-//   }
-// }
 
 class _LanguageTrailing extends StatelessWidget {
   const _LanguageTrailing();
-
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<AppLocale>(
       builder: (context, _, localeModel) {
         final isArabic = localeModel.isArabic();
-
         return Row(
           spacing: 8.w,
           children: [

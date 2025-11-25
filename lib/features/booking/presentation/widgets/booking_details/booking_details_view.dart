@@ -56,36 +56,6 @@ class BookingDetailView extends ConsumerWidget {
                 NavigationService.pop(context);
               },
             ),
-            // Container(
-            //     width: 361.w,
-            //     height: 82.h,
-            //     padding: EdgeInsets.symmetric(
-            //         horizontal: 10.h, vertical: 10.h),
-            //     decoration: BoxDecoration(
-            //       color: AppColor.textColor,
-            //       borderRadius: BorderRadius.circular(10.r),
-            //     ),
-            //     child: Row(
-            //       spacing: 5.w,
-            //       children: [
-            //         SvgPicture.asset(
-            //           AppImages.trueChek,
-            //           width: 47.w,
-            //           height: 47.w,
-            //         ),
-            //         AppText(
-            //           //تم حجز الموقف بنجاح
-            //           text: S
-            //               .of(context)
-            //               .thepositionhasbeenbookedsuccessfully,
-            //           appTextTheme:
-            //           AppTextTheme.titleMSTextStyle().copyWith(
-            //               color: AppColor.whiteColor,
-            //               fontSize: 20.sp
-            //           ),
-            //         ),
-            //       ],
-            //     )),
 
             SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -124,7 +94,6 @@ class BookingDetailView extends ConsumerWidget {
                         ],
                       )),
 
-
                   SizedBox(height: 20.h),
                   BookingDetailHeader(
                     startTime: reservation.startTime,
@@ -146,8 +115,9 @@ class BookingDetailView extends ConsumerWidget {
                         _handleCancel(context, ref, reservation.id),
                     onExtend: () =>
                         _handleExtend(context, ref, reservation.id),
+
                   ),
-                  // SizedBox(height: 24.h),
+
                 ],
               ),
             ),

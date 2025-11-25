@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smart/core/theme/app_color.dart';
+import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details_box/timer_progress_ring.dart';
 import 'package:smart/generated/l10n.dart';
+import '../../../../../core/routing/navigation_service.dart';
+import '../../../../booking/presentation/controller/booking_controller.dart';
 import '../../../../booking/presentation/widgets/booking_details/booking_details_view.dart';
 import '../../../domain/models/parking_area_model.dart';
 
-class GreenParkingDetails extends StatelessWidget {
+class GreenParkingDetails extends ConsumerWidget {
   final ParkingArea parkingArea;
   final VoidCallback onClose;
 
@@ -16,7 +21,7 @@ class GreenParkingDetails extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isRTL = Directionality.of(context) == TextDirection.rtl;
 
     return Directionality(
@@ -97,9 +102,9 @@ class GreenParkingDetails extends StatelessWidget {
                         /// Vehicle info
                         Text(
                           S.of(context).green_parking_vehicle_info(
-                            parkingArea.name,
-                            parkingArea.availableSpots.toString(),
-                          ),
+                                parkingArea.name,
+                                parkingArea.availableSpots.toString(),
+                              ),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -122,34 +127,55 @@ class GreenParkingDetails extends StatelessWidget {
             SizedBox(height: 18.h),
 
             /// --- BOOKING DETAILS BUTTON ---
-            GestureDetector(
-              onTap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const BookingDetailView(),
-                  ),
-                );
-              },
-              child: Container(
-                height: 46.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(color: Colors.white, width: 1.5),
-                ),
-                child: Center(
-                  child: Text(
-                    S.of(context).green_parking_details,
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //         builder: (context) => const BookingDetailView(),
+            //       ),
+            //     );
+            //   },
+            //   child: Container(
+            //     height: 46.h,
+            //     width: double.infinity,
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(12.r),
+            //       border: Border.all(color: Colors.white, width: 1.5),
+            //     ),
+            //     child: Center(
+            //       child: Text(
+            //         S.of(context).green_parking_details,
+            //         style: TextStyle(
+            //           fontSize: 15.sp,
+            //           fontWeight: FontWeight.bold,
+            //           color: Colors.white,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            CustomButtonWidget(
+                type: ButtonType.outlined,
+                borderColor: AppColor.whiteColor,
+                borderRadius: 6.r,
+                text: S.of(context).green_parking_details,
+                onPressed: () {
+                  final bookingState = ref.read(reservationController);
+
+                  if (bookingState.reservations.isEmpty) {
+                    Navigator.pop(context);
+                    return;
+                  }
+
+                  final reservation = bookingState.reservations.last;
+
+                  ref
+                      .read(reservationController.notifier)
+                      .selectReservation(reservation.id);
+                  NavigationService.push('/bookingDetailView', context: context);
+
+                })
           ],
         ),
       ),

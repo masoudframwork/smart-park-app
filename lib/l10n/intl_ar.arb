@@ -218,6 +218,8 @@
   "search_an_error_occurred_try_again": "حدث خطأ. يُرجى المحاولة مرة أخرى.",
   "search_listening_now_speak": " جاري الاستماع… تكلم الآن",
   "try_talking_again": "حاول التحدث مرة أخرى",
+  "extendbookingtime": "تمديد وقت الحجز",
+  "confirmExtension": "تأكيد التمديد",
   "pre_preserved_vehicles": "المركبات المحفوظة مسبقاً",
   "nissan_car": "نيسان باتلفايندر 2023 - أسود",
   "toyota_car": "تويوتا كورولا 2024 - أحمر",
