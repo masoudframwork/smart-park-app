@@ -6,6 +6,7 @@ import '../../../../../core/routing/navigation_service.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/app_result_dialog.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../booking/presentation/booking_summary_screen.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCard extends StatelessWidget {
@@ -179,23 +180,32 @@ class ParkingCard extends StatelessWidget {
                           // showDialog(
                           //   context: context,
                           //   builder: (_) => AppResultDialog(
-                          //     message: S.of(context).help_support_title,
-                          //     subMessage: S.of(context).booking_summary,
-                          //     mainButtonText: S.of(context).booking_summary,
+                          //     message: S
+                          //         .of(context)
+                          //         .alert_booking_successfully_completed_title,
+                          //     subMessage: S
+                          //         .of(context)
+                          //         .alert_booking_successfully_completed_desc,
+                          //     mainButtonText:
+                          //         S.of(context).button_booking_summary,
                           //     onMainPressed: () {
-                          //       Navigator.pop(context);
-                          //       Navigator.pushNamed(context, "/bookingSummary");
-                          //     },
+                          //       NavigationService.push(
+                          //           RoutePaths.bookingSummaryScreen);
                           //
-                          //     secondaryButtonText: S.of(context).home,
+                          //       // Navigator.pop(context);
+                          //       // Navigator.push(
+                          //       //   context,
+                          //       //   MaterialPageRoute(
+                          //       //       builder: (_) => BookingSummaryScreen()),
+                          //       // );
+                          //     },
+                          //     secondaryButtonText: S.of(context).button_home,
                           //     onSecondaryPressed: () {
                           //       Navigator.pop(context);
-                          //       Navigator.pushNamed(context, "/home");
+                          //       // Navigator.pushNamed(context, "/home");
                           //     },
                           //   ),
                           // );
-
-
                         },
                         child: Container(
                           width: 32.w,
