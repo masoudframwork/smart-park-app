@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smart/core/dependency_injection/service_locator.dart';
+import 'package:smart/features/auth/login/data/models/auth_model.dart';
+import 'package:smart/features/auth/login/domain/usecase/login_usecases.dart';
 
-import '../../domain/models/login_state.dart';
+import '../../domain/entity/login_state.dart';
 
 final loginControllerProvider =
-AutoDisposeNotifierProvider<LoginController, LoginState>(
+    AutoDisposeNotifierProvider<LoginController, LoginState>(
   LoginController.new,
 );
 
@@ -47,9 +50,7 @@ class LoginController extends AutoDisposeNotifier<LoginState> {
 
     state = state.copyWith(isLoading: true, errorMessage: null);
 
-    try {
-
-    } catch (e) {
+    try {} catch (e) {
       state = state.copyWith(
         errorMessage: 'حدث خطأ ما، حاول مرة أخرى',
       );
@@ -58,14 +59,23 @@ class LoginController extends AutoDisposeNotifier<LoginState> {
     }
   }
 
-  void loginWithNafath() {
-  }
+  void loginWithNafath() {}
 
-  void goToRegister() {
+  void goToRegister() {}
 
-  }
+  void guestLogin() {}
 
-  void guestLogin() {
-
+  Future<void> login() async {
+    AuthModel? authModel;
+    try {
+      final response = await LoginUsecases(loginRepository: sl())
+          .call(data: {"phone": phoneController.text});
+      if (response.success) {
+        authModel = response.data as AuthModel;
+        // push to home
+      } else {
+        /// show error
+      }
+    } catch (e) {}
   }
 }
