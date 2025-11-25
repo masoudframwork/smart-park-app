@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../../../core/constants/image_string.dart';
 import '../../../qr_scanner/scan_code_screen.dart';
@@ -99,13 +100,13 @@ class CustomBottomNavigationBar extends ConsumerWidget {
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeOut,
 
-        width: isSelected ? 70 : 60,
-        height: isSelected ? 40 : 35,
+        width: isSelected ? 60 : 60,
+        height: isSelected ? 30 : 35,
 
         margin: EdgeInsets.only(bottom: isSelected ? 6 : 0),
 
         decoration: BoxDecoration(
-          color: isSelected ? const Color(0xFF6CBF4E) : Colors.transparent,
+          color: isSelected ? AppColor.tabBarSelectedColor : Colors.transparent,
 
           /// <<<< Here is the REAL FIX (AutoCAD rounded shape)
           borderRadius: BorderRadius.circular(18),   // not circle
@@ -115,7 +116,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
           child: IconTheme(
             data: IconThemeData(
               color: isSelected ? Colors.white : Colors.white70,
-              size: isSelected ? 24 : 22,
+              size: isSelected ? 19 : 17,
             ),
             child: icon,
           ),

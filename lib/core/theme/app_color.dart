@@ -68,4 +68,7 @@ class AppColor {
   static const whiteBackgroundColor = Color(0xFFF1F2F3);
 
   static const settingsBackgroundColor = Color(0xFFF1F2F3);
+
+  static const tabBarSelectedColor = Color(0xFF87BA26);
+
 }
