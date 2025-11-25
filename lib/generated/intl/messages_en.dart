@@ -333,6 +333,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Search for parking",
     ),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("Search"),
+    "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
+      "An error occurred. Please try again.",
+    ),
+    "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
+      "listening now\': Find the place",
+    ),
+    "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
+      "Listening now… Speak up",
+    ),
     "secon": MessageLookupByLibrary.simpleMessage("seconds"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
     "sending": MessageLookupByLibrary.simpleMessage("Sending..."),
@@ -400,6 +409,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("Total"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "Toyota Corolla 2024 / Red",
+    ),
+    "try_talking_again": MessageLookupByLibrary.simpleMessage(
+      "Try talking again",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "Oops! Something went wrong. Please try again later.",

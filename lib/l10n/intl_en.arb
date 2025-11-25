@@ -214,5 +214,10 @@
   "place_location_title_3": "Panorama Mall",
   "place_location_subtitle_title_3": "Al Olaya is Riyadh’s ritzy commercial core, characterized by prestigious skyscrapers",
   "place_location_title_4": "Kingdom Mall",
-  "place_location_subtitle_title_4": "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia"
+  "place_location_subtitle_title_4": "King Fahd Rd, Al Olaya, Riyadh 12214, Saudi Arabia",
+  "search_listening_find_place": "listening now': Find the place",
+  "search_an_error_occurred_try_again": "An error occurred. Please try again.",
+  "search_listening_now_speak": "Listening now… Speak up",
+  "try_talking_again": "Try talking again"
+
 }

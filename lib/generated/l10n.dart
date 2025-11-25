@@ -1773,6 +1773,46 @@ class S {
       args: [],
     );
   }
+
+  /// `listening now': Find the place`
+  String get search_listening_find_place {
+    return Intl.message(
+      'listening now\': Find the place',
+      name: 'search_listening_find_place',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An error occurred. Please try again.`
+  String get search_an_error_occurred_try_again {
+    return Intl.message(
+      'An error occurred. Please try again.',
+      name: 'search_an_error_occurred_try_again',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Listening now… Speak up`
+  String get search_listening_now_speak {
+    return Intl.message(
+      'Listening now… Speak up',
+      name: 'search_listening_now_speak',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try talking again`
+  String get try_talking_again {
+    return Intl.message(
+      'Try talking again',
+      name: 'try_talking_again',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -319,6 +319,15 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "searchParkingHint": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
     "searchTooltip": MessageLookupByLibrary.simpleMessage("بحث"),
+    "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ. يُرجى المحاولة مرة أخرى.",
+    ),
+    "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
+      "listening now\': Find the place",
+    ),
+    "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
+      " جاري الاستماع… تكلم الآن",
+    ),
     "secon": MessageLookupByLibrary.simpleMessage("ثانية"),
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),
     "sending": MessageLookupByLibrary.simpleMessage("جاري الإرسال..."),
@@ -384,6 +393,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "toyotaCorollaRed": MessageLookupByLibrary.simpleMessage(
       "تويوتا كورولا 2024 - أحمر",
+    ),
+    "try_talking_again": MessageLookupByLibrary.simpleMessage(
+      "حاول التحدث مرة أخرى",
     ),
     "unknonError": MessageLookupByLibrary.simpleMessage(
       "عذراً! حدث خطأ ما. يرجى المحاولة لاحقًا.",
