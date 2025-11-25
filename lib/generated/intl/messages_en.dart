@@ -124,6 +124,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Choose the vehicle",
     ),
     "close": MessageLookupByLibrary.simpleMessage("Close   "),
+    "confirmExtension": MessageLookupByLibrary.simpleMessage(
+      "Confirm Extension",
+    ),
     "connectwithNafath": MessageLookupByLibrary.simpleMessage(
       "Connect with Nafath",
     ),
@@ -197,6 +200,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "extend_your_booking_easily_and_enjoy": MessageLookupByLibrary.simpleMessage(
       "Extend your booking easily and enjoy your time without worry or fines",
+    ),
+    "extendbookingtime": MessageLookupByLibrary.simpleMessage(
+      "Extend Booking Time",
     ),
     "free": MessageLookupByLibrary.simpleMessage("Free"),
     "freeWifi": MessageLookupByLibrary.simpleMessage("Free Wi-Fi"),

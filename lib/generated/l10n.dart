@@ -1818,6 +1818,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Extend Booking Time`
+  String get extendbookingtime {
+    return Intl.message(
+      'Extend Booking Time',
+      name: 'extendbookingtime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Extension`
+  String get confirmExtension {
+    return Intl.message(
+      'Confirm Extension',
+      name: 'confirmExtension',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

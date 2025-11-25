@@ -10,13 +10,10 @@ class AppResultDialog extends StatelessWidget {
   final String message;
   final String buttonText;
   final VoidCallback onButtonPressed;
-
   final Widget? headerWidget;
-
   final IconData defaultIcon;
   final Color defaultIconBackgroundColor;
   final Color defaultIconColor;
-
   const AppResultDialog({
     super.key,
     required this.message,
