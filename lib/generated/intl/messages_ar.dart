@@ -119,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "choosethevehicle": MessageLookupByLibrary.simpleMessage("اختر المركبة"),
     "close": MessageLookupByLibrary.simpleMessage("مغلق   "),
+    "confirmExtension": MessageLookupByLibrary.simpleMessage("تأكيد التمديد"),
     "connectwithNafath": MessageLookupByLibrary.simpleMessage(
       "الربط عبر تطبيق نفاذ",
     ),
@@ -192,6 +193,9 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage(
           "مدد حجزك بسهولة\n واستمتع بوقتك دون\n قلق أو مخالفات",
         ),
+    "extendbookingtime": MessageLookupByLibrary.simpleMessage(
+      "تمديد وقت الحجز",
+    ),
     "free": MessageLookupByLibrary.simpleMessage("مجانا"),
     "freeWifi": MessageLookupByLibrary.simpleMessage("WIFI مجاني"),
     "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),

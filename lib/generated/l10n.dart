@@ -1819,6 +1819,26 @@ class S {
     );
   }
 
+  /// `Extend Booking Time`
+  String get extendbookingtime {
+    return Intl.message(
+      'Extend Booking Time',
+      name: 'extendbookingtime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Extension`
+  String get confirmExtension {
+    return Intl.message(
+      'Confirm Extension',
+      name: 'confirmExtension',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Pre-preserved vehicles`
   String get pre_preserved_vehicles {
     return Intl.message(

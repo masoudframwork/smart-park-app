@@ -14,7 +14,6 @@ class AppColor {
 
 
 
-
 //7
   static const primaryButtonColor = Color(0xFF1A8154);
 
