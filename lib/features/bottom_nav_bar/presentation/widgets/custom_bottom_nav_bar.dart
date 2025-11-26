@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import '../../../../core/constants/image_string.dart';
-import '../../../qr_scanner/scan_code_screen.dart';
 
 class CustomBottomNavigationBar extends ConsumerWidget {
   const CustomBottomNavigationBar({super.key});
@@ -15,70 +14,68 @@ class CustomBottomNavigationBar extends ConsumerWidget {
     final currentIndex = controller.currentIndex;
 
     return Container(
-      height: 70,
+      height: 62,
       margin: const EdgeInsets.only(left: 16, right: 16, bottom: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: AppColor.bottomNavigationBarColor,
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.25),
-            offset: const Offset(0, 4),
-            blurRadius: 10,
+            color: Colors.black.withOpacity(0.18),
+            offset: const Offset(0, 10),
+            blurRadius: 24,
           ),
         ],
       ),
-      child: Directionality(
-        textDirection: Directionality.of(context),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _navItem(
-              index: 0,
-              currentIndex: currentIndex,
-              onTap: () => ref.read(bottomNavBarController).changeIndex(0),
-              icon: SvgPicture.asset(
-                AppImages.homeIcon,
-                color: currentIndex == 0 ? Colors.white : Colors.white70,
-                width: 20,
-                height: 20,
-              ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _navItem(
+            index: 0,
+            currentIndex: currentIndex,
+            onTap: () => ref.read(bottomNavBarController).changeIndex(0),
+            icon: SvgPicture.asset(
+              AppImages.homeIcon,
+              width: 22,
+              height: 22,
+              color: currentIndex == 0 ? Colors.white : Colors.white70,
             ),
-            _navItem(
-              index: 1,
-              currentIndex: currentIndex,
-              onTap: () => ref.read(bottomNavBarController).changeIndex(1),
-              icon: SvgPicture.asset(
-                AppImages.reservationNotSelectedIcon,
-                color: currentIndex == 0 ? Colors.white : Colors.white70,
-                width: 20,
-                height: 20,
-              ),
+          ),
+          _navItem(
+            index: 1,
+            currentIndex: currentIndex,
+            onTap: () => ref.read(bottomNavBarController).changeIndex(1),
+            icon: SvgPicture.asset(
+              AppImages.reservationNotSelectedIcon,
+              width: 22,
+              height: 22,
+              color: currentIndex == 1 ? Colors.white : Colors.white70,
             ),
-            _navItem(
-              index: 2,
-              currentIndex: currentIndex,
-              onTap: () => ref.read(bottomNavBarController).changeIndex(2),
-              icon: SvgPicture.asset(
-                AppImages.personIcon,
-                color: currentIndex == 0 ? Colors.white : Colors.white70,
-                width: 20,
-                height: 20,
-              ),
+          ),
+          _navItem(
+            index: 2,
+            currentIndex: currentIndex,
+            onTap: () => ref.read(bottomNavBarController).changeIndex(2),
+            icon: SvgPicture.asset(
+              AppImages.personIcon,
+              width: 22,
+              height: 22,
+              color: currentIndex == 2 ? Colors.white : Colors.white70,
             ),
-            _navItem(
-              index: 3,
-              currentIndex: currentIndex,
-              onTap: () {
-                ref.read(bottomNavBarController).changeIndex(3);
-                // Navigator.push(context,
-                //   MaterialPageRoute(builder: (_) => const ScanCodeScreen()),
-                // );
-              },
-              icon: SvgPicture.asset(AppImages.qrCodeIcon, width: 20),
+          ),
+          _navItem(
+            index: 3,
+            currentIndex: currentIndex,
+            onTap: () => ref.read(bottomNavBarController).changeIndex(3),
+            icon: SvgPicture.asset(
+              AppImages.qrCodeIcon,
+              width: 22,
+              height: 22,
+              color: currentIndex == 3 ? Colors.white : Colors.white70,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -94,26 +91,14 @@ class CustomBottomNavigationBar extends ConsumerWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 100),
+        duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,
-        width: isSelected ? 60 : 60,
-        height: isSelected ? 30 : 35,
-        margin: EdgeInsets.only(bottom: isSelected ? 6 : 0),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? AppColor.tabBarSelectedColor : Colors.transparent,
-
-          /// <<<< Here is the REAL FIX (AutoCAD rounded shape)
-          borderRadius: BorderRadius.circular(18), // not circle
+          borderRadius: BorderRadius.circular(18)
         ),
-        child: Center(
-          child: IconTheme(
-            data: IconThemeData(
-              color: isSelected ? Colors.white : Colors.white70,
-              size: isSelected ? 19 : 17,
-            ),
-            child: icon,
-          ),
-        ),
+        child: icon,
       ),
     );
   }
