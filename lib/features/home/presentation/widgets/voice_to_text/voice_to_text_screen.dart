@@ -39,7 +39,9 @@ class VoiceToTextScreen extends ConsumerWidget {
               padding: EdgeInsets.all(17.w),
               child: CustomTextFormField(
                 controller: controller.textCtrl,
-                hintText: isListening ? S.of(context).search_start_listening : S.of(context).search_for_parking,
+                hintText: isListening
+                    ? S.of(context).search_start_listening
+                    : S.of(context).search_for_parking,
                 enableShadow: true,
                 shadowTextFieldColor:
                     AppColor.contanearGreyColor.withOpacity(0.25),
@@ -183,31 +185,38 @@ class _SearchResultTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SvgPicture.asset(AppImages.location2, width: 70.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppText(
-                  text: title,
-                  appTextTheme: AppTextTheme.titleMediumTextStyle(),
-                ),
-                if (showSubtitle) ...[
-                  SizedBox(height: 4.h),
-                  AppText(
-                    text: subtitle,
-                    appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                      fontSize: 12,
-                    ),
-                  ),
-                ],
-              ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AppImages.locationSearchIcon,
+              width: 70.w,
+              height: 70.h,
             ),
-          ),
-        ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppText(
+                    text: title,
+                    appTextTheme: AppTextTheme.titleMediumTextStyle(),
+                  ),
+                  if (showSubtitle) ...[
+                    SizedBox(height: 4.h),
+                    AppText(
+                      text: subtitle,
+                      appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
