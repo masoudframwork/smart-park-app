@@ -182,7 +182,7 @@ class BookingController extends StateNotifier<BookingState> {
     }
   }
 
-  void refresh() {
+  Future<void> refresh() async {
     loadReservations();
   }
 }
