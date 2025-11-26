@@ -28,7 +28,7 @@ class VoiceToTextScreen extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.whiteColor,
+        backgroundColor: AppColor.settingsBackgroundColor,
         appBar: CustomAppBar(
           trailing: CloseButtonCircle(onTap: () => Navigator.pop(context)),
         ),
@@ -75,7 +75,7 @@ class VoiceToTextScreen extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          AppImages.mice,
+                          AppImages.searchIcon,
                           width: 16.w,
                           height: 19.h,
                         ),
