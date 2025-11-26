@@ -1914,9 +1914,14 @@ class S {
     return Intl.message('Card number', name: 'card_number', desc: '', args: []);
   }
 
-  /// `ok`
+  /// `Ok`
   String get ok {
-    return Intl.message('ok', name: 'ok', desc: '', args: []);
+    return Intl.message('Ok', name: 'ok', desc: '', args: []);
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
   }
 }
 

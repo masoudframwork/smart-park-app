@@ -63,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "المواقف المتاحة 70/13",
     ),
     "avatar": MessageLookupByLibrary.simpleMessage("الصورة الرمزية"),
+    "back": MessageLookupByLibrary.simpleMessage("رجوع"),
     "bookHere": MessageLookupByLibrary.simpleMessage("احجز هنا"),
     "bookingSummary": MessageLookupByLibrary.simpleMessage("ملخص الحجز"),
     "booking_again": MessageLookupByLibrary.simpleMessage("احجز مرة أخرى"),

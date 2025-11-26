@@ -213,7 +213,7 @@ class BookingConfirmationDialog extends StatelessWidget {
         title: s.dialog_end_title, // "هل تريد إنهاء الحجز؟"
         message: s.dialog_end_message, // explanation
         confirmText: s.dialog_end_confirm, // "إنهاء الحجز" / "End Reservation"
-        cancelText: s.dialog_cancel, // "عودة" / "Back"
+        cancelText: s.back, // "عودة" / "Back"
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.secondaryContainerColor,
         showWarningIcon: true,
