@@ -190,9 +190,6 @@
   "booking_extend_reservation": "تمديد الحجز",
   "car_info_title": "نيسان / 2023 / أسود",
   "booking_detail_date_sample": "السبت 30/10/2023",
-  "dialog_end_title": "هل تريد إنهاء الحجز؟",
-  "dialog_end_message": "بالضغط على إلغاء الحجز سوف تقوم بإلغاء حجز المركبة وإعادة المبلغ المدفوع",
-  "dialog_end_confirm": "إنهاء الحجز",
   "dialog_extend_title": "هل تريد تمديد الحجز؟",
   "dialog_extend_message": "بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة",
   "dialog_extend": "تمديد الحجز",
@@ -231,5 +228,10 @@
   "card_type": "نوع البطاقة",
   "card_number": "رقم البطاقة",
   "ok": "موافق",
-  "back": "رجوع"
+  "back": "رجوع",
+  "dialog_end_title": "إنهاء الحجز",
+  "dialog_end_message": "هل أنت متأكد أنك تريد إنهاء جلسة الوقوف الخاصة بك؟",
+  "dialog_end_description": "عند التأكيد، سيتم إنهاء حجزك قبل انتهاء الفترة المحجوزة.",
+  "dialog_end_confirm": "إنهاء الحجز",
+  "dialog_end_cancel": "عودة"
 }

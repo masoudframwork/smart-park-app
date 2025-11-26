@@ -107,7 +107,7 @@ class BookingListView extends ConsumerWidget {
     WidgetRef ref,
     BookingModel reservation,
   ) {
-    BookingConfirmationDialog.showExtendConfirmation(
+    BookingConfirmationDialog.showConfirmationEndBooking(
       context: context,
       onConfirm: () => _handleCancel(context, ref, reservation.id),
     );

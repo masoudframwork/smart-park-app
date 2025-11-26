@@ -131,13 +131,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "إنشاء حساب جديد",
     ),
     "dialog_cancel": MessageLookupByLibrary.simpleMessage("عودة"),
+    "dialog_end_cancel": MessageLookupByLibrary.simpleMessage("عودة"),
     "dialog_end_confirm": MessageLookupByLibrary.simpleMessage("إنهاء الحجز"),
+    "dialog_end_description": MessageLookupByLibrary.simpleMessage(
+      "عند التأكيد، سيتم إنهاء حجزك قبل انتهاء الفترة المحجوزة.",
+    ),
     "dialog_end_message": MessageLookupByLibrary.simpleMessage(
-      "بالضغط على إلغاء الحجز سوف تقوم بإلغاء حجز المركبة وإعادة المبلغ المدفوع",
+      "هل أنت متأكد أنك تريد إنهاء جلسة الوقوف الخاصة بك؟",
     ),
-    "dialog_end_title": MessageLookupByLibrary.simpleMessage(
-      "هل تريد إنهاء الحجز؟",
-    ),
+    "dialog_end_title": MessageLookupByLibrary.simpleMessage("إنهاء الحجز"),
     "dialog_extend": MessageLookupByLibrary.simpleMessage("تمديد الحجز"),
     "dialog_extend_message": MessageLookupByLibrary.simpleMessage(
       "بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة",

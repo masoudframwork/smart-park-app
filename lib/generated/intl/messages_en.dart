@@ -141,15 +141,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Create a new account ",
     ),
     "dialog_cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-    "dialog_end_confirm": MessageLookupByLibrary.simpleMessage(
-      "End Reservation",
+    "dialog_end_cancel": MessageLookupByLibrary.simpleMessage("Back"),
+    "dialog_end_confirm": MessageLookupByLibrary.simpleMessage("End Booking"),
+    "dialog_end_description": MessageLookupByLibrary.simpleMessage(
+      "By confirming, your parking reservation will be canceled before the end of the booked period",
     ),
     "dialog_end_message": MessageLookupByLibrary.simpleMessage(
-      "By pressing cancel, you will end the reservation and refund the paid amount.",
+      "Are you sure you want to end your parking session?",
     ),
-    "dialog_end_title": MessageLookupByLibrary.simpleMessage(
-      "Do you want to end the reservation?",
-    ),
+    "dialog_end_title": MessageLookupByLibrary.simpleMessage("End Booking"),
     "dialog_extend": MessageLookupByLibrary.simpleMessage("Extend Reservation"),
     "dialog_extend_message": MessageLookupByLibrary.simpleMessage(
       "By pressing extend, your reservation will be extended for the selected duration.",

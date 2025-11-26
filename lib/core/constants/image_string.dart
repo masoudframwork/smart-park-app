@@ -119,4 +119,10 @@ class AppImages {
 
   static const String helpSupportMessageUs =
       "assets/images/svgs/help_support_message_us.svg";
+
+
+  //cancel dialog
+  static const String endBookingIcon =
+      "assets/images/svgs/end_booking_icon.svg";
+
 }

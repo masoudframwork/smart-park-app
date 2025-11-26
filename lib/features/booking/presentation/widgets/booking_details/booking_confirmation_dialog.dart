@@ -22,7 +22,7 @@ class BookingConfirmationDialog extends StatelessWidget {
     required this.title,
     required this.message,
     required this.confirmText,
-    this.cancelText = 'عودة',
+    required this.cancelText,
     required this.onConfirm,
     this.onCancel,
     this.confirmButtonColor = const Color(0xFFD92D20),
@@ -31,46 +31,38 @@ class BookingConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isRTL = Directionality.of(context) == TextDirection.rtl;
     return Dialog(
+      backgroundColor: AppColor.whiteColor,
+      insetPadding: EdgeInsets.symmetric(horizontal: 20.w),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(0), // No rounded corners
+        borderRadius: BorderRadius.circular(16.r),
       ),
-      backgroundColor: Colors.transparent,
       child: Stack(
-        children: [
-          // Main dialog content
-          Container(
-            margin: EdgeInsets.only(right: 4.w), // Space for orange line
-            padding: EdgeInsets.all(20.w),
-            decoration: BoxDecoration(
-              color: AppColor.whiteColor,
-              borderRadius: BorderRadius.circular(0),
-            ),
+        children: <Widget>[
+          /// ------------------------ MAIN DIALOG CONTENT
+          Padding(
+            padding: EdgeInsets.only(top: 20.w, bottom: 20.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 _buildHeader(context),
-                SizedBox(height: 16.h),
-                _buildMessage(),
-                SizedBox(height: 24.h),
-                _buildActions(context),
-              ],
-            ),
-          ),
-          // Orange vertical line on the right
-          Positioned(
-            right: 0,
-            top: 0,
-            bottom: 0,
-            child: Container(
-              width: 8.w,
-              decoration: BoxDecoration(
-                color: AppColor.darkOrange,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(0),
-                  bottomRight: Radius.circular(0),
+                SizedBox(height: 10.h),
+
+                /// Divider under the header
+                Divider(
+                  color: Colors.grey.shade300,
+                  thickness: 1,
+                  height: 1,
                 ),
-              ),
+
+                SizedBox(height: 10.h),
+
+                _buildMessageWithIcon(context),
+
+                SizedBox(height: 24.h),
+                _buildButtons(context),
+              ],
             ),
           ),
         ],
@@ -78,100 +70,76 @@ class BookingConfirmationDialog extends StatelessWidget {
     );
   }
 
+  /// ---------------- HEADER
   Widget _buildHeader(BuildContext context) {
-    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+    final bool isRTL = Directionality.of(context) == TextDirection.rtl;
 
-    return Row(
-      children: [
-        // Warning ICON
-        SvgPicture.asset(
-          AppImages.warningSign,
-          width: 32.w,
-          height: 32.w,
-        ),
-
-        SizedBox(width: 12.w),
-
-        // TITLE (Centered automatically)
-        Expanded(
-          child: AppText(
-            text: title,
-            textAlign: TextAlign.center,
-            appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-              fontWeight: FontWeight.w600,
-              fontSize: 16.sp,
-              color: AppColor.blackColor,
-            ),
-          ),
-        ),
-
-        SizedBox(width: 12.w),
-
-        // CLOSE BUTTON
-        InkWell(
-          onTap: () => Navigator.pop(context),
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColor.greyContainerColor,
-              shape: BoxShape.circle,
-            ),
-            padding: EdgeInsets.all(6.w),
-            child: Icon(
-              Icons.close,
-              size: 18.w,
-              color: AppColor.blackColor,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMessage() {
     return Padding(
-      padding: EdgeInsets.only(left: 10.w, right: 40.w),
-      child: AppText(
-        text: message,
-        textAlign: TextAlign.start,
-        appTextTheme: AppTextTheme.bodySmallTextStyle(),
+      padding: EdgeInsets.only(right: 20.w, left: 20.w),
+      child: Row(
+        children: [
+          /// Title aligned left in EN, right in AR
+          Expanded(
+            child: Align(
+              alignment: isRTL ? Alignment.centerRight : Alignment.centerLeft,
+              child: AppText(
+                text: title,
+                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+
+          /// Close button aligned opposite side
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Icon(Icons.close, size: 22.w),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildActions(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: _buildButton(
-            text: confirmText,
-            backgroundColor: confirmButtonColor,
-            textColor: AppColor.whiteColor,
-            onTap: () {
-              Navigator.pop(context);
-              onConfirm();
-            },
+  /// ---------------- BUTTONS
+  Widget _buildButtons(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 20.w, left: 20.w),
+      child: Row(
+        children: [
+          Expanded(
+            child: _buildButton(
+              text: confirmText,
+              bg: confirmButtonColor,
+              textColor: Colors.white,
+              onTap: () {
+                Navigator.pop(context);
+                onConfirm();
+              },
+            ),
           ),
-        ),
-        SizedBox(width: 12.w),
-        Expanded(
-          child: _buildButton(
-            text: cancelText,
-            backgroundColor: AppColor.whiteColor,
-            textColor: AppColor.primaryColor,
-            borderColor: AppColor.primaryColor,
-            onTap: () {
-              Navigator.pop(context);
-              onCancel?.call();
-            },
+          SizedBox(width: 12.w),
+          Expanded(
+            child: _buildButton(
+              text: cancelText,
+              bg: Colors.white,
+              textColor: AppColor.primaryColor,
+              borderColor: AppColor.primaryColor,
+              onTap: () {
+                Navigator.pop(context);
+                onCancel?.call();
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   Widget _buildButton({
     required String text,
-    required Color backgroundColor,
+    required Color bg,
     required Color textColor,
     Color? borderColor,
     required VoidCallback onTap,
@@ -179,84 +147,112 @@ class BookingConfirmationDialog extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 44.h,
+        height: 46.h,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(4.r),
+          color: bg,
+          borderRadius: BorderRadius.circular(8.r),
           border: borderColor != null
-              ? Border.all(color: borderColor, width: 1.5)
+              ? Border.all(color: borderColor, width: 1.4)
               : null,
         ),
         child: AppText(
           text: text,
           appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w700,
             color: textColor,
-            fontWeight: FontWeight.w600,
-            fontSize: 14.sp,
           ),
         ),
       ),
     );
   }
 
-  // Factory constructors for common use cases
-  static Future<void> showExtendConfirmation({
-    required BuildContext context,
-    required VoidCallback onConfirm,
-  }) {
-    final s = S.of(context);
-
-    return showDialog(
-      context: context,
-      builder: (context) => BookingConfirmationDialog(
-        title: s.dialog_end_title, // "هل تريد إنهاء الحجز؟"
-        message: s.dialog_end_message, // explanation
-        confirmText: s.dialog_end_confirm, // "إنهاء الحجز" / "End Reservation"
-        cancelText: s.back, // "عودة" / "Back"
-        onConfirm: onConfirm,
-        confirmButtonColor: AppColor.secondaryContainerColor,
-        showWarningIcon: true,
+  Widget _buildWarningIcon() {
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+      ),
+      child: SvgPicture.asset(
+        AppImages.endBookingIcon, // make sure this is the correct icon
+        width: 50.w,
+        height: 50.w,
       ),
     );
   }
 
-  static Future<void> showCancelConfirmation({
-    required BuildContext context,
-    required VoidCallback onConfirm,
-  }) {
+  Widget _buildMessageWithIcon(BuildContext context) {
+    final bool isRTL = Directionality.of(context) == TextDirection.rtl;
     final s = S.of(context);
 
+    return Padding(
+      padding: EdgeInsets.only(right: 20.w, left: 20.w),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          /// Icon Position (Left in EN, Right in AR)
+          if (!isRTL) _buildWarningIcon(),
+
+          if (!isRTL) SizedBox(width: 12.w),
+
+          /// TEXT COLUMN
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  isRTL ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+              children: [
+                /// MAIN TITLE
+                AppText(
+                  text: s.dialog_end_message,
+                  textAlign: isRTL ? TextAlign.right : TextAlign.left,
+                  appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16.sp,
+                  ),
+                ),
+
+                SizedBox(height: 6.h),
+
+                /// DESCRIPTION
+                AppText(
+                  text: s.dialog_end_description,
+                  textAlign: isRTL ? TextAlign.right : TextAlign.left,
+                  appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+                    color: Colors.grey[700],
+                    height: 1.4,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// Icon on RIGHT in Arabic
+          if (isRTL) SizedBox(width: 12.w),
+
+          if (isRTL) _buildWarningIcon(),
+        ],
+      ),
+    );
+  }
+
+  /// ---------------- Factory
+  static Future<void> showConfirmationEndBooking({
+    required BuildContext context,
+    required VoidCallback onConfirm,
+    VoidCallback? onCancel,
+  }) {
+    final s = S.of(context);
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
         title: s.dialog_end_title,
         message: s.dialog_end_message,
         confirmText: s.dialog_end_confirm,
-        cancelText: s.dialog_cancel,
-        onConfirm: onConfirm,
-        confirmButtonColor: AppColor.secondaryContainerColor,
+        cancelText: s.dialog_end_cancel,
+        confirmButtonColor: const Color(0xFFD92D20),
         showWarningIcon: true,
-      ),
-    );
-  }
-
-  static Future<void> showExtendReservationConfirmation({
-    required BuildContext context,
-    required VoidCallback onConfirm,
-  }) {
-    final s = S.of(context);
-
-    return showDialog(
-      context: context,
-      builder: (context) => BookingConfirmationDialog(
-        title: s.dialog_extend_title, // "هل تريد تمديد الحجز؟"
-        message: s.dialog_extend_message, // explanation
-        confirmText: s.dialog_extend, // "تمديد الحجز"
-        cancelText: s.dialog_cancel,
         onConfirm: onConfirm,
-        confirmButtonColor: AppColor.primaryColor,
-        showWarningIcon: false,
+        onCancel: onCancel,
       ),
     );
   }

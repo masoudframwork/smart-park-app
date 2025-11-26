@@ -200,7 +200,7 @@ class BookingDetailActions extends StatelessWidget {
 
   /// دIALOG إلغاء الحجز (يبقى كما هو)
   void _showCancelDialog(BuildContext context) {
-    BookingConfirmationDialog.showExtendConfirmation(
+    BookingConfirmationDialog.showConfirmationEndBooking(
       context: context,
       onConfirm: onCancel,
     );

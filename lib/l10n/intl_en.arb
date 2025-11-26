@@ -192,9 +192,6 @@
   "booking_extend_reservation": "Extend Reservation",
   "car_info_title": "Nissan / 2023 / Black",
   "booking_detail_date_sample": "Sat 30/10/2023",
-  "dialog_end_title": "Do you want to end the reservation?",
-  "dialog_end_message": "By pressing cancel, you will end the reservation and refund the paid amount.",
-  "dialog_end_confirm": "End Reservation",
   "dialog_extend_title": "Do you want to extend the reservation?",
   "dialog_extend_message": "By pressing extend, your reservation will be extended for the selected duration.",
   "dialog_extend": "Extend Reservation",
@@ -233,7 +230,12 @@
   "card_type": "Card type",
   "card_number": "Card number",
   "ok": "Ok",
-  "back": "Back"
+  "back": "Back",
+  "dialog_end_title": "End Booking",
+  "dialog_end_message": "Are you sure you want to end your parking session?",
+  "dialog_end_description": "By confirming, your parking reservation will be canceled before the end of the booked period",
+  "dialog_end_confirm": "End Booking",
+  "dialog_end_cancel": "Back"
 
 
 }

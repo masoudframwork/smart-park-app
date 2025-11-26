@@ -1554,36 +1554,6 @@ class S {
     );
   }
 
-  /// `Do you want to end the reservation?`
-  String get dialog_end_title {
-    return Intl.message(
-      'Do you want to end the reservation?',
-      name: 'dialog_end_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `By pressing cancel, you will end the reservation and refund the paid amount.`
-  String get dialog_end_message {
-    return Intl.message(
-      'By pressing cancel, you will end the reservation and refund the paid amount.',
-      name: 'dialog_end_message',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `End Reservation`
-  String get dialog_end_confirm {
-    return Intl.message(
-      'End Reservation',
-      name: 'dialog_end_confirm',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Do you want to extend the reservation?`
   String get dialog_extend_title {
     return Intl.message(
@@ -1922,6 +1892,51 @@ class S {
   /// `Back`
   String get back {
     return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
+
+  /// `End Booking`
+  String get dialog_end_title {
+    return Intl.message(
+      'End Booking',
+      name: 'dialog_end_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to end your parking session?`
+  String get dialog_end_message {
+    return Intl.message(
+      'Are you sure you want to end your parking session?',
+      name: 'dialog_end_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By confirming, your parking reservation will be canceled before the end of the booked period`
+  String get dialog_end_description {
+    return Intl.message(
+      'By confirming, your parking reservation will be canceled before the end of the booked period',
+      name: 'dialog_end_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End Booking`
+  String get dialog_end_confirm {
+    return Intl.message(
+      'End Booking',
+      name: 'dialog_end_confirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get dialog_end_cancel {
+    return Intl.message('Back', name: 'dialog_end_cancel', desc: '', args: []);
   }
 }
 
