@@ -17,34 +17,32 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 31.h,
-              children: [
-                ArrowWidgetCustomBar(onTap: () {
-                  NavigationService.go(RoutePaths.loginPage);
-                }),
-                Center(
-                  child: ClipOval(
-                    child: CustomImageWidget(
-                      isFlag: true,
-                      imageUrl: AppImages.appLogo,
-                      width: 107.w,
-                      height: 107.w,
-                    ),
+    return Scaffold(
+      backgroundColor: AppColor.backgroundColor,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 31.h,
+            children: [
+              ArrowWidgetCustomBar(onTap: () {
+                NavigationService.go(RoutePaths.loginPage);
+              }),
+              Center(
+                child: ClipOval(
+                  child: CustomImageWidget(
+                    isFlag: true,
+                    imageUrl: AppImages.appLogo,
+                    width: 107.w,
+                    height: 107.w,
                   ),
                 ),
-                const TitelDescrpationWidget(),
-                const TextFieldWidget(),
-                const ButtonWidget(),
-              ],
-            ),
+              ),
+              const TitelDescrpationWidget(),
+              const TextFieldWidget(),
+              const ButtonWidget(),
+            ],
           ),
         ),
       ),

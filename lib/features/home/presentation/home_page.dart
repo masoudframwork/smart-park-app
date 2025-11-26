@@ -9,6 +9,7 @@ import 'package:smart/core/widgets/svg_image_widget.dart';
 import 'package:smart/features/home/presentation/widgets/parking_card/parking_bottom_sheet.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details_box/green_parking_details.dart';
 import 'package:smart/features/home/presentation/widgets/voice_to_text/voice_to_text_screen.dart';
+import '../../../core/routing/navigation_service.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custome_text_field_widget.dart';
 import '../../../generated/l10n.dart';
@@ -88,13 +89,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                 onSearchSubmit: (_) {},
                 onSuffixTap: null,
                 onSearchTap: () {
-                  FocusScope.of(context).unfocus();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VoiceToTextScreen(),
-                    ),
-                  );
+                  NavigationService.push('/voiceToTextScreen');
+                  // FocusScope.of(context).unfocus();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const VoiceToTextScreen(),
+                  //   ),
+                  // );
                 },
               ),
             ),

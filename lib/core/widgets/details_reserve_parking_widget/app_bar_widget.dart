@@ -152,21 +152,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final rightSlot =
         trailing ?? SizedBox(width: sideSlotSize.w, height: sideSlotSize.w);
 
-    return Container(
-      height: preferredSize.height,
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      decoration: BoxDecoration(
-        color: backgroundColor ?? AppColor.whiteBackgroundColor,
-        image: backgroundImage,
-      ),
-      child: Row(
-        children: [
-          leftSlot,
-          Expanded(
-            child: Center(child: center ?? const SizedBox.shrink()),
-          ),
-          rightSlot,
-        ],
+    return SafeArea(
+      top: true,
+      bottom: false,
+      child: Container(
+        height: preferredSize.height,
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        decoration: BoxDecoration(
+          color: backgroundColor ?? AppColor.whiteBackgroundColor,
+          image: backgroundImage,
+        ),
+        child: Row(
+          children: [
+            leftSlot,
+            Expanded(
+              child: Center(child: center ?? const SizedBox.shrink()),
+            ),
+            rightSlot,
+          ],
+        ),
       ),
     );
   }

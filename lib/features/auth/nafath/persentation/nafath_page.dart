@@ -10,33 +10,31 @@ class NafathPageLogin extends StatelessWidget {
   const NafathPageLogin({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 31.h,
-              children: [
-                SizedBox(
-                  height: 12.h,
-                ),
-                Center(
-                  child: ClipOval(
-                    child: CustomImageWidget(
-                      isFlag: true,
-                      imageUrl: AppImages.appLogo,
-                      width: 147.w,
-                      height: 147.h,
-                    ),
+    return Scaffold(
+      backgroundColor: AppColor.whiteBackgroundColor,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 31.h,
+            children: [
+              SizedBox(
+                height: 12.h,
+              ),
+              Center(
+                child: ClipOval(
+                  child: CustomImageWidget(
+                    isFlag: true,
+                    imageUrl: AppImages.appLogo,
+                    width: 147.w,
+                    height: 147.h,
                   ),
                 ),
-                TextDescrpationWidget(),
-                TextFieldWidgets(),
-              ],
-            ),
+              ),
+              TextDescrpationWidget(),
+              TextFieldWidgets(),
+            ],
           ),
         ),
       ),

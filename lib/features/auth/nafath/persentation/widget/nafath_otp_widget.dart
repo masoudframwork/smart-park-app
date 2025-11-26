@@ -27,81 +27,79 @@ class NafathOtpScreen extends ConsumerWidget {
     final secondsStr = (remainingSeconds % 60).toString().padLeft(2, '0');
     final timeStr = '$minutesStr:$secondsStr';
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SingleChildScrollView(
-            child: Column(
-              spacing: 30,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ArrowWidgetCustomBar(onTap: () {
-                  NavigationService.pop();
-                }),
-                Center(
-                  child: ClipOval(
-                    child: CustomImageWidget(
-                      isFlag: true,
-                      imageUrl: AppImages.appLogo,
-                      width: 147.w,
-                      height: 147.w,
+    return Scaffold(
+      backgroundColor: AppColor.whiteBackgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 30,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ArrowWidgetCustomBar(onTap: () {
+                NavigationService.pop();
+              }),
+              Center(
+                child: ClipOval(
+                  child: CustomImageWidget(
+                    isFlag: true,
+                    imageUrl: AppImages.appLogo,
+                    width: 147.w,
+                    height: 147.w,
+                  ),
+                ),
+              ),
+              AppText(
+                text: S.of(context).verifythroughNafathapp,
+                appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              AppText(
+                text: S
+                    .of(context)
+                    .pleaselogintoNafathappandselectthefollowingnumber,
+                appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+              ),
+              AppText(
+                text: '85',
+                appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
+                  fontSize: 100,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              AppText(
+                text: remainingSeconds > 0
+                    ? '${S.of(context).willrefreshin} $timeStr ${S.of(context).secon}'
+                    : S.of(context).youcanrequestanewcodenow,
+                textAlign: TextAlign.center,
+                appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(height: 30.h),
+              CustomButtonWidget(
+                text: S.of(context).openNafathApp,
+                borderRadius: 10.r,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AppResultDialog(
+                      message:
+                          S.of(context).youraccountisnowconnectedwithNafath,
+                      // subMessage: S.of(context).help_support_title,
+                      mainButtonText: S.of(context).continu_e,
+                      onMainPressed: () {
+                        NavigationService.push(RoutePaths.bankCardDataPage);
+                      },
                     ),
-                  ),
-                ),
-                AppText(
-                  text: S.of(context).verifythroughNafathapp,
-                  appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                AppText(
-                  text: S
-                      .of(context)
-                      .pleaselogintoNafathappandselectthefollowingnumber,
-                  appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                ),
-                AppText(
-                  text: '85',
-                  appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                AppText(
-                  text: remainingSeconds > 0
-                      ? '${S.of(context).willrefreshin} $timeStr ${S.of(context).secon}'
-                      : S.of(context).youcanrequestanewcodenow,
-                  textAlign: TextAlign.center,
-                  appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: 30.h),
-                CustomButtonWidget(
-                  text: S.of(context).openNafathApp,
-                  borderRadius: 10.r,
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => AppResultDialog(
-                        message:
-                            S.of(context).youraccountisnowconnectedwithNafath,
-                        // subMessage: S.of(context).help_support_title,
-                        mainButtonText: S.of(context).continu_e,
-                        onMainPressed: () {
-                          NavigationService.push(RoutePaths.bankCardDataPage);
-                        },
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -42,67 +42,65 @@ class BookingStep1Page extends ConsumerWidget {
 
     final bool isArabic = AppLocale.shared.isArabic();
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
-        appBar: CustomAppBar(
-          trailing: CloseButtonCircle(onTap: () {
-            controller.reset();
-            Navigator.of(context).pop();
-          }),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(15.h),
-            child: Column(
-              textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const HeaderSection(),
-                SizedBox(height: 16.h),
-                _StepRow(
-                  index: 1,
-                  //اختر المركبة
-                  title: S.of(context).choosethevehicle,
-                  totalSteps: 3,
-                  state: state,
-                  child: _VehiclesStepContent(
-                    selectedId: state.selectedVehicleId,
-                    onSelect: controller.selectVehicle,
+    return Scaffold(
+      backgroundColor: AppColor.whiteBackgroundColor,
+      appBar: CustomAppBar(
+        trailing: CloseButtonCircle(onTap: () {
+          controller.reset();
+          Navigator.of(context).pop();
+        }),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15.h),
+          child: Column(
+            textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HeaderSection(),
+              SizedBox(height: 16.h),
+              _StepRow(
+                index: 1,
+                //اختر المركبة
+                title: S.of(context).choosethevehicle,
+                totalSteps: 3,
+                state: state,
+                child: _VehiclesStepContent(
+                  selectedId: state.selectedVehicleId,
+                  onSelect: controller.selectVehicle,
+                ),
+              ),
+              _StepRow(
+                //حدّد مدة الوقوف
+                index: 2,
+                title: S.of(context).specifythedurationofthestop,
+                totalSteps: 3,
+                state: state,
+                child: const _DurationStepContent(),
+              ),
+              _SummaryStepSection(state: state),
+              SizedBox(height: 12.h),
+              AnimatedOpacity(
+                duration: const Duration(milliseconds: 200),
+                opacity: canContinue ? 1 : 0.4,
+                child: IgnorePointer(
+                  ignoring: !canContinue,
+                  child: CustomButtonWidget(
+                    type: ButtonType.elevated,
+                    borderRadius: 10.r,
+                    //الاستمرار للدفع
+                    text: S.of(context).continuetopay,
+                    textStyle: AppTextTheme.mainButtonTextStyle(),
+                    onPressed: () {
+                      showBlurBottomSheet(
+                        context: context,
+                        child: ContinuePayingMethodBottomSheet(),
+                      );
+                    },
                   ),
                 ),
-                _StepRow(
-                  //حدّد مدة الوقوف
-                  index: 2,
-                  title: S.of(context).specifythedurationofthestop,
-                  totalSteps: 3,
-                  state: state,
-                  child: const _DurationStepContent(),
-                ),
-                _SummaryStepSection(state: state),
-                SizedBox(height: 12.h),
-                AnimatedOpacity(
-                  duration: const Duration(milliseconds: 200),
-                  opacity: canContinue ? 1 : 0.4,
-                  child: IgnorePointer(
-                    ignoring: !canContinue,
-                    child: CustomButtonWidget(
-                      type: ButtonType.elevated,
-                      borderRadius: 10.r,
-                      //الاستمرار للدفع
-                      text: S.of(context).continuetopay,
-                      textStyle: AppTextTheme.mainButtonTextStyle(),
-                      onPressed: () {
-                        showBlurBottomSheet(
-                          context: context,
-                          child: ContinuePayingMethodBottomSheet(),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -13,36 +13,35 @@ import '../../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../../l10n/app_locale.dart';
+import '../../../../base/base_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.settingsBackgroundColor,
-        appBar: CustomAppBar(
-          backgroundColor: AppColor.backgroundAppBarColor,
-          leading: CircleImageButton(
-            imageUrl: AppImages.appLogo,
-            size: 37,
-          ),
+    return BaseScreen(
+      backgroundColor: AppColor.settingsBackgroundColor,
+      appBar: CustomAppBar(
+        backgroundColor: AppColor.backgroundAppBarColor,
+        leading: CircleImageButton(
+          imageUrl: AppImages.appLogo,
+          size: 37,
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              ArrowWidgetCustomBar(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                title: S.of(context).settings_title,
-              ),
-              SizedBox(height: 30.h),
-              const _SettingsList(),
-            ],
-          ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            ArrowWidgetCustomBar(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              title: S.of(context).settings_title,
+            ),
+            SizedBox(height: 30.h),
+            const _SettingsList(),
+          ],
         ),
       ),
     );

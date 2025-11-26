@@ -10,37 +10,36 @@ import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../generated/l10n.dart';
+import '../../../base/base_screen.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
 
 class PrePreservedVehicles extends StatelessWidget {
   const PrePreservedVehicles({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
-        appBar: CustomAppBar(
-          backgroundColor: AppColor.backgroundAppBarColor,
-          leading: CircleImageButton(
-            imageUrl: AppImages.appLogo,
-            size: 37,
-          ),
+    return BaseScreen(
+      backgroundColor: AppColor.whiteBackgroundColor,
+      appBar: CustomAppBar(
+        backgroundColor: AppColor.backgroundAppBarColor,
+        leading: CircleImageButton(
+          imageUrl: AppImages.appLogo,
+          size: 37,
         ),
-        body: Padding(
-          padding: EdgeInsets.all(16.h),
-          child: Column(
-            spacing: 18.h,
-            children: [
-              ArrowWidgetCustomBar(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                title: S.of(context).pre_preserved_vehicles,
-              ),
-              SizedBox(height: 16.h),
-              _VehiclesStepContent(),
-            ],
-          ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.h),
+        child: Column(
+          spacing: 18.h,
+          children: [
+            ArrowWidgetCustomBar(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              title: S.of(context).pre_preserved_vehicles,
+            ),
+            SizedBox(height: 16.h),
+            _VehiclesStepContent(),
+          ],
         ),
       ),
     );

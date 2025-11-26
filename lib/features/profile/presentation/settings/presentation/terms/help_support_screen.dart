@@ -9,51 +9,48 @@ import '../../../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../../../core/widgets/custom_image_widget.dart';
 import '../../../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../../../generated/l10n.dart';
+import '../../../../../base/base_screen.dart';
 
 class HelpSupportScreen extends StatelessWidget {
   const HelpSupportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final bool isRTL = Directionality.of(context) == TextDirection.rtl;
-
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.settingsBackgroundColor,
-        appBar: CustomAppBar(
-          backgroundColor: AppColor.backgroundAppBarColor,
-          leading: CircleImageButton(
-            imageUrl: AppImages.appLogo,
-            size: 37,
-          ),
+    return BaseScreen(
+      backgroundColor: AppColor.settingsBackgroundColor,
+      appBar: CustomAppBar(
+        backgroundColor: AppColor.backgroundAppBarColor,
+        leading: CircleImageButton(
+          imageUrl: AppImages.appLogo,
+          size: 37,
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-          child: Column(
-            children: [
-              ArrowWidgetCustomBar(
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-                title: S.of(context).help_support_title,
-              ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+        child: Column(
+          children: [
+            ArrowWidgetCustomBar(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              title: S.of(context).help_support_title,
+            ),
 
-              SizedBox(height: 16.h),
+            SizedBox(height: 16.h),
 
-              /// Contact Us
-              _CardItem(
-                icon: AppImages.helpSupportContactUs,
-                title: S.of(context).help_contact_us,
-              ),
-              SizedBox(height: 12.h),
+            /// Contact Us
+            _CardItem(
+              icon: AppImages.helpSupportContactUs,
+              title: S.of(context).help_contact_us,
+            ),
+            SizedBox(height: 12.h),
 
-              /// Message Us
-              _CardItem(
-                icon: AppImages.helpSupportMessageUs,
-                title: S.of(context).help_message_us,
-              ),
-            ],
-          ),
+            /// Message Us
+            _CardItem(
+              icon: AppImages.helpSupportMessageUs,
+              title: S.of(context).help_message_us,
+            ),
+          ],
         ),
       ),
     );

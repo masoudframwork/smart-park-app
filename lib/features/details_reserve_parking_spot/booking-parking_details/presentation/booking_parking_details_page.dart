@@ -18,49 +18,47 @@ class BookingParkingDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.whiteBackgroundColor,
-        body: Column(
-          children: [
-            ZoneImageCard(),
-            ZoneHeader(
-              //المنطقة 013
-              zoneName: S.of(context).zone013,
-              //المواقف المتاحة 70/13
-              capacityText: S.of(context).availableparking,
-              //طريق خريص، الرياض، المملكة العربية السعودية
-              locationText: S.of(context).khuraisRoadRiyadhSaudiArabia,
-              leadingIcon: SvgPicture.asset(AppImages.iconsMaps),
+    return Scaffold(
+      backgroundColor: AppColor.whiteBackgroundColor,
+      body: Column(
+        children: [
+          ZoneImageCard(),
+          ZoneHeader(
+            //المنطقة 013
+            zoneName: S.of(context).zone013,
+            //المواقف المتاحة 70/13
+            capacityText: S.of(context).availableparking,
+            //طريق خريص، الرياض، المملكة العربية السعودية
+            locationText: S.of(context).khuraisRoadRiyadhSaudiArabia,
+            leadingIcon: SvgPicture.asset(AppImages.iconsMaps),
+          ),
+          DayPriceCard(),
+          SizedBox(height: 22.h),
+          AdditionalServicesSection(),
+          SizedBox(height: 22.h),
+          ZoneHeader(
+            zoneName: S.of(context).aboutthispark,
+            zoneNameTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+              color: AppColor.textColor,
+              fontWeight: FontWeight.w600,
             ),
-            DayPriceCard(),
-            SizedBox(height: 22.h),
-            AdditionalServicesSection(),
-            SizedBox(height: 22.h),
-            ZoneHeader(
-              zoneName: S.of(context).aboutthispark,
-              zoneNameTextStyle: AppTextTheme.titleMediumTextStyle().copyWith(
-                color: AppColor.textColor,
-                fontWeight: FontWeight.w600,
-              ),
-              locationText: S
-                  .of(context)
-                  .Itisalongestablishedfactthatthereadablecontentofapage,
-            ),
-            Spacer(),
-            CustomButtonWidget(
-              text: S.of(context).bookHere,
-              type: ButtonType.elevated,
-              onPressed: () {
-                NavigationService.push(
-                  '/bookingStep1Page',
-                  context: context,
-                );
-              },
-            ),
-            SizedBox(height: 12.h),
-          ],
-        ),
+            locationText: S
+                .of(context)
+                .Itisalongestablishedfactthatthereadablecontentofapage,
+          ),
+          Spacer(),
+          CustomButtonWidget(
+            text: S.of(context).bookHere,
+            type: ButtonType.elevated,
+            onPressed: () {
+              NavigationService.push(
+                '/bookingStep1Page',
+                context: context,
+              );
+            },
+          ),
+          SizedBox(height: 12.h),
+        ],
       ),
     );
   }

@@ -10,6 +10,7 @@ import '../../../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../../../l10n/app_locale.dart';
+import '../../../../../base/base_screen.dart';
 
 class TermsScreen extends StatelessWidget {
   final TextStyle? sectionTitleTextStyle;
@@ -35,36 +36,34 @@ class TermsScreen extends StatelessWidget {
           isArabic: isArabic,
         );
 
-        return SafeArea(
-          child: Scaffold(
-            backgroundColor: AppColor.settingsBackgroundColor,
-            appBar: CustomAppBar(
-              backgroundColor: AppColor.backgroundAppBarColor,
-              leading: CircleImageButton(
-                imageUrl: AppImages.appLogo,
-                size: 37,
-              ),
+        return BaseScreen(
+          backgroundColor: AppColor.settingsBackgroundColor,
+          appBar: CustomAppBar(
+            backgroundColor: AppColor.backgroundAppBarColor,
+            leading: CircleImageButton(
+              imageUrl: AppImages.appLogo,
+              size: 37,
             ),
-            body: Padding(
-              padding: EdgeInsets.all(17.w),
-              child: Column(
-                children: [
-                  ArrowWidgetCustomBar(
-                    onTap: () => Navigator.of(context).pop(),
-                    title: S.of(context).terms_title,
-                  ),
-                  SizedBox(height: 16.h),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: _TermsCard(
-                        sections: sections,
-                        isArabic: isArabic,
-                        sectionTitleTextStyle: sectionTitleTextStyle,
-                      ),
+          ),
+          body: Padding(
+            padding: EdgeInsets.all(17.w),
+            child: Column(
+              children: [
+                ArrowWidgetCustomBar(
+                  onTap: () => Navigator.of(context).pop(),
+                  title: S.of(context).terms_title,
+                ),
+                SizedBox(height: 16.h),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: _TermsCard(
+                      sections: sections,
+                      isArabic: isArabic,
+                      sectionTitleTextStyle: sectionTitleTextStyle,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

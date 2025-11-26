@@ -20,175 +20,172 @@ class VehicleDataScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(vehicleFormControllerProvider);
     final controller = ref.read(vehicleFormControllerProvider.notifier);
-    return SafeArea(
-      top: false,
-      child: Scaffold(
-        backgroundColor: AppColor.settingsBackgroundColor,
-        resizeToAvoidBottomInset: true,
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomButtonWidget(
-                borderRadius: 10.r,
-                //حفظ المركبة
-                text: S.of(context).saveVehicle,
-                onPressed: () {
-                  NavigationService.go('${RoutePaths.bottomNavBar}?tab=2');
-                },
-                backgroundColor: AppColor.primaryColor,
+    return Scaffold(
+      backgroundColor: AppColor.settingsBackgroundColor,
+      resizeToAvoidBottomInset: true,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.fromLTRB(20.w, 0, 20.w, 20.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomButtonWidget(
+              borderRadius: 10.r,
+              //حفظ المركبة
+              text: S.of(context).saveVehicle,
+              onPressed: () {
+                NavigationService.go('${RoutePaths.bottomNavBar}?tab=2');
+              },
+              backgroundColor: AppColor.primaryColor,
+            ),
+            SizedBox(height: 13.h),
+            CustomButtonWidget(
+              borderRadius: 10.r,
+              type: ButtonType.outlined,
+              textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
+                color: AppColor.primaryColor,
+                fontWeight: FontWeight.w600,
               ),
-              SizedBox(height: 13.h),
-              CustomButtonWidget(
-                borderRadius: 10.r,
-                type: ButtonType.outlined,
-                textStyle: AppTextTheme.titleMediumTextStyle().copyWith(
-                  color: AppColor.primaryColor,
-                  fontWeight: FontWeight.w600,
-                ),
-                //لاحقا
-                text: S.of(context).do_this_later,
-                onPressed: () {
-                  NavigationService.push(RoutePaths.bottomNavBar);
-                },
-                backgroundColor: AppColor.primaryColor,
-              ),
-            ],
-          ),
+              //لاحقا
+              text: S.of(context).do_this_later,
+              onPressed: () {
+                NavigationService.push(RoutePaths.bottomNavBar);
+              },
+              backgroundColor: AppColor.primaryColor,
+            ),
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 50.h),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 50.h),
 
-                ArrowWidgetCustomBar(
-                  onTap: () {
-                    NavigationService.pop();
-                  },
-                  title: S.of(context).enteryourvehicleinfo,
-                ),
-                SizedBox(height: 50.h),
-                _VehicleTypeTabs(
-                  selected: state.vehicleType,
-                  onChanged: controller.setVehicleType,
-                ),
-                SizedBox(height: 24.h),
-                if (state.isSaudi) ...[
-                  //نوع اللوحة
-
-                  RequiredFieldLabel(
-                    text: S.of(context).platetype,
-                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-
-                  SizedBox(height: 8.h),
-                  _PlateTypeDropdown(
-                    value: state.plateType,
-                    onChanged: controller.setPlateType,
-                    showError: state.showErrors && (state.plateType == null),
-                  ),
-                  SizedBox(height: 16.h),
-                  //رقم للوحة
-
-                  RequiredFieldLabel(
-                    text: S.of(context).platenumber,
-                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-
-                  SizedBox(height: 8.h),
-                  Row(
-                    children: [
-                      _PlateTextField(
-                        width: 157.w,
-                        hintText: '0000',
-                        keyboardType: TextInputType.number,
-                        onChanged: controller.setSaudiNumbers,
-                        validator: (value) {
-                          if (!state.showErrors) return null;
-                          if (value.length != 4) {
-                            return 'أدخل 4 أرقام';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(width: 20.w),
-                      _PlateTextField(
-                        width: 168.w,
-                        hintText: 'أ ب ج',
-                        keyboardType: TextInputType.text,
-                        onChanged: controller.setSaudiLetters,
-                        validator: (value) {
-                          if (!state.showErrors) return null;
-                          if (value.length != 3) {
-                            return 'أدخل 3 أحرف';
-                          }
-                          return null;
-                        },
-                      ),
-                    ],
-                  ),
-                ] else ...[
-                  RequiredFieldLabel(
-                    text: S.of(context).platenumber,
-                    appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                  SizedBox(height: 8.h),
-                  _PlateTextField(
-                    hintText: '',
-                    keyboardType: TextInputType.text,
-                    onChanged: controller.setNonSaudiPlate,
-                    validator: (value) {
-                      if (!state.showErrors) return null;
-                      if (value.isEmpty) {
-                        return 'رقم اللوحة مطلوب';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
-                SizedBox(height: 16.h),
-                //لون المركبة
+              ArrowWidgetCustomBar(
+                onTap: () {
+                  NavigationService.pop();
+                },
+                title: S.of(context).enteryourvehicleinfo,
+              ),
+              SizedBox(height: 50.h),
+              _VehicleTypeTabs(
+                selected: state.vehicleType,
+                onChanged: controller.setVehicleType,
+              ),
+              SizedBox(height: 24.h),
+              if (state.isSaudi) ...[
+                //نوع اللوحة
 
                 RequiredFieldLabel(
-                  text: S.of(context).vehiclecolor,
+                  text: S.of(context).platetype,
                   appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                     fontWeight: FontWeight.w300,
                   ),
                 ),
 
                 SizedBox(height: 8.h),
-                _VehicleColorDropdown(
-                  value: state.vehicleColor,
-                  onChanged: controller.setVehicleColor,
-                  showError:
-                      state.showErrors && (state.vehicleColor?.isEmpty ?? true),
+                _PlateTypeDropdown(
+                  value: state.plateType,
+                  onChanged: controller.setPlateType,
+                  showError: state.showErrors && (state.plateType == null),
                 ),
                 SizedBox(height: 16.h),
-                AppText(
-                  text: S.of(context).avatar,
+                //رقم للوحة
+
+                RequiredFieldLabel(
+                  text: S.of(context).platenumber,
+                  appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+
+                SizedBox(height: 8.h),
+                Row(
+                  children: [
+                    _PlateTextField(
+                      width: 157.w,
+                      hintText: '0000',
+                      keyboardType: TextInputType.number,
+                      onChanged: controller.setSaudiNumbers,
+                      validator: (value) {
+                        if (!state.showErrors) return null;
+                        if (value.length != 4) {
+                          return 'أدخل 4 أرقام';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(width: 20.w),
+                    _PlateTextField(
+                      width: 168.w,
+                      hintText: 'أ ب ج',
+                      keyboardType: TextInputType.text,
+                      onChanged: controller.setSaudiLetters,
+                      validator: (value) {
+                        if (!state.showErrors) return null;
+                        if (value.length != 3) {
+                          return 'أدخل 3 أحرف';
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
+                ),
+              ] else ...[
+                RequiredFieldLabel(
+                  text: S.of(context).platenumber,
                   appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                     fontWeight: FontWeight.w300,
                   ),
                 ),
                 SizedBox(height: 8.h),
-                _AvatarDropdown(
-                  value: state.avatar,
-                  onChanged: controller.setAvatar,
-                  showError:
-                      state.showErrors && (state.avatar?.isEmpty ?? true),
+                _PlateTextField(
+                  hintText: '',
+                  keyboardType: TextInputType.text,
+                  onChanged: controller.setNonSaudiPlate,
+                  validator: (value) {
+                    if (!state.showErrors) return null;
+                    if (value.isEmpty) {
+                      return 'رقم اللوحة مطلوب';
+                    }
+                    return null;
+                  },
                 ),
               ],
-            ),
+              SizedBox(height: 16.h),
+              //لون المركبة
+
+              RequiredFieldLabel(
+                text: S.of(context).vehiclecolor,
+                appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+
+              SizedBox(height: 8.h),
+              _VehicleColorDropdown(
+                value: state.vehicleColor,
+                onChanged: controller.setVehicleColor,
+                showError:
+                    state.showErrors && (state.vehicleColor?.isEmpty ?? true),
+              ),
+              SizedBox(height: 16.h),
+              AppText(
+                text: S.of(context).avatar,
+                appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              SizedBox(height: 8.h),
+              _AvatarDropdown(
+                value: state.avatar,
+                onChanged: controller.setAvatar,
+                showError:
+                    state.showErrors && (state.avatar?.isEmpty ?? true),
+              ),
+            ],
           ),
         ),
       ),

@@ -20,80 +20,78 @@ class BookingSummaryScreen extends StatelessWidget {
     final isRTL = Directionality.of(context) == TextDirection.rtl;
     final now = DateTime.now();
 
-    return SafeArea(
-      child: Directionality(
-        textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
-        child: Scaffold(
-          backgroundColor: AppColor.settingsBackgroundColor,
-          appBar: CustomAppBar(
-            backgroundColor: AppColor.backgroundAppBarColor,
-            leading: CircleImageButton(
-              onTap: () {},
-              imageUrl: AppImages.appLogo,
-              size: 37,
-            ),
+    return Directionality(
+      textDirection: isRTL ? TextDirection.rtl : TextDirection.ltr,
+      child: Scaffold(
+        backgroundColor: AppColor.settingsBackgroundColor,
+        appBar: CustomAppBar(
+          backgroundColor: AppColor.backgroundAppBarColor,
+          leading: CircleImageButton(
+            onTap: () {},
+            imageUrl: AppImages.appLogo,
+            size: 37,
           ),
-          body: Padding(
-            padding: EdgeInsets.all(16.w),
-            child: Column(
-              children: [
-                ArrowWidgetCustomBar(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  title: S.of(context).terms_title,
-                ),
-                SizedBox(height: 16.h),
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w),
-                      child: Column(
-                        children: [
-                          _buildBookingCard(context, isRTL),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              ArrowWidgetCustomBar(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                title: S.of(context).terms_title,
+              ),
+              SizedBox(height: 16.h),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Column(
+                      children: [
+                        _buildBookingCard(context, isRTL),
 
-                          SizedBox(height: 20.h),
+                        SizedBox(height: 20.h),
 
-                          /// ⭐ Button: Book Again
-                          BookingWidgets.buildActionButton(
-                            text: S.of(context).booking_book_again,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => BookingStep1Page(),
-                                ),
-                              );
-                            },
-                            backgroundColor: AppColor.primaryColor,
-                            height: 50,
-                            fontSize: 16,
-                          ),
+                        /// ⭐ Button: Book Again
+                        BookingWidgets.buildActionButton(
+                          text: S.of(context).booking_book_again,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => BookingStep1Page(),
+                              ),
+                            );
+                          },
+                          backgroundColor: AppColor.primaryColor,
+                          height: 50,
+                          fontSize: 16,
+                        ),
 
-                          SizedBox(height: 12.h),
+                        SizedBox(height: 12.h),
 
-                          /// ⭐ Button: Go Home
-                          _buildOutlinedButton(
-                            text: S.of(context).booking_go_home,
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => const HomePage(),
-                                ),
-                              );
-                            },
-                          ),
+                        /// ⭐ Button: Go Home
+                        _buildOutlinedButton(
+                          text: S.of(context).booking_go_home,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const HomePage(),
+                              ),
+                            );
+                          },
+                        ),
 
-                          SizedBox(height: 40.h),
-                        ],
-                      ),
+                        SizedBox(height: 40.h),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
