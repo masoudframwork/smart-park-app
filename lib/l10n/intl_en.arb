@@ -235,7 +235,9 @@
   "dialog_end_message": "Are you sure you want to end your parking session?",
   "dialog_end_description": "By confirming, your parking reservation will be canceled before the end of the booked period",
   "dialog_end_confirm": "End Booking",
-  "dialog_end_cancel": "Back"
+  "dialog_end_cancel": "Back",
+  "search_for_parking": "Find a parking",
+  "search_start_listening": "Start listening"
 
 
 }

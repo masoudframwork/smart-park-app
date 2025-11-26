@@ -1938,6 +1938,26 @@ class S {
   String get dialog_end_cancel {
     return Intl.message('Back', name: 'dialog_end_cancel', desc: '', args: []);
   }
+
+  /// `Find a parking`
+  String get search_for_parking {
+    return Intl.message(
+      'Find a parking',
+      name: 'search_for_parking',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start listening`
+  String get search_start_listening {
+    return Intl.message(
+      'Start listening',
+      name: 'search_start_listening',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

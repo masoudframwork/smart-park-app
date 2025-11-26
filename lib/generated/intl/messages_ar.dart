@@ -346,11 +346,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ. يُرجى المحاولة مرة أخرى.",
     ),
+    "search_for_parking": MessageLookupByLibrary.simpleMessage("ابحث عن موقف"),
     "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
       "listening now\': Find the place",
     ),
     "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
       " جاري الاستماع… تكلم الآن",
+    ),
+    "search_start_listening": MessageLookupByLibrary.simpleMessage(
+      "  ...جاري الاستماع",
     ),
     "secon": MessageLookupByLibrary.simpleMessage("ثانية"),
     "send_code": MessageLookupByLibrary.simpleMessage("أرسل الرمز"),

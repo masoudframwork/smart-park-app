@@ -358,11 +358,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_an_error_occurred_try_again": MessageLookupByLibrary.simpleMessage(
       "An error occurred. Please try again.",
     ),
+    "search_for_parking": MessageLookupByLibrary.simpleMessage(
+      "Find a parking",
+    ),
     "search_listening_find_place": MessageLookupByLibrary.simpleMessage(
       "listening now\': Find the place",
     ),
     "search_listening_now_speak": MessageLookupByLibrary.simpleMessage(
       "Listening now… Speak up",
+    ),
+    "search_start_listening": MessageLookupByLibrary.simpleMessage(
+      "Start listening",
     ),
     "secon": MessageLookupByLibrary.simpleMessage("seconds"),
     "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),

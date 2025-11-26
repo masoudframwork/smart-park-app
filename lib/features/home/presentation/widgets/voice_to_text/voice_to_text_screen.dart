@@ -47,7 +47,7 @@ class VoiceToTextScreen extends ConsumerWidget {
               padding: EdgeInsets.all(17.w),
               child: CustomTextFormField(
                 controller: controller.textCtrl,
-                hintText: isListening ? '...جاري الاستماع' : 'ابحث عن المكان',
+                hintText: isListening ? S.of(context).search_start_listening : S.of(context).search_for_parking,
                 enableShadow: true,
                 shadowTextFieldColor:
                     AppColor.contanearGreyColor.withOpacity(0.25),

@@ -233,5 +233,8 @@
   "dialog_end_message": "هل أنت متأكد أنك تريد إنهاء جلسة الوقوف الخاصة بك؟",
   "dialog_end_description": "عند التأكيد، سيتم إنهاء حجزك قبل انتهاء الفترة المحجوزة.",
   "dialog_end_confirm": "إنهاء الحجز",
-  "dialog_end_cancel": "عودة"
+  "dialog_end_cancel": "عودة",
+  "search_for_parking": "ابحث عن موقف",
+  "search_start_listening": "  ...جاري الاستماع"
+
 }
