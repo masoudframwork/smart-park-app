@@ -11,32 +11,24 @@ import 'package:smart/features/profile/presentation/widget/pre_preserved_vehicle
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../generated/l10n.dart';
+import '../../base/base_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isArabic = Directionality.of(context) == TextDirection.rtl;
-
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.settingsBackgroundColor,
-        appBar: CustomAppBar(
-          backgroundColor: AppColor.backgroundAppBarColor,
-          leading: CircleImageButton(
-            onTap: () {},
-            imageUrl: AppImages.appLogo,
-            size: 37,
-          ),
-        ),
-
-        /// Dynamic RTL / LTR
-        body: Directionality(
-          textDirection: Directionality.of(context),
-          child: const _ProfileBody(),
+    return BaseScreen(
+      backgroundColor: AppColor.settingsBackgroundColor,
+      appBar: CustomAppBar(
+        backgroundColor: AppColor.backgroundAppBarColor,
+        leading: CircleImageButton(
+          onTap: () {},
+          imageUrl: AppImages.appLogo,
+          size: 37,
         ),
       ),
+      body: const _ProfileBody(),
     );
   }
 }
@@ -118,7 +110,7 @@ class _ProfileBody extends StatelessWidget {
 
           const SizedBox(height: 32),
           const _LogoutButton(),
-          const SizedBox(height: 16),
+          const SizedBox(height: 70),
         ],
       ),
     );

@@ -90,7 +90,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
     return Positioned(
       left: 0,
       right: 0,
-      bottom: 50,
+      bottom: 80,
       child: SizedBox(
         height: 150.h,
         child: ListView.separated(

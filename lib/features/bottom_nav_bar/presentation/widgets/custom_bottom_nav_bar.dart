@@ -39,7 +39,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               AppImages.homeIcon,
               width: 22,
               height: 22,
-              color: currentIndex == 0 ? Colors.white : Colors.white70,
             ),
           ),
           _navItem(
@@ -50,7 +49,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               AppImages.reservationNotSelectedIcon,
               width: 22,
               height: 22,
-              color: currentIndex == 1 ? Colors.white : Colors.white70,
             ),
           ),
           _navItem(
@@ -61,7 +59,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               AppImages.personIcon,
               width: 22,
               height: 22,
-              color: currentIndex == 2 ? Colors.white : Colors.white70,
             ),
           ),
           _navItem(
@@ -72,7 +69,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
               AppImages.qrCodeIcon,
               width: 22,
               height: 22,
-              color: currentIndex == 3 ? Colors.white : Colors.white70,
             ),
           ),
         ],
@@ -93,11 +89,11 @@ class CustomBottomNavigationBar extends ConsumerWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeOut,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? AppColor.tabBarSelectedColor : Colors.transparent,
-          borderRadius: BorderRadius.circular(18)
-        ),
+            color:
+                isSelected ? AppColor.tabBarSelectedColor : Colors.transparent,
+            borderRadius: BorderRadius.circular(18)),
         child: icon,
       ),
     );
