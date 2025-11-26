@@ -170,7 +170,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ref.read(homeControllerProvider).selectMarker(location, index);
           },
           child: SvgImageWidget(
-            AppImages.parkingMarkers,
+            AppImages.locationSearchIcon,
             height: 60,
             width: 60,
             fit: BoxFit.cover,
