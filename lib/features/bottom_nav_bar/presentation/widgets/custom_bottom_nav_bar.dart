@@ -18,7 +18,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
       height: 70,
       margin: const EdgeInsets.only(left: 16, right: 16, bottom: 14),
       decoration: BoxDecoration(
-        color: const Color(0xFF0C6450), // Dark green background
+        color: AppColor.bottomNavigationBarColor,
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(

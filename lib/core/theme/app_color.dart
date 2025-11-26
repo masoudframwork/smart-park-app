@@ -66,4 +66,7 @@ class AppColor {
   static const settingsBackgroundColor = Color(0xFFF1F2F3);
 
   static const tabBarSelectedColor = Color(0xFF87BA26);
+
+  static const bottomNavigationBarColor = Color(0xFF045859);
+
 }
