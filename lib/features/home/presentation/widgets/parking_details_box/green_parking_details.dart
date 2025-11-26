@@ -173,8 +173,8 @@ class GreenParkingDetails extends ConsumerWidget {
                   ref
                       .read(reservationController.notifier)
                       .selectReservation(reservation.id);
-                  NavigationService.push('/bookingDetailView', context: context);
-
+                  NavigationService.push('/bookingDetailView',
+                      context: context);
                 })
           ],
         ),

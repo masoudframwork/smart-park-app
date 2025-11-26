@@ -11,9 +11,6 @@ class AppColor {
   static const logOutCard = Color(0xFFD92B2B);
   static const greyCard = Color(0xFFA2A6AE);
 
-
-
-
 //7
   static const primaryButtonColor = Color(0xFF1A8154);
 
@@ -69,5 +66,4 @@ class AppColor {
   static const settingsBackgroundColor = Color(0xFFF1F2F3);
 
   static const tabBarSelectedColor = Color(0xFF87BA26);
-
 }

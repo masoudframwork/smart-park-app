@@ -6,6 +6,7 @@ import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custome_text_field_widget.dart';
 import '../../../../../generated/l10n.dart';
+
 class TextFieldAndButtonsWidget extends StatelessWidget {
   const TextFieldAndButtonsWidget({
     super.key,
@@ -54,7 +55,6 @@ class TextFieldAndButtonsWidget extends StatelessWidget {
               );
             },
           ),
-
         ],
       ),
     );

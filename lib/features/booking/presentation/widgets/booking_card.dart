@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smart/core/constants/image_string.dart';
 import 'package:smart/features/booking/domain/models/booking_model.dart';
 import 'package:smart/features/booking/presentation/controller/timer_controller.dart';
 import 'package:smart/features/booking/presentation/widgets/time_circle_widget.dart'
@@ -36,7 +34,8 @@ class CurrentBookingCard extends ConsumerWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(bottom: 16.h),
+        margin: EdgeInsets.only(top: 5.h, bottom: 16.h),
+        //margin: EdgeInsets.only(bottom: 16.h),
         padding: EdgeInsets.all(16.w),
         decoration: BookingWidgets.cardDecoration(),
         child: Column(
@@ -61,6 +60,8 @@ class CurrentBookingCard extends ConsumerWidget {
     );
   }
 
+  // ---------------- UI Sections ----------------
+
   Widget _buildBookingInfo(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,65 +79,53 @@ class CurrentBookingCard extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Zone 013
         AppText(
           text: reservation.locationName,
-          appTextTheme: AppTextTheme.bodyLargeTextStyle().copyWith(
+          appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
             fontWeight: FontWeight.w700,
-            fontSize: 16.sp,
+            color: AppColor.textColor,
           ),
         ),
         SizedBox(height: 4.h),
-        Row(
-          children: [
-            Icon(
-              Icons.location_on,
-              size: 14.w,
-              color: AppColor.primaryColor,
-            ),
-            SizedBox(width: 4.w),
-            Expanded(
-              child: AppText(
-                text: reservation.address,
-                appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
-                  fontSize: 12.sp,
-                  color: AppColor.greyColor,
-                ),
-              ),
-            ),
-          ],
+        // Khurais Road, Riyadh, Saudi Arabia
+        AppText(
+          text: reservation.address,
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            fontSize: 12.sp,
+            color: AppColor.greyColor,
+          ),
         ),
       ],
     );
   }
 
   Widget _buildTimeRow(BuildContext context) {
-    bool isRTL = Directionality.of(context) == TextDirection.rtl;
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+    final String arrowText = isRtl ? '←' : '→';
 
     return Row(
+      spacing: 17,
       children: [
-        Icon(
-          Icons.access_time,
-          size: 14.w,
-          color: AppColor.primaryColor,
-        ),
-        SizedBox(width: 4.w),
         AppText(
           text: reservation.startTime,
           appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w300,
             fontSize: 13.sp,
           ),
         ),
-        SizedBox(width: 8.w),
-        SvgPicture.asset(
-          isRTL ? AppImages.arrowIcon : AppImages.arrowIcon2,
-          color: AppColor.primaryColor,
+        AppText(
+          text: arrowText,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w400,
+            fontSize: 22,
+            color: AppColor.textColor,
+          ),
         ),
-        SizedBox(width: 8.w),
         AppText(
           text: reservation.endTime,
           appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w300,
             fontSize: 13.sp,
           ),
         ),
@@ -145,22 +134,14 @@ class CurrentBookingCard extends ConsumerWidget {
   }
 
   Widget _buildDateRow() {
-    return Row(
-      children: [
-        Icon(
-          Icons.calendar_today,
-          size: 14.w,
-          color: AppColor.primaryColor,
-        ),
-        SizedBox(width: 4.w),
-        AppText(
-          text: reservation.date,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-            fontSize: 13.sp,
-            color: AppColor.greyColor,
-          ),
-        ),
-      ],
+    return AppText(
+      // ممكن تكون date أو وصف السيارة حسب الموديل عندك
+      //text:reservation.date,
+      text: reservation.vehicleInfo ?? '',
+      appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+        fontSize: 13.sp,
+        color: AppColor.greyColor,
+      ),
     );
   }
 

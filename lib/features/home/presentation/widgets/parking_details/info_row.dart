@@ -133,8 +133,10 @@ class InfoRow extends StatelessWidget {
       );
     } else {
       return _isNetwork
-          ? Image.network(image, width: iconSize, height: iconSize, fit: BoxFit.contain)
-          : Image.asset(image, width: iconSize, height: iconSize, fit: BoxFit.contain);
+          ? Image.network(image,
+              width: iconSize, height: iconSize, fit: BoxFit.contain)
+          : Image.asset(image,
+              width: iconSize, height: iconSize, fit: BoxFit.contain);
     }
   }
 
@@ -151,7 +153,6 @@ class InfoRow extends StatelessWidget {
             appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
               color: AppColor.blackNumberSmallColor,
             ),
-
           ),
         ],
       ),
@@ -198,8 +199,10 @@ class InfoRowTheme extends StatelessWidget {
       );
     } else {
       return _isNetwork
-          ? Image.network(image, width: iconSize, height: iconSize, fit: BoxFit.contain)
-          : Image.asset(image, width: iconSize, height: iconSize, fit: BoxFit.contain);
+          ? Image.network(image,
+              width: iconSize, height: iconSize, fit: BoxFit.contain)
+          : Image.asset(image,
+              width: iconSize, height: iconSize, fit: BoxFit.contain);
     }
   }
 
@@ -235,7 +238,6 @@ class InfoRowTheme extends StatelessWidget {
         text: text,
         appTextTheme: baseStyle,
         textAlign: TextAlign.start,
-
       );
     }
 

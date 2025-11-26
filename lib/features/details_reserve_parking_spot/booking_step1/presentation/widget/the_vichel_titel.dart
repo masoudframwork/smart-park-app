@@ -70,12 +70,12 @@ class TheVehicleTile extends StatelessWidget {
               SizedBox(width: 12.w),
               AppText(
                 text: title,
-                appTextTheme:
-                    (textStyle ?? AppTextTheme.bodyMediumTextStyle()).copyWith(
-                  color: effectiveText,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                      fontSize: 14.sp
-                ),
+                appTextTheme: (textStyle ?? AppTextTheme.bodyMediumTextStyle())
+                    .copyWith(
+                        color: effectiveText,
+                        fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.w400,
+                        fontSize: 14.sp),
               ),
             ],
           ),

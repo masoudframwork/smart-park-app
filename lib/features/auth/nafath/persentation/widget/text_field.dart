@@ -48,7 +48,7 @@ class TextFieldWidgets extends StatelessWidget {
               ),
               CustomButtonWidget(
                   borderRadius: 10.r,
-                  text:  S.of(context).login,
+                  text: S.of(context).login,
                   onPressed: () {
                     NavigationService.push('/nafathOtpScreen');
                   }),

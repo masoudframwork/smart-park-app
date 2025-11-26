@@ -166,27 +166,28 @@ import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/core/widgets/custom_button.dart';
 
 class AppResultDialog extends StatelessWidget {
-  final String? message;
-
+  final String message;
   final String? subMessage;
 
-  final String? mainButtonText;
+  /// ONE BUTTON
+  final String mainButtonText;
+  final VoidCallback onMainPressed;
 
-  final VoidCallback? onMainPressed;
-
+  /// OPTIONAL SECOND BUTTON
   final String? secondaryButtonText;
   final VoidCallback? onSecondaryPressed;
 
+  /// ICON
   final IconData defaultIcon;
   final Color defaultIconBackgroundColor;
   final Color defaultIconColor;
 
   const AppResultDialog({
     super.key,
-    this.message,
+    required this.message,
     this.subMessage,
-    this.mainButtonText,
-    this.onMainPressed,
+    required this.mainButtonText,
+    required this.onMainPressed,
     this.secondaryButtonText,
     this.onSecondaryPressed,
     this.defaultIcon = Icons.check,
@@ -199,6 +200,8 @@ class AppResultDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Directionality.of(context) == TextDirection.rtl;
+
     return Center(
       child: Material(
         color: Colors.transparent,
@@ -241,7 +244,7 @@ class AppResultDialog extends StatelessWidget {
 
               // MAIN MESSAGE
               AppText(
-                text: message ?? '',
+                text: message,
                 textAlign: TextAlign.center,
                 appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
                   fontWeight: FontWeight.w600,
@@ -263,9 +266,7 @@ class AppResultDialog extends StatelessWidget {
               SizedBox(height: 28.h),
 
               // BUTTONS
-              hasTwoButtons
-                  ? _buildTwoButtons(context)
-                  : _buildSingleButton(context),
+              hasTwoButtons ? _buildTwoButtons() : _buildSingleButton(),
             ],
           ),
         ),
@@ -273,20 +274,20 @@ class AppResultDialog extends StatelessWidget {
     );
   }
 
-  /// زر واحد
-  Widget _buildSingleButton(BuildContext context) {
+  /// ONE BUTTON
+  Widget _buildSingleButton() {
     return CustomButtonWidget(
       width: 140.w,
       height: 40.h,
-      onPressed: onMainPressed ?? () => Navigator.of(context).pop(),
-      text: mainButtonText ?? 'OK',
+      onPressed: onMainPressed,
+      text: mainButtonText,
       type: ButtonType.elevated,
       borderRadius: 6.r,
     );
   }
 
-  /// زرين
-  Widget _buildTwoButtons(BuildContext context) {
+  /// TWO BUTTONS
+  Widget _buildTwoButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -294,10 +295,11 @@ class AppResultDialog extends StatelessWidget {
           child: CustomButtonWidget(
             width: 130.w,
             height: 40.h,
-            onPressed: onSecondaryPressed ?? () => Navigator.of(context).pop(),
-            text: secondaryButtonText ?? 'Cancel',
-            type: ButtonType.outlined,
+            onPressed: onMainPressed,
+            text: mainButtonText,
+            type: ButtonType.elevated,
             borderRadius: 6.r,
+            fontSize: 14,
           ),
         ),
         SizedBox(width: 10.h),
@@ -305,10 +307,14 @@ class AppResultDialog extends StatelessWidget {
           child: CustomButtonWidget(
             width: 130.w,
             height: 40.h,
-            onPressed: onMainPressed ?? () => Navigator.of(context).pop(),
-            text: mainButtonText ?? 'OK',
-            type: ButtonType.elevated,
+            onPressed: onSecondaryPressed!,
+            text: secondaryButtonText!,
+            type: ButtonType.outlined,
             borderRadius: 6.r,
+            fontSize: 14,
+            textStyle: TextStyle(
+              color: AppColor.primaryColor,
+            ),
           ),
         ),
       ],

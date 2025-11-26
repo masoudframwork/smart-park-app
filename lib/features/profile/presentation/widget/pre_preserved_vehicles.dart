@@ -11,6 +11,7 @@ import '../../../../core/widgets/custom_image_widget.dart';
 import '../../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../../../details_reserve_parking_spot/booking_step1/presentation/widget/bottom_sheet/another_vehicle_bottom_sheet.dart';
+
 class PrePreservedVehicles extends StatelessWidget {
   const PrePreservedVehicles({super.key});
   @override
@@ -36,10 +37,8 @@ class PrePreservedVehicles extends StatelessWidget {
                 },
                 title: S.of(context).pre_preserved_vehicles,
               ),
-
               SizedBox(height: 16.h),
               _VehiclesStepContent(),
-
             ],
           ),
         ),
@@ -57,7 +56,7 @@ class _VehiclesStepContent extends StatelessWidget {
           height: 12,
         ),
         TheVehicleTiles(
-          title:  S.of(context).nissan_car,
+          title: S.of(context).nissan_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -69,7 +68,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTiles(
-          title:  S.of(context).toyota_car,
+          title: S.of(context).toyota_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.lightPurpleColor,
           carIcon: SvgPicture.asset(
@@ -84,7 +83,6 @@ class _VehiclesStepContent extends StatelessWidget {
           title: S.of(context).another_car,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.whiteColor,
-
           carIcon: const SizedBox.shrink(),
           isAddNew: true,
           onTap: () {

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/core/dependency_injection/service_locator.dart';
-import 'package:smart/core/network/dio_client.dart';
+
 import 'package:smart/core/theme/app_color.dart';
-import 'package:smart/features/auth/login/data/data_source/login_remote_ds.dart';
-import 'package:smart/features/auth/login/data/repository/login_repository.dart';
-import 'package:smart/features/auth/login/domain/repository/login_repository_interface.dart';
-import 'package:smart/features/auth/login/domain/usecase/login_usecases.dart';
+
 import 'package:smart/features/auth/login/presentation/widgets/descrpation_titel_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/text_field_and_buttons_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/titel_desc_widget.dart';
@@ -68,11 +64,11 @@ class LoginPage extends ConsumerWidget {
                   onCreateAccount: controller.goToRegister,
                   onGuestLogin: controller.guestLogin,
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      controller.login();
-                    },
-                    child: Text("data"))
+                // ElevatedButton(
+                //     onPressed: () {
+                //       controller.login();
+                //     },
+                //     child: Text("data"))
               ],
             ),
           ),

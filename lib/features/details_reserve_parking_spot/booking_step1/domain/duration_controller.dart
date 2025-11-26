@@ -1,4 +1,3 @@
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomTimeFormState {
@@ -84,6 +83,6 @@ class CustomTimeFormController extends StateNotifier<CustomTimeFormState> {
 }
 
 final customTimeFormProvider =
-StateNotifierProvider<CustomTimeFormController, CustomTimeFormState>(
-      (ref) => CustomTimeFormController(),
+    StateNotifierProvider<CustomTimeFormController, CustomTimeFormState>(
+  (ref) => CustomTimeFormController(),
 );

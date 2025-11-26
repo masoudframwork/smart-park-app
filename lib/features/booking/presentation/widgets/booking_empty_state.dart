@@ -14,9 +14,8 @@ class BookingEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final message = selectedTabIndex == 0
-        ? 'لا توجد حجوزات حالية'
-        : 'لا توجد حجوزات سابقة';
+    final message =
+        selectedTabIndex == 0 ? 'لا توجد حجوزات حالية' : 'لا توجد حجوزات سابقة';
 
     return Center(
       child: Column(

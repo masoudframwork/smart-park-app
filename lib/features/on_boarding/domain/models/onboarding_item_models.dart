@@ -36,8 +36,7 @@ List<OnboardingItem> buildOnboardingItems(BuildContext context) {
       bgImage: AppImages.intro1,
       icon: AppImages.iconIntro1,
       title: S.of(context).parkyourvehiclewithease,
-      subtitle:
-          S.of(context).explore_the_map_and_find_the_nearest,
+      subtitle: S.of(context).explore_the_map_and_find_the_nearest,
     ),
     OnboardingItem(
       bgImage: AppImages.intro2,

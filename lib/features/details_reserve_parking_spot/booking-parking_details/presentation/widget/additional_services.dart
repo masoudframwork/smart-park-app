@@ -9,14 +9,18 @@ import '../../../../../core/constants/image_string.dart';
 import '../../../../../generated/l10n.dart';
 
 class AdditionalServicesSection extends StatelessWidget {
-   const AdditionalServicesSection({super.key});
+  const AdditionalServicesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-   final items = <_ServiceItem>[
-      _ServiceItem(title: S.of(context).laundryservice, iconPath: AppImages.laundryService),
-      _ServiceItem(title: S.of(context).evcharging, iconPath: AppImages.shipping2),
-      _ServiceItem(title: S.of(context).parachute, iconPath: AppImages.umbrella),
+    final items = <_ServiceItem>[
+      _ServiceItem(
+          title: S.of(context).laundryservice,
+          iconPath: AppImages.laundryService),
+      _ServiceItem(
+          title: S.of(context).evcharging, iconPath: AppImages.shipping2),
+      _ServiceItem(
+          title: S.of(context).parachute, iconPath: AppImages.umbrella),
       _ServiceItem(title: S.of(context).freeWifi, iconPath: AppImages.wifi),
     ];
 

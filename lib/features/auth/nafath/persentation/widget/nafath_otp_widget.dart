@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
+import '../../../../../core/routing/routes.dart';
 import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_result_dialog.dart';
@@ -89,14 +90,11 @@ class NafathOtpScreen extends ConsumerWidget {
                       context: context,
                       builder: (_) => AppResultDialog(
                         message:
-                        S.of(context).youraccountisnowconnectedwithNafath,
-                        subMessage: S.of(context).help_support_title,
+                            S.of(context).youraccountisnowconnectedwithNafath,
+                        // subMessage: S.of(context).help_support_title,
                         mainButtonText: S.of(context).continu_e,
-                        onMainPressed: () => (){
-                          NavigationService.push(
-                            '/bankCardDataPage',
-                            context: context,
-                          );
+                        onMainPressed: () {
+                          NavigationService.push(RoutePaths.bankCardDataPage);
                         },
                       ),
                     );

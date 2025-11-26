@@ -281,7 +281,7 @@ class _SearchBarState extends State<_SearchBar> {
           enableShadow: true,
           shadowTextFieldColor: AppColor.contanearGreyColor.withOpacity(1.0),
           shadowOffset: const Offset(0, 1),
-        //  shadowBlur: 1,
+          //  shadowBlur: 1,
           shadowSpread: 1,
           prefixIcon: widget.leadingIcon != null
               ? Padding(

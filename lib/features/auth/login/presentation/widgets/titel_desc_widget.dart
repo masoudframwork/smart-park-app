@@ -35,7 +35,6 @@ class TitelDescWidget extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
@@ -44,7 +43,7 @@ class TitelDescWidget extends StatelessWidget {
               fontWeight: FontWeight.w300,
             ),
             children: [
-               TextSpan(text: S.of(context).you_can),
+              TextSpan(text: S.of(context).you_can),
               TextSpan(
                 text: S.of(context).create_anew_account,
                 style: descriptionStyle.copyWith(
@@ -56,7 +55,7 @@ class TitelDescWidget extends StatelessWidget {
                     NavigationService.go(RoutePaths.signUpPage);
                   },
               ),
-               TextSpan(text: S.of(context).easily),
+              TextSpan(text: S.of(context).easily),
             ],
           ),
         ),

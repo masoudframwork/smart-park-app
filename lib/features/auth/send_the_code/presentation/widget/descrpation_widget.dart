@@ -29,7 +29,7 @@ class DescrpationWidget extends StatelessWidget {
           appTextTheme: titleStyle,
         ),
         AppText(
-          text:S.of(context).an_otp_has_been_sent_to_the_number_ending,
+          text: S.of(context).an_otp_has_been_sent_to_the_number_ending,
           textAlign: TextAlign.center,
           appTextTheme: descriptionStyle,
         ),

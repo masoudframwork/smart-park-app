@@ -81,8 +81,7 @@ class SendTheCodePage extends ConsumerWidget {
                   },
                 ),
                 SizedBox(height: 32.h),
-
-              AppText(
+                AppText(
                   text: remainingSeconds > 0
                       ? '${S.of(context).anewcodewillbesentin} $timeStr ${S.of(context).secon}'
                       : S.of(context).youcanrequestanewcodenow,

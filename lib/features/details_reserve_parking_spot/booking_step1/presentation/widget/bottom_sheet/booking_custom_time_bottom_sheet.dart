@@ -147,7 +147,7 @@ class BookingCustomTimeBottomSheet extends ConsumerWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text(
-                    //المدة لا يمكن أن تتجاوز 24 ساعة
+                      //المدة لا يمكن أن تتجاوز 24 ساعة
                       '',
                     ),
                   ),
@@ -165,7 +165,7 @@ class BookingCustomTimeBottomSheet extends ConsumerWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text(
-                     // 'يرجى إدخال مدة أكبر من صفر.',
+                      // 'يرجى إدخال مدة أكبر من صفر.',
                       '',
                     ),
                   ),

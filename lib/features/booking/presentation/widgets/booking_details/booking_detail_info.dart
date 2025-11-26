@@ -67,9 +67,7 @@ class BookingDetailInfo extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: AppColor.greyContainerColor),
           ),
-          child: SvgPicture.asset(
-            AppImages.payments
-          ),
+          child: SvgPicture.asset(AppImages.payments),
         ),
         SizedBox(width: 8.w),
         AppText(
@@ -98,7 +96,6 @@ class BookingDetailInfo extends StatelessWidget {
   }) {
     return Row(
       children: [
-
         SvgPicture.asset(
           icon,
           color: AppColor.textColor,

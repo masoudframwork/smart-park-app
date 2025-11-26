@@ -61,14 +61,16 @@ class _ProfileBody extends StatelessWidget {
           _AdditionalInfoTile(
             title: S.of(context).profile_fines,
             hint: S.of(context).profile_soon,
-            icon: SvgPicture.asset(AppImages.userProfileTickets, width: 20, height: 20),
+            icon: SvgPicture.asset(AppImages.userProfileTickets,
+                width: 20, height: 20),
           ),
           const SizedBox(height: 12),
 
           _AdditionalInfoTile(
             title: S.of(context).wallet,
             hint: S.of(context).profile_soon,
-            icon: SvgPicture.asset(AppImages.userProfileWallet, width: 20, height: 20),
+            icon: SvgPicture.asset(AppImages.userProfileWallet,
+                width: 20, height: 20),
           ),
 
           const SizedBox(height: 24),
@@ -79,28 +81,38 @@ class _ProfileBody extends StatelessWidget {
 
           _StoredInfoTile(
             title: S.of(context).profile_vehicles,
-            icon: SvgPicture.asset(AppImages.userProfileCarLeft, width: 20, height: 20),
+            icon: SvgPicture.asset(AppImages.userProfileCarLeft,
+                width: 20, height: 20),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const PrePreservedVehicles()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => const PrePreservedVehicles()));
             },
           ),
           const SizedBox(height: 12),
 
           _StoredInfoTile(
             title: S.of(context).profile_paymentCards,
-            icon: SvgPicture.asset(AppImages.userProfileElectronicPayment, width: 20, height: 20),
+            icon: SvgPicture.asset(AppImages.userProfileElectronicPayment,
+                width: 20, height: 20),
             showStatusDot: true,
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const ElectronicPaymentCards()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => const ElectronicPaymentCards()));
             },
           ),
           const SizedBox(height: 48),
 
           _StoredInfoTile(
             title: S.of(context).profile_settings,
-            icon: SvgPicture.asset(AppImages.userProfileSettings, width: 20, height: 20),
+            icon: SvgPicture.asset(AppImages.userProfileSettings,
+                width: 20, height: 20),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const SettingsScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const SettingsScreen()));
             },
           ),
 
@@ -201,7 +213,6 @@ class _ProfileDetails extends StatelessWidget {
           const SizedBox(height: 12),
           const Divider(),
           const SizedBox(height: 12),
-
           _ProfileDetailItem(
             label: S.of(context).profile_date_of_birth,
             value: '1998/5/12',
@@ -209,7 +220,6 @@ class _ProfileDetails extends StatelessWidget {
           const SizedBox(height: 12),
           const Divider(),
           const SizedBox(height: 12),
-
           _ProfileDetailItem(
             label: S.of(context).profile_nationalId,
             value: 'ABCD1234',
@@ -337,7 +347,8 @@ class _AdditionalInfoTile extends StatelessWidget {
         children: [
           SizedBox(width: 20, height: 20, child: icon),
           const SizedBox(width: 8),
-          AppText(text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
+          AppText(
+              text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
           const Spacer(),
           AppText(text: hint, appTextTheme: AppTextTheme.bodySmallTextStyle()),
         ],
@@ -368,7 +379,8 @@ class _StoredInfoTile extends StatelessWidget {
           children: [
             SizedBox(width: 22, height: 22, child: icon),
             const SizedBox(width: 8),
-            AppText(text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
+            AppText(
+                text: title, appTextTheme: AppTextTheme.titleMediumTextStyle()),
             const Spacer(),
             if (showStatusDot)
               Container(

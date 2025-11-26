@@ -55,7 +55,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
                 height: 20,
               ),
             ),
-
             _navItem(
               index: 2,
               currentIndex: currentIndex,
@@ -67,7 +66,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
                 height: 20,
               ),
             ),
-
             _navItem(
               index: 3,
               currentIndex: currentIndex,
@@ -85,7 +83,6 @@ class CustomBottomNavigationBar extends ConsumerWidget {
     );
   }
 
-
   Widget _navItem({
     required int index,
     required int currentIndex,
@@ -99,19 +96,15 @@ class CustomBottomNavigationBar extends ConsumerWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeOut,
-
         width: isSelected ? 60 : 60,
         height: isSelected ? 30 : 35,
-
         margin: EdgeInsets.only(bottom: isSelected ? 6 : 0),
-
         decoration: BoxDecoration(
           color: isSelected ? AppColor.tabBarSelectedColor : Colors.transparent,
 
           /// <<<< Here is the REAL FIX (AutoCAD rounded shape)
-          borderRadius: BorderRadius.circular(18),   // not circle
+          borderRadius: BorderRadius.circular(18), // not circle
         ),
-
         child: Center(
           child: IconTheme(
             data: IconThemeData(
@@ -124,8 +117,4 @@ class CustomBottomNavigationBar extends ConsumerWidget {
       ),
     );
   }
-
-
-
-
 }

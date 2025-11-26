@@ -194,8 +194,6 @@ class ParkingCard extends StatelessWidget {
                           //     },
                           //   ),
                           // );
-
-
                         },
                         child: Container(
                           width: 32.w,

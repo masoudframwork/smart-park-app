@@ -127,10 +127,9 @@ class BookingConfirmationDialog extends StatelessWidget {
     );
   }
 
-
   Widget _buildMessage() {
     return Padding(
-      padding: EdgeInsets.only(left: 10.w,right: 40.w),
+      padding: EdgeInsets.only(left: 10.w, right: 40.w),
       child: AppText(
         text: message,
         textAlign: TextAlign.start,
@@ -211,10 +210,10 @@ class BookingConfirmationDialog extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
-        title: s.dialog_end_title,       // "هل تريد إنهاء الحجز؟"
-        message: s.dialog_end_message,   // explanation
+        title: s.dialog_end_title, // "هل تريد إنهاء الحجز؟"
+        message: s.dialog_end_message, // explanation
         confirmText: s.dialog_end_confirm, // "إنهاء الحجز" / "End Reservation"
-        cancelText: s.dialog_cancel,       // "عودة" / "Back"
+        cancelText: s.dialog_cancel, // "عودة" / "Back"
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.secondaryContainerColor,
         showWarningIcon: true,
@@ -251,9 +250,9 @@ class BookingConfirmationDialog extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) => BookingConfirmationDialog(
-        title: s.dialog_extend_title,        // "هل تريد تمديد الحجز؟"
-        message: s.dialog_extend_message,    // explanation
-        confirmText: s.dialog_extend,        // "تمديد الحجز"
+        title: s.dialog_extend_title, // "هل تريد تمديد الحجز؟"
+        message: s.dialog_extend_message, // explanation
+        confirmText: s.dialog_extend, // "تمديد الحجز"
         cancelText: s.dialog_cancel,
         onConfirm: onConfirm,
         confirmButtonColor: AppColor.primaryColor,

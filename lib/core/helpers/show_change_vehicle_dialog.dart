@@ -234,20 +234,20 @@ class _BlurBottomSheetRoute<T> extends PageRoute<T> {
 
   @override
   Widget buildPage(
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      ) {
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+  ) {
     return const SizedBox.shrink();
   }
 
   @override
   Widget buildTransitions(
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget childFromBuildPage,
-      ) {
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget childFromBuildPage,
+  ) {
     final overlayOpacity = CurvedAnimation(
       parent: animation,
       curve: Curves.easeOutCubic,
@@ -263,9 +263,11 @@ class _BlurBottomSheetRoute<T> extends PageRoute<T> {
     final sheetSlide = Tween<Offset>(
       begin: const Offset(0, 0.08),
       end: Offset.zero,
-    ).chain(
-      CurveTween(curve: Curves.easeOutCubic),
-    ).animate(animation);
+    )
+        .chain(
+          CurveTween(curve: Curves.easeOutCubic),
+        )
+        .animate(animation);
 
     return _BlurSheetScaffold(
       overlayOpacity: overlayOpacity,
@@ -322,7 +324,7 @@ class _BlurSheetScaffold extends StatelessWidget {
                   ),
                   child: Container(
                     color:
-                    AppColor.shadowOpticalColor.withOpacity(overlayAlpha),
+                        AppColor.shadowOpticalColor.withOpacity(overlayAlpha),
                   ),
                 );
               },
@@ -386,7 +388,7 @@ class _InjectedCloseHandler extends InheritedWidget {
 VoidCallback useBottomSheetCloser(BuildContext context) {
   final inherited = _InjectedCloseHandler.of(context);
   return inherited?.onRequestClose ??
-          () {
+      () {
         Navigator.of(context).pop();
       };
 }

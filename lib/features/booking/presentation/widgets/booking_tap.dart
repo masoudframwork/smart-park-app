@@ -165,6 +165,8 @@ class BookingTabBar extends StatelessWidget {
     required VoidCallback onTap,
     required bool isRTL,
   }) {
+    final double indicatorHorizontalPadding = 0.w;
+
     return GestureDetector(
       onTap: onTap,
       child: Column(
@@ -180,17 +182,18 @@ class BookingTabBar extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            height: 5.h,
+            height: 4.h,
             color: AppColor.textColor,
             child: isSelected
-                ? Align(
-                    alignment:
-                        isRTL ? Alignment.centerRight : Alignment.centerLeft,
-                    child: FractionallySizedBox(
-                      widthFactor: 0.9,
-                      child: Container(
-                        height: 3.h,
+                ? Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: indicatorHorizontalPadding,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
                         color: AppColor.primaryColor,
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
                     ),
                   )

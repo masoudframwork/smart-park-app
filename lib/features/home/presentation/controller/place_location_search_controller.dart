@@ -9,7 +9,7 @@ import 'voice_to_text_state.dart';
 
 final placeSearchControllerProvider = StateNotifierProvider.autoDispose<
     PlaceSearchController, AsyncValue<List<PlaceLocationModel>>>(
-      (ref) => PlaceSearchController(ref),
+  (ref) => PlaceSearchController(ref),
 );
 
 class PlaceSearchController

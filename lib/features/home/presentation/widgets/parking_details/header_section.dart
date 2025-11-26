@@ -146,10 +146,10 @@ class HeaderSection extends StatelessWidget {
 
   Widget _buildImageWithBadge() {
     final Color statusColor =
-    isAvailable ? AppColor.greenTextColor : AppColor.primaryColor;
+        isAvailable ? AppColor.greenTextColor : AppColor.primaryColor;
     final String statusText = isAvailable ? 'متاح الآن' : 'غير متاح';
     final IconData statusIcon =
-    isAvailable ? Icons.check_circle_outline : Icons.cancel;
+        isAvailable ? Icons.check_circle_outline : Icons.cancel;
 
     return SizedBox(
       height: 101.h,
@@ -197,6 +197,4 @@ class HeaderSection extends StatelessWidget {
       ),
     );
   }
-
-
 }

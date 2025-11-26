@@ -10,7 +10,7 @@ class BookingWidgets {
   BookingWidgets._();
 
   static Widget buildInfoRow({
-    required String icon,
+    String? icon,
     required String text,
     double iconSize = 18,
     Color? iconColor,
@@ -18,17 +18,12 @@ class BookingWidgets {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomImageWidget(
-          imageUrl: icon,
-          width: iconSize.w,
-          height: iconSize.w,
-          color: iconColor ?? AppColor.primaryColor,
-          isFlag: true,
-        ),
         SizedBox(width: 8.w),
         AppText(
           text: text,
-          appTextTheme: AppTextTheme.bodyMediumTextStyle(),
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w300,
+          ),
         ),
       ],
     );
@@ -44,34 +39,29 @@ class BookingWidgets {
     bool isRTL = Directionality.of(context) == TextDirection.rtl;
     return Row(
       children: [
-        CustomImageWidget(
-          imageUrl: AppImages.timeStop,
-          width: 18.w,
-          height: 18.w,
-          color: AppColor.primaryColor,
-          isFlag: true,
-        ),
         SizedBox(width: 8.w),
         AppText(
           text: startTime,
-          appTextTheme:
-              AppTextTheme.font18SimiBoldBlack().copyWith(fontSize: fontSize),
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w300,
+          ),
         ),
-        SizedBox(width: 12.w),
+        SizedBox(width: 20),
         CustomImageWidget(
           imageUrl: isRTL
               ? AppImages.arrowIcon // Arabic → arrow points left
               : AppImages.arrowIcon2,
           width: iconSize.w,
           height: iconSize.w,
-          color: AppColor.primaryColor,
+          color: AppColor.textColor,
           isFlag: true,
         ),
-        SizedBox(width: 12.w),
+        SizedBox(width: 20),
         AppText(
           text: endTime,
-          appTextTheme:
-              AppTextTheme.font18SimiBoldBlack().copyWith(fontSize: fontSize),
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w300,
+          ),
         ),
       ],
     );
@@ -81,27 +71,23 @@ class BookingWidgets {
     required String? paymentStatus,
     required double? price,
   }) {
+    final String statusText = paymentStatus ?? '';
+    final String priceText = price != null ? price.toStringAsFixed(0) : '';
+
     return Row(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(width: 1, color: AppColor.greyContainerColor),
-          ),
-          child: Image.asset(
-            AppImages.visaImage,
-            width: 22.w,
-            height: 20.h,
-          ),
-        ),
-        SizedBox(width: 8.w),
         AppText(
-          text: paymentStatus ?? '',
-          appTextTheme: AppTextTheme.bodyMediumTextStyle(),
+          text: statusText,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w300,
+          ),
         ),
         SizedBox(width: 4.w),
         AppText(
-          text: '${price?.toStringAsFixed(0)}',
-          appTextTheme: AppTextTheme.font18SimiBoldBlack(),
+          text: priceText,
+          appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         SizedBox(width: 4.w),
         CustomImageWidget(
@@ -129,7 +115,7 @@ class BookingWidgets {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(6.r),
         ),
         child: AppText(
           text: text,
@@ -177,10 +163,11 @@ class BookingWidgets {
   }
 
   /// Card container with shadow
+
   static BoxDecoration cardDecoration() {
     return BoxDecoration(
       color: AppColor.whiteColor,
-      borderRadius: BorderRadius.circular(4.r),
+      borderRadius: BorderRadius.circular(10.r),
       boxShadow: [
         BoxShadow(
           color: AppColor.shadowDragColor,

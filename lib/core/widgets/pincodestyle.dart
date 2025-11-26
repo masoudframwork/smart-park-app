@@ -3,22 +3,24 @@ import 'package:flutter/cupertino.dart' show CupertinoTextField;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 typedef OnDone = void Function(String text);
 typedef PinBoxDecoration = BoxDecoration Function(
-    Color borderColor,
-    Color pinBoxColor, {
-    double borderWidth,
-    double radius,
-    });
+  Color borderColor,
+  Color pinBoxColor, {
+  double borderWidth,
+  double radius,
+});
+
 /// class to provide some standard PinBoxDecoration such as standard box or underlined
 class ProvidedPinBoxDecoration {
   /// Default BoxDecoration
   static PinBoxDecoration defaultPinBoxDecoration = (
-      Color borderColor,
-      Color pinBoxColor, {
-        double borderWidth = 1.0,
-        double radius = 50.0,
-      }) {
+    Color borderColor,
+    Color pinBoxColor, {
+    double borderWidth = 1.0,
+    double radius = 50.0,
+  }) {
     return BoxDecoration(
       border: Border.all(
         color: borderColor,
@@ -26,17 +28,16 @@ class ProvidedPinBoxDecoration {
       ),
       color: pinBoxColor,
       borderRadius: BorderRadius.circular(15),
-
     );
   };
 
   /// Underlined BoxDecoration
   static PinBoxDecoration underlinedPinBoxDecoration = (
-      Color borderColor,
-      Color pinBoxColor, {
-        double borderWidth = 2.0,
-        double radius = 0,
-      }) {
+    Color borderColor,
+    Color pinBoxColor, {
+    double borderWidth = 2.0,
+    double radius = 0,
+  }) {
     return BoxDecoration(
       border: Border(
         bottom: BorderSide(
@@ -48,11 +49,11 @@ class ProvidedPinBoxDecoration {
   };
 
   static PinBoxDecoration roundedPinBoxDecoration = (
-      Color borderColor,
-      Color pinBoxColor, {
-        double borderWidth = 5.0,
-        double radius = 20,
-      }) {
+    Color borderColor,
+    Color pinBoxColor, {
+    double borderWidth = 5.0,
+    double radius = 20,
+  }) {
     return BoxDecoration(
       border: Border.all(
         color: borderColor,
@@ -71,8 +72,8 @@ class ProvidedPinBoxTextAnimation {
     return RotationTransition(
         child: DefaultTextStyleTransition(
           style: TextStyleTween(
-              begin: TextStyle(color: Colors.pink),
-              end: TextStyle(color: Colors.blue))
+                  begin: TextStyle(color: Colors.pink),
+                  end: TextStyle(color: Colors.blue))
               .animate(animation),
           child: ScaleTransition(
             child: child,
@@ -147,30 +148,30 @@ class PinCodeTextField extends StatefulWidget {
     this.maxLength = 4,
     this.controller,
     this.hideCharacter = false,
-    this.highlight= false,
-    this.highlightAnimation= false,
-    this.highlightAnimationBeginColor= Colors.white,
-    this.highlightAnimationEndColor= Colors.blue,
+    this.highlight = false,
+    this.highlightAnimation = false,
+    this.highlightAnimationBeginColor = Colors.white,
+    this.highlightAnimationEndColor = Colors.blue,
     this.highlightAnimationDuration,
-    this.highlightColor= Colors.blue,
+    this.highlightColor = Colors.blue,
     this.pinBoxDecoration,
-    this.maskCharacter= "\u25CF",
-    this.pinBoxWidth= 70.0,
-    this.pinBoxHeight= 70.0,
+    this.maskCharacter = "\u25CF",
+    this.pinBoxWidth = 70.0,
+    this.pinBoxHeight = 70.0,
     this.pinTextStyle,
     this.onDone,
-    this.defaultBorderColor=Colors.blue,
-    this.hasTextBorderColor= Colors.blue,
+    this.defaultBorderColor = Colors.blue,
+    this.hasTextBorderColor = Colors.blue,
     this.pinTextAnimatedSwitcherTransition,
-    this.pinTextAnimatedSwitcherDuration= const Duration(),
-    this.hasError= false,
-    this.errorBorderColor=Colors.red,
+    this.pinTextAnimatedSwitcherDuration = const Duration(),
+    this.hasError = false,
+    this.errorBorderColor = Colors.red,
     this.onTextChanged,
-    this.autofocus= false,
+    this.autofocus = false,
     this.focusNode,
-    this.wrapAlignment= WrapAlignment.start,
-    this.textDirection= TextDirection.ltr,
-    this.keyboardType=TextInputType.number,
+    this.wrapAlignment = WrapAlignment.start,
+    this.textDirection = TextDirection.ltr,
+    this.keyboardType = TextInputType.number,
     this.pinBoxOuterPadding = const EdgeInsets.symmetric(horizontal: 4.0),
     this.pinBoxColor = Colors.white,
     this.highlightPinBoxColor,
@@ -238,7 +239,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
       var highlightAnimationController = AnimationController(
           vsync: this,
           duration:
-          widget.highlightAnimationDuration ?? Duration(milliseconds: 500));
+              widget.highlightAnimationDuration ?? Duration(milliseconds: 500));
       var animationController = highlightAnimationController;
 
       highlightAnimationController.addStatusListener((status) {
@@ -249,8 +250,8 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
         }
       });
       _highlightAnimationColorTween = ColorTween(
-          begin: widget.highlightAnimationBeginColor,
-          end: widget.highlightAnimationEndColor)
+              begin: widget.highlightAnimationBeginColor,
+              end: widget.highlightAnimationEndColor)
           .animate(animationController);
       highlightAnimationController.forward();
       _highlightAnimationController = highlightAnimationController;
@@ -313,6 +314,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     }
     return width;
   }
+
   void _onTextChanged(String text) {
     final onTextChanged = widget.onTextChanged;
     if (onTextChanged != null) {
@@ -331,8 +333,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
 
       for (int i = 0; i < widget.maxLength; i++) {
         if (i < text.length) {
-          strList[i] =
-          widget.hideCharacter ? widget.maskCharacter : text[i];
+          strList[i] = widget.hideCharacter ? widget.maskCharacter : text[i];
         } else {
           strList[i] = "";
         }
@@ -379,19 +380,19 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
     return widget.hideDefaultKeyboard
         ? _pinBoxRow(context)
         : GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: () {
-        if (hasFocus) {
-          FocusScope.of(context).requestFocus(FocusNode());
-          Future.delayed(Duration(milliseconds: 100), () {
-            FocusScope.of(context).requestFocus(focusNode);
-          });
-        } else {
-          FocusScope.of(context).requestFocus(focusNode);
-        }
-      },
-      child: _pinBoxRow(context),
-    );
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              if (hasFocus) {
+                FocusScope.of(context).requestFocus(FocusNode());
+                Future.delayed(Duration(milliseconds: 100), () {
+                  FocusScope.of(context).requestFocus(focusNode);
+                });
+              } else {
+                FocusScope.of(context).requestFocus(focusNode);
+              }
+            },
+            child: _pinBoxRow(context),
+          );
   }
 
   Widget _fakeTextInput() {
@@ -416,7 +417,6 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
         style: TextStyle(
           height: 0.1, color: Colors.transparent,
 //          color: Colors.transparent,
-
         ),
         decoration: InputDecoration(
           focusedErrorBorder: transparentBorder,
@@ -533,11 +533,11 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
                 } else {
                   boxDecoration =
                       ProvidedPinBoxDecoration.defaultPinBoxDecoration(
-                        _highlightAnimationColorTween?.value,
-                        pinBoxColor,
-                        borderWidth: widget.pinBoxBorderWidth,
-                        radius: widget.pinBoxRadius,
-                      );
+                    _highlightAnimationColorTween?.value,
+                    pinBoxColor,
+                    borderWidth: widget.pinBoxBorderWidth,
+                    radius: widget.pinBoxRadius,
+                  );
                 }
 
                 return Container(
@@ -606,12 +606,12 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
             child: Center(child: _animatedTextBox(strList[i], i)),
             decoration: widget.hasUnderline
                 ? BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: borderColor,
-                ),
-              ),
-            )
+                    border: Border(
+                      bottom: BorderSide(
+                        color: borderColor,
+                      ),
+                    ),
+                  )
                 : null,
           ),
         ),
@@ -633,7 +633,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField>
       return AnimatedSwitcher(
         duration: widget.pinTextAnimatedSwitcherDuration,
         transitionBuilder: widget.pinTextAnimatedSwitcherTransition ??
-                (Widget child, Animation<double> animation) {
+            (Widget child, Animation<double> animation) {
               return child;
             },
         child: Text(

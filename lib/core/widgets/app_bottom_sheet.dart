@@ -41,12 +41,11 @@ class AppBottomSheet extends StatelessWidget {
         top: 16.h,
         //bottom: 16.h + 16.h,
         bottom: 15.h + 8.h,
-
       ),
       decoration: BoxDecoration(
         color: AppColor.settingsBackgroundColor,
 
-      //  color: AppColor.whiteColor,
+        //  color: AppColor.whiteColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16.r),
           topRight: Radius.circular(16.r),

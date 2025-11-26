@@ -10,12 +10,15 @@ import 'package:smart/features/home/presentation/home_page.dart';
 import 'package:smart/generated/l10n.dart';
 import '../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../core/widgets/details_reserve_parking_widget/app_bar_widget.dart';
+import '../domain/models/booking_model.dart';
+
 class BookingSummaryScreen extends StatelessWidget {
   const BookingSummaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isRTL = Directionality.of(context) == TextDirection.rtl;
+    final now = DateTime.now();
 
     return SafeArea(
       child: Directionality(
@@ -34,14 +37,12 @@ class BookingSummaryScreen extends StatelessWidget {
             padding: EdgeInsets.all(16.w),
             child: Column(
               children: [
-
                 ArrowWidgetCustomBar(
                   onTap: () {
                     Navigator.of(context).pop();
                   },
                   title: S.of(context).terms_title,
                 ),
-
                 SizedBox(height: 16.h),
                 Expanded(
                   child: SingleChildScrollView(
@@ -98,7 +99,6 @@ class BookingSummaryScreen extends StatelessWidget {
       ),
     );
   }
-
 
   // ---------------------------------------------------------------------------
   // BOOKING CARD

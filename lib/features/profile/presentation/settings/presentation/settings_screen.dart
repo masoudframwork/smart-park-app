@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               ArrowWidgetCustomBar(
@@ -39,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
                 },
                 title: S.of(context).settings_title,
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 30.h),
               const _SettingsList(),
             ],
           ),
@@ -49,7 +49,6 @@ class SettingsScreen extends StatelessWidget {
   }
 }
 
-
 class _SettingsList extends StatelessWidget {
   const _SettingsList();
 
@@ -57,11 +56,11 @@ class _SettingsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           spacing: 12.h,
           children: [
             SettingsCard(
+              //الشروط والاحكام
               title: S.of(context).settings_terms,
               onTap: () {
                 Navigator.push(
@@ -71,15 +70,15 @@ class _SettingsList extends StatelessWidget {
               },
             ),
             SettingsCard(
-              title:  S.of(context).settings_privacy,
+              title: S.of(context).settings_privacy,
               onTap: () {},
             ),
             SettingsCard(
-              title:  S.of(context).settings_faq,
+              title: S.of(context).settings_faq,
               onTap: () {},
             ),
             SettingsCard(
-              title:  S.of(context).settings_support,
+              title: S.of(context).settings_support,
               onTap: () {
                 Navigator.push(
                   context,
@@ -88,12 +87,12 @@ class _SettingsList extends StatelessWidget {
               },
             ),
             SettingsCard(
-              title:  S.of(context).settings_dark_mode,
+              title: S.of(context).settings_dark_mode,
               trailing: const _NightModeTrailing(),
               onTap: () {},
             ),
             SettingsCard(
-              title:  S.of(context).settings_language,
+              title: S.of(context).settings_language,
               trailing: const _LanguageTrailing(),
               onTap: () {},
             ),
@@ -196,7 +195,6 @@ class _NightModeTrailing extends StatelessWidget {
     );
   }
 }
-
 
 class _LanguageTrailing extends StatelessWidget {
   const _LanguageTrailing();

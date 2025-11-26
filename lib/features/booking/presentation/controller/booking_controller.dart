@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart/features/booking/domain/models/booking_state.dart';
-import 'package:smart/generated/l10n.dart';
 import '../../domain/models/booking_model.dart';
 
 final reservationController =
-StateNotifierProvider<BookingController, BookingState>((ref) {
+    StateNotifierProvider<BookingController, BookingState>((ref) {
   return BookingController(ref);
 });
 
@@ -46,13 +45,15 @@ class BookingController extends StateNotifier<BookingState> {
           endTime: isArabic ? "4:00 م" : "4:00 PM",
           date: isArabic ? "أبريل 2023" : "April 2023",
           duration: "05:06:30",
+          vehicleInfo: 'نيسان باثفايندر 2023 / أسود',
           price: 30.0,
           status: trStatus("نشط", "Active"),
           startDateTime: now.subtract(const Duration(hours: 1)),
           endDateTime:
-          now.add(const Duration(hours: 4, minutes: 6, seconds: 30)),
+              now.add(const Duration(hours: 4, minutes: 6, seconds: 30)),
         ),
         BookingModel(
+          vehicleInfo: 'تويوتا كورولا 2024 / أحمر',
           id: '2',
           locationName: trLocation("المنطقة 025", "Zone 025"),
           address: trAddress("طريق خريص، الرياض، المملكة العربية السعودية",
@@ -74,6 +75,7 @@ class BookingController extends StateNotifier<BookingState> {
           startTime: isArabic ? "8:00 ص" : "8:00 AM",
           endTime: isArabic ? "4:00 م" : "4:00 PM",
           date: isArabic ? "أبريل 2023" : "April 2023",
+          vehicleInfo: 'نيسان باثفايندر 2023 / أسود',
           duration: "08:00:00",
           status: trStatus("مكتمل", "Completed"),
           startDateTime: now.subtract(const Duration(days: 2)),
@@ -89,6 +91,7 @@ class BookingController extends StateNotifier<BookingState> {
           startTime: isArabic ? "8:00 ص" : "8:00 AM",
           endTime: isArabic ? "4:00 م" : "4:00 PM",
           date: isArabic ? "يونيو 2024" : "June 2024",
+          vehicleInfo: 'تويوتا كورولا 2024 / أحمر',
           duration: "08:00:00",
           status: trStatus("مكتمل", "Completed"),
           startDateTime: now.subtract(const Duration(days: 5)),
@@ -106,7 +109,7 @@ class BookingController extends StateNotifier<BookingState> {
       state = state.copyWith(
         isLoading: false,
         errorMessage:
-        isArabic ? "فشل في تحميل الحجوزات" : "Failed to load reservations",
+            isArabic ? "فشل في تحميل الحجوزات" : "Failed to load reservations",
       );
     }
   }
@@ -142,7 +145,7 @@ class BookingController extends StateNotifier<BookingState> {
       state = state.copyWith(
         isLoading: false,
         errorMessage:
-        isArabic ? "فشل في إلغاء الحجز" : "Failed to cancel reservation",
+            isArabic ? "فشل في إلغاء الحجز" : "Failed to cancel reservation",
       );
     }
   }
@@ -158,7 +161,7 @@ class BookingController extends StateNotifier<BookingState> {
       state = state.copyWith(
         isLoading: false,
         errorMessage:
-        isArabic ? "فشل في تمديد الحجز" : "Failed to extend reservation",
+            isArabic ? "فشل في تمديد الحجز" : "Failed to extend reservation",
       );
     }
   }
@@ -174,7 +177,7 @@ class BookingController extends StateNotifier<BookingState> {
       state = state.copyWith(
         isLoading: false,
         errorMessage:
-        isArabic ? "فشل في إعادة الحجز" : "Failed to rebook reservation",
+            isArabic ? "فشل في إعادة الحجز" : "Failed to rebook reservation",
       );
     }
   }
