@@ -185,38 +185,35 @@ class _SearchResultTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       behavior: HitTestBehavior.opaque,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              AppImages.locationSearchIcon,
-              width: 70.w,
-              height: 70.h,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            AppImages.locationSearchIcon,
+            width: 70.w,
+            height: 70.h,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppText(
+                  text: title,
+                  appTextTheme: AppTextTheme.titleMediumTextStyle(),
+                ),
+                if (showSubtitle) ...[
+                  SizedBox(height: 4.h),
                   AppText(
-                    text: title,
-                    appTextTheme: AppTextTheme.titleMediumTextStyle(),
-                  ),
-                  if (showSubtitle) ...[
-                    SizedBox(height: 4.h),
-                    AppText(
-                      text: subtitle,
-                      appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
-                        fontSize: 12,
-                      ),
+                    text: subtitle,
+                    appTextTheme: AppTextTheme.titleMediumTextStyle().copyWith(
+                      fontSize: 12,
                     ),
-                  ],
+                  ),
                 ],
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
