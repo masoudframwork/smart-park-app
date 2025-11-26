@@ -52,67 +52,65 @@ class GreenParkingDetails extends ConsumerWidget {
                 /// TEXT COLUMN
                 Container(
                   color: Colors.transparent,
-                  child: Expanded(
-                    child: Column(
-                      crossAxisAlignment: isRTL
-                          ? CrossAxisAlignment.start
-                          : CrossAxisAlignment.start,
-                      children: [
-                        /// Parking Area Name
-                        Text(
-                          S.of(context).zone013,
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
+                  child: Column(
+                    crossAxisAlignment: isRTL
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.start,
+                    children: [
+                      /// Parking Area Name
+                      Text(
+                        S.of(context).zone013,
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
+                      ),
 
-                        SizedBox(height: 6.h),
+                      SizedBox(height: 6.h),
 
-                        /// Location
-                        Text(
-                          S.of(context).khuraisRoadRiyadhSaudiArabia,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.white,
-                          ),
+                      /// Location
+                      Text(
+                        S.of(context).khuraisRoadRiyadhSaudiArabia,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.white,
                         ),
+                      ),
 
-                        SizedBox(height: 6.h),
+                      SizedBox(height: 6.h),
 
-                        /// Time range (translated + RTL/LTR switches arrow)
-                        Text(
-                          S.of(context).green_parking_time_range(
-                                S.of(context).booking_time_start_example,
-                                S.of(context).booking_time_end_example,
-                              ),
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      /// Time range (translated + RTL/LTR switches arrow)
+                      Text(
+                        S.of(context).green_parking_time_range(
+                              S.of(context).booking_time_start_example,
+                              S.of(context).booking_time_end_example,
+                            ),
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
                         ),
+                      ),
 
-                        SizedBox(height: 6.h),
+                      SizedBox(height: 6.h),
 
-                        /// Vehicle info
-                        Text(
-                          S.of(context).green_parking_vehicle_info(
-                                parkingArea.name,
-                                parkingArea.availableSpots.toString(),
-                              ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 12.sp,
-                            color: Colors.white,
-                          ),
+                      /// Vehicle info
+                      Text(
+                        S.of(context).green_parking_vehicle_info(
+                              parkingArea.name,
+                              parkingArea.availableSpots.toString(),
+                            ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
 
