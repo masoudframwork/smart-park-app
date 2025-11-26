@@ -18,12 +18,10 @@ import 'booking_detail_timer.dart';
 
 class BookingDetailView extends ConsumerWidget {
   const BookingDetailView({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bookingState = ref.watch(reservationController);
     final BookingModel? reservation = bookingState.selectedReservation;
-
     if (reservation == null) {
       return Scaffold(
         backgroundColor: AppColor.lightBackgroundColor,
@@ -85,15 +83,13 @@ class BookingDetailView extends ConsumerWidget {
                                   .of(context)
                                   .thepositionhasbeenbookedsuccessfully,
                               appTextTheme:
-                              AppTextTheme.titleMSTextStyle().copyWith(
-                                  color: AppColor.whiteColor,
-
+                                  AppTextTheme.titleMSTextStyle().copyWith(
+                                color: AppColor.whiteColor,
                               ),
                             ),
                           ),
                         ],
                       )),
-
                   SizedBox(height: 20.h),
                   BookingDetailHeader(
                     startTime: reservation.startTime,
@@ -101,7 +97,6 @@ class BookingDetailView extends ConsumerWidget {
                     // date: reservation.date,
                     date: S.of(context).booking_detail_date_sample,
                   ),
-
                   SizedBox(height: 32.h),
                   BookingDetailTimer(
                     timerState: timerState,
@@ -111,13 +106,9 @@ class BookingDetailView extends ConsumerWidget {
                   BookingDetailInfo(reservation: reservation),
                   SizedBox(height: 50.h),
                   BookingDetailActions(
-                    onCancel: () =>
-                        _handleCancel(context, ref, reservation.id),
-                    onExtend: () =>
-                        _handleExtend(context, ref, reservation.id),
-
+                    onCancel: () => _handleCancel(context, ref, reservation.id),
+                    onExtend: () => _handleExtend(context, ref, reservation.id),
                   ),
-
                 ],
               ),
             ),

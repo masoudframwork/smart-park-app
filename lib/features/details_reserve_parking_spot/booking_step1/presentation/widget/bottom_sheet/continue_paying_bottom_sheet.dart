@@ -76,7 +76,6 @@ class ContinuePayingMethodBottomSheet extends ConsumerWidget {
                       return;
                     }
 
-
                     final reservation = bookingState.reservations.last;
 
                     ref

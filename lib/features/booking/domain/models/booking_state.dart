@@ -111,7 +111,7 @@ class BookingState {
     return BookingState(
       reservations: reservations ?? this.reservations,
       selectedReservationId:
-      selectedReservationId ?? this.selectedReservationId,
+          selectedReservationId ?? this.selectedReservationId,
       isLoading: isLoading ?? this.isLoading,
       errorMessage: errorMessage,
       selectedTabIndex: selectedTabIndex ?? this.selectedTabIndex,

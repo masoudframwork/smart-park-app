@@ -4,6 +4,7 @@ import 'package:smart/core/widgets/app_text.dart';
 import '../../../../../../../core/theme/app_color.dart';
 import '../../../../../../../core/theme/app_text_theme.dart';
 import '../../../../../../../generated/l10n.dart';
+
 class DescrpationTitelWidget extends StatelessWidget {
   const DescrpationTitelWidget({super.key});
   @override

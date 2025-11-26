@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/models/duration_state.dart';
 
 final durationControllerProvider =
-StateNotifierProvider<DurationController, DurationState>(
-      (ref) => DurationController(),
+    StateNotifierProvider<DurationController, DurationState>(
+  (ref) => DurationController(),
 );
 
 class DurationController extends StateNotifier<DurationState> {

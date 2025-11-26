@@ -160,23 +160,23 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SvgImageWidget extends StatelessWidget {
   const SvgImageWidget(
-      this.src, {
-        super.key,
-        this.width,
-        this.height,
-        this.fit = BoxFit.contain,
-        this.alignment = Alignment.center,
-        this.colorFilter,
-        this.placeholder,
-        this.errorWidget,
-        this.headers,
-        this.fallbackAsset,
-        this.semanticsLabel,
-        this.color,
-        this.matchTextDirection = false,
-        this.assetBundle,
-        this.package,
-      });
+    this.src, {
+    super.key,
+    this.width,
+    this.height,
+    this.fit = BoxFit.contain,
+    this.alignment = Alignment.center,
+    this.colorFilter,
+    this.placeholder,
+    this.errorWidget,
+    this.headers,
+    this.fallbackAsset,
+    this.semanticsLabel,
+    this.color,
+    this.matchTextDirection = false,
+    this.assetBundle,
+    this.package,
+  });
 
   final String src;
   final double? width;
@@ -297,7 +297,8 @@ class SvgImageWidget extends StatelessWidget {
       height: height,
       fit: fit,
       alignment: alignment,
-      colorFilter: colorFilter ?? (color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null),
+      colorFilter: colorFilter ??
+          (color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null),
       semanticsLabel: semanticsLabel,
       matchTextDirection: matchTextDirection,
     );
@@ -310,32 +311,32 @@ class SvgImageWidget extends StatelessWidget {
       height: height,
       fit: fit,
       alignment: alignment,
-      colorFilter: colorFilter ?? (color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null),
+      colorFilter: colorFilter ??
+          (color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null),
       semanticsLabel: semanticsLabel,
       matchTextDirection: matchTextDirection,
     );
   }
 
   Widget _wrapSize(Widget child) => SizedBox(
-    width: width,
-    height: height,
-    child: Center(child: child),
-  );
+        width: width,
+        height: height,
+        child: Center(child: child),
+      );
 
   Widget _defaultPlaceholder(BuildContext context) => const SizedBox(
-    width: 20,
-    height: 20,
-    child: CircularProgressIndicator(strokeWidth: 2),
-  );
+        width: 20,
+        height: 20,
+        child: CircularProgressIndicator(strokeWidth: 2),
+      );
 
   Widget _defaultError(BuildContext context) =>
       Icon(Icons.broken_image_outlined, size: (width ?? height ?? 24) * 0.6);
 
   Future<String> _loadNetworkSvg(
-      String url,
-      Map<String, String>? headers,
-      ) async {
-
+    String url,
+    Map<String, String>? headers,
+  ) async {
     final bundle = NetworkAssetBundle(Uri.parse(url));
     final byteData = await bundle.load(url); // throws on error
     return String.fromCharCodes(byteData.buffer.asUint8List());

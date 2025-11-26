@@ -29,11 +29,11 @@ class PreviousBookingCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(top: 22.h, bottom: 16.h),
+        margin: EdgeInsets.only(top: 5.h, bottom: 16.h),
         decoration: BookingWidgets.cardDecoration(),
         child: Column(
           crossAxisAlignment:
-          isRTL ? CrossAxisAlignment.start : CrossAxisAlignment.start,
+              isRTL ? CrossAxisAlignment.start : CrossAxisAlignment.start,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
@@ -56,14 +56,17 @@ class PreviousBookingCard extends StatelessWidget {
       children: [
         AppText(
           text: reservation.locationName,
-          appTextTheme: AppTextTheme.titleLargeTextStyle()
-              .copyWith(fontWeight: FontWeight.w600),
+          appTextTheme: AppTextTheme.titleMSTextStyle().copyWith(
+            color: AppColor.textColor,
+          ),
         ),
 
         /// تاريخ الحجز ثابت في التصميم — يفضل استبداله لاحقاً بالقيمة الصحيحة
         AppText(
           text: isRTL ? 'السبت 30/10/2023' : 'Sat 30/10/2023',
-          appTextTheme: AppTextTheme.bodySmallTextStyle(),
+          appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
+            fontWeight: FontWeight.w300,
+          ),
         ),
       ],
     );
@@ -78,25 +81,21 @@ class PreviousBookingCard extends StatelessWidget {
           text: reservation.address,
         ),
         SizedBox(height: 8.h),
-
         BookingWidgets.buildTimeRow(
           context,
           startTime: reservation.startTime,
           endTime: reservation.endTime,
         ),
         SizedBox(height: 8.h),
-
         BookingWidgets.buildInfoRow(
           icon: AppImages.car,
           text: reservation.date,
         ),
         SizedBox(height: 8.h),
-
         BookingWidgets.buildPaymentRow(
           paymentStatus: reservation.paymentStatus,
           price: reservation.price,
         ),
-
         SizedBox(height: 16.h),
         _buildActionButtons(context, isRTL),
       ],
@@ -138,4 +137,3 @@ class PreviousBookingCard extends StatelessWidget {
     );
   }
 }
-

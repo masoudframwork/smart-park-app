@@ -53,7 +53,7 @@ class _TimerProgressPainter extends CustomPainter {
 
     /// 1️⃣ Background Circle (white stroke)
     Paint backgroundPaint = Paint()
-      ..color = Colors.white      // PURE WHITE
+      ..color = Colors.white // PURE WHITE
       ..strokeWidth = stroke
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
@@ -83,4 +83,3 @@ class _TimerProgressPainter extends CustomPainter {
     return oldDelegate.progress != progress;
   }
 }
-

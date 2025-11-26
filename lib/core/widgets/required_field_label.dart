@@ -26,9 +26,7 @@ class RequiredFieldLabel extends StatelessWidget {
     );
 
     final baseStyle = (appTextTheme ?? defaultBaseStyle).copyWith(
-      color: textColor ??
-          appTextTheme?.color ??
-          AppColor.whiteColor,
+      color: textColor ?? appTextTheme?.color ?? AppColor.whiteColor,
     );
 
     return RichText(

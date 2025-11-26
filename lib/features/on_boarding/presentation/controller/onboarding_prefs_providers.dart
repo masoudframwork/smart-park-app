@@ -7,7 +7,7 @@ final secureStorageHelperProvider = Provider<SecureStorageHelper>((ref) {
 });
 
 final hideTipsProvider = StateNotifierProvider<_HideTipsController, bool>(
-      (ref) => _HideTipsController(ref),
+  (ref) => _HideTipsController(ref),
 );
 
 class _HideTipsController extends StateNotifier<bool> {

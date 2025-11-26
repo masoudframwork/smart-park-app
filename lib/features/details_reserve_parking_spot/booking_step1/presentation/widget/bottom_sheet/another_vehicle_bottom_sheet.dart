@@ -235,10 +235,9 @@ class _AnotherVehicleBottomSheetState
                   showError: state.showErrors && (state.plateType == null),
                 ),
                 SizedBox(height: 16.h),
-                 _LabelWithStar(
+                _LabelWithStar(
                   //  text: 'رقم اللوحة'
-                   text: S.of(context).platenumber,
-
+                  text: S.of(context).platenumber,
                 ),
                 SizedBox(height: 8.h),
                 Row(
@@ -273,10 +272,10 @@ class _AnotherVehicleBottomSheetState
                   ],
                 ),
               ] else ...[
-                 _LabelWithStar(
-                   //  text: 'رقم اللوحة'
-                   text: S.of(context).platenumber,
-                 ),
+                _LabelWithStar(
+                  //  text: 'رقم اللوحة'
+                  text: S.of(context).platenumber,
+                ),
                 SizedBox(height: 8.h),
                 _PlateTextField(
                   hintText: '',
@@ -292,10 +291,10 @@ class _AnotherVehicleBottomSheetState
                 ),
               ],
               SizedBox(height: 16.h),
-               _LabelWithStar(
+              _LabelWithStar(
                 //   text: 'لون المركبة'
-               text: S.of(context).vehiclecolor,
-               ),
+                text: S.of(context).vehiclecolor,
+              ),
               SizedBox(height: 8.h),
               _VehicleColorDropdown(
                 value: state.vehicleColor,
@@ -348,7 +347,7 @@ class _AnotherVehicleBottomSheetState
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                   AppText(
-                   // text: 'احفظ المركبة للاستخدام لاحقاً',
+                    // text: 'احفظ المركبة للاستخدام لاحقاً',
                     text: S.of(context).savethevehicleforlateruse,
                     appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                       fontWeight: FontWeight.w300,
@@ -548,6 +547,7 @@ class _PlateTypeDropdown extends StatelessWidget {
     );
   }
 }
+
 class _VehicleTypeTabs extends StatelessWidget {
   final VehicleType selected;
   final ValueChanged<VehicleType> onChanged;
@@ -578,11 +578,11 @@ class _VehicleTypeTabs extends StatelessWidget {
               color: active ? AppColor.secondaryColor : AppColor.whiteColor,
               borderRadius: isLeft
                   ? BorderRadius.horizontal(
-                left: Radius.circular(0.r),
-              )
+                      left: Radius.circular(0.r),
+                    )
                   : BorderRadius.horizontal(
-                right: Radius.circular(0.r),
-              ),
+                      right: Radius.circular(0.r),
+                    ),
             ),
             child: AppText(
               text: text,

@@ -34,7 +34,6 @@ class BookingParkingDetailsPage extends StatelessWidget {
               leadingIcon: SvgPicture.asset(AppImages.iconsMaps),
             ),
             DayPriceCard(),
-
             SizedBox(height: 22.h),
             AdditionalServicesSection(),
             SizedBox(height: 22.h),

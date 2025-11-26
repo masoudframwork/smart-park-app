@@ -226,11 +226,11 @@ class _VehicleTypeTabs extends StatelessWidget {
               color: active ? AppColor.secondaryColor : AppColor.whiteColor,
               borderRadius: isLeft
                   ? BorderRadius.horizontal(
-                left: Radius.circular(0.r),
-              )
+                      left: Radius.circular(0.r),
+                    )
                   : BorderRadius.horizontal(
-                right: Radius.circular(0.r),
-              ),
+                      right: Radius.circular(0.r),
+                    ),
             ),
             child: AppText(
               text: text,

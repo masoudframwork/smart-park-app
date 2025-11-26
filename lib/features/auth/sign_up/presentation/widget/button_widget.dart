@@ -59,19 +59,19 @@ class TermsAndConditionsBottomSheet extends StatelessWidget {
         color: AppColor.settingsBackgroundColor,
         child: SizedBox(
           height: 0.3.sh,
-         // height: 0.55.sh,
+          // height: 0.55.sh,
           child: SingleChildScrollView(
             padding: EdgeInsets.only(bottom: 16),
             child: Column(
               children: [
                 AppText(
-                  text:
-                      S.of(context).parkingbookingandpaymentmanagementsystemimprovement,
+                  text: S
+                      .of(context)
+                      .parkingbookingandpaymentmanagementsystemimprovement,
                   appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                     color: AppColor.titelButtonColor,
                   ),
                 ),
-
               ],
             ),
           ),

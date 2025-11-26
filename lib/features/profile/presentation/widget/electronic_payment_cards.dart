@@ -43,7 +43,6 @@ class ElectronicPaymentCards extends StatelessWidget {
                 },
                 title: S.of(context).pre_saved_cards,
               ),
-
               SizedBox(height: 16.h),
               _VehiclesStepContent(),
             ],
@@ -69,7 +68,7 @@ class _VehiclesStepContent extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         TheVehicleTiles(
-          title:  S.of(context).new_card,
+          title: S.of(context).new_card,
           bgColor: AppColor.whiteColor,
           borderColor: AppColor.whiteColor,
           carIcon: const SizedBox.shrink(),
@@ -175,7 +174,6 @@ class SavedCardTile extends StatelessWidget {
                           SizedBox(height: 2.h),
                           AppText(
                             text: 'CVV',
-
                             appTextTheme: AppTextTheme.bodySmallTextStyle()
                                 .copyWith(color: AppColor.greyCard),
                           ),
@@ -225,7 +223,6 @@ class SavedCardTile extends StatelessWidget {
     );
   }
 }
-
 
 class TheVehicleTiles extends StatelessWidget {
   final bool isSelected;
@@ -331,6 +328,7 @@ class TheVehicleTiles extends StatelessWidget {
     );
   }
 }
+
 class NewCardBottomSheet extends ConsumerWidget {
   const NewCardBottomSheet({super.key});
 
@@ -353,7 +351,7 @@ class NewCardBottomSheet extends ConsumerWidget {
                 CustomButtonWidget(
                   type: ButtonType.elevated,
                   borderRadius: 10.r,
-                  text:S.of(context).saveCard,
+                  text: S.of(context).saveCard,
                   textStyle: AppTextTheme.mainButtonTextStyle(),
                   onPressed: () {
                     Navigator.of(context).pop();
@@ -437,7 +435,7 @@ class _NewCardForm extends ConsumerWidget {
         ),
         SizedBox(height: 12.h),
         RequiredFieldLabel(
-          text:  S.of(context).name,
+          text: S.of(context).name,
           textColor: AppColor.blackColor,
           appTextTheme: AppTextTheme.bodySmallTextStyle().copyWith(
             color: AppColor.blackNumberSmallColor,

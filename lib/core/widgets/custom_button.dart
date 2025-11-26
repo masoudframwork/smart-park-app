@@ -5,7 +5,14 @@ import '../theme/app_text_theme.dart';
 import 'app_text.dart';
 
 enum ButtonType { elevated, outlined }
-enum ButtonIconLayout { separate, inline, center, rightInline,inlineWithNumber }
+
+enum ButtonIconLayout {
+  separate,
+  inline,
+  center,
+  rightInline,
+  inlineWithNumber
+}
 
 class CustomButtonWidget extends StatelessWidget {
   final String text;
@@ -54,7 +61,6 @@ class CustomButtonWidget extends StatelessWidget {
     this.iconLayout = ButtonIconLayout.separate,
     this.textStyle,
     this.fontSize,
-
     this.trailingNumber,
     this.trailingNumberStyle,
     this.riyalIcon,
@@ -71,26 +77,29 @@ class CustomButtonWidget extends StatelessWidget {
       fontSize: fontSize?.sp,
     );
 
-    final TextStyle effectiveNumberStyle =
-    (trailingNumberStyle ?? effectiveTextStyle.copyWith(fontWeight: FontWeight.w700));
+    final TextStyle effectiveNumberStyle = (trailingNumberStyle ??
+        effectiveTextStyle.copyWith(fontWeight: FontWeight.w700));
 
     final BorderRadiusGeometry radius = BorderRadius.circular(borderRadius.r);
 
     Widget buildInlineContent() {
       if (icon == null) {
-        return Center(child: AppText(text: text, appTextTheme: effectiveTextStyle));
+        return Center(
+            child: AppText(text: text, appTextTheme: effectiveTextStyle));
       }
       final children = <Widget>[
         if (!iconOnRight)
           Padding(
             padding: EdgeInsetsDirectional.only(end: verticalPadding.w),
-            child: SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
+            child:
+                SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
           ),
         AppText(text: text, appTextTheme: effectiveTextStyle),
         if (iconOnRight)
           Padding(
             padding: EdgeInsetsDirectional.only(start: verticalPadding.w),
-            child: SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
+            child:
+                SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
           ),
       ];
       return Center(
@@ -114,16 +123,19 @@ class CustomButtonWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (riyalIcon != null) ...[
-                      SizedBox(height: 20.w, child: FittedBox(child: riyalIcon)),
+                      SizedBox(
+                          height: 20.w, child: FittedBox(child: riyalIcon)),
                       SizedBox(width: 4.w),
                     ],
-                    SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
+                    SizedBox(
+                        height: 24.w, width: 24.w, child: Center(child: icon)),
                   ],
                 ),
                 SizedBox(width: centerGap.w),
               ],
               if (trailingNumber != null) ...[
-                AppText(text: trailingNumber!, appTextTheme: effectiveNumberStyle),
+                AppText(
+                    text: trailingNumber!, appTextTheme: effectiveNumberStyle),
                 SizedBox(width: centerGap.w),
               ],
               AppText(text: text, appTextTheme: effectiveTextStyle),
@@ -135,7 +147,8 @@ class CustomButtonWidget extends StatelessWidget {
 
     Widget buildRightInlineContent() {
       if (icon == null) {
-        return Center(child: AppText(text: text, appTextTheme: effectiveTextStyle));
+        return Center(
+            child: AppText(text: text, appTextTheme: effectiveTextStyle));
       }
       return Center(
         child: Row(
@@ -158,11 +171,13 @@ class CustomButtonWidget extends StatelessWidget {
             Positioned(
               right: iconOnRight ? verticalPadding.w : null,
               left: iconOnRight ? null : verticalPadding.w,
-              child: SizedBox(height: 24.w, width: 24.w, child: Center(child: icon)),
+              child: SizedBox(
+                  height: 24.w, width: 24.w, child: Center(child: icon)),
             ),
         ],
       );
     }
+
     Widget buildInlineWithNumberContent() {
       return Center(
         child: Directionality(
@@ -180,7 +195,8 @@ class CustomButtonWidget extends StatelessWidget {
                 SizedBox(width: 4.w),
               ],
               if (trailingNumber != null) ...[
-                AppText(text: trailingNumber!, appTextTheme: effectiveNumberStyle),
+                AppText(
+                    text: trailingNumber!, appTextTheme: effectiveNumberStyle),
                 SizedBox(width: centerGap.w),
               ],
               AppText(text: text, appTextTheme: effectiveTextStyle),
@@ -214,17 +230,17 @@ class CustomButtonWidget extends StatelessWidget {
 
     final ButtonStyle style = type == ButtonType.outlined
         ? OutlinedButton.styleFrom(
-      side: BorderSide(color: borderColor ?? AppColor.primaryColor, width: 2),
-      shape: RoundedRectangleBorder(borderRadius: radius),
-      padding: EdgeInsets.zero,
-
-    )
+            side: BorderSide(
+                color: borderColor ?? AppColor.primaryColor, width: 2),
+            shape: RoundedRectangleBorder(borderRadius: radius),
+            padding: EdgeInsets.zero,
+          )
         : ElevatedButton.styleFrom(
-      backgroundColor: backgroundColor ?? AppColor.primaryColor,
-      shape: RoundedRectangleBorder(borderRadius: radius),
-      padding: EdgeInsets.zero,
-      elevation: 0,
-    );
+            backgroundColor: backgroundColor ?? AppColor.primaryColor,
+            shape: RoundedRectangleBorder(borderRadius: radius),
+            padding: EdgeInsets.zero,
+            elevation: 0,
+          );
 
     return Padding(
       padding: outerPadding ?? EdgeInsets.zero,

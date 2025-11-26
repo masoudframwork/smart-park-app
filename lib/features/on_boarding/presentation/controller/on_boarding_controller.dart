@@ -85,7 +85,7 @@ import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 
 final onboardingControllerProvider =
-NotifierProvider<OnboardingController, int>(OnboardingController.new);
+    NotifierProvider<OnboardingController, int>(OnboardingController.new);
 
 class OnboardingController extends Notifier<int> {
   late final PageController pageController;

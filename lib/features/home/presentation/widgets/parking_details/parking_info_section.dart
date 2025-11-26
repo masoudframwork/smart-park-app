@@ -18,21 +18,17 @@ class ParkingInfoSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            AppText(
-              text: parkingData.title,
-              appTextTheme: AppTextTheme.titleLargeTextStyle().copyWith(
-                fontSize: 24.sp
-              ),
-            ),
-
-            const Spacer(),
-            _buildIconsButton(AppImages.shipping),
-            const SizedBox(width: 10),
-            _buildIconsButton(AppImages.charging),
-            ]
-        ),
+        Row(children: [
+          AppText(
+            text: parkingData.title,
+            appTextTheme:
+                AppTextTheme.titleLargeTextStyle().copyWith(fontSize: 24.sp),
+          ),
+          const Spacer(),
+          _buildIconsButton(AppImages.shipping),
+          const SizedBox(width: 10),
+          _buildIconsButton(AppImages.charging),
+        ]),
         Row(
           children: [
             AppText(
@@ -52,12 +48,12 @@ class ParkingInfoSection extends StatelessWidget {
                 )),
           ],
         ),
-         SizedBox(height: 8.h),
+        SizedBox(height: 8.h),
         InfoRow(
           image: AppImages.locationDesc,
           text: parkingData.description,
         ),
-         SizedBox(height: 8.h),
+        SizedBox(height: 8.h),
         InfoRow(
           image: AppImages.avParkings,
           text:

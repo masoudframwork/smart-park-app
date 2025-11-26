@@ -34,7 +34,8 @@ class AppImages {
 
   static const String timerClock = 'assets/images/svgs/clock.svg';
   static const String location = 'assets/images/svgs/location.svg';
-  static const String locationSearchIcon = 'assets/images/svgs/location_search_icon.svg';
+  static const String locationSearchIcon =
+      'assets/images/svgs/location_search_icon.svg';
   static const String searchIcon = 'assets/images/svgs/search_icon.svg';
 
   static const String bookingTab =

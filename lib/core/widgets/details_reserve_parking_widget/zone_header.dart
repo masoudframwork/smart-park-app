@@ -6,8 +6,6 @@ import '../../../../../core/theme/app_color.dart';
 import '../../../../../core/theme/app_text_theme.dart';
 import '../../../../../core/widgets/app_text.dart';
 
-
-
 class ZoneHeader extends StatelessWidget {
   final String zoneName;
   final String capacityText;
@@ -60,7 +58,6 @@ class ZoneHeader extends StatelessWidget {
             ),
           ],
         ),
-
       ],
     );
   }

@@ -74,9 +74,9 @@ class ParkingLocation {
       totalSpots: map['totalSpots'],
       imageUrl: map['imageUrl'],
       rating: map['rating']?.toDouble(),
-      code:  map['code']?.toDouble(),
+      code: map['code']?.toDouble(),
       address: map['address']?.toDouble(),
-      carInfo:  map['carInfo']?.toDouble(),
+      carInfo: map['carInfo']?.toDouble(),
       startTime: map['startTime']?.toDouble(),
       endTime: map['endTime']?.toDouble(),
     );

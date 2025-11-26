@@ -49,8 +49,7 @@ class ZoneHeader extends StatelessWidget {
       fontWeight: FontWeight.w300,
     );
 
-    final defaultDescriptionStyle =
-    AppTextTheme.bodySmallTextStyle().copyWith(
+    final defaultDescriptionStyle = AppTextTheme.bodySmallTextStyle().copyWith(
       color: AppColor.blackNumberSmallColor,
       fontWeight: FontWeight.w400,
     );
@@ -84,8 +83,7 @@ class ZoneHeader extends StatelessWidget {
                     ),
                     child: AppText(
                       text: capacityText!,
-                      appTextTheme:
-                      AppTextTheme.bodyXSmallTextStyle().copyWith(
+                      appTextTheme: AppTextTheme.bodyXSmallTextStyle().copyWith(
                         color: AppColor.whiteColor,
                         fontWeight: FontWeight.w300,
                       ),
@@ -93,7 +91,6 @@ class ZoneHeader extends StatelessWidget {
                   ),
               ],
             ),
-
           if (leadingIcon != null || locationText != null)
             Row(
               children: [
@@ -104,19 +101,16 @@ class ZoneHeader extends StatelessWidget {
                   Flexible(
                     child: AppText(
                       text: locationText!,
-                      appTextTheme:
-                      (locationTextStyle ?? defaultLocationStyle),
+                      appTextTheme: (locationTextStyle ?? defaultLocationStyle),
                     ),
                   ),
               ],
             ),
-
           if (description != null && description!.isNotEmpty) ...[
             SizedBox(height: 12.h),
             AppText(
               text: description!,
-              appTextTheme:
-              (descriptionTextStyle ?? defaultDescriptionStyle),
+              appTextTheme: (descriptionTextStyle ?? defaultDescriptionStyle),
             ),
           ],
         ],

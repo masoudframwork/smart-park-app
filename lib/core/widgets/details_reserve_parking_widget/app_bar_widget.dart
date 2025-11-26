@@ -71,7 +71,6 @@ class CloseButtonCircle extends StatelessWidget {
   }
 }
 
-
 class CircleImageButton extends StatelessWidget {
   final VoidCallback? onTap;
   final double size;

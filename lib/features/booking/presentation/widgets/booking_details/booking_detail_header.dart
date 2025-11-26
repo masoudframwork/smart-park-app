@@ -44,8 +44,8 @@ class BookingDetailHeader extends StatelessWidget {
         SizedBox(width: 16.w),
         CustomImageWidget(
           imageUrl: isRTL
-              ? AppImages.arrowIcon      // Arabic → arrow points left
-              : AppImages.arrowIcon2,    // English → arrow points right
+              ? AppImages.arrowIcon // Arabic → arrow points left
+              : AppImages.arrowIcon2, // English → arrow points right
           width: 16.w,
           height: 16.w,
           color: AppColor.primaryColor,

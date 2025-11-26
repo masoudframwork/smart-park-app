@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart/features/auth/sign_up/presentation/widget/otp_sign_up/widget/descrpation_text.dart';
+
 import '../../../../../../core/constants/image_string.dart';
 import '../../../../../../core/routing/navigation_service.dart';
 import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/theme/app_color.dart';
 import '../../../../../../core/theme/app_text_theme.dart';
+
 import '../../../../../../core/widgets/app_result_dialog.dart';
 import '../../../../../../core/widgets/app_text.dart';
 import '../../../../../../core/widgets/custom_button.dart';
@@ -76,23 +78,14 @@ class OtpSignUpPage extends ConsumerWidget {
                   onPressed: () {
                     showDialog(
                       context: context,
-                      barrierDismissible: false,
-                      builder: (context) {
-                        return AppResultDialog(
-                          headerWidget: SvgPicture.asset(
-                            AppImages.trueChek,
-                            width: 47.w,
-                            height: 47.w,
-                          ),
-                          message: S
-                              .of(context)
-                              .youraccounthasbeencreatedsuccessfully,
-                          buttonText: S.of(context).continu_e,
-                          onButtonPressed: () {
-                            NavigationService.go(RoutePaths.nafathPageLogin);
-                          },
-                        );
-                      },
+                      builder: (_) => AppResultDialog(
+                        message:
+                            S.of(context).youraccounthasbeencreatedsuccessfully,
+                        mainButtonText: S.of(context).continu_e,
+                        onMainPressed: () {
+                          NavigationService.push(RoutePaths.nafathPageLogin);
+                        },
+                      ),
                     );
                   },
                 ),

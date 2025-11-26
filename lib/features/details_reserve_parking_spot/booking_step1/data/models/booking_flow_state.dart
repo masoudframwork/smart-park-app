@@ -1,4 +1,3 @@
-
 class BookingStep1State {
   final String? selectedVehicleId;
   final String? selectedDurationId;

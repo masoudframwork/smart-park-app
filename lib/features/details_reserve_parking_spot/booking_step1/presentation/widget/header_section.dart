@@ -33,7 +33,7 @@ class HeaderSection extends StatelessWidget {
             ),
             AppText(
               text: S.of(context).khuraisRoadRiyadhSaudiArabia,
-           //   text: 'طريق خريص، الرياض، المملكة العربية السعودية',
+              //   text: 'طريق خريص، الرياض، المملكة العربية السعودية',
               appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
                 color: Colors.white,
               ),

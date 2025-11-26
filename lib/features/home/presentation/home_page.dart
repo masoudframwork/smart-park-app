@@ -15,8 +15,6 @@ import '../../../generated/l10n.dart';
 import '../provider/selected_parking_provider.dart';
 import 'controller/home_controller.dart';
 import 'package:smart/features/home/data/models/home_model.dart';
-import 'package:smart/features/home/data/models/parking_location.dart';
-import 'widgets/parking_details/parking_details_sheet.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -111,14 +109,14 @@ class _HomePageState extends ConsumerState<HomePage> {
           /// GREEN CARD – same horizontal 16.w margins as design
           if (selectedParking != null)
             Positioned(
-              top: 160.h,            // tune this value to match XD
+              top: 160.h, // tune this value to match XD
               left: 16.w,
               right: 16.w,
               child: GreenParkingDetails(
                 parkingArea: selectedParking,
                 onClose: () {
                   ref.read(selectedParkingAreaDetailsProvider.notifier).state =
-                  null;
+                      null;
                 },
               ),
             ),
@@ -278,18 +276,18 @@ class _SearchBarState extends State<_SearchBar> {
           textInputAction: TextInputAction.search,
           onFieldSubmitted: widget.onSubmitted,
           onChanged: (_) {},
+          borderSideColor: AppColor.greyDividerColor,
           readOnly: true,
           enableShadow: true,
-          shadowTextFieldColor:
-          AppColor.contanearGreyColor.withOpacity(1.0),
+          shadowTextFieldColor: AppColor.contanearGreyColor.withOpacity(1.0),
           shadowOffset: const Offset(0, 1),
-          shadowBlur: 1,
+          //  shadowBlur: 1,
           shadowSpread: 1,
           prefixIcon: widget.leadingIcon != null
               ? Padding(
-            padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
-            child: widget.leadingIcon!,
-          )
+                  padding: EdgeInsetsDirectional.only(start: 10.w, end: 6.w),
+                  child: widget.leadingIcon!,
+                )
               : null,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,

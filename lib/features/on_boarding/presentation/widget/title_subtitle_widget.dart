@@ -23,19 +23,19 @@ class TitleSubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children:[
+      children: [
         SvgPicture.asset(
           iconPath,
           width: 107.w,
           height: 107.h,
           fit: BoxFit.contain,
         ),
-         SizedBox(height: 60.h),
+        SizedBox(height: 60.h),
         AppText(
           text: title,
           textAlign: TextAlign.center,
           appTextTheme: AppTextTheme.introTitleTextStyle().copyWith(
-            color:AppColor .primaryTextColor,
+            color: AppColor.primaryTextColor,
             fontSize: 40,
           ),
         ),
@@ -44,9 +44,9 @@ class TitleSubtitleWidget extends StatelessWidget {
           text: subtitle,
           textAlign: TextAlign.center,
           appTextTheme: AppTextTheme.introTitleTextStyle().copyWith(
-              fontSize: 33,
-              color: AppColor.whiteColor,
-              fontWeight: FontWeight.w500,
+            fontSize: 33,
+            color: AppColor.whiteColor,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],

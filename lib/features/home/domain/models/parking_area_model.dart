@@ -1,4 +1,3 @@
-
 // Model for Parking Area
 
 class ParkingArea {

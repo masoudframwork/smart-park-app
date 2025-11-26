@@ -126,8 +126,8 @@ class QuickDurationGrid extends ConsumerWidget {
 
       // فقط ساعات بدون دقائق
       if (remainingMinutes == 0) {
-        if (intHours == 1) return t.hour;       // ساعة
-        if (intHours == 2) return t.hour2;      // ساعتين
+        if (intHours == 1) return t.hour; // ساعة
+        if (intHours == 2) return t.hour2; // ساعتين
         if (intHours >= 3) {
           // لو عندك key خاص للجمع مثل "3 ساعات" مع {}
           // مثال: "hours3plus": "{} ساعات"
@@ -142,8 +142,8 @@ class QuickDurationGrid extends ConsumerWidget {
       final hoursText = (intHours == 1)
           ? t.hour
           : (intHours == 2)
-          ? t.hour2
-          : '$intHours ${t.hours}';
+              ? t.hour2
+              : '$intHours ${t.hours}';
 
       final minutesText = (remainingMinutes == 1)
           ? "1 ${t.minute}"
@@ -164,7 +164,7 @@ class QuickDurationGrid extends ConsumerWidget {
     final options = [...baseOptions];
 
     final bool hasPreset = baseOptions.any(
-          (o) => o.hours == durationState.hours,
+      (o) => o.hours == durationState.hours,
     );
 
     if (!hasPreset && durationState.hours > 0) {
@@ -206,8 +206,7 @@ class QuickDurationGrid extends ConsumerWidget {
             child: AppText(
               text: option.label,
               appTextTheme: AppTextTheme.bodyMediumTextStyle().copyWith(
-                color:
-                isSelected ? AppColor.whiteColor : AppColor.textColor,
+                color: isSelected ? AppColor.whiteColor : AppColor.textColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -231,8 +230,6 @@ class _DurationOption {
     this.isCustom = false,
   });
 }
-
-
 
 // String formatDurationLabel(double hours) {
 //

@@ -47,7 +47,6 @@ class TitelDescrpationWidget extends StatelessWidget {
                     .copyWith(color: AppColor.primaryColor),
               ),
             ),
-
           ],
         )
       ],

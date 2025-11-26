@@ -36,7 +36,7 @@ class TimerCircleWidget extends StatelessWidget {
               value: timerState.progress,
               strokeWidth: strokeWidth.w,
               backgroundColor: AppColor.greyContainerColor,
-              valueColor: AlwaysStoppedAnimation(AppColor.yellowContainerColor),
+              valueColor: AlwaysStoppedAnimation(AppColor.primaryColor),
             ),
           ),
           Center(

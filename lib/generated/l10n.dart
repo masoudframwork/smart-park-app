@@ -1918,41 +1918,6 @@ class S {
   String get ok {
     return Intl.message('ok', name: 'ok', desc: '', args: []);
   }
-
-  /// `The booking was successfully completed`
-  String get alert_booking_successfully_completed_title {
-    return Intl.message(
-      'The booking was successfully completed',
-      name: 'alert_booking_successfully_completed_title',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Would you like to see a booking summary?`
-  String get alert_booking_successfully_completed_desc {
-    return Intl.message(
-      'Would you like to see a booking summary?',
-      name: 'alert_booking_successfully_completed_desc',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Booking Summary`
-  String get button_booking_summary {
-    return Intl.message(
-      'Booking Summary',
-      name: 'button_booking_summary',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Home`
-  String get button_home {
-    return Intl.message('Home', name: 'button_home', desc: '', args: []);
-  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

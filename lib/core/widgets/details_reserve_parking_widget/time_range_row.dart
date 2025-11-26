@@ -138,8 +138,6 @@ class _TimeParts {
   });
 }
 
-
-
 class TimeRangeRow extends StatelessWidget {
   final TimeOfDay start;
   final TimeOfDay end;
@@ -173,18 +171,14 @@ class TimeRangeRow extends StatelessWidget {
             onMinus: onStartMinus,
             enabled: true,
           ),
-
           SizedBox(width: 20.w),
-
           AppText(
             text: 'إلى',
             appTextTheme: AppTextTheme.titleSmallTextStyle().copyWith(
               color: AppColor.blackNumberSmallColor,
             ),
           ),
-
           SizedBox(width: 20.w),
-
           TimeBox(
             time: end,
             onPlus: onEndPlus,

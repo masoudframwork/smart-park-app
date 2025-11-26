@@ -56,7 +56,7 @@ class CustomImageWidget extends StatelessWidget {
           color: color,
           colorBlendMode: color != null ? BlendMode.srcIn : null,
           errorBuilder: (_, __, ___) =>
-          errorWidget ?? Image.asset("assets/images/no_image.jpg"),
+              errorWidget ?? Image.asset("assets/images/no_image.jpg"),
         );
       }
     }
@@ -84,7 +84,7 @@ class CustomImageWidget extends StatelessWidget {
       colorBlendMode: color != null ? BlendMode.srcIn : null,
       placeholder: (_, __) => _placeholder(),
       errorWidget: (_, __, ___) =>
-      errorWidget ??
+          errorWidget ??
           Image.asset(
             "assets/images/no_image.jpg",
             width: width,
@@ -95,9 +95,9 @@ class CustomImageWidget extends StatelessWidget {
   }
 
   Widget _placeholder() => Container(
-    width: width,
-    height: height,
-    color: Colors.grey[200],
-    child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-  );
+        width: width,
+        height: height,
+        color: Colors.grey[200],
+        child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      );
 }

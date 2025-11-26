@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:smart/core/theme/app_color.dart';
+
 import 'package:smart/features/auth/login/presentation/widgets/descrpation_titel_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/text_field_and_buttons_widget.dart';
 import 'package:smart/features/auth/login/presentation/widgets/titel_desc_widget.dart';
@@ -28,7 +30,6 @@ class LoginPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
-
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(20.w),
@@ -63,6 +64,11 @@ class LoginPage extends ConsumerWidget {
                   onCreateAccount: controller.goToRegister,
                   onGuestLogin: controller.guestLogin,
                 ),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       controller.login();
+                //     },
+                //     child: Text("data"))
               ],
             ),
           ),

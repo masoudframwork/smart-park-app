@@ -7,7 +7,6 @@ import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/core/widgets/app_text.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details/info_row.dart';
 
-
 class QuickBookingSection extends StatelessWidget {
   final VoidCallback? onBookNow;
 
@@ -16,7 +15,7 @@ class QuickBookingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-    //  padding: EdgeInsets.symmetric(horizontal: 14).copyWith(top: 11, bottom: 22),
+      //  padding: EdgeInsets.symmetric(horizontal: 14).copyWith(top: 11, bottom: 22),
 
       padding: EdgeInsets.symmetric(horizontal: 8).copyWith(top: 8, bottom: 8),
       decoration: BoxDecoration(
@@ -104,7 +103,6 @@ class QuickBookingSection extends StatelessWidget {
                   ),
                 ],
               )),
-
         ],
       ),
     );

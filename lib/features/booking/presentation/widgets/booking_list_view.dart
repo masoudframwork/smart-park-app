@@ -130,7 +130,8 @@ class BookingListView extends ConsumerWidget {
     if (reservationState.errorMessage != null) {
       return BookingErrorState(
         errorMessage: reservationState.errorMessage!,
-        onRetry: () => ref.read(reservationController.notifier).refresh(),
+        onRetry: () => ref.read(reservationController.notifier),
+        //.refresh(),
       );
     }
 
@@ -147,35 +148,36 @@ class BookingListView extends ConsumerWidget {
         Expanded(
           child: displayedBookings.isEmpty
               ? BookingEmptyState(
-            selectedTabIndex: reservationState.selectedTabIndex,
-          )
+                  selectedTabIndex: reservationState.selectedTabIndex,
+                )
               : RefreshIndicator(
-            color: AppColor.primaryColor,
-            onRefresh: () async =>
-                ref.read(reservationController.notifier).refresh(),
-            child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              itemCount: displayedBookings.length,
-              itemBuilder: (context, index) {
-                final reservation = displayedBookings[index];
-                return _buildBookingCard(
-                  context,
-                  ref,
-                  reservation,
-                );
-              },
-            ),
-          ),
+                  color: AppColor.primaryColor,
+                  onRefresh: () async =>
+                      ref.read(reservationController.notifier),
+                  //.refresh(),
+                  child: ListView.builder(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    itemCount: displayedBookings.length,
+                    itemBuilder: (context, index) {
+                      final reservation = displayedBookings[index];
+                      return _buildBookingCard(
+                        context,
+                        ref,
+                        reservation,
+                      );
+                    },
+                  ),
+                ),
         ),
       ],
     );
   }
 
   Widget _buildBookingCard(
-      BuildContext context,
-      WidgetRef ref,
-      BookingModel reservation,
-      ) {
+    BuildContext context,
+    WidgetRef ref,
+    BookingModel reservation,
+  ) {
     if (reservation.isActive) {
       return CurrentBookingCard(
         reservation: reservation,
@@ -194,13 +196,11 @@ class BookingListView extends ConsumerWidget {
   }
 
   void _navigateToDetail(
-      BuildContext context,
-      WidgetRef ref,
-      BookingModel reservation,
-      ) {
-    ref
-        .read(reservationController.notifier)
-        .selectReservation(reservation.id);
+    BuildContext context,
+    WidgetRef ref,
+    BookingModel reservation,
+  ) {
+    ref.read(reservationController.notifier).selectReservation(reservation.id);
     NavigationService.push('/bookingDetailView');
 
     // Navigator.push(

@@ -35,8 +35,6 @@ class AppTextTheme {
         fontFamily: 'IBM Plex Sans Arabic',
       );
 
-
-
   // 🏷️ العناوين المتوسطة
   static TextStyle titleMediumTextStyle() => TextStyle(
         fontSize: 16,
@@ -46,12 +44,11 @@ class AppTextTheme {
       );
 
   static TextStyle titleMSTextStyle() => TextStyle(
-    fontSize: 20,
-    color: AppColor.blackColor,
-    fontWeight: FontWeight.w600,
-    fontFamily: 'IBM Plex Sans Arabic',
-  );
-
+        fontSize: 20,
+        color: AppColor.blackColor,
+        fontWeight: FontWeight.w600,
+        fontFamily: 'IBM Plex Sans Arabic',
+      );
 
   // 🏷️ العناوين الصغيرة
   static TextStyle titleSmallTextStyle() => TextStyle(
@@ -117,7 +114,6 @@ class AppTextTheme {
   static TextStyle bodySmallTextStyle() => TextStyle(
         fontSize: 12,
         color: AppColor.greyColor,
-        
         fontWeight: FontWeight.w400,
         fontFamily: 'IBM Plex Sans Arabic',
       );
