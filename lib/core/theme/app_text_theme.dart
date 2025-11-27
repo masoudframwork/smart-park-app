@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_color.dart';
 
 class AppTextTheme {
@@ -125,7 +126,15 @@ class AppTextTheme {
         fontWeight: FontWeight.w400,
         fontFamily: 'IBM Plex Sans Arabic',
       );
-  //
+
+  static TextStyle activeCardTextDescStyle() => TextStyle(
+    fontSize: 10.sp,
+    color: AppColor.whiteBackgroundColor,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'IBM Plex Sans Arabic',
+  );
+
+//
   // // ⚪ النصوص داخل الحقول أو التلميحات
   // static TextStyle hintTextStyle() => TextStyle(
   //   fontSize: 14,

@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "aboutthispark": MessageLookupByLibrary.simpleMessage("عن هذا المصف"),
     "accept": MessageLookupByLibrary.simpleMessage("موافق"),
+    "active_card_booking_summary": MessageLookupByLibrary.simpleMessage(
+      "تفاصيل الحجز",
+    ),
     "additionalservices": MessageLookupByLibrary.simpleMessage(
       "الخدمات الإضافية",
     ),

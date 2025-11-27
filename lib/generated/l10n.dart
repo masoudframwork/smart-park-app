@@ -1958,6 +1958,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Booking Summary`
+  String get active_card_booking_summary {
+    return Intl.message(
+      'Booking Summary',
+      name: 'active_card_booking_summary',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

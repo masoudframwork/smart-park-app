@@ -6,6 +6,8 @@ import 'package:smart/core/widgets/custom_button.dart';
 import 'package:smart/features/home/presentation/widgets/parking_details_box/timer_progress_ring.dart';
 import 'package:smart/generated/l10n.dart';
 import '../../../../../core/routing/navigation_service.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/widgets/app_text.dart';
 import '../../../../booking/presentation/controller/booking_controller.dart';
 import '../../../domain/models/parking_area_model.dart';
 
@@ -29,7 +31,7 @@ class GreenParkingDetails extends ConsumerWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: const Color(0xFF1B8354),
+          color: AppColor.homePageActiveColor,
           borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
@@ -58,56 +60,59 @@ class GreenParkingDetails extends ConsumerWidget {
                         : CrossAxisAlignment.start,
                     children: [
                       /// Parking Area Name
-                      Text(
-                        S.of(context).zone013,
-                        style: TextStyle(
-                          fontSize: 18.sp,
+                      AppText(
+                        text: S.of(context).zone013,
+                        appTextTheme:
+                        AppTextTheme.activeCardTextDescStyle().copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          fontSize: 20.sp,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
 
                       SizedBox(height: 6.h),
 
                       /// Location
-                      Text(
-                        S.of(context).khuraisRoadRiyadhSaudiArabia,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.white,
+                      ///
+                      AppText(
+                        text: S.of(context).khuraisRoadRiyadhSaudiArabia,
+                        appTextTheme:
+                            AppTextTheme.activeCardTextDescStyle().copyWith(
+                          fontWeight: FontWeight.w500,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
 
                       SizedBox(height: 6.h),
 
                       /// Time range (translated + RTL/LTR switches arrow)
-                      Text(
-                        S.of(context).green_parking_time_range(
+
+                      AppText(
+                        text: S.of(context).green_parking_time_range(
                               S.of(context).booking_time_start_example,
                               S.of(context).booking_time_end_example,
                             ),
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          color: Colors.white,
+                        appTextTheme:
+                            AppTextTheme.activeCardTextDescStyle().copyWith(
                           fontWeight: FontWeight.w500,
+                          fontSize: 12.sp,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
 
                       SizedBox(height: 6.h),
 
                       /// Vehicle info
-                      Text(
-                        S.of(context).green_parking_vehicle_info(
-                              parkingArea.name,
-                              parkingArea.availableSpots.toString(),
-                            ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                      AppText(
+                        text:  S.of(context).green_parking_vehicle_info(
+                          parkingArea.name,
+                          parkingArea.availableSpots.toString(),
+                        ),
+                        appTextTheme:
+                        AppTextTheme.activeCardTextDescStyle().copyWith(
+                          fontWeight: FontWeight.w500,
                           fontSize: 12.sp,
-                          color: Colors.white,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -156,7 +161,7 @@ class GreenParkingDetails extends ConsumerWidget {
                 type: ButtonType.outlined,
                 borderColor: AppColor.whiteColor,
                 borderRadius: 6.r,
-                text: S.of(context).green_parking_details,
+                text: S.of(context).active_card_booking_summary,
                 onPressed: () {
                   final bookingState = ref.read(reservationController);
 

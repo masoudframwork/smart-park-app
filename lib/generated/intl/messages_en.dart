@@ -39,6 +39,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
     "aboutthispark": MessageLookupByLibrary.simpleMessage("About this park"),
     "accept": MessageLookupByLibrary.simpleMessage("Accept"),
+    "active_card_booking_summary": MessageLookupByLibrary.simpleMessage(
+      "Booking Summary",
+    ),
     "additionalservices": MessageLookupByLibrary.simpleMessage(
       "Additional services",
     ),

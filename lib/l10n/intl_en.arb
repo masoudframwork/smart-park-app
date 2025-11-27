@@ -237,7 +237,9 @@
   "dialog_end_confirm": "End Booking",
   "dialog_end_cancel": "Back",
   "search_for_parking": "Find a parking",
-  "search_start_listening": "Start listening"
+  "search_start_listening": "Start listening",
+  "active_card_booking_summary": "Booking Summary"
+
 
 
 }
