@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/widgets/app_text.dart';
+
 class TimerProgressRing extends StatelessWidget {
   final double progress; // 0.0 to 1.0
   final String timeText;
@@ -14,8 +17,8 @@ class TimerProgressRing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 72.w,
-      height: 72.w,
+      width: 90.w,
+      height: 90.w,
       child: TweenAnimationBuilder<double>(
         tween: Tween<double>(begin: 0, end: progress),
         duration: const Duration(milliseconds: 800),
@@ -23,12 +26,14 @@ class TimerProgressRing extends StatelessWidget {
           return CustomPaint(
             painter: _TimerProgressPainter(value),
             child: Center(
-              child: Text(
-                timeText,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+              child:
+              AppText(
+                text: timeText,
+                appTextTheme:
+                AppTextTheme.activeCardTextDescStyle().copyWith(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14.sp,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
