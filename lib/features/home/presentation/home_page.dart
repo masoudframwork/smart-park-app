@@ -111,7 +111,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           /// GREEN CARD – same horizontal 16.w margins as design
           if (selectedParking != null)
             Positioned(
-              top: 160.h, // tune this value to match XD
+              top: 120.h, // tune this value to match XD
               left: 16.w,
               right: 16.w,
               child: GreenParkingDetails(

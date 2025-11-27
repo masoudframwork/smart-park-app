@@ -92,7 +92,7 @@ class _ParkingBottomSheetState extends ConsumerState<ParkingBottomSheet> {
       right: 0,
       bottom: 80,
       child: SizedBox(
-        height: 150.h,
+        height: 130.h,
         child: ListView.separated(
           controller: _scrollCtrl,
           padding: EdgeInsets.symmetric(horizontal: 16.w),

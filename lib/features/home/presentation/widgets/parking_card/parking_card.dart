@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:smart/core/theme/app_color.dart';
 import '../../../../../core/constants/image_string.dart';
 import '../../../../../core/routing/navigation_service.dart';
-import '../../../../../core/routing/routes.dart';
-import '../../../../../core/widgets/app_result_dialog.dart';
-import '../../../../../generated/l10n.dart';
-import '../../../../booking/presentation/booking_summary_screen.dart';
+import '../../../../../core/theme/app_text_theme.dart';
+import '../../../../../core/widgets/app_text.dart';
 import '../../../domain/models/parking_area_model.dart';
 
 class ParkingCard extends StatelessWidget {
@@ -27,12 +26,12 @@ class ParkingCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 340.w,
-        height: 150.h,
+        height: 105.h,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-        margin: EdgeInsets.only(bottom: 12.h),
+        margin: EdgeInsets.only(bottom: 15.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(35.r),
+          borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.06),
@@ -47,7 +46,7 @@ class ParkingCard extends StatelessWidget {
           children: [
             /// IMAGE
             ClipRRect(
-              borderRadius: BorderRadius.circular(15.r),
+              borderRadius: BorderRadius.circular(12.r),
               child: Container(
                 width: 80.w,
                 height: 80.h,
@@ -69,31 +68,31 @@ class ParkingCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   /// TITLE
-                  Text(
-                    isArabic
+                  AppText(
+                    text: isArabic
                         ? "المنطقة ${parkingArea.code}"
                         : "Area ${parkingArea.code}",
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: isArabic ? TextAlign.right : TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF0F4A3A),
+                    appTextTheme:
+                        AppTextTheme.activeCardTextDescStyle().copyWith(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.sp,
+                      color: AppColor.bottomNavigationBarColor,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
 
                   SizedBox(height: 6.h),
 
                   /// LOCATION
-                  Text(
-                    parkingArea.location,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                  AppText(
+                    text: parkingArea.location,
                     textAlign: isArabic ? TextAlign.right : TextAlign.left,
-                    style: TextStyle(
+                    appTextTheme:
+                        AppTextTheme.activeCardTextDescStyle().copyWith(
+                      fontWeight: FontWeight.w500,
+                      overflow: TextOverflow.ellipsis,
                       fontSize: 12.sp,
-                      color: Colors.black54,
+                      color: AppColor.blackNumberSmallColor,
                     ),
                   ),
 
@@ -106,60 +105,72 @@ class ParkingCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Row(
-                          textDirection:
-                              isArabic ? TextDirection.rtl : TextDirection.ltr,
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             /// PRICE
                             Row(
                               children: [
-                                Text(
-                                  parkingArea.pricePerHour.toString(),
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black87,
+                                AppText(
+                                  text: parkingArea.pricePerHour.toString(),
+                                  textAlign: isArabic
+                                      ? TextAlign.right
+                                      : TextAlign.left,
+                                  appTextTheme:
+                                      AppTextTheme.activeCardTextDescStyle()
+                                          .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 16.sp,
+                                    color: AppColor.blackNumberSmallColor,
                                   ),
                                 ),
                                 SizedBox(width: 2.w),
                                 SvgPicture.asset(
                                   AppImages.realSu,
-                                  width: 14.w,
-                                  height: 14.h,
+                                  width: 12.w,
+                                  height: 12.h,
                                   color: Colors.black87,
                                 ),
                                 SizedBox(width: 2.w),
-                                Text(
-                                  isArabic ? "/ ساعة" : "/ hour",
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.black87,
+                                AppText(
+                                  text: isArabic ? "/ ساعة" : "/ hour",
+                                  textAlign: isArabic
+                                      ? TextAlign.right
+                                      : TextAlign.left,
+                                  appTextTheme:
+                                      AppTextTheme.activeCardTextDescStyle()
+                                          .copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 10.sp,
+                                    color: AppColor.blackNumberSmallColor,
                                   ),
                                 ),
                               ],
                             ),
 
-                            SizedBox(width: 14.w),
+                            SizedBox(width: 13.w),
 
                             /// AVAILABILITY
                             SvgPicture.asset(
                               AppImages.carIcon,
-                              width: 14.w,
-                              height: 14.h,
+                              width: 13.w,
+                              height: 13.h,
                             ),
 
                             SizedBox(width: 8.w),
                             Flexible(
-                              child: Text(
-                                parkingArea.formattedAvailability,
-                                overflow: TextOverflow.ellipsis,
+                              child: AppText(
+                                text: parkingArea.formattedAvailability,
                                 textAlign:
                                     isArabic ? TextAlign.right : TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black87,
+                                appTextTheme:
+                                    AppTextTheme.activeCardTextDescStyle()
+                                        .copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  overflow: TextOverflow.ellipsis,
+                                  fontSize: 10.sp,
+                                  color: AppColor.blackNumberSmallColor,
                                 ),
                               ),
                             ),
@@ -176,40 +187,10 @@ class ParkingCard extends StatelessWidget {
                             '/bookingParkingDetailsPage',
                             context: context,
                           );
-
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (_) => AppResultDialog(
-                          //     message: S
-                          //         .of(context)
-                          //         .alert_booking_successfully_completed_title,
-                          //     subMessage: S
-                          //         .of(context)
-                          //         .alert_booking_successfully_completed_desc,
-                          //     mainButtonText:
-                          //         S.of(context).button_booking_summary,
-                          //     onMainPressed: () {
-                          //       NavigationService.push(
-                          //           RoutePaths.bookingSummaryScreen);
-                          //
-                          //       // Navigator.pop(context);
-                          //       // Navigator.push(
-                          //       //   context,
-                          //       //   MaterialPageRoute(
-                          //       //       builder: (_) => BookingSummaryScreen()),
-                          //       // );
-                          //     },
-                          //     secondaryButtonText: S.of(context).button_home,
-                          //     onSecondaryPressed: () {
-                          //       Navigator.pop(context);
-                          //       // Navigator.pushNamed(context, "/home");
-                          //     },
-                          //   ),
-                          // );
                         },
                         child: Container(
-                          width: 32.w,
-                          height: 32.h,
+                          width: 24.w,
+                          height: 24.h,
                           decoration: BoxDecoration(
                             color: const Color(0xFF6CBF4E),
                             shape: BoxShape.circle,
