@@ -25,34 +25,33 @@ class GreenParkingDetails extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isRTL = Directionality.of(context) == TextDirection.rtl;
 
-    return Directionality(
-      textDirection: Directionality.of(context),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColor.homePageActiveColor,
-          borderRadius: BorderRadius.circular(30.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.10),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            )
-          ],
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment:
-              isRTL ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            /// --- TOP ROW: TIMER + TEXT ---
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                /// TEXT COLUMN
-                Container(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColor.homePageActiveColor,
+        borderRadius: BorderRadius.circular(10.r),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.10),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          )
+        ],
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment:
+            isRTL ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        children: [
+          /// --- TOP ROW: TIMER + TEXT ---
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              /// TEXT COLUMN
+              Expanded(
+                child: Container(
                   color: Colors.transparent,
                   child: Column(
                     crossAxisAlignment: isRTL
@@ -63,15 +62,15 @@ class GreenParkingDetails extends ConsumerWidget {
                       AppText(
                         text: S.of(context).zone013,
                         appTextTheme:
-                        AppTextTheme.activeCardTextDescStyle().copyWith(
+                            AppTextTheme.activeCardTextDescStyle().copyWith(
                           fontWeight: FontWeight.bold,
                           fontSize: 20.sp,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-
+                  
                       SizedBox(height: 6.h),
-
+                  
                       /// Location
                       ///
                       AppText(
@@ -82,11 +81,11 @@ class GreenParkingDetails extends ConsumerWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-
+                  
                       SizedBox(height: 6.h),
-
+                  
                       /// Time range (translated + RTL/LTR switches arrow)
-
+                  
                       AppText(
                         text: S.of(context).green_parking_time_range(
                               S.of(context).booking_time_start_example,
@@ -99,17 +98,17 @@ class GreenParkingDetails extends ConsumerWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-
+                  
                       SizedBox(height: 6.h),
-
+                  
                       /// Vehicle info
                       AppText(
-                        text:  S.of(context).green_parking_vehicle_info(
-                          parkingArea.name,
-                          parkingArea.availableSpots.toString(),
-                        ),
+                        text: S.of(context).green_parking_vehicle_info(
+                              parkingArea.name,
+                              parkingArea.availableSpots.toString(),
+                            ),
                         appTextTheme:
-                        AppTextTheme.activeCardTextDescStyle().copyWith(
+                            AppTextTheme.activeCardTextDescStyle().copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 12.sp,
                           overflow: TextOverflow.ellipsis,
@@ -118,68 +117,37 @@ class GreenParkingDetails extends ConsumerWidget {
                     ],
                   ),
                 ),
+              ),
 
-                SizedBox(width: 16.w),
+              SizedBox(width: 16.w),
 
-                /// Timer ring
-                _buildTimerRing(),
-              ],
-            ),
+              /// Timer ring
+              _buildTimerRing(),
+            ],
+          ),
 
-            SizedBox(height: 18.h),
+          SizedBox(height: 18.h),
+          CustomButtonWidget(
+              type: ButtonType.outlined,
+              borderColor: AppColor.whiteColor,
+              borderRadius: 6.r,
+              text: S.of(context).active_card_booking_summary,
+              onPressed: () {
+                final bookingState = ref.read(reservationController);
 
-            /// --- BOOKING DETAILS BUTTON ---
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => const BookingDetailView(),
-            //       ),
-            //     );
-            //   },
-            //   child: Container(
-            //     height: 46.h,
-            //     width: double.infinity,
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(12.r),
-            //       border: Border.all(color: Colors.white, width: 1.5),
-            //     ),
-            //     child: Center(
-            //       child: Text(
-            //         S.of(context).green_parking_details,
-            //         style: TextStyle(
-            //           fontSize: 15.sp,
-            //           fontWeight: FontWeight.bold,
-            //           color: Colors.white,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            CustomButtonWidget(
-                type: ButtonType.outlined,
-                borderColor: AppColor.whiteColor,
-                borderRadius: 6.r,
-                text: S.of(context).active_card_booking_summary,
-                onPressed: () {
-                  final bookingState = ref.read(reservationController);
+                if (bookingState.reservations.isEmpty) {
+                  Navigator.pop(context);
+                  return;
+                }
 
-                  if (bookingState.reservations.isEmpty) {
-                    Navigator.pop(context);
-                    return;
-                  }
+                final reservation = bookingState.reservations.last;
 
-                  final reservation = bookingState.reservations.last;
-
-                  ref
-                      .read(reservationController.notifier)
-                      .selectReservation(reservation.id);
-                  NavigationService.push('/bookingDetailView',
-                      context: context);
-                })
-          ],
-        ),
+                ref
+                    .read(reservationController.notifier)
+                    .selectReservation(reservation.id);
+                NavigationService.push('/bookingDetailView', context: context);
+              }),
+        ],
       ),
     );
   }
