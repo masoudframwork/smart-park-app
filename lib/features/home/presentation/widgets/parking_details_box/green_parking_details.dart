@@ -155,7 +155,7 @@ class GreenParkingDetails extends ConsumerWidget {
   /// Timer ring widget
   Widget _buildTimerRing() {
     return TimerProgressRing(
-      progress: 0.35,
+      progress: 0.10,
       timeText: "05:06:30",
     );
   }
