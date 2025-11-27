@@ -14,7 +14,6 @@ class TimerProgressRing extends StatelessWidget {
     required this.timeText,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
