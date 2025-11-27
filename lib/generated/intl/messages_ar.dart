@@ -98,6 +98,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "تمديد الحجز",
     ),
     "booking_go_home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "booking_no_specific_reservation": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد حجز محدد",
+    ),
     "booking_previous_tab": MessageLookupByLibrary.simpleMessage(
       "الحجوزات السابقة",
     ),

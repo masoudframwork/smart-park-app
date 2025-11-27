@@ -100,6 +100,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Extend Reservation",
     ),
     "booking_go_home": MessageLookupByLibrary.simpleMessage("Home"),
+    "booking_no_specific_reservation": MessageLookupByLibrary.simpleMessage(
+      "No specific reservation",
+    ),
     "booking_previous_tab": MessageLookupByLibrary.simpleMessage(
       "Previous Bookings",
     ),

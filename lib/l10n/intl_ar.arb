@@ -190,6 +190,7 @@
   "booking_extend_reservation": "تمديد الحجز",
   "car_info_title": "نيسان / 2023 / أسود",
   "booking_detail_date_sample": "السبت 30/10/2023",
+  "booking_no_specific_reservation": "لا يوجد حجز محدد",
   "dialog_extend_title": "هل تريد تمديد الحجز؟",
   "dialog_extend_message": "بالضغط على تمديد الحجز سوف يتم تمديد حجز المركبة للمدة المختارة",
   "dialog_extend": "تمديد الحجز",

@@ -190,6 +190,7 @@
   "booking_amount_paid": "Total Paid 30 SAR",
   "booking_end_reservation": "End Reservation",
   "booking_extend_reservation": "Extend Reservation",
+  "booking_no_specific_reservation": "No specific reservation",
   "car_info_title": "Nissan / 2023 / Black",
   "booking_detail_date_sample": "Sat 30/10/2023",
   "dialog_extend_title": "Do you want to extend the reservation?",

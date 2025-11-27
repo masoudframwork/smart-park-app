@@ -1534,6 +1534,16 @@ class S {
     );
   }
 
+  /// `No specific reservation`
+  String get booking_no_specific_reservation {
+    return Intl.message(
+      'No specific reservation',
+      name: 'booking_no_specific_reservation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Nissan / 2023 / Black`
   String get car_info_title {
     return Intl.message(

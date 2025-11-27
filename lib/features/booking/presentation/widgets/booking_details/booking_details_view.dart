@@ -27,7 +27,7 @@ class BookingDetailView extends ConsumerWidget {
         backgroundColor: AppColor.lightBackgroundColor,
         body: Center(
           child: Text(
-            'لا يوجد حجز محدد',
+            S.of(context).booking_no_specific_reservation,
             style: TextStyle(
               color: Colors.red,
               fontSize: 16.sp,
@@ -61,8 +61,8 @@ class BookingDetailView extends ConsumerWidget {
                 Container(
                     width: 361.w,
                     height: 82.h,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 10.h, vertical: 10.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.h, vertical: 10.h),
                     decoration: BoxDecoration(
                       color: AppColor.textColor,
                       borderRadius: BorderRadius.circular(10.r),
