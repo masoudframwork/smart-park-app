@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smart/core/theme/app_color.dart';
 import 'package:smart/features/auth/presentation/screens/login/presentation/widgets/text_field_and_buttons_widget.dart';
 import 'package:smart/features/auth/presentation/screens/login/presentation/widgets/titel_desc_widget.dart';
 import '../../../../../../core/constants/image_string.dart';
+import '../../../../../../core/routing/routes.dart';
 import '../../../../../../core/widgets/custom_image_widget.dart';
 import '../../sign_up/presentation/widget/otp_sign_up/widget/descrpation_text.dart';
 import 'controller/login_controller.dart';
@@ -25,9 +27,9 @@ class LoginPage extends ConsumerWidget {
           SnackBar(
             content: Text(
               next.errorMessage!,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.black),
             ),
-            backgroundColor: Colors.redAccent,
+            backgroundColor: Colors.white,
             behavior: SnackBarBehavior.floating,
             margin: EdgeInsets.all(16),
             shape: RoundedRectangleBorder(
@@ -38,7 +40,8 @@ class LoginPage extends ConsumerWidget {
       }
 
       if (prev?.success == false && next.success == true) {
-        Navigator.pushNamed(context, "/otp");
+        // Navigator.pushNamed(context, "/otp");
+        context.push(RoutePaths.sendTheCodePage);
       }
     });
 

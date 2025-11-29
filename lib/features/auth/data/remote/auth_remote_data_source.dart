@@ -8,6 +8,7 @@ class AuthRemoteDataSource {
 
   // ---------------- LOGIN ----------------
   Future<Map<String, dynamic>> login(String mobile) async {
+    print("Calling URL: ${ApiEndpoints.login}");
     final res = await dio.post(
       ApiEndpoints.login,
       data: {"mobile": mobile},

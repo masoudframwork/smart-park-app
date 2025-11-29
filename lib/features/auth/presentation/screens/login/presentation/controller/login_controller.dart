@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -67,24 +68,25 @@ class LoginController extends StateNotifier<LoginState> {
     try {
       final response = await repo.login(phoneController.text.trim());
 
-      final success = response["success"] as bool? ?? false;
-      final message = response["message"];
-      final data = response["data"];
+      final isSuccess = response["IsSuccess"] as bool? ?? false;
+      final errors = response["Errors"];
+      final data = response["Data"];
 
-      if (!success) {
+      if (!isSuccess) {
+        // Extract readable error
+        final errorText = errors is List ? errors.join(", ") : errors.toString();
+
         state = state.copyWith(
           isLoading: false,
-          errorMessage: message?.toString() ?? "Login failed",
+          errorMessage: errorText,
           success: false,
         );
         return;
       }
 
-      /// Extract OTP timer
-      final nextOtp = data != null ? data["nextOtpAvailableAt"] : null;
-      print("Next OTP time: $nextOtp");
+      // SUCCESS FLOW
+      final nextOtp = data?["nextOtpAvailableAt"];
 
-      /// UPDATE STATE
       state = state.copyWith(
         isLoading: false,
         success: true,
@@ -100,17 +102,24 @@ class LoginController extends StateNotifier<LoginState> {
     }
   }
 
+
   // ---------------- NAVIGATION PLACEHOLDERS ----------------
   void goToRegister() {
-    print("Go to Register Page");
+    if (kDebugMode) {
+      print("Go to Register Page");
+    }
   }
 
   void guestLogin() {
-    print("Guest Login");
+    if (kDebugMode) {
+      print("Guest Login");
+    }
   }
 
   void loginWithNafath() {
-    print("Login with Nafath");
+    if (kDebugMode) {
+      print("Login with Nafath");
+    }
   }
 }
 

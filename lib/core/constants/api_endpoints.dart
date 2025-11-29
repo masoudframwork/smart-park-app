@@ -7,7 +7,7 @@ class ApiEndpoints {
 
   /// Base URL
   static const String baseUrl =
-      "http://osbt062023-001-site43.ktempurl.com/api/";
+      "http://osbt062023-001-site43.ktempurl.com/api";
 
   // ============================
   // 🔐 AUTH
