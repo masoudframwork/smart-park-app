@@ -6,8 +6,8 @@ import '../../../../../../../core/theme/app_color.dart';
 import '../../../../../../../core/theme/app_text_theme.dart';
 import '../../../../../../../generated/l10n.dart';
 
-class DescrpationWidget extends StatelessWidget {
-  const DescrpationWidget({super.key});
+class DescriptionWidget extends StatelessWidget {
+  const DescriptionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

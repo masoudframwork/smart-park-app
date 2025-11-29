@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +11,7 @@ import '../../features/auth/bankcarddata/presentation/bank_card_data_page.dart';
 import '../../features/auth/presentation/screens/login/presentation/login_page.dart';
 import '../../features/auth/presentation/screens/nafath/persentation/nafath_page.dart';
 import '../../features/auth/presentation/screens/nafath/persentation/widget/nafath_otp_widget.dart';
-import '../../features/auth/presentation/screens/send_otp_code/presentation/send_the_code_page.dart';
+import '../../features/auth/presentation/screens/send_otp_code/presentation/send_otp_code_page.dart';
 import '../../features/auth/presentation/screens/sign_up/presentation/sign_up_page.dart';
 import '../../features/auth/presentation/screens/sign_up/presentation/widget/otp_sign_up/otp_sign_up.dart';
 import '../../features/booking/presentation/booking_summary_screen.dart';
@@ -95,14 +96,32 @@ class AppRouter {
           );
         },
       ),
+
+
       GoRoute(
         path: RoutePaths.sendTheCodePage,
+        name: 'otp', // ← Add name for easier navigation
         pageBuilder: (context, state) {
+          // ✅ Get mobile number from navigation arguments
+          final mobileNumber = state.extra as String? ?? "";
+
+          if (kDebugMode) {
+            print("🔵 OTP Screen - Received mobile: $mobileNumber");
+          }
+
+          if (mobileNumber.isEmpty) {
+            print("⚠️ WARNING: Mobile number is empty!");
+          }
+
           return softTransitionPage(
-            child: SendOTPCodePage(),
+            child: SendOTPCodePage(
+              mobileNumber: mobileNumber,
+            ),
           );
         },
       ),
+
+
       GoRoute(
         path: RoutePaths.signUpPage,
         pageBuilder: (context, state) {

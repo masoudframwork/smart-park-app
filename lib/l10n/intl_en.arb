@@ -239,7 +239,11 @@
   "dialog_end_cancel": "Back",
   "search_for_parking": "Find a parking",
   "search_start_listening": "Start listening",
-  "active_card_booking_summary": "Booking Summary"
+  "active_card_booking_summary": "Booking Summary",
+  "otp_verified_successfully": "OTP Verified Successfully!",
+  "verifying": "Verifying...",
+  "please_enter_otp": "Please enter OTP code",
+  "resend_otp": "Resend OTP"
 
 
 

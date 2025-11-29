@@ -1978,6 +1978,36 @@ class S {
       args: [],
     );
   }
+
+  /// `OTP Verified Successfully!`
+  String get otp_verified_successfully {
+    return Intl.message(
+      'OTP Verified Successfully!',
+      name: 'otp_verified_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verifying...`
+  String get verifying {
+    return Intl.message('Verifying...', name: 'verifying', desc: '', args: []);
+  }
+
+  /// `Please enter OTP code`
+  String get please_enter_otp {
+    return Intl.message(
+      'Please enter OTP code',
+      name: 'please_enter_otp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend OTP`
+  String get resend_otp {
+    return Intl.message('Resend OTP', name: 'resend_otp', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

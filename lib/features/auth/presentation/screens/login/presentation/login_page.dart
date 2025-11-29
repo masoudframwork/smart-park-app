@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,33 +20,41 @@ class LoginPage extends ConsumerWidget {
     final state = ref.watch(loginControllerProvider);
     final controller = ref.read(loginControllerProvider.notifier);
 
-
-    // LISTEN FOR ERRORS
     ref.listen(loginControllerProvider, (prev, next) {
+      if (prev?.success == false && next.success == true) {
+        final phoneNumber = controller.phoneController.text.trim();
+
+        if (kDebugMode) {
+          print("🔵 Login Success - Navigating with phone: '$phoneNumber'");
+        }
+
+        if (phoneNumber.isEmpty) {
+          if (kDebugMode) {
+            print("⚠️ ERROR: Phone number is empty!");
+          }
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Error: Phone number is missing"),
+              backgroundColor: Colors.red,
+            ),
+          );
+          return;
+        }
+
+        // ✅ Use GoRouter navigation
+        context.push(RoutePaths.sendTheCodePage, extra: phoneNumber);
+      }
+
+      // Show errors
       if (next.errorMessage != null && next.errorMessage != prev?.errorMessage) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(
-              next.errorMessage!,
-              style: const TextStyle(color: Colors.black),
-            ),
-            backgroundColor: Colors.white,
-            behavior: SnackBarBehavior.floating,
-            margin: EdgeInsets.all(16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
+            content: Text(next.errorMessage!),
+            backgroundColor: Colors.red,
           ),
         );
       }
-
-      if (prev?.success == false && next.success == true) {
-        // Navigator.pushNamed(context, "/otp");
-        context.push(RoutePaths.sendTheCodePage);
-      }
     });
-
-
 
     return Scaffold(
       backgroundColor: AppColor.backgroundColor,
@@ -68,19 +77,15 @@ class LoginPage extends ConsumerWidget {
                 SizedBox(height: 40.h),
                 const DescrpationTitelWidget(),
                 SizedBox(height: 40.h),
-          TextFieldAndButtonsWidget(
-            formKey: controller.formKey,
-            phoneController: controller.phoneController,
-
-            phoneValidator: controller.validatePhone,
-            onPhoneChanged: (val) => controller.phoneController.text = val ?? "",
-
-            onSendCode: controller.sendCode,
-            onLoginWithNafath: () {}, // REQUIRED BY WIDGET
-            isLoading: state.isLoading,
-
-
-          ),
+                TextFieldAndButtonsWidget(
+                  formKey: controller.formKey,
+                  phoneController: controller.phoneController,
+                  phoneValidator: controller.validatePhone,
+                  onPhoneChanged: (val) => controller.phoneController.text = val ?? "",
+                  onSendCode: controller.sendCode,
+                  onLoginWithNafath: () {},
+                  isLoading: state.isLoading,
+                ),
                 SizedBox(height: 40.h),
                 TitelDescWidget(
                   onCreateAccount: controller.goToRegister,

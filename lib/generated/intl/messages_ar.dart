@@ -254,6 +254,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "ok": MessageLookupByLibrary.simpleMessage("موافق"),
     "openNafathApp": MessageLookupByLibrary.simpleMessage("افتح تطبيق نفاذ"),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "otp_verified_successfully": MessageLookupByLibrary.simpleMessage(
+      "تم التحقق من الرمز بنجاح!",
+    ),
     "parachute": MessageLookupByLibrary.simpleMessage("مظلّة"),
     "parkingbookingandpaymentmanagementsystemimprovement":
         MessageLookupByLibrary.simpleMessage(
@@ -291,6 +294,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "platenumber": MessageLookupByLibrary.simpleMessage("رقم اللوحة"),
     "platetype": MessageLookupByLibrary.simpleMessage("نوع اللوحة"),
+    "please_enter_otp": MessageLookupByLibrary.simpleMessage(
+      "الرجاء إدخال رمز التحقق",
+    ),
     "pleaselogintoNafathappandselectthefollowingnumber":
         MessageLookupByLibrary.simpleMessage(
           "يرجى تسجيل الدخول عبر تطبيق نفاذ و اختيار الرقم أدناه",
@@ -333,6 +339,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("المركبات"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("المحفظة"),
+    "resend_otp": MessageLookupByLibrary.simpleMessage("إعادة إرسال الرمز"),
     "reserve_your_parking_spot": MessageLookupByLibrary.simpleMessage(
       "احجز موقفك في أقصر وقت \nوانطلق بثقة",
     ),
@@ -441,6 +448,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "varifyAccount": MessageLookupByLibrary.simpleMessage("تأكيد الحساب"),
     "vehiclecolor": MessageLookupByLibrary.simpleMessage("لون المركبة"),
     "verifyAccount": MessageLookupByLibrary.simpleMessage("لتأكيد الحساب"),
+    "verifying": MessageLookupByLibrary.simpleMessage("جاري التحقق..."),
     "verifythroughNafathapp": MessageLookupByLibrary.simpleMessage(
       "التحقق من خلال تطبيق نفاذ",
     ),

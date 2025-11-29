@@ -266,6 +266,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "openNafathApp": MessageLookupByLibrary.simpleMessage("Open Nafath App"),
     "or": MessageLookupByLibrary.simpleMessage("or"),
+    "otp_verified_successfully": MessageLookupByLibrary.simpleMessage(
+      "OTP Verified Successfully!",
+    ),
     "parachute": MessageLookupByLibrary.simpleMessage("Parachute"),
     "parkingbookingandpaymentmanagementsystemimprovement":
         MessageLookupByLibrary.simpleMessage(
@@ -305,6 +308,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "platenumber": MessageLookupByLibrary.simpleMessage("Plate number"),
     "platetype": MessageLookupByLibrary.simpleMessage("Plate type"),
+    "please_enter_otp": MessageLookupByLibrary.simpleMessage(
+      "Please enter OTP code",
+    ),
     "pleaselogintoNafathappandselectthefollowingnumber":
         MessageLookupByLibrary.simpleMessage(
           "Please login to Nafath app and select the following number",
@@ -343,6 +349,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "profile_vehicles": MessageLookupByLibrary.simpleMessage("Vehicles"),
     "profile_wallet": MessageLookupByLibrary.simpleMessage("Wallet"),
+    "resend_otp": MessageLookupByLibrary.simpleMessage("Resend OTP"),
     "reserve_your_parking_spot": MessageLookupByLibrary.simpleMessage(
       "Reserve your parking spot in the shortest time and set off with confidence",
     ),
@@ -457,6 +464,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "varifyAccount": MessageLookupByLibrary.simpleMessage("Varify Account"),
     "vehiclecolor": MessageLookupByLibrary.simpleMessage("Vehicle color"),
     "verifyAccount": MessageLookupByLibrary.simpleMessage("Verify Account"),
+    "verifying": MessageLookupByLibrary.simpleMessage("Verifying..."),
     "verifythroughNafathapp": MessageLookupByLibrary.simpleMessage(
       "Verify through Nafath app",
     ),

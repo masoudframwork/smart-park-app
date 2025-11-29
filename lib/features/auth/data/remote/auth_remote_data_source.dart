@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import '../../../../core/constants/api_endpoints.dart';
 
 class AuthRemoteDataSource {
@@ -8,7 +9,9 @@ class AuthRemoteDataSource {
 
   // ---------------- LOGIN ----------------
   Future<Map<String, dynamic>> login(String mobile) async {
-    print("Calling URL: ${ApiEndpoints.login}");
+    if (kDebugMode) {
+      print("Calling URL: ${ApiEndpoints.login}");
+    }
     final res = await dio.post(
       ApiEndpoints.login,
       data: {"mobile": mobile},
@@ -17,22 +20,49 @@ class AuthRemoteDataSource {
   }
 
   // ---------------- VERIFY OTP ----------------
+  // VERIFY OTP
   Future<Map<String, dynamic>> verifyOtp({
     required String mobile,
     required int code,
     required int type,
     String? fullName,
   }) async {
-    final res = await dio.post(
-      ApiEndpoints.verifyOtp,
-      data: {
-        "fullName": fullName,
-        "mobile": mobile,
-        "type": type,
-        "code": code,
-      },
-    );
-    return res.data;
+    final requestData = {
+      "fullName": fullName,
+      "mobile": mobile,
+      "type": type,
+      "code": code,
+    };
+
+    if (kDebugMode) {
+      print("🔵 Sending OTP Verification:");
+    }
+    if (kDebugMode) {
+      print("📍 URL: ${ApiEndpoints.verifyOtp}");
+    }
+    if (kDebugMode) {
+      print("📦 Body: $requestData");
+    }
+
+    try {
+      final res = await dio.post(
+        ApiEndpoints.verifyOtp,
+        data: requestData,
+      );
+
+      if (kDebugMode) {
+        print("✅ Response: ${res.data}");
+      }
+      return res.data;
+    } on DioException catch (e) {
+      if (kDebugMode) {
+        print("❌ Error Status: ${e.response?.statusCode}");
+      }
+      if (kDebugMode) {
+        print("❌ Error Body: ${e.response?.data}");
+      }
+      rethrow;
+    }
   }
 
   // ---------------- RESEND OTP ----------------

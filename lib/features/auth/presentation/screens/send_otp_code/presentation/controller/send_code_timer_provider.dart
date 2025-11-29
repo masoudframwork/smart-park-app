@@ -4,15 +4,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 const int kOtpResendSeconds = 23;
 
+/// ✅ Timer Provider
 final sendCodeTimerProvider =
-    StateNotifierProvider.autoDispose<SendCodeTimerNotifier, int>(
-  (ref) => SendCodeTimerNotifier(),
+StateNotifierProvider.autoDispose<SendOTPNotifier, int>(
+      (ref) => SendOTPNotifier(),
 );
 
-class SendCodeTimerNotifier extends StateNotifier<int> {
+class SendOTPNotifier extends StateNotifier<int> {
   Timer? _timer;
 
-  SendCodeTimerNotifier() : super(kOtpResendSeconds) {
+  SendOTPNotifier() : super(kOtpResendSeconds) {
     _startTimer();
   }
 
@@ -24,19 +25,19 @@ class SendCodeTimerNotifier extends StateNotifier<int> {
         state = state - 1;
       } else {
         timer.cancel();
-        _onTimerFinished();
+        // Timer stays at 0 until manually restarted
       }
     });
   }
 
-  void _onTimerFinished() {
-    restart();
-  }
-
+  /// ✅ Manual restart (called when resend OTP is successful)
   void restart() {
     state = kOtpResendSeconds;
     _startTimer();
   }
+
+  /// ✅ Check if timer is finished
+  bool get isFinished => state == 0;
 
   @override
   void dispose() {
@@ -45,8 +46,9 @@ class SendCodeTimerNotifier extends StateNotifier<int> {
   }
 }
 
+/// ✅ Code Controller Provider
 final codeControllerProvider =
-    Provider.autoDispose<TextEditingController>((ref) {
+Provider.autoDispose<TextEditingController>((ref) {
   final controller = TextEditingController();
 
   ref.onDispose(() {

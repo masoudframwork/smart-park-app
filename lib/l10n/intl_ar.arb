@@ -237,6 +237,10 @@
   "dialog_end_cancel": "عودة",
   "search_for_parking": "ابحث عن موقف",
   "search_start_listening": "  ...جاري الاستماع",
-  "active_card_booking_summary": "تفاصيل الحجز"
+  "active_card_booking_summary": "تفاصيل الحجز",
+  "otp_verified_successfully": "تم التحقق من الرمز بنجاح!",
+  "verifying": "جاري التحقق...",
+  "please_enter_otp": "الرجاء إدخال رمز التحقق",
+  "resend_otp": "إعادة إرسال الرمز"
 
 }
