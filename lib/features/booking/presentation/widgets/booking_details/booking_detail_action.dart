@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:smart/features/booking/presentation/widgets/booking_details/booking_confirmation_dialog.dart';
+// import 'package:smart/features/booking/provider/widgets/booking_details/booking_confirmation_dialog.dart';
 // import '../../../../../core/theme/app_color.dart';
 // import '../../../../../core/theme/app_text_theme.dart';
 // import '../../../../../core/widgets/app_text.dart';

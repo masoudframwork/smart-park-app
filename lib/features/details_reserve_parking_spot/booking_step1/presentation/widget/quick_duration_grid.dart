@@ -5,7 +5,7 @@
 // import '../../../../../core/theme/app_color.dart';
 // import '../../../../../core/theme/app_text_theme.dart';
 // import '../../../../../core/widgets/app_text.dart';
-// import '../../../duration/presentation/controller/duration_controller.dart';
+// import '../../../duration/provider/controller/duration_controller.dart';
 //
 // class _DurationOption {
 //   final String label;

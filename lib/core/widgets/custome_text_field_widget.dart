@@ -118,6 +118,7 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: prefixIcon,
         errorStyle: const TextStyle(
           fontSize: 14.0,
+          color: Colors.white,
           fontFamily: 'IBM Plex Sans Arabic',
         ),
         isDense: true,
@@ -160,6 +161,8 @@ class CustomTextFormField extends StatelessWidget {
       cursorWidth: 2,
       maxLength: maxLength,
       maxLines: maxLine ?? 1,
+
+
     );
 
     // بدون شادو

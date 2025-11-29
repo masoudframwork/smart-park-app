@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smart/core/theme/app_text_theme.dart';
 import 'package:smart/features/auth/bankcarddata/presentation/widget/data_card_feild.dart';
-
 import '../../../../core/routing/navigation_service.dart';
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theme/app_color.dart';
 import '../../../../core/widgets/arrow_widget_custom_bar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../generated/l10n.dart';
-import '../../nafath/persentation/widget/vehicle_data.dart';
+import '../../presentation/screens/nafath/persentation/widget/vehicle_data.dart';
 
 class BankCardDataPage extends StatelessWidget {
   const BankCardDataPage({super.key});

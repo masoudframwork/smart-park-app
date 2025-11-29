@@ -1,31 +1,25 @@
 class ApiResponse<T> {
-  T? data;
   final bool success;
+  final int code;
   final String? message;
-  final int? statusCode;
+  final T? data;
 
   ApiResponse({
-    this.data,
     required this.success,
+    required this.code,
     this.message,
-    this.statusCode,
+    this.data,
   });
 
-  factory ApiResponse.success(T data, {String? message, int? statusCode}) {
+  factory ApiResponse.fromJson(
+      Map<String, dynamic> json, T Function(dynamic) create) {
     return ApiResponse(
-      data: data,
-      success: true,
-      message: message,
-      statusCode: statusCode,
-    );
-  }
-
-  factory ApiResponse.failure(String message, {int? statusCode}) {
-    return ApiResponse(
-      data: null,
-      success: false,
-      message: message,
-      statusCode: statusCode,
+      success: json["success"],
+      code: json["code"],
+      message: json["message"] is List
+          ? json["message"]?.join(", ")
+          : json["message"],
+      data: json["data"] != null ? create(json["data"]) : null,
     );
   }
 }

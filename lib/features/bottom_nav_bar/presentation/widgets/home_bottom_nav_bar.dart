@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:smart/features/bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
+// import 'package:smart/features/bottom_nav_bar/provider/controller/bottom_nav_bar_controller.dart';
 //
 // class HomeBottomNavigationBar extends ConsumerWidget {
 //   const HomeBottomNavigationBar({super.key});
