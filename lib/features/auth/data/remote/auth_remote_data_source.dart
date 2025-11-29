@@ -20,7 +20,7 @@ class AuthRemoteDataSource {
   Future<Map<String, dynamic>> verifyOtp({
     required String mobile,
     required int code,
-    required int type,       // 1 = Login, 2 = Registration (example)
+    required int type,
     String? fullName,
   }) async {
     final res = await dio.post(
@@ -38,7 +38,7 @@ class AuthRemoteDataSource {
   // ---------------- RESEND OTP ----------------
   Future<Map<String, dynamic>> resendOtp({
     required String mobile,
-    required int otpType,   // based on swagger: otpType is int
+    required int otpType,
   }) async {
     final res = await dio.post(
       ApiEndpoints.resendOtp,

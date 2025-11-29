@@ -10,7 +10,7 @@ import '../../features/auth/bankcarddata/presentation/bank_card_data_page.dart';
 import '../../features/auth/presentation/screens/login/presentation/login_page.dart';
 import '../../features/auth/presentation/screens/nafath/persentation/nafath_page.dart';
 import '../../features/auth/presentation/screens/nafath/persentation/widget/nafath_otp_widget.dart';
-import '../../features/auth/presentation/screens/send_the_code/presentation/send_the_code_page.dart';
+import '../../features/auth/presentation/screens/send_otp_code/presentation/send_the_code_page.dart';
 import '../../features/auth/presentation/screens/sign_up/presentation/sign_up_page.dart';
 import '../../features/auth/presentation/screens/sign_up/presentation/widget/otp_sign_up/otp_sign_up.dart';
 import '../../features/booking/presentation/booking_summary_screen.dart';
@@ -99,7 +99,7 @@ class AppRouter {
         path: RoutePaths.sendTheCodePage,
         pageBuilder: (context, state) {
           return softTransitionPage(
-            child: SendTheCodePage(),
+            child: SendOTPCodePage(),
           );
         },
       ),

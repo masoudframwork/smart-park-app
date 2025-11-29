@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smart/features/auth/presentation/screens/send_the_code/presentation/widget/descrpation_widget.dart';
+import 'package:smart/features/auth/presentation/screens/send_otp_code/presentation/widget/descrpation_widget.dart';
 import '../../../../../../core/constants/image_string.dart';
 import '../../../../../../core/routing/navigation_service.dart';
 import '../../../../../../core/routing/routes.dart';
@@ -15,8 +15,8 @@ import '../../../../../../generated/l10n.dart';
 import '../../../../../bottom_nav_bar/presentation/controller/bottom_nav_bar_controller.dart';
 import 'controller/send_code_controller.dart';
 
-class SendTheCodePage extends ConsumerWidget {
-  const SendTheCodePage({super.key});
+class SendOTPCodePage extends ConsumerWidget {
+  const SendOTPCodePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
